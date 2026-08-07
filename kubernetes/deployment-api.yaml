@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: leadscan-api
+  namespace: leadscan
+  labels:
+    app: leadscan-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: leadscan-api
+  template:
+    metadata:
+      labels:
+        app: leadscan-api
+    spec:
+      containers:
+        - name: api
+          image: leadscan-api:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "512Mi"
+            limits:
+              cpu: "1000m"
+              memory: "1024Mi"
+          envFrom:
+            - configMapRef:
+                name: leadscan-config
+            - secretRef:
+                name: leadscan-secrets
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: 8000
+            initialDelaySeconds: 15
+            periodSeconds: 20
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: 8000
+            initialDelaySeconds: 10
+            periodSeconds: 10

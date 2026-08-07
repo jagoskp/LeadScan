@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sync History - LeadScan AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                            "primary-container": "#2563eb",
+                            "surface-container-high": "#dce9ff",
+                            "on-tertiary-fixed-variant": "#005321",
+                            "on-tertiary-fixed": "#002109",
+                            "inverse-on-surface": "#eaf1ff",
+                            "surface-container-lowest": "#ffffff",
+                            "on-tertiary": "#ffffff",
+                            "on-error": "#ffffff",
+                            "surface-container": "#e5eeff",
+                            "on-background": "#0b1c30",
+                            "on-secondary-container": "#5c647a",
+                            "surface-variant": "#d3e4fe",
+                            "surface-dim": "#cbdbf5",
+                            "surface": "#f8f9ff",
+                            "on-primary": "#ffffff",
+                            "error": "#ba1a1a",
+                            "on-primary-fixed-variant": "#003ea8",
+                            "secondary-fixed-dim": "#bec6e0",
+                            "outline": "#737686",
+                            "secondary-container": "#dae2fd",
+                            "primary-fixed": "#dbe1ff",
+                            "on-secondary-fixed": "#131b2e",
+                            "on-primary-container": "#eeefff",
+                            "on-secondary": "#ffffff",
+                            "on-primary-fixed": "#00174b",
+                            "on-error-container": "#93000a",
+                            "error-container": "#ffdad6",
+                            "on-surface": "#0b1c30",
+                            "surface-tint": "#0053db",
+                            "secondary": "#565e74",
+                            "on-surface-variant": "#434655",
+                            "surface-container-highest": "#d3e4fe",
+                            "tertiary-fixed": "#6bff8f",
+                            "tertiary-container": "#007e37",
+                            "primary": "#004ac6",
+                            "outline-variant": "#c3c6d7",
+                            "primary-fixed-dim": "#b4c5ff",
+                            "inverse-primary": "#b4c5ff",
+                            "secondary-fixed": "#dae2fd",
+                            "on-secondary-fixed-variant": "#3f465c",
+                            "tertiary-fixed-dim": "#4ae176",
+                            "inverse-surface": "#213145",
+                            "background": "#f8f9ff",
+                            "tertiary": "#006229",
+                            "on-tertiary-container": "#c1ffc5",
+                            "surface-container-low": "#eff4ff",
+                            "surface-bright": "#f8f9ff"
+                    },
+                    "borderRadius": {
+                            "DEFAULT": "0.25rem",
+                            "lg": "0.5rem",
+                            "xl": "0.75rem",
+                            "full": "9999px"
+                    },
+                    "spacing": {
+                            "base": "4px",
+                            "xl": "32px",
+                            "md": "16px",
+                            "margin-tablet": "24px",
+                            "margin-mobile": "16px",
+                            "lg": "24px",
+                            "gutter": "16px",
+                            "xs": "4px",
+                            "sm": "8px"
+                    },
+                    "fontFamily": {
+                            "title-md": ["Inter"],
+                            "display-lg": ["Inter"],
+                            "label-lg": ["Inter"],
+                            "title-lg": ["Inter"],
+                            "headline-lg": ["Inter"],
+                            "headline-lg-mobile": ["Inter"],
+                            "body-md": ["Inter"],
+                            "label-sm": ["Inter"],
+                            "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                            "title-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                            "display-lg": ["57px", {"lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                            "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                            "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "500"}],
+                            "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                            "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                            "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                            "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                            "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col md:flex-row antialiased">
+<!-- Navigation Drawer (Desktop) -->
+<nav class="hidden md:flex flex-col py-lg bg-surface h-full w-80 rounded-r-xl bg-surface-container-low shadow-lg transition-all duration-300 ease-in-out fixed inset-y-0 left-0 z-[60]">
+<div class="px-lg pb-lg border-b border-outline-variant/30 flex items-center gap-md">
+<div class="w-12 h-12 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-title-lg font-bold">
+                U
+            </div>
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary truncate w-48">Lead Genius AI</h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Enterprise Tier • v2.4.0</p>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto py-md space-y-sm">
+<a class="flex items-center gap-md px-lg py-3 text-on-surface-variant font-body-md mx-2 hover:bg-surface-container-high rounded-full transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-md px-lg py-3 text-on-surface-variant font-body-md mx-2 hover:bg-surface-container-high rounded-full transition-colors" href="#">
+<span class="material-symbols-outlined">document_scanner</span>
+                Scanner
+            </a>
+<a class="flex items-center gap-md px-lg py-3 text-on-surface-variant font-body-md mx-2 hover:bg-surface-container-high rounded-full transition-colors" href="#">
+<span class="material-symbols-outlined">analytics</span>
+                Review
+            </a>
+<a class="flex items-center gap-md px-lg py-3 bg-secondary-container text-on-secondary-container font-title-md rounded-full mx-2 transition-colors" href="#">
+<span class="material-symbols-outlined">sync</span>
+                Sync History
+            </a>
+</div>
+<div class="border-t border-outline-variant/30 pt-md space-y-sm pb-md">
+<a class="flex items-center gap-md px-lg py-3 text-on-surface-variant font-body-md mx-2 hover:bg-surface-container-high rounded-full transition-colors" href="#">
+<span class="material-symbols-outlined">manage_accounts</span>
+                Account Settings
+            </a>
+<a class="flex items-center gap-md px-lg py-3 text-on-surface-variant font-body-md mx-2 hover:bg-surface-container-high rounded-full transition-colors" href="#">
+<span class="material-symbols-outlined">table_chart</span>
+                Google Sheets
+            </a>
+<a class="flex items-center gap-md px-lg py-3 text-on-surface-variant font-body-md mx-2 hover:bg-surface-container-high rounded-full transition-colors" href="#">
+<span class="material-symbols-outlined">help_outline</span>
+                Support
+            </a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col md:ml-80 w-full min-h-screen">
+<!-- TopAppBar (Mobile & Desktop) -->
+<header class="bg-background text-primary flex justify-between items-center px-margin-mobile w-full h-16 docked full-width top-0 bg-surface-container-low flat no shadows transition-colors duration-200 sticky z-40">
+<div class="flex items-center gap-md">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-title-sm font-bold md:hidden">
+                    U
+                </div>
+<h1 class="font-title-lg text-title-lg font-bold text-primary truncate">Sync History</h1>
+</div>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-variant/50 transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</header>
+<main class="flex-1 overflow-y-auto p-margin-mobile md:p-margin-tablet pb-24 md:pb-lg">
+<!-- Filters & Search -->
+<div class="mb-lg flex flex-col sm:flex-row gap-md">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-10 pr-4 py-3 bg-[#F8FAFC] border-outline-variant rounded-lg focus:border-primary focus:ring-1 focus:ring-primary font-body-md text-on-surface transition-colors" placeholder="Search logs..." type="text"/>
+</div>
+<div class="flex gap-sm">
+<button class="px-4 py-2 border border-[#E2E8F0] bg-surface-container-lowest rounded-lg font-label-lg text-label-lg text-on-surface-variant flex items-center gap-2 hover:bg-surface-container-low transition-colors whitespace-nowrap">
+<span class="material-symbols-outlined" style="font-size: 18px;">calendar_today</span>
+                        Date
+                    </button>
+<button class="px-4 py-2 border border-[#E2E8F0] bg-surface-container-lowest rounded-lg font-label-lg text-label-lg text-on-surface-variant flex items-center gap-2 hover:bg-surface-container-low transition-colors whitespace-nowrap">
+<span class="material-symbols-outlined" style="font-size: 18px;">filter_list</span>
+                        Status
+                    </button>
+</div>
+</div>
+<!-- Sync Log List -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/30 shadow-sm overflow-hidden">
+<!-- Log Item: Success -->
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between p-md border-b border-[#F1F5F9] hover:bg-surface-container-low/50 transition-colors gap-md sm:gap-4 h-auto min-h-[72px]">
+<div class="flex items-center gap-md w-full sm:w-auto">
+<div class="w-10 h-10 rounded-full bg-tertiary-container/10 text-tertiary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined" style="font-size: 20px;">check_circle</span>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-title-md text-title-md text-on-surface truncate">Q3 Tech Leads (EMEA)</h3>
+<p class="font-body-md text-body-md text-on-surface-variant truncate">Sheet: Master List • 45 Leads</p>
+</div>
+</div>
+<div class="flex items-center justify-between sm:justify-end w-full sm:w-auto gap-md ml-14 sm:ml-0">
+<div class="flex flex-col sm:items-end">
+<span class="px-2 py-1 bg-tertiary-container/10 text-tertiary-container rounded-full font-label-sm text-label-sm inline-block w-fit">Success</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1">Oct 24, 14:30</span>
+</div>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors" title="View Log">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+</div>
+<!-- Log Item: Failed -->
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between p-md border-b border-[#F1F5F9] hover:bg-surface-container-low/50 transition-colors gap-md sm:gap-4 h-auto min-h-[72px]">
+<div class="flex items-center gap-md w-full sm:w-auto">
+<div class="w-10 h-10 rounded-full bg-error/10 text-error flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined" style="font-size: 20px;">error</span>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-title-md text-title-md text-on-surface truncate">Dreamforce Scans</h3>
+<p class="font-body-md text-body-md text-on-surface-variant truncate">Sheet: Unsorted • 0/120 Leads</p>
+</div>
+</div>
+<div class="flex items-center justify-between sm:justify-end w-full sm:w-auto gap-md ml-14 sm:ml-0">
+<div class="flex flex-col sm:items-end">
+<span class="px-2 py-1 bg-error/10 text-error rounded-full font-label-sm text-label-sm inline-block w-fit">Failed</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1">Oct 24, 10:15</span>
+</div>
+<div class="flex gap-2">
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-primary hover:bg-primary-container/20 transition-colors" title="Retry">
+<span class="material-symbols-outlined">refresh</span>
+</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors hidden sm:flex" title="View Log">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Log Item: Partial -->
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between p-md border-b border-[#F1F5F9] hover:bg-surface-container-low/50 transition-colors gap-md sm:gap-4 h-auto min-h-[72px]">
+<div class="flex items-center gap-md w-full sm:w-auto">
+<div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined" style="font-size: 20px;">warning</span>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-title-md text-title-md text-on-surface truncate">Webinar Registrants</h3>
+<p class="font-body-md text-body-md text-on-surface-variant truncate">Sheet: Attendees • 85/90 Leads</p>
+</div>
+</div>
+<div class="flex items-center justify-between sm:justify-end w-full sm:w-auto gap-md ml-14 sm:ml-0">
+<div class="flex flex-col sm:items-end">
+<span class="px-2 py-1 bg-secondary-container text-on-secondary-container rounded-full font-label-sm text-label-sm inline-block w-fit">Partial</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1">Oct 23, 16:45</span>
+</div>
+<div class="flex gap-2">
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-primary hover:bg-primary-container/20 transition-colors" title="Retry">
+<span class="material-symbols-outlined">refresh</span>
+</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors hidden sm:flex" title="View Log">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Log Item: Success -->
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between p-md hover:bg-surface-container-low/50 transition-colors gap-md sm:gap-4 h-auto min-h-[72px]">
+<div class="flex items-center gap-md w-full sm:w-auto">
+<div class="w-10 h-10 rounded-full bg-tertiary-container/10 text-tertiary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined" style="font-size: 20px;">check_circle</span>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-title-md text-title-md text-on-surface truncate">Cold Outreach v2</h3>
+<p class="font-body-md text-body-md text-on-surface-variant truncate">Sheet: Q4 Targets • 210 Leads</p>
+</div>
+</div>
+<div class="flex items-center justify-between sm:justify-end w-full sm:w-auto gap-md ml-14 sm:ml-0">
+<div class="flex flex-col sm:items-end">
+<span class="px-2 py-1 bg-tertiary-container/10 text-tertiary-container rounded-full font-label-sm text-label-sm inline-block w-fit">Success</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1">Oct 22, 09:00</span>
+</div>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors" title="View Log">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Empty State / Load More (Optional, showing Load More for design completeness) -->
+<div class="mt-lg flex justify-center">
+<button class="px-6 py-2 border border-[#E2E8F0] bg-surface-container-lowest rounded-lg font-label-lg text-label-lg text-on-surface hover:bg-surface-container-low transition-colors">
+                    Load More Logs
+                </button>
+</div>
+</main>
+</div>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center h-20 pb-safe px-2 bg-surface bg-surface-container docked full-width bottom-0 rounded-t-xl shadow-sm">
+<a class="flex flex-col items-center justify-center text-on-surface-variant scale-95 active:scale-90 transition-transform hover:bg-surface-container-high w-16 h-14 rounded-xl" href="#">
+<span class="material-symbols-outlined mb-1">dashboard</span>
+<span class="font-label-sm text-label-sm">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant scale-95 active:scale-90 transition-transform hover:bg-surface-container-high w-16 h-14 rounded-xl" href="#">
+<span class="material-symbols-outlined mb-1">document_scanner</span>
+<span class="font-label-sm text-label-sm">Scanner</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant scale-95 active:scale-90 transition-transform hover:bg-surface-container-high w-16 h-14 rounded-xl" href="#">
+<span class="material-symbols-outlined mb-1">analytics</span>
+<span class="font-label-sm text-label-sm">Review</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-5 py-1 scale-95 active:scale-90 transition-transform hover:bg-surface-container-high w-16 h-14" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">sync</span>
+<span class="font-label-sm text-label-sm">Sync</span>
+</a>
+</nav>
+</body></html>

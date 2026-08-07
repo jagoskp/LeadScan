@@ -1,0 +1,98 @@
+# LeadScan AI Monorepo Gitignore
+
+# Gradle & Build Caches
+.gradle/
+**/.gradle/
+build/
+**/build/
+.dart_tool/
+.idea/
+*.log
+*.tmp
+
+# Dependency directories
+node_modules/
+jspm_packages/
+web_member/
+.pnpm-store/
+.pnpm-debug.log*
+
+# Python build/compile
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Python environments
+.env
+.venv
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Flutter / Dart
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+
+# Next.js
+.next/
+out/
+
+# Logs and databases
+*.sqlite
+*.db
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDEs
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Testing/Coverage
+htmlcov/
+.tox/
+.nosexy
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+
+# Local configuration files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+

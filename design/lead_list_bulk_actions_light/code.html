@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LeadScan AI - Leads</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#dae2fd",
+                        "on-tertiary-fixed": "#002109",
+                        "inverse-surface": "#213145",
+                        "surface-dim": "#cbdbf5",
+                        "outline": "#737686",
+                        "outline-variant": "#c3c6d7",
+                        "on-tertiary-container": "#c1ffc5",
+                        "tertiary-fixed-dim": "#4ae176",
+                        "surface-container": "#e5eeff",
+                        "tertiary": "#006229",
+                        "secondary-fixed-dim": "#bec6e0",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-tertiary-fixed-variant": "#005321",
+                        "on-surface-variant": "#434655",
+                        "primary-fixed": "#dbe1ff",
+                        "surface-variant": "#d3e4fe",
+                        "on-secondary-fixed": "#131b2e",
+                        "secondary-fixed": "#dae2fd",
+                        "surface": "#f8f9ff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "error-container": "#ffdad6",
+                        "on-secondary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "background": "#f8f9ff",
+                        "primary-container": "#2563eb",
+                        "on-primary": "#ffffff",
+                        "tertiary-container": "#007e37",
+                        "surface-container-low": "#eff4ff",
+                        "on-secondary-container": "#5c647a",
+                        "on-secondary-fixed-variant": "#3f465c",
+                        "primary": "#004ac6",
+                        "on-surface": "#0b1c30",
+                        "surface-container-high": "#dce9ff",
+                        "inverse-primary": "#b4c5ff",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "surface-tint": "#0053db",
+                        "on-background": "#0b1c30",
+                        "on-primary-container": "#eeefff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface-bright": "#f8f9ff",
+                        "on-primary-fixed": "#00174b",
+                        "secondary": "#565e74",
+                        "tertiary-fixed": "#6bff8f",
+                        "surface-container-highest": "#d3e4fe",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "xl": "32px",
+                        "sm": "8px",
+                        "margin-mobile": "16px",
+                        "gutter": "16px",
+                        "margin-tablet": "24px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "title-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "label-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "title-lg": ["22px", { "lineHeight": "28px", "fontWeight": "500" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display-lg": ["57px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "label-sm": ["11px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .material-symbols-outlined.fill { font-variation-settings: 'FILL' 1; }
+        .elevation-1 { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03); }
+        .elevation-2 { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04); }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen pb-safe pb-24 md:pb-0 pt-16">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface dark:bg-surface-dim shadow-sm flex justify-between items-center px-margin-mobile h-16 w-full">
+<div class="flex items-center gap-4">
+<button class="md:hidden text-on-surface-variant hover:bg-surface-container-high transition-colors p-2 rounded-full active:scale-95 duration-150">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="Professional corporate headshot of a young professional wearing a crisp blue shirt, neutral light grey background, high resolution, soft studio lighting, perfect for a SaaS application avatar." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5hvIeAm1UZTRN9_fVnZ9LL676Z6mMOrA3x_tXZNqV8FzgX99so_YeaP7XOOG6XLpgLuYmBrITIAZeH8X0YTp9-W7M9pEoTA-4tsRN9qZRZBygIeG9MefImESVT9jwSxt6XcWrEr21ToO8o5aPf-zButc3aWFOByuLxCPwxzSZybUHORoPqlng7IPzNOnrtWmbvCEeDeNeUJjrAj_uy5RH7kwdTCUwHZkjwQm4Hbe9idZW1LwED8pDGA"/>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg font-bold text-primary dark:text-primary-fixed">LeadScan AI</h1>
+</div>
+<div class="hidden md:flex gap-6 items-center">
+<nav class="flex gap-4">
+<a class="text-on-surface-variant hover:bg-surface-container-high transition-colors px-3 py-2 rounded-lg font-label-lg text-label-lg" href="#">Dashboard</a>
+<a class="text-on-surface-variant hover:bg-surface-container-high transition-colors px-3 py-2 rounded-lg font-label-lg text-label-lg" href="#">Scanner</a>
+<a class="text-primary font-bold px-3 py-2 rounded-lg font-label-lg text-label-lg bg-surface-container" href="#">Leads</a>
+<a class="text-on-surface-variant hover:bg-surface-container-high transition-colors px-3 py-2 rounded-lg font-label-lg text-label-lg" href="#">Workflow</a>
+</nav>
+</div>
+<button class="text-on-surface-variant hover:bg-surface-container-high transition-colors p-2 rounded-full active:scale-95 duration-150">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</header>
+<main class="max-w-5xl mx-auto px-margin-mobile md:px-margin-tablet py-lg">
+<!-- Header Actions -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-lg gap-4">
+<div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-on-surface">All Leads</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Manage and sync your scanned contacts.</p>
+</div>
+<div class="flex gap-2 w-full md:w-auto">
+<div class="relative flex-1 md:w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 transform -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant rounded-lg font-body-md text-body-md focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-shadow" placeholder="Search leads..." type="text"/>
+</div>
+<button class="bg-surface-container-lowest border border-outline-variant text-on-surface px-4 py-2 rounded-lg font-title-md text-title-md flex items-center gap-2 hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">filter_list</span>
+<span class="hidden md:inline">Filter</span>
+</button>
+</div>
+</div>
+<!-- Lead List -->
+<div class="bg-surface-container-lowest rounded-xl elevation-1 overflow-hidden border border-surface-container-highest">
+<!-- List Header (Desktop) -->
+<div class="hidden md:grid grid-cols-[auto_2fr_1.5fr_2fr_auto_auto] gap-4 p-4 border-b border-surface-container-highest bg-surface-container-low font-label-lg text-label-lg text-on-surface-variant items-center">
+<div class="flex items-center justify-center w-8">
+<input checked="" class="rounded text-primary focus:ring-primary border-outline-variant w-4 h-4 cursor-pointer" id="selectAll" type="checkbox"/>
+</div>
+<div>Name &amp; Company</div>
+<div>Designation</div>
+<div>Email</div>
+<div>Status</div>
+<div class="w-10 text-center">Sync</div>
+</div>
+<div class="flex flex-col">
+<!-- Lead Item 1 (Selected) -->
+<div class="grid grid-cols-[auto_1fr] md:grid-cols-[auto_2fr_1.5fr_2fr_auto_auto] gap-4 p-4 border-b border-surface-container-highest bg-primary-fixed/30 hover:bg-surface-container-low transition-colors items-center relative">
+<div class="flex items-center justify-center w-8 pt-2 md:pt-0 self-start md:self-center">
+<input checked="" class="rounded text-primary focus:ring-primary border-outline-variant w-4 h-4 cursor-pointer" type="checkbox"/>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-title-md text-title-md overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="Headshot of a middle-aged businesswoman with short hair, wearing a dark blazer, bright clean background, professional lighting, SaaS avatar style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4GJRvqmqy5gJYomvaBJNgO0jx9u2foIsha8PPr3Q4lMHsMCD5E02_2WKgP2CK9jb_Zyk1k-8FF6Ml3tPk94NhaiufkMOsBCfcsGkB6BzCaiKyXECRMCG_Zxae74nGHlIbLflEKrxYBolg2tFqxG_jV8xoyfG7Psdm2FeKRjDTowal2DnUjZkO1tWp7UNCjEofUoUhmIHwySM70rKagUs0Q4kdOgjKitzRJ5FhnqY8Ply1rSAKUD-YZg"/>
+</div>
+<div>
+<div class="font-title-md text-title-md text-on-surface">Sarah Jenkins</div>
+<div class="font-body-md text-body-md text-on-surface-variant line-clamp-1">Acme Corp</div>
+</div>
+</div>
+<div class="hidden md:block font-body-md text-body-md text-on-surface-variant">VP of Sales</div>
+<div class="hidden md:block font-body-md text-body-md text-on-surface-variant truncate">sarah.j@acmecorp.com</div>
+<div class="hidden md:flex">
+<span class="px-2 py-1 rounded-full bg-tertiary-container/10 text-tertiary font-label-sm text-label-sm border border-tertiary/20">Interested</span>
+</div>
+<div class="hidden md:flex justify-center w-10">
+<button class="text-tertiary hover:bg-tertiary-container/10 p-1 rounded-full transition-colors" title="Synced to Sheets">
+<span class="material-symbols-outlined" data-icon="cloud_done">cloud_done</span>
+</button>
+</div>
+<!-- Mobile Info Stack -->
+<div class="md:hidden col-start-2 col-end-3 text-sm text-on-surface-variant mt-1 space-y-1">
+<div>VP of Sales</div>
+<div class="truncate">sarah.j@acmecorp.com</div>
+<div class="flex items-center gap-2 mt-2">
+<span class="px-2 py-1 rounded-full bg-tertiary-container/10 text-tertiary font-label-sm text-label-sm border border-tertiary/20">Interested</span>
+<span class="material-symbols-outlined text-tertiary text-[18px]" data-icon="cloud_done">cloud_done</span>
+</div>
+</div>
+</div>
+<!-- Lead Item 2 (Selected) -->
+<div class="grid grid-cols-[auto_1fr] md:grid-cols-[auto_2fr_1.5fr_2fr_auto_auto] gap-4 p-4 border-b border-surface-container-highest bg-primary-fixed/30 hover:bg-surface-container-low transition-colors items-center">
+<div class="flex items-center justify-center w-8 pt-2 md:pt-0 self-start md:self-center">
+<input checked="" class="rounded text-primary focus:ring-primary border-outline-variant w-4 h-4 cursor-pointer" type="checkbox"/>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-title-md text-title-md overflow-hidden shrink-0">
+                            MR
+                        </div>
+<div>
+<div class="font-title-md text-title-md text-on-surface">Michael Rodriguez</div>
+<div class="font-body-md text-body-md text-on-surface-variant line-clamp-1">TechFlow Solutions</div>
+</div>
+</div>
+<div class="hidden md:block font-body-md text-body-md text-on-surface-variant">Director of Marketing</div>
+<div class="hidden md:block font-body-md text-body-md text-on-surface-variant truncate">m.rodriguez@techflow.io</div>
+<div class="hidden md:flex">
+<span class="px-2 py-1 rounded-full bg-secondary-container/50 text-on-secondary-container font-label-sm text-label-sm border border-secondary/20">New</span>
+</div>
+<div class="hidden md:flex justify-center w-10">
+<button class="text-outline hover:bg-surface-variant p-1 rounded-full transition-colors" title="Not Synced">
+<span class="material-symbols-outlined" data-icon="cloud_off">cloud_off</span>
+</button>
+</div>
+<!-- Mobile Info Stack -->
+<div class="md:hidden col-start-2 col-end-3 text-sm text-on-surface-variant mt-1 space-y-1">
+<div>Director of Marketing</div>
+<div class="truncate">m.rodriguez@techflow.io</div>
+<div class="flex items-center gap-2 mt-2">
+<span class="px-2 py-1 rounded-full bg-secondary-container/50 text-on-secondary-container font-label-sm text-label-sm border border-secondary/20">New</span>
+<span class="material-symbols-outlined text-outline text-[18px]" data-icon="cloud_off">cloud_off</span>
+</div>
+</div>
+</div>
+<!-- Lead Item 3 (Selected) -->
+<div class="grid grid-cols-[auto_1fr] md:grid-cols-[auto_2fr_1.5fr_2fr_auto_auto] gap-4 p-4 border-b border-surface-container-highest bg-primary-fixed/30 hover:bg-surface-container-low transition-colors items-center">
+<div class="flex items-center justify-center w-8 pt-2 md:pt-0 self-start md:self-center">
+<input checked="" class="rounded text-primary focus:ring-primary border-outline-variant w-4 h-4 cursor-pointer" type="checkbox"/>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-title-md text-title-md overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="Professional profile picture of a young man with glasses, wearing a casual sweater, bright office background, shallow depth of field, corporate software UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8R_-iqEeEwS_V_HbrP9ba9c07ZLlYxKh3z8Omgl7vs5832sw9Lo5eqsW7CIvcxlmt_5POXfGnrbcjGpTKbmiRWkuNSDFNgJvK5YgHMx3ImgT1zwD8feSE7U41HgysL2zCPKsuW3DoqO8_iqHq1iGHumXjzfxactjIXnKVyuY765HJIi7B0y-76adq96C4snG1b0KvNmkbrLyzxGnlVBws4EnynDsm-P7O4ZMqypmBoD9AcCY0gdVacQ"/>
+</div>
+<div>
+<div class="font-title-md text-title-md text-on-surface">David Chen</div>
+<div class="font-body-md text-body-md text-on-surface-variant line-clamp-1">Nexus Logistics</div>
+</div>
+</div>
+<div class="hidden md:block font-body-md text-body-md text-on-surface-variant">Operations Manager</div>
+<div class="hidden md:block font-body-md text-body-md text-on-surface-variant truncate">dchen@nexuslogistics.com</div>
+<div class="hidden md:flex">
+<span class="px-2 py-1 rounded-full bg-error-container/50 text-on-error-container font-label-sm text-label-sm border border-error/20">Not Interested</span>
+</div>
+<div class="hidden md:flex justify-center w-10">
+<button class="text-tertiary hover:bg-tertiary-container/10 p-1 rounded-full transition-colors" title="Synced to Sheets">
+<span class="material-symbols-outlined" data-icon="cloud_done">cloud_done</span>
+</button>
+</div>
+<!-- Mobile Info Stack -->
+<div class="md:hidden col-start-2 col-end-3 text-sm text-on-surface-variant mt-1 space-y-1">
+<div>Operations Manager</div>
+<div class="truncate">dchen@nexuslogistics.com</div>
+<div class="flex items-center gap-2 mt-2">
+<span class="px-2 py-1 rounded-full bg-error-container/50 text-on-error-container font-label-sm text-label-sm border border-error/20">Not Interested</span>
+<span class="material-symbols-outlined text-tertiary text-[18px]" data-icon="cloud_done">cloud_done</span>
+</div>
+</div>
+</div>
+<!-- Lead Item 4 (Unselected) -->
+<div class="grid grid-cols-[auto_1fr] md:grid-cols-[auto_2fr_1.5fr_2fr_auto_auto] gap-4 p-4 border-b border-surface-container-highest hover:bg-surface-container-low transition-colors items-center">
+<div class="flex items-center justify-center w-8 pt-2 md:pt-0 self-start md:self-center">
+<input class="rounded text-primary focus:ring-primary border-outline-variant w-4 h-4 cursor-pointer" type="checkbox"/>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-title-md text-title-md overflow-hidden shrink-0">
+                            EK
+                        </div>
+<div>
+<div class="font-title-md text-title-md text-on-surface">Emily Kwan</div>
+<div class="font-body-md text-body-md text-on-surface-variant line-clamp-1">Design Studio X</div>
+</div>
+</div>
+<div class="hidden md:block font-body-md text-body-md text-on-surface-variant">Creative Director</div>
+<div class="hidden md:block font-body-md text-body-md text-on-surface-variant truncate">emily@studiox.design</div>
+<div class="hidden md:flex">
+<span class="px-2 py-1 rounded-full bg-secondary-container/50 text-on-secondary-container font-label-sm text-label-sm border border-secondary/20">New</span>
+</div>
+<div class="hidden md:flex justify-center w-10">
+<button class="text-tertiary hover:bg-tertiary-container/10 p-1 rounded-full transition-colors" title="Synced to Sheets">
+<span class="material-symbols-outlined" data-icon="cloud_done">cloud_done</span>
+</button>
+</div>
+<!-- Mobile Info Stack -->
+<div class="md:hidden col-start-2 col-end-3 text-sm text-on-surface-variant mt-1 space-y-1">
+<div>Creative Director</div>
+<div class="truncate">emily@studiox.design</div>
+<div class="flex items-center gap-2 mt-2">
+<span class="px-2 py-1 rounded-full bg-secondary-container/50 text-on-secondary-container font-label-sm text-label-sm border border-secondary/20">New</span>
+<span class="material-symbols-outlined text-tertiary text-[18px]" data-icon="cloud_done">cloud_done</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Floating Action Bar (Bulk Actions) -->
+<div class="fixed bottom-24 md:bottom-8 left-1/2 transform -translate-x-1/2 z-40 w-11/12 md:w-auto max-w-2xl">
+<div class="bg-inverse-surface text-inverse-on-surface rounded-xl p-3 elevation-2 flex flex-col md:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-3 px-2">
+<div class="bg-primary text-on-primary w-6 h-6 rounded-full flex items-center justify-center font-label-sm text-label-sm">3</div>
+<span class="font-title-md text-title-md">Leads Selected</span>
+</div>
+<div class="flex gap-2 w-full md:w-auto justify-around md:justify-end">
+<button class="flex flex-col md:flex-row items-center gap-1 md:gap-2 p-2 md:px-4 md:py-2 rounded-lg hover:bg-on-surface-variant/20 transition-colors text-inverse-on-surface">
+<span class="material-symbols-outlined" data-icon="label">label</span>
+<span class="font-label-lg text-label-lg">Tag</span>
+</button>
+<button class="flex flex-col md:flex-row items-center gap-1 md:gap-2 p-2 md:px-4 md:py-2 rounded-lg hover:bg-on-surface-variant/20 transition-colors text-inverse-on-surface">
+<span class="material-symbols-outlined" data-icon="sync">sync</span>
+<span class="font-label-lg text-label-lg">Sync</span>
+</button>
+<button class="flex flex-col md:flex-row items-center gap-1 md:gap-2 p-2 md:px-4 md:py-2 rounded-lg hover:bg-on-surface-variant/20 transition-colors text-inverse-on-surface">
+<span class="material-symbols-outlined" data-icon="ios_share">ios_share</span>
+<span class="font-label-lg text-label-lg">Export</span>
+</button>
+<button class="flex flex-col md:flex-row items-center gap-1 md:gap-2 p-2 md:px-4 md:py-2 rounded-lg hover:bg-error/20 text-error-container transition-colors">
+<span class="material-symbols-outlined" data-icon="delete">delete</span>
+<span class="font-label-lg text-label-lg">Delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full h-20 flex justify-around items-center px-2 pb-safe bg-surface-container-lowest dark:bg-inverse-surface shadow-lg rounded-t-xl z-50">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant py-1 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-sm text-label-sm mt-1">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant py-1 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="document_scanner">document_scanner</span>
+<span class="font-label-sm text-label-sm mt-1">Scanner</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container dark:bg-on-secondary-fixed-variant text-on-secondary-container dark:text-secondary-fixed rounded-full px-4 py-1 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined fill" data-icon="view_list">view_list</span>
+<span class="font-label-sm text-label-sm mt-1">Leads</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant py-1 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="account_tree">account_tree</span>
+<span class="font-label-sm text-label-sm mt-1">Workflow</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant py-1 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm mt-1">Profile</span>
+</a>
+</nav>
+<script>
+        // Simple script to toggle all checkboxes
+        document.getElementById('selectAll').addEventListener('change', function() {
+            const checkboxes = document.querySelectorAll('main input[type="checkbox"]:not(#selectAll)');
+            checkboxes.forEach(cb => {
+                cb.checked = this.checked;
+                // Highlight row logic would go here
+            });
+        });
+    </script>
+</body></html>

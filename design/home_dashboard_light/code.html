@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LeadScan AI - Home Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary-fixed-dim": "#b4c5ff",
+                      "surface-container": "#e5eeff",
+                      "secondary-fixed-dim": "#bec6e0",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "surface-variant": "#d3e4fe",
+                      "surface": "#f8f9ff",
+                      "secondary-container": "#dae2fd",
+                      "outline": "#737686",
+                      "surface-container-high": "#dce9ff",
+                      "on-primary-fixed": "#00174b",
+                      "tertiary": "#006229",
+                      "tertiary-container": "#007e37",
+                      "surface-container-low": "#eff4ff",
+                      "on-tertiary-fixed-variant": "#005321",
+                      "on-surface-variant": "#434655",
+                      "on-surface": "#0b1c30",
+                      "error-container": "#ffdad6",
+                      "surface-container-lowest": "#ffffff",
+                      "primary-container": "#2563eb",
+                      "inverse-primary": "#b4c5ff",
+                      "error": "#ba1a1a",
+                      "on-tertiary": "#ffffff",
+                      "surface-dim": "#cbdbf5",
+                      "on-error": "#ffffff",
+                      "primary-fixed": "#dbe1ff",
+                      "on-error-container": "#93000a",
+                      "surface-container-highest": "#d3e4fe",
+                      "on-secondary-container": "#5c647a",
+                      "secondary-fixed": "#dae2fd",
+                      "background": "#f8f9ff",
+                      "outline-variant": "#c3c6d7",
+                      "on-secondary": "#ffffff",
+                      "on-tertiary-container": "#c1ffc5",
+                      "on-secondary-fixed": "#131b2e",
+                      "tertiary-fixed-dim": "#4ae176",
+                      "tertiary-fixed": "#6bff8f",
+                      "inverse-surface": "#213145",
+                      "inverse-on-surface": "#eaf1ff",
+                      "secondary": "#565e74",
+                      "surface-tint": "#0053db",
+                      "primary": "#004ac6",
+                      "on-tertiary-fixed": "#002109",
+                      "on-primary": "#ffffff",
+                      "on-secondary-fixed-variant": "#3f465c",
+                      "on-background": "#0b1c30",
+                      "surface-bright": "#f8f9ff",
+                      "on-primary-container": "#eeefff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-tablet": "24px",
+                      "base": "4px",
+                      "sm": "8px",
+                      "xs": "4px",
+                      "xl": "32px",
+                      "lg": "24px",
+                      "md": "16px",
+                      "gutter": "16px",
+                      "margin-mobile": "16px"
+              },
+              "fontFamily": {
+                      "title-md": ["Inter"],
+                      "label-lg": ["Inter"],
+                      "body-md": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "title-lg": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "body-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "title-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "display-lg": ["57px", {"lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "500"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md antialiased pb-24 md:pb-0">
+<!-- TopAppBar -->
+<header class="bg-surface w-full top-0 sticky z-40 bg-surface-container flat no shadows">
+<div class="flex justify-between items-center px-margin-mobile py-2 w-full max-w-screen-xl mx-auto">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover shadow-sm" data-alt="A professional headshot of a young male executive with short dark hair, wearing a sharp navy blue blazer over a crisp white shirt. The background is slightly blurred showing a modern, brightly lit office environment with subtle blue and white tones to match the corporate SaaS aesthetic. The lighting is soft and flattering, highlighting a confident and approachable expression." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAd599TC0qfcgnLO-ga2Jj0nhn3l3hNwxsjLGGj1ZBYG2LU_6DR6rbWHzpKaC1q0YNRggTHPk_ILdsbF9WEKgfRYwwZj2Rv4bPXAAku00MjKCy_TLJmviU-t5SJlkKf4qGeFxYKHuVkDJDmzxyevNCfN7zxW4qrsjb4MWR-XGRYpsM7M0Xef7CsiXNamcPMirB7-MBE6bZK2TZ0f7o7hDL4OWwblk8tlv-iJiCDvACBddytEZItd4jxUQ"/>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-on-surface">Good morning, Alex</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Veridian Analytics</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="relative p-2 rounded-full hover:bg-surface-variant/50 transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-primary" data-icon="notifications">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2.5 h-2.5 bg-error rounded-full border-2 border-surface"></span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="max-w-screen-xl mx-auto px-margin-mobile md:px-margin-tablet pt-4 pb-8 space-y-lg">
+<!-- Global Search -->
+<section class="relative group">
+<div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="search">search</span>
+</div>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-full py-3 pl-12 pr-4 font-body-md text-body-md text-on-surface placeholder:text-on-surface-variant focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all shadow-[0_1px_4px_0_rgba(0,0,0,0.05)]" placeholder="Search Leads, Companies, Tags..." type="text"/>
+</section>
+<!-- Quick Actions (Horizontal Scroll) -->
+<section>
+<h2 class="font-title-md text-title-md text-on-surface mb-md">Quick Actions</h2>
+<div class="flex overflow-x-auto gap-gutter pb-4 no-scrollbar -mx-margin-mobile px-margin-mobile md:mx-0 md:px-0 snap-x snap-mandatory">
+<button class="snap-start shrink-0 flex flex-col justify-center items-center gap-3 w-[140px] h-[120px] bg-primary rounded-xl shadow-[0_4px_12px_0_rgba(37,99,235,0.2)] active:scale-95 transition-transform">
+<div class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary text-2xl" data-icon="document_scanner" data-weight="fill">document_scanner</span>
+</div>
+<span class="font-label-lg text-label-lg text-on-primary">Scan Now</span>
+</button>
+<button class="snap-start shrink-0 flex flex-col justify-center items-center gap-3 w-[140px] h-[120px] bg-surface-container rounded-xl shadow-[0_1px_4px_0_rgba(0,0,0,0.05)] border border-surface-container-high hover:bg-surface-container-high transition-colors active:scale-95">
+<div class="w-12 h-12 rounded-full bg-surface flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="image">image</span>
+</div>
+<span class="font-label-lg text-label-lg text-on-surface">Upload Image</span>
+</button>
+<button class="snap-start shrink-0 flex flex-col justify-center items-center gap-3 w-[140px] h-[120px] bg-surface-container rounded-xl shadow-[0_1px_4px_0_rgba(0,0,0,0.05)] border border-surface-container-high hover:bg-surface-container-high transition-colors active:scale-95">
+<div class="w-12 h-12 rounded-full bg-surface flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="picture_as_pdf">picture_as_pdf</span>
+</div>
+<span class="font-label-lg text-label-lg text-on-surface">Import PDF</span>
+</button>
+<button class="snap-start shrink-0 flex flex-col justify-center items-center gap-3 w-[140px] h-[120px] bg-surface-container rounded-xl shadow-[0_1px_4px_0_rgba(0,0,0,0.05)] border border-surface-container-high hover:bg-surface-container-high transition-colors active:scale-95 relative">
+<div class="absolute top-3 right-3 bg-error text-on-error font-label-sm text-[10px] w-5 h-5 rounded-full flex items-center justify-center">5</div>
+<div class="w-12 h-12 rounded-full bg-surface flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="rule">rule</span>
+</div>
+<span class="font-label-lg text-label-lg text-on-surface">Review Queue</span>
+</button>
+</div>
+</section>
+<!-- Today's Overview (Bento Grid) -->
+<section>
+<h2 class="font-title-md text-title-md text-on-surface mb-md">Today's Overview</h2>
+<div class="grid grid-cols-2 gap-gutter">
+<!-- Stat Card 1 -->
+<div class="bg-gradient-to-br from-surface-container-lowest to-surface-container-low rounded-xl p-4 shadow-[0_2px_8px_0_rgba(0,0,0,0.04)] border border-surface-container flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Today's Scans</span>
+<span class="material-symbols-outlined text-primary text-opacity-80 text-xl" data-icon="camera_alt">camera_alt</span>
+</div>
+<div class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mt-1">42</div>
+<div class="flex items-center gap-1 text-tertiary-container font-label-sm text-label-sm mt-auto">
+<span class="material-symbols-outlined text-[14px]" data-icon="trending_up">trending_up</span>
+<span>+12%</span>
+</div>
+</div>
+<!-- Stat Card 2 -->
+<div class="bg-gradient-to-br from-surface-container-lowest to-surface-container-low rounded-xl p-4 shadow-[0_2px_8px_0_rgba(0,0,0,0.04)] border border-surface-container flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Today's Leads</span>
+<span class="material-symbols-outlined text-primary text-opacity-80 text-xl" data-icon="group_add">group_add</span>
+</div>
+<div class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mt-1">12</div>
+<div class="flex items-center gap-1 text-tertiary-container font-label-sm text-label-sm mt-auto">
+<span class="material-symbols-outlined text-[14px]" data-icon="trending_up">trending_up</span>
+<span>+3</span>
+</div>
+</div>
+<!-- Stat Card 3 (Wide) -->
+<div class="col-span-2 bg-gradient-to-r from-surface-container-lowest via-surface-container-lowest to-surface-container-low rounded-xl p-4 shadow-[0_2px_8px_0_rgba(0,0,0,0.04)] border border-surface-container flex justify-between items-center">
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Sync Status</span>
+<span class="font-title-lg text-title-lg text-on-surface">100% Synced</span>
+<span class="font-label-sm text-label-sm text-outline">Last synced 2m ago</span>
+</div>
+<div class="w-12 h-12 rounded-full bg-tertiary-container/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary-container text-2xl" data-icon="cloud_sync">cloud_sync</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Analytics -->
+<section>
+<h2 class="font-title-md text-title-md text-on-surface mb-md">Analytics</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Chart Card -->
+<div class="bg-surface-container-lowest rounded-xl p-4 shadow-[0_2px_8px_0_rgba(0,0,0,0.04)] border border-surface-container">
+<div class="flex justify-between items-center mb-4">
+<span class="font-label-lg text-label-lg text-on-surface">Weekly Performance</span>
+<button class="text-on-surface-variant"><span class="material-symbols-outlined text-[20px]" data-icon="more_vert">more_vert</span></button>
+</div>
+<!-- Placeholder for Chart -->
+<div class="w-full h-32 flex items-end gap-2 px-2">
+<div class="w-1/6 bg-surface-container-highest rounded-t-sm h-1/3"></div>
+<div class="w-1/6 bg-primary rounded-t-sm h-2/3"></div>
+<div class="w-1/6 bg-surface-container-highest rounded-t-sm h-1/2"></div>
+<div class="w-1/6 bg-surface-container-highest rounded-t-sm h-3/4"></div>
+<div class="w-1/6 bg-primary rounded-t-sm h-full"></div>
+<div class="w-1/6 bg-surface-container-highest rounded-t-sm h-5/6"></div>
+</div>
+<div class="flex justify-between mt-2 font-label-sm text-label-sm text-outline px-2">
+<span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
+</div>
+</div>
+<!-- Ring Chart Card -->
+<div class="bg-surface-container-lowest rounded-xl p-4 shadow-[0_2px_8px_0_rgba(0,0,0,0.04)] border border-surface-container flex items-center justify-between">
+<div class="flex flex-col gap-1">
+<span class="font-label-lg text-label-lg text-on-surface">Scan Accuracy</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Avg. confidence score</span>
+</div>
+<!-- CSS Ring implementation -->
+<div class="relative w-20 h-20 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<!-- Background Circle -->
+<path class="text-surface-container-highest" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3"></path>
+<!-- Progress Circle (98%) -->
+<path class="text-tertiary-container" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="98, 100" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center flex-col">
+<span class="font-title-md text-title-md text-on-surface">98%</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent Activity -->
+<section>
+<div class="flex justify-between items-center mb-md">
+<h2 class="font-title-md text-title-md text-on-surface">Recent Activity</h2>
+<a class="font-label-sm text-label-sm text-primary hover:underline" href="#">View All</a>
+</div>
+<div class="bg-surface-container-lowest rounded-xl shadow-[0_2px_8px_0_rgba(0,0,0,0.04)] border border-surface-container p-4">
+<div class="relative border-l-2 border-surface-container-highest ml-3 space-y-6 pb-2">
+<!-- Activity 1 -->
+<div class="relative pl-6">
+<div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-primary-container border-2 border-surface-container-lowest"></div>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface">Sarah Jenkins scanned</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Business card • VP of Sales, TechCorp</span>
+<span class="font-label-sm text-label-sm text-outline mt-1">10 mins ago</span>
+</div>
+</div>
+<!-- Activity 2 -->
+<div class="relative pl-6">
+<div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-tertiary-container border-2 border-surface-container-lowest"></div>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface">Salesforce Sync completed</span>
+<span class="font-body-md text-body-md text-on-surface-variant">12 new leads updated successfully</span>
+<span class="font-label-sm text-label-sm text-outline mt-1">1 hour ago</span>
+</div>
+</div>
+<!-- Activity 3 -->
+<div class="relative pl-6">
+<div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-secondary-container border-2 border-surface-container-lowest"></div>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface">New Lead extracted</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Michael Chang, Director of Operations</span>
+<span class="font-label-sm text-label-sm text-outline mt-1">3 hours ago</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- FAB -->
+<button class="fixed bottom-24 right-4 md:bottom-8 md:right-8 w-14 h-14 bg-primary rounded-[16px] shadow-[0_4px_12px_0_rgba(37,99,235,0.4)] flex items-center justify-center hover:bg-on-primary-fixed-variant transition-colors active:scale-95 z-50 group">
+<span class="material-symbols-outlined text-on-primary text-2xl group-hover:scale-110 transition-transform" data-icon="add_a_photo">add_a_photo</span>
+</button>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 rounded-t-xl bg-surface shadow-[0_-1px_4px_0_rgba(0,0,0,0.05)]">
+<div class="fixed bottom-0 left-0 w-full flex justify-around items-center h-20 px-2 pb-safe bg-surface">
+<!-- Dashboard (Active) -->
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-2xl px-5 py-1 active:scale-90 transition-all duration-150">
+<span class="material-symbols-outlined" data-icon="dashboard" data-weight="fill">dashboard</span>
+<span class="font-label-sm text-label-sm mt-1">Dashboard</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-secondary-container px-5 py-1 hover:bg-surface-container-highest transition-colors active:scale-90 duration-150">
+<span class="material-symbols-outlined" data-icon="document_scanner">document_scanner</span>
+<span class="font-label-sm text-label-sm mt-1">Scanner</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-secondary-container px-5 py-1 hover:bg-surface-container-highest transition-colors active:scale-90 duration-150">
+<span class="material-symbols-outlined" data-icon="person_search">person_search</span>
+<span class="font-label-sm text-label-sm mt-1">Leads</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-secondary-container px-5 py-1 hover:bg-surface-container-highest transition-colors active:scale-90 duration-150">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-sm text-label-sm mt-1">Settings</span>
+</button>
+</div>
+</nav>
+</body></html>

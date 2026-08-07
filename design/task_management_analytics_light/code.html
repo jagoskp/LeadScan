@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LeadScan AI - Task Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-high": "#dce9ff",
+                        "on-error": "#ffffff",
+                        "secondary": "#565e74",
+                        "outline-variant": "#c3c6d7",
+                        "primary": "#004ac6",
+                        "tertiary-container": "#007e37",
+                        "tertiary-fixed-dim": "#4ae176",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#005321",
+                        "on-secondary-fixed": "#131b2e",
+                        "secondary-fixed-dim": "#bec6e0",
+                        "on-surface-variant": "#434655",
+                        "on-primary-container": "#eeefff",
+                        "inverse-primary": "#b4c5ff",
+                        "secondary-container": "#dae2fd",
+                        "on-tertiary-container": "#c1ffc5",
+                        "on-error-container": "#93000a",
+                        "surface-tint": "#0053db",
+                        "on-tertiary-fixed": "#002109",
+                        "on-secondary-container": "#5c647a",
+                        "surface-container-low": "#eff4ff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "background": "#f8f9ff",
+                        "on-background": "#0b1c30",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#213145",
+                        "tertiary-fixed": "#6bff8f",
+                        "on-secondary-fixed-variant": "#3f465c",
+                        "surface-dim": "#cbdbf5",
+                        "surface-container-highest": "#d3e4fe",
+                        "secondary-fixed": "#dae2fd",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "surface-variant": "#d3e4fe",
+                        "surface-bright": "#f8f9ff",
+                        "surface": "#f8f9ff",
+                        "outline": "#737686",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#0b1c30",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed": "#00174b",
+                        "surface-container": "#e5eeff",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#dbe1ff",
+                        "primary-container": "#2563eb",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "tertiary": "#006229"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "sm": "8px",
+                        "margin-tablet": "24px",
+                        "gutter": "16px",
+                        "md": "16px",
+                        "base": "4px",
+                        "xs": "4px",
+                        "lg": "24px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "title-md": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "label-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "display-lg": ["57px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "title-lg": ["22px", { "lineHeight": "28px", "fontWeight": "500" }],
+                        "label-sm": ["11px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col pb-24 md:pb-0">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky bg-surface dark:bg-surface-dim z-50 flat no shadows flex justify-between items-center px-margin-mobile py-sm w-full md:px-margin-tablet">
+<div class="flex items-center gap-md hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors active:scale-95 transition-transform p-xs rounded-full cursor-pointer">
+<img class="w-10 h-10 rounded-full object-cover shadow-sm" data-alt="A professional headshot of a young business executive smiling softly. The lighting is bright and even, casting soft shadows, typical of a modern corporate portrait. The background is a clean, neutral white wall, fitting seamlessly into a light-mode enterprise UI aesthetic. The overall mood is approachable yet highly competent and confident." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiMOp2sIZ9M0q0V2MNvGX94HeARUIKbuHaJhQkQpcVapZzEy7bYCKjcNau-Fcw8OXxnwGAH8cI00oAqxHxnAeFP0OhbhN_d-4sX9x8ce4TBdzruaWMnLcXptbml5jl3NBdWEO71qP0aFjCnvyHU07tGpPErsqov5Cuee5wwkQo0F8U7JhSYNDcHY6xz3QkFWuV6L2mx7Jxy-J5whxmwJnTBdRSnjbOs9d68kV3-4KtVBpGSzTopd1pTA"/>
+</div>
+<h1 class="text-primary font-title-lg font-bold font-title-lg text-title-lg tracking-tight">Task Manager</h1>
+<button class="w-10 h-10 flex items-center justify-center rounded-full text-primary dark:text-primary-fixed-dim hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors active:scale-95 transition-transform">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</header>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col gap-lg px-margin-mobile md:px-margin-tablet py-md w-full max-w-5xl mx-auto">
+<!-- Section 1: Performance Analytics (Bento Grid) -->
+<section class="flex flex-col gap-md">
+<h2 class="font-title-md text-title-md text-on-surface">Performance Analytics</h2>
+<div class="grid grid-cols-2 gap-gutter md:grid-cols-4">
+<!-- Card 1: Completion Rate -->
+<div class="bg-surface-container-lowest rounded-xl p-md shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-outline-variant/20 flex flex-col gap-sm relative overflow-hidden group hover:shadow-[0_8px_16px_rgba(0,0,0,0.08)] transition-all">
+<div class="flex justify-between items-start w-full z-10">
+<span class="font-label-lg text-label-lg text-on-surface-variant">Completion</span>
+<div class="bg-tertiary-container/20 text-tertiary flex items-center justify-center rounded-full p-1">
+<span class="material-symbols-outlined text-[16px]">arrow_upward</span>
+</div>
+</div>
+<div class="font-headline-lg-mobile text-headline-lg-mobile text-primary z-10">92%</div>
+<div class="absolute -bottom-4 -right-4 w-16 h-16 bg-primary/5 rounded-full blur-xl group-hover:bg-primary/10 transition-all"></div>
+</div>
+<!-- Card 2: Avg Response -->
+<div class="bg-surface-container-lowest rounded-xl p-md shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-outline-variant/20 flex flex-col gap-sm relative overflow-hidden group hover:shadow-[0_8px_16px_rgba(0,0,0,0.08)] transition-all">
+<div class="flex justify-between items-start w-full z-10">
+<span class="font-label-lg text-label-lg text-on-surface-variant">Avg. Response</span>
+<div class="text-primary flex items-center justify-center rounded-full p-1">
+<span class="material-symbols-outlined text-[16px]">timer</span>
+</div>
+</div>
+<div class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface z-10">14m</div>
+<div class="absolute -bottom-4 -right-4 w-16 h-16 bg-primary/5 rounded-full blur-xl group-hover:bg-primary/10 transition-all"></div>
+</div>
+<!-- Card 3: Pending Tasks -->
+<div class="bg-surface-container-lowest rounded-xl p-md shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-outline-variant/20 flex flex-col gap-sm relative overflow-hidden group hover:shadow-[0_8px_16px_rgba(0,0,0,0.08)] transition-all">
+<div class="flex justify-between items-start w-full z-10">
+<span class="font-label-lg text-label-lg text-on-surface-variant">Pending</span>
+<div class="text-error flex items-center justify-center rounded-full p-1">
+<span class="material-symbols-outlined text-[16px]">pending_actions</span>
+</div>
+</div>
+<div class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface z-10">8</div>
+<div class="absolute -bottom-4 -right-4 w-16 h-16 bg-error/5 rounded-full blur-xl group-hover:bg-error/10 transition-all"></div>
+</div>
+<!-- Card 4: Productivity Score -->
+<div class="bg-primary text-on-primary rounded-xl p-md shadow-[0_4px_12px_rgba(0,74,198,0.2)] flex flex-col gap-sm relative overflow-hidden group hover:shadow-[0_8px_16px_rgba(0,74,198,0.3)] transition-all">
+<div class="flex justify-between items-start w-full z-10">
+<span class="font-label-lg text-label-lg opacity-80">Prod. Score</span>
+<div class="text-on-primary flex items-center justify-center rounded-full p-1">
+<span class="material-symbols-outlined text-[16px]">military_tech</span>
+</div>
+</div>
+<div class="font-headline-lg-mobile text-headline-lg-mobile z-10">85<span class="text-title-md font-title-md opacity-70">/100</span></div>
+<!-- Abstract graphic for primary card -->
+<svg class="absolute top-0 right-0 w-24 h-24 opacity-20 transform translate-x-4 -translate-y-4" fill="none" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<circle cx="50" cy="50" r="40" stroke="white" stroke-dasharray="10 10" stroke-width="8"></circle>
+</svg>
+</div>
+</div>
+</section>
+<!-- Section 2: Workflow Templates (Horizontal Scroll Chips/Cards) -->
+<section class="flex flex-col gap-md">
+<h2 class="font-title-md text-title-md text-on-surface">Workflow Templates</h2>
+<div class="flex gap-gutter overflow-x-auto hide-scrollbar pb-2 -mx-margin-mobile px-margin-mobile md:mx-0 md:px-0">
+<!-- Template 1 -->
+<div class="min-w-[200px] bg-surface-container-low rounded-xl p-md flex flex-col gap-2 border border-outline-variant/30 cursor-pointer hover:bg-surface-container transition-colors shrink-0">
+<div class="flex justify-between items-center w-full">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">rocket_launch</span>
+</div>
+</div>
+<div class="font-title-md text-title-md text-on-surface mt-2">New Lead Sequence</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">format_list_numbered</span> 3 steps
+                    </div>
+</div>
+<!-- Template 2 -->
+<div class="min-w-[200px] bg-surface-container-low rounded-xl p-md flex flex-col gap-2 border border-outline-variant/30 cursor-pointer hover:bg-surface-container transition-colors shrink-0">
+<div class="flex justify-between items-center w-full">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">forum</span>
+</div>
+</div>
+<div class="font-title-md text-title-md text-on-surface mt-2">Sales Follow-up</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">format_list_numbered</span> 5 steps
+                    </div>
+</div>
+<!-- Template 3 -->
+<div class="min-w-[200px] bg-surface-container-low rounded-xl p-md flex flex-col gap-2 border border-outline-variant/30 cursor-pointer hover:bg-surface-container transition-colors shrink-0">
+<div class="flex justify-between items-center w-full">
+<div class="w-8 h-8 rounded-full bg-error-container text-on-error-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">payments</span>
+</div>
+</div>
+<div class="font-title-md text-title-md text-on-surface mt-2">Payment Recovery</div>
+<div class="font-label-sm text-label-sm text-tertiary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">smart_toy</span> Automated
+                    </div>
+</div>
+</div>
+</section>
+<!-- Section 3: Pending Tasks (Checklist) -->
+<section class="flex flex-col gap-md">
+<h2 class="font-title-md text-title-md text-on-surface">Pending Tasks</h2>
+<div class="flex flex-col gap-0 border border-outline-variant/30 rounded-xl bg-surface-container-lowest overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.02)]">
+<!-- Task 1 -->
+<label class="flex items-start gap-md p-md border-b border-outline-variant/20 hover:bg-surface-container-low transition-colors cursor-pointer group">
+<input class="mt-1 w-5 h-5 rounded border-outline text-primary focus:ring-primary" type="checkbox"/>
+<div class="flex flex-col gap-1 flex-1">
+<span class="font-body-md text-body-md text-on-surface group-hover:text-primary transition-colors">Draft Proposal for TechCorp</span>
+<span class="font-label-sm text-label-sm text-error flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">calendar_today</span> Due: Today
+                        </span>
+</div>
+</label>
+<!-- Task 2 -->
+<label class="flex items-start gap-md p-md hover:bg-surface-container-low transition-colors cursor-pointer group">
+<input class="mt-1 w-5 h-5 rounded border-outline text-primary focus:ring-primary" type="checkbox"/>
+<div class="flex flex-col gap-1 flex-1">
+<span class="font-body-md text-body-md text-on-surface group-hover:text-primary transition-colors">Review AI Extract from Tech Summit</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">calendar_today</span> Due: Tomorrow
+                        </span>
+</div>
+</label>
+</div>
+</section>
+</main>
+<!-- FAB: Create Task -->
+<!-- Positioned slightly above bottom nav on mobile, standard bottom right on desktop -->
+<button class="fixed bottom-24 md:bottom-8 right-margin-mobile md:right-margin-tablet w-14 h-14 bg-primary text-on-primary rounded-2xl shadow-[0_4px_12px_rgba(0,74,198,0.4)] flex items-center justify-center hover:bg-primary-container active:scale-95 transition-all z-40 group">
+<span class="material-symbols-outlined text-[28px] group-hover:rotate-90 transition-transform duration-300">add</span>
+</button>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center px-xs py-sm bg-surface dark:bg-surface-dim border-t border-outline-variant/30 shadow-sm">
+<a class="flex flex-col items-center justify-center text-on-secondary-fixed-variant hover:bg-surface-container-high dark:hover:bg-surface-container-highest active:scale-90 transition-all duration-200 p-2 rounded-xl" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+<span class="font-label-sm text-label-sm mt-1">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-fixed-variant hover:bg-surface-container-high dark:hover:bg-surface-container-highest active:scale-90 transition-all duration-200 p-2 rounded-xl" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">qr_code_scanner</span>
+<span class="font-label-sm text-label-sm mt-1">Scanner</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-fixed-variant hover:bg-surface-container-high dark:hover:bg-surface-container-highest active:scale-90 transition-all duration-200 p-2 rounded-xl" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">group</span>
+<span class="font-label-sm text-label-sm mt-1">Leads</span>
+</a>
+<!-- Active Tab: Workflow -->
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-xl px-md py-xs hover:bg-surface-container-high dark:hover:bg-surface-container-highest active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_tree</span>
+<span class="font-label-sm text-label-sm mt-1">Workflow</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-fixed-variant hover:bg-surface-container-high dark:hover:bg-surface-container-highest active:scale-90 transition-all duration-200 p-2 rounded-xl" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">person</span>
+<span class="font-label-sm text-label-sm mt-1">Profile</span>
+</a>
+</nav>
+<!-- Desktop SideNav (Hidden on Mobile) - Optional for completeness based on guidelines, but requested components didn't explicitly ask for it, just Top/Bottom. We will rely on Top Nav structure for desktop context if needed, but the prompt strictly asked for BottomNavBar. We will ensure Top Nav looks complete on Desktop. -->
+<div class="hidden md:flex fixed top-0 w-full z-50 bg-surface justify-between items-center px-margin-tablet py-sm border-b border-outline-variant/20">
+<h1 class="text-primary font-title-lg font-bold font-title-lg text-title-lg tracking-tight">Task Manager</h1>
+<div class="flex items-center gap-md">
+<a class="text-on-surface-variant hover:text-primary font-label-lg px-3 py-2 rounded-md hover:bg-surface-container-low transition-colors" href="#">Dashboard</a>
+<a class="text-on-surface-variant hover:text-primary font-label-lg px-3 py-2 rounded-md hover:bg-surface-container-low transition-colors" href="#">Scanner</a>
+<a class="text-on-surface-variant hover:text-primary font-label-lg px-3 py-2 rounded-md hover:bg-surface-container-low transition-colors" href="#">Leads</a>
+<!-- Active State Desktop -->
+<a class="text-primary font-label-lg px-3 py-2 rounded-md bg-secondary-container text-on-secondary-container transition-colors" href="#">Workflow</a>
+<button class="w-10 h-10 ml-4 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<img class="w-10 h-10 rounded-full object-cover shadow-sm ml-2 cursor-pointer" data-alt="A professional headshot of a young business executive smiling softly. The lighting is bright and even, casting soft shadows, typical of a modern corporate portrait. The background is a clean, neutral white wall, fitting seamlessly into a light-mode enterprise UI aesthetic. The overall mood is approachable yet highly competent and confident." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2s-FIcAoVY4xPS6zn431fovbXObgfmPab7XEHBOApmJwC-aB0_P9DfkWCTB2pqHLYNeaVpkHoNpOqtiGTIbrktgHyR8PGfewwY-NJMIAMkQIsJvd0gvzqjN8NA-WoGoUltdv0LSOoT93MhuNAtY4vJOhEFHX6zY9p2g7mCW4vG479Bsq3MJSwrHlPFaP0-urfSu2ijv7fMtQo59JCgBNKyNxh6HcbERfy96O5x63AXKTplO2jkPRCZA"/>
+</div>
+</div>
+<!-- Add padding to main content on desktop to account for fixed header -->
+<style>
+        @media (min-width: 768px) {
+            main { padding-top: 80px; }
+            header { display: none; } /* Hide mobile header on desktop */
+        }
+    </style>
+</body></html>

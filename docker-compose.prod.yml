@@ -1,0 +1,44 @@
+services:
+  api:
+    image: leadscan-api:latest
+    container_name: leadscan-prod-api
+    environment:
+      - APP_ENV=production
+      # Managed database and Redis values loaded via environment variables
+      - DATABASE_URL=${DATABASE_URL}
+      - REDIS_URL=${REDIS_URL}
+      - JWT_SECRET_KEY=${JWT_SECRET_KEY}
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  worker:
+    image: leadscan-worker:latest
+    container_name: leadscan-prod-worker
+    environment:
+      - APP_ENV=production
+      - REDIS_URL=${REDIS_URL}
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  ocr:
+    image: leadscan-ocr:latest
+    container_name: leadscan-prod-ocr
+    environment:
+      - APP_ENV=production
+      - REDIS_URL=${REDIS_URL}
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"

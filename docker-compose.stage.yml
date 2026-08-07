@@ -1,0 +1,36 @@
+services:
+  api:
+    image: leadscan-api:staging
+    build:
+      context: .
+      file: docker/api.Dockerfile
+    container_name: leadscan-stage-api
+    environment:
+      - APP_ENV=staging
+      - DATABASE_URL=postgresql+asyncpg://postgres:postgres@postgres-stage:5432/leadscan_db
+      - REDIS_URL=redis://redis-stage:6379/0
+    ports:
+      - "8000:8000"
+    restart: always
+
+  worker:
+    image: leadscan-worker:staging
+    build:
+      context: .
+      file: docker/worker.Dockerfile
+    container_name: leadscan-stage-worker
+    environment:
+      - APP_ENV=staging
+      - REDIS_URL=redis://redis-stage:6379/0
+    restart: always
+
+  ocr:
+    image: leadscan-ocr:staging
+    build:
+      context: .
+      file: docker/ocr.Dockerfile
+    container_name: leadscan-stage-ocr
+    environment:
+      - APP_ENV=staging
+      - REDIS_URL=redis://redis-stage:6379/0
+    restart: always

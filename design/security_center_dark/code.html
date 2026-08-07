@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LeadScan AI - Security Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-tint": "#0053db",
+                    "on-background": "#0b1c30",
+                    "secondary": "#565e74",
+                    "on-surface": "#0b1c30",
+                    "on-primary": "#ffffff",
+                    "tertiary": "#006229",
+                    "surface-container-high": "#dce9ff",
+                    "on-tertiary-fixed": "#002109",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "on-tertiary-fixed-variant": "#005321",
+                    "on-secondary-container": "#5c647a",
+                    "surface-bright": "#f8f9ff",
+                    "secondary-fixed": "#dae2fd",
+                    "tertiary-fixed": "#6bff8f",
+                    "surface-variant": "#d3e4fe",
+                    "on-secondary": "#ffffff",
+                    "primary": "#004ac6",
+                    "error-container": "#ffdad6",
+                    "primary-container": "#2563eb",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-secondary-fixed-variant": "#3f465c",
+                    "on-error-container": "#93000a",
+                    "inverse-surface": "#213145",
+                    "on-surface-variant": "#434655",
+                    "primary-fixed": "#dbe1ff",
+                    "on-secondary-fixed": "#131b2e",
+                    "on-primary-container": "#eeefff",
+                    "background": "#f8f9ff",
+                    "on-primary-fixed": "#00174b",
+                    "on-tertiary": "#ffffff",
+                    "inverse-on-surface": "#eaf1ff",
+                    "surface-container": "#e5eeff",
+                    "inverse-primary": "#b4c5ff",
+                    "error": "#ba1a1a",
+                    "on-error": "#ffffff",
+                    "outline": "#737686",
+                    "surface-container-low": "#eff4ff",
+                    "surface": "#f8f9ff",
+                    "surface-dim": "#cbdbf5",
+                    "secondary-container": "#dae2fd",
+                    "on-tertiary-container": "#c1ffc5",
+                    "tertiary-fixed-dim": "#4ae176",
+                    "outline-variant": "#c3c6d7",
+                    "tertiary-container": "#007e37",
+                    "secondary-fixed-dim": "#bec6e0",
+                    "primary-fixed-dim": "#b4c5ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sm": "8px",
+                    "xl": "32px",
+                    "margin-tablet": "24px",
+                    "xs": "4px",
+                    "gutter": "16px",
+                    "lg": "24px",
+                    "margin-mobile": "16px",
+                    "md": "16px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "title-md": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "title-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "500"}],
+                    "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "display-lg": ["57px", {"lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom Toggle Switch Styles for M3 Look */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #dbe1ff;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #2563eb; /* primary-container */
+        }
+        .toggle-checkbox:checked + .toggle-label:after {
+            transform: translateX(100%);
+            border-color: white;
+            background-color: #00174b; /* on-primary-fixed */
+        }
+    </style>
+</head>
+<body class="bg-inverse-surface text-inverse-on-surface font-body-md min-h-screen selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-inverse-surface border-b border-surface-variant/20 shadow-sm flex justify-between items-center px-margin-mobile h-16 w-full">
+<button aria-label="Go back" class="text-inverse-primary hover:bg-surface-variant/10 p-2 rounded-full transition-colors active:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="font-title-lg text-title-lg font-bold text-inverse-primary">Security Center</div>
+<div class="w-10"></div> <!-- Placeholder for layout balance -->
+</header>
+<main class="pt-20 pb-24 px-margin-mobile md:px-margin-tablet max-w-3xl mx-auto space-y-lg">
+<!-- Header Section -->
+<section class="text-center py-md">
+<div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary-container/20 text-primary-fixed mb-sm">
+<span class="material-symbols-outlined text-4xl" data-icon="security" data-weight="fill">security</span>
+</div>
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-inverse-on-surface mb-xs">Data Protected</h1>
+<p class="font-body-md text-body-md text-on-surface-variant text-inverse-on-surface/70">Your LeadScan AI account is secure.</p>
+</section>
+<!-- Biometric Security Section -->
+<section class="bg-[#1b2533] rounded-xl p-md shadow-md border border-surface-variant/10">
+<h2 class="font-title-md text-title-md text-inverse-primary mb-md flex items-center gap-2">
+<span class="material-symbols-outlined text-xl" data-icon="fingerprint">fingerprint</span>
+                Biometric Authentication
+            </h2>
+<div class="space-y-sm">
+<!-- Biometric Login Toggle -->
+<div class="flex items-center justify-between py-sm border-b border-surface-variant/10 last:border-0">
+<div>
+<div class="font-label-lg text-label-lg text-inverse-on-surface">Biometric Login</div>
+<div class="font-body-md text-body-md text-inverse-on-surface/60 text-sm">Use biometrics instead of password</div>
+</div>
+<div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-inverse-on-surface border-4 appearance-none cursor-pointer z-10 transition-transform duration-300 ease-in-out focus:ring-0 checked:translate-x-6 checked:bg-primary-fixed checked:border-primary-fixed" id="toggle-bio" name="toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-surface-variant/30 cursor-pointer transition-colors duration-300 ease-in-out" for="toggle-bio"></label>
+</div>
+</div>
+<!-- Fingerprint Toggle -->
+<div class="flex items-center justify-between py-sm border-b border-surface-variant/10 last:border-0">
+<div>
+<div class="font-label-lg text-label-lg text-inverse-on-surface">Fingerprint</div>
+<div class="font-body-md text-body-md text-inverse-on-surface/60 text-sm">Require fingerprint to open app</div>
+</div>
+<div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-inverse-on-surface border-4 appearance-none cursor-pointer z-10 transition-transform duration-300 ease-in-out focus:ring-0 checked:translate-x-6 checked:bg-primary-fixed checked:border-primary-fixed" id="toggle-finger" name="toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-surface-variant/30 cursor-pointer transition-colors duration-300 ease-in-out" for="toggle-finger"></label>
+</div>
+</div>
+<!-- Face Unlock Toggle -->
+<div class="flex items-center justify-between py-sm border-b border-surface-variant/10 last:border-0">
+<div>
+<div class="font-label-lg text-label-lg text-inverse-on-surface">Face Unlock</div>
+<div class="font-body-md text-body-md text-inverse-on-surface/60 text-sm">Use facial recognition for quick access</div>
+</div>
+<div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+<input class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-inverse-on-surface border-4 appearance-none cursor-pointer z-10 transition-transform duration-300 ease-in-out focus:ring-0" id="toggle-face" name="toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-surface-variant/30 cursor-pointer transition-colors duration-300 ease-in-out" for="toggle-face"></label>
+</div>
+</div>
+</div>
+</section>
+<!-- App Lock Section -->
+<section class="bg-[#1b2533] rounded-xl p-md shadow-md border border-surface-variant/10">
+<h2 class="font-title-md text-title-md text-inverse-primary mb-md flex items-center gap-2">
+<span class="material-symbols-outlined text-xl" data-icon="lock">lock</span>
+                App Privacy
+            </h2>
+<div class="flex items-start justify-between py-sm">
+<div class="pr-md">
+<div class="font-label-lg text-label-lg text-inverse-on-surface mb-xs">Privacy Lock</div>
+<div class="font-body-md text-body-md text-inverse-on-surface/60 text-sm">Automatically lock the app when minimized or screen turns off. Requires authentication to return.</div>
+</div>
+<div class="relative inline-block w-12 mt-1 align-middle select-none transition duration-200 ease-in flex-shrink-0">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-inverse-on-surface border-4 appearance-none cursor-pointer z-10 transition-transform duration-300 ease-in-out focus:ring-0 checked:translate-x-6 checked:bg-primary-fixed checked:border-primary-fixed" id="toggle-lock" name="toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-surface-variant/30 cursor-pointer transition-colors duration-300 ease-in-out" for="toggle-lock"></label>
+</div>
+</div>
+</section>
+<!-- Active Sessions Section -->
+<section>
+<h2 class="font-title-md text-title-md text-inverse-primary mb-md flex items-center gap-2 px-sm">
+<span class="material-symbols-outlined text-xl" data-icon="devices">devices</span>
+                Active Sessions
+            </h2>
+<div class="space-y-sm">
+<!-- Current Device Card -->
+<div class="bg-[#1b2533] rounded-xl p-md shadow-sm border border-primary/30 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-1 h-full bg-primary"></div>
+<div class="flex items-start gap-md">
+<div class="p-2 rounded-full bg-primary-container/20 text-primary-fixed flex-shrink-0">
+<span class="material-symbols-outlined" data-icon="smartphone">smartphone</span>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<div class="font-label-lg text-label-lg text-inverse-on-surface font-semibold">Pixel 8 Pro</div>
+<span class="text-xs font-medium text-tertiary-fixed bg-tertiary-container/30 px-2 py-1 rounded-full">Current</span>
+</div>
+<div class="font-body-md text-body-md text-inverse-on-surface/60 text-sm mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="location_on">location_on</span> San Francisco, CA
+                            </div>
+<div class="font-body-md text-body-md text-inverse-on-surface/50 text-xs mt-1">
+                                Last active: Just now • App Version 2.4.1
+                            </div>
+</div>
+</div>
+</div>
+<!-- Other Device Card -->
+<div class="bg-[#1b2533] rounded-xl p-md shadow-sm border border-surface-variant/10 hover:bg-surface-variant/5 transition-colors">
+<div class="flex items-start gap-md">
+<div class="p-2 rounded-full bg-surface-variant/10 text-inverse-on-surface/70 flex-shrink-0">
+<span class="material-symbols-outlined" data-icon="laptop_mac">laptop_mac</span>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<div class="font-label-lg text-label-lg text-inverse-on-surface">MacBook Pro 14"</div>
+<button aria-label="Revoke access" class="text-error/80 hover:text-error transition-colors p-1">
+<span class="material-symbols-outlined text-sm" data-icon="close">close</span>
+</button>
+</div>
+<div class="font-body-md text-body-md text-inverse-on-surface/60 text-sm mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="location_on">location_on</span> London, UK
+                            </div>
+<div class="font-body-md text-body-md text-inverse-on-surface/50 text-xs mt-1">
+                                Last active: 2 hours ago • Chrome Browser
+                            </div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-md text-center">
+<button class="w-full py-md border border-surface-variant/20 rounded-lg text-inverse-primary font-label-lg text-label-lg hover:bg-surface-variant/10 transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg" data-icon="history">history</span>
+                    View Full Login History
+                </button>
+</div>
+</section>
+</main>
+</body></html>

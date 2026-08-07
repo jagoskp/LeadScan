@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lead Timeline &amp; History</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-on-surface": "#eaf1ff",
+                      "outline-variant": "#c3c6d7",
+                      "inverse-primary": "#b4c5ff",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "inverse-surface": "#213145",
+                      "surface-container": "#e5eeff",
+                      "outline": "#737686",
+                      "surface-dim": "#cbdbf5",
+                      "secondary-container": "#dae2fd",
+                      "on-background": "#0b1c30",
+                      "surface-tint": "#0053db",
+                      "on-secondary-container": "#5c647a",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary-fixed": "#131b2e",
+                      "on-secondary-fixed-variant": "#3f465c",
+                      "on-error-container": "#93000a",
+                      "tertiary": "#006229",
+                      "surface-container-lowest": "#ffffff",
+                      "primary-fixed-dim": "#b4c5ff",
+                      "error": "#ba1a1a",
+                      "on-primary": "#ffffff",
+                      "surface-variant": "#d3e4fe",
+                      "surface-bright": "#f8f9ff",
+                      "on-surface": "#0b1c30",
+                      "background": "#f8f9ff",
+                      "tertiary-fixed": "#6bff8f",
+                      "on-tertiary-fixed": "#002109",
+                      "tertiary-fixed-dim": "#4ae176",
+                      "on-primary-container": "#eeefff",
+                      "on-tertiary-fixed-variant": "#005321",
+                      "on-error": "#ffffff",
+                      "primary-fixed": "#dbe1ff",
+                      "on-secondary": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "surface-container-highest": "#d3e4fe",
+                      "secondary-fixed": "#dae2fd",
+                      "surface-container-low": "#eff4ff",
+                      "on-tertiary-container": "#c1ffc5",
+                      "on-primary-fixed": "#00174b",
+                      "surface-container-high": "#dce9ff",
+                      "primary": "#004ac6",
+                      "secondary-fixed-dim": "#bec6e0",
+                      "on-surface-variant": "#434655",
+                      "tertiary-container": "#007e37",
+                      "surface": "#f8f9ff",
+                      "primary-container": "#2563eb",
+                      "secondary": "#565e74"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "gutter": "16px",
+                      "xs": "4px",
+                      "lg": "24px",
+                      "xl": "32px",
+                      "md": "16px",
+                      "base": "4px",
+                      "sm": "8px",
+                      "margin-tablet": "24px"
+              },
+              "fontFamily": {
+                      "title-lg": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "label-lg": [
+                              "Inter"
+                      ],
+                      "title-md": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "title-lg": [
+                              "22px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "28px",
+                              {
+                                      "lineHeight": "36px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "57px",
+                              {
+                                      "lineHeight": "64px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-sm": [
+                              "11px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-lg": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "title-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+          .timeline-line {
+              position: absolute;
+              left: 20px;
+              top: 0;
+              bottom: 0;
+              width: 2px;
+              background-color: #d3e4fe; /* surface-variant */
+              z-index: 0;
+          }
+          @media (min-width: 768px) {
+              .timeline-line {
+                  left: 28px;
+              }
+          }
+      </style>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md antialiased md:flex min-h-screen">
+<!-- Navigation Drawer (Desktop/Tablet) -->
+<aside class="hidden md:flex flex-col py-lg bg-surface h-full w-80 rounded-r-xl shadow-md fixed z-40">
+<div class="px-lg pb-lg mb-lg border-b border-surface-variant">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-variant flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a senior sales executive in a modern, brightly lit office environment. The person is wearing business casual attire, smiling slightly. The color palette features clean whites and soft blues, aligning with a minimalist corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTdVXoYzUBeLkJnlaf6EdllpKah2nmg2apLtHBSAFqVjoJ4VU12gp2pCtX9AWgymFnJ9ANspH_qSjRLUTSAWARO2z3FxpjaVtDFtERlnJMAN-UreWDgpLiAdGrkjJmQzPZuXSZAj5vvlP8YxJ6iZaubwkKvpejJUsISMV5Tr-z_nI_WHTIJwDmDkhI-rYnUNUdyMeIVn_Cq6Gra3oaRP9RP0_asgH8q3MmfsV1Xjz_mwap_Mm4VIX3KQ"/>
+</div>
+<div>
+<h2 class="font-title-md text-title-md text-on-surface">Alex Sterling</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Senior Sales Executive</p>
+<p class="font-label-sm text-label-sm text-outline">Enterprise AI Division</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 overflow-y-auto">
+<ul class="space-y-sm">
+<li>
+<a class="flex items-center gap-md px-4 py-3 mx-2 rounded-full text-on-surface-variant hover:bg-surface-container-high transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-title-md text-title-md">Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-md px-4 py-3 mx-2 rounded-full bg-primary-container text-on-primary-container font-title-md transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="filter_list">filter_list</span>
+<span class="font-title-md text-title-md">Lead Pipeline</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-md px-4 py-3 mx-2 rounded-full text-on-surface-variant hover:bg-surface-container-high transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+<span class="font-title-md text-title-md">Task Manager</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-md px-4 py-3 mx-2 rounded-full text-on-surface-variant hover:bg-surface-container-high transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-title-md text-title-md">Documents</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-md px-4 py-3 mx-2 rounded-full text-on-surface-variant hover:bg-surface-container-high transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-title-md text-title-md">Settings</span>
+</a>
+</li>
+</ul>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-80 pb-24 md:pb-0 relative min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface flex items-center justify-between px-margin-mobile h-16 md:hidden">
+<button class="text-on-surface-variant p-sm hover:bg-surface-container rounded-full transition-colors duration-200 active:opacity-70">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-title-lg text-title-lg font-bold text-primary">Activity Timeline</h1>
+<button class="text-on-surface-variant p-sm hover:bg-surface-container rounded-full transition-colors duration-200 active:opacity-70">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</header>
+<!-- Desktop Header Anchor -->
+<div class="hidden md:flex items-center px-margin-tablet py-lg border-b border-surface-variant bg-surface sticky top-0 z-30">
+<button class="text-on-surface-variant mr-4 p-sm hover:bg-surface-container rounded-full transition-colors duration-200 active:opacity-70">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline-lg text-headline-lg text-on-surface font-bold tracking-tight">Activity Timeline</h1>
+<div class="ml-auto">
+<button class="text-on-surface-variant p-sm hover:bg-surface-container rounded-full transition-colors duration-200 active:opacity-70">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</div>
+<div class="p-margin-mobile md:p-margin-tablet mt-16 md:mt-0 max-w-4xl mx-auto relative">
+<div class="timeline-line"></div>
+<!-- Timeline Section: Today -->
+<div class="relative z-10 mb-xl">
+<div class="flex items-center mb-lg">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-title-md shadow-sm border-4 border-background relative z-10 mr-md md:w-14 md:h-14 md:mr-lg">
+<span class="material-symbols-outlined" data-icon="today">today</span>
+</div>
+<h2 class="font-title-lg text-title-lg text-on-surface">Today</h2>
+</div>
+<div class="space-y-gutter ml-6 md:ml-10 border-l-2 border-transparent pl-6 md:pl-10">
+<!-- Event Card 1 -->
+<div class="bg-surface rounded-xl p-md shadow-sm border border-surface-variant relative hover:bg-surface-bright transition-colors duration-200 group">
+<div class="absolute -left-10 top-4 w-3 h-3 rounded-full bg-tertiary-container shadow-sm border-2 border-background hidden md:block"></div>
+<div class="flex justify-between items-start mb-sm">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-tertiary-container" data-icon="forum">forum</span>
+<h3 class="font-title-md text-title-md text-on-surface">Contacted via WhatsApp</h3>
+</div>
+<span class="font-label-sm text-label-sm text-outline-variant">10:45 AM</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">Sent initial outreach message regarding the Q4 Enterprise AI rollout. Awaiting response.</p>
+<div class="flex justify-between items-center mt-auto">
+<span class="inline-flex items-center px-2 py-1 rounded-full bg-tertiary-container/10 text-tertiary-container font-label-sm text-label-sm">
+                                Delivered
+                            </span>
+<a class="font-title-md text-title-md text-primary hover:text-primary-fixed-variant transition-colors flex items-center gap-xs" href="#">
+                                View Details <span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Event Card 2 -->
+<div class="bg-surface rounded-xl p-md shadow-sm border border-surface-variant relative hover:bg-surface-bright transition-colors duration-200 group">
+<div class="absolute -left-10 top-4 w-3 h-3 rounded-full bg-primary shadow-sm border-2 border-background hidden md:block"></div>
+<div class="flex justify-between items-start mb-sm">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" data-icon="mail">mail</span>
+<h3 class="font-title-md text-title-md text-on-surface">Email Sent: Welcome Pack</h3>
+</div>
+<span class="font-label-sm text-label-sm text-outline-variant">09:15 AM</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">Automated sequence triggered. Welcome package including technical specs and pricing tiers sent.</p>
+<div class="flex justify-between items-center mt-auto">
+<span class="inline-flex items-center px-2 py-1 rounded-full bg-primary-container/20 text-primary font-label-sm text-label-sm">
+                                Opened
+                            </span>
+<a class="font-title-md text-title-md text-primary hover:text-primary-fixed-variant transition-colors flex items-center gap-xs" href="#">
+                                View Details <span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Timeline Section: Yesterday -->
+<div class="relative z-10 mb-xl">
+<div class="flex items-center mb-lg">
+<div class="w-10 h-10 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center font-title-md shadow-sm border-4 border-background relative z-10 mr-md md:w-14 md:h-14 md:mr-lg">
+<span class="material-symbols-outlined" data-icon="event">event</span>
+</div>
+<h2 class="font-title-lg text-title-lg text-on-surface">Yesterday</h2>
+</div>
+<div class="space-y-gutter ml-6 md:ml-10 border-l-2 border-transparent pl-6 md:pl-10">
+<!-- Event Card 3 -->
+<div class="bg-surface rounded-xl p-md shadow-sm border border-surface-variant relative hover:bg-surface-bright transition-colors duration-200 group">
+<div class="absolute -left-10 top-4 w-3 h-3 rounded-full bg-secondary shadow-sm border-2 border-background hidden md:block"></div>
+<div class="flex justify-between items-start mb-sm">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary" data-icon="sync">sync</span>
+<h3 class="font-title-md text-title-md text-on-surface">Google Sheet Sync: Master List</h3>
+</div>
+<span class="font-label-sm text-label-sm text-outline-variant">04:20 PM</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">Lead data automatically synchronized from the Q3 Marketing Campaign Google Sheet.</p>
+<div class="flex justify-between items-center mt-auto">
+<span class="inline-flex items-center px-2 py-1 rounded-full bg-surface-variant text-on-surface-variant font-label-sm text-label-sm">
+                                System Action
+                            </span>
+<a class="font-title-md text-title-md text-primary hover:text-primary-fixed-variant transition-colors flex items-center gap-xs" href="#">
+                                View Details <span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Event Card 4 -->
+<div class="bg-surface rounded-xl p-md shadow-sm border border-surface-variant relative hover:bg-surface-bright transition-colors duration-200 group">
+<div class="absolute -left-10 top-4 w-3 h-3 rounded-full bg-primary shadow-sm border-2 border-background hidden md:block"></div>
+<div class="flex justify-between items-start mb-sm">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" data-icon="psychology">psychology</span>
+<h3 class="font-title-md text-title-md text-on-surface">AI Review Completed</h3>
+</div>
+<span class="font-label-sm text-label-sm text-outline-variant">02:10 PM</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">Lead Management AI analyzed profile and assigned a High Priority score based on intent signals.</p>
+<div class="flex justify-between items-center mt-auto">
+<span class="inline-flex items-center px-2 py-1 rounded-full bg-primary-container/20 text-primary font-label-sm text-label-sm">
+                                Scored: 85/100
+                            </span>
+<a class="font-title-md text-title-md text-primary hover:text-primary-fixed-variant transition-colors flex items-center gap-xs" href="#">
+                                View Details <span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Timeline Section: Oct 24 -->
+<div class="relative z-10 mb-xl">
+<div class="flex items-center mb-lg">
+<div class="w-10 h-10 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center font-title-md shadow-sm border-4 border-background relative z-10 mr-md md:w-14 md:h-14 md:mr-lg">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+</div>
+<h2 class="font-title-lg text-title-lg text-on-surface">Oct 24</h2>
+</div>
+<div class="space-y-gutter ml-6 md:ml-10 border-l-2 border-transparent pl-6 md:pl-10">
+<!-- Event Card 5 -->
+<div class="bg-surface rounded-xl p-md shadow-sm border border-surface-variant relative hover:bg-surface-bright transition-colors duration-200 group">
+<div class="absolute -left-10 top-4 w-3 h-3 rounded-full bg-tertiary shadow-sm border-2 border-background hidden md:block"></div>
+<div class="flex justify-between items-start mb-sm">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-tertiary" data-icon="document_scanner">document_scanner</span>
+<h3 class="font-title-md text-title-md text-on-surface">Lead Created via Scanner</h3>
+</div>
+<span class="font-label-sm text-label-sm text-outline-variant">11:30 AM</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">Business card scanned at Tech Summit 2024. Initial profile generated.</p>
+<div class="flex justify-between items-center mt-auto">
+<span class="inline-flex items-center px-2 py-1 rounded-full bg-tertiary-container/10 text-tertiary-container font-label-sm text-label-sm">
+                                Origination
+                            </span>
+<a class="font-title-md text-title-md text-primary hover:text-primary-fixed-variant transition-colors flex items-center gap-xs" href="#">
+                                View Details <span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="h-8"></div> <!-- Bottom padding spacer -->
+</div>
+<!-- BottomNavBar (Mobile) -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center h-20 pb-safe px-2 bg-surface-container shadow-sm rounded-t-none md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-variant transition-transform duration-150 scale-95 active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm mt-1">Leads</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-xl px-4 py-1 hover:bg-surface-variant transition-transform duration-150 scale-95 active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="event_note" data-weight="fill" style="font-variation-settings: 'FILL' 1;">event_note</span>
+<span class="font-label-sm text-label-sm mt-1">Timeline</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-variant transition-transform duration-150 scale-95 active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="business">business</span>
+<span class="font-label-sm text-label-sm mt-1">Company</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-variant transition-transform duration-150 scale-95 active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-label-sm text-label-sm mt-1">Insights</span>
+</a>
+</nav>
+</main>
+</body></html>

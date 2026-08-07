@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LeadScan AI - Batch Scan Success</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#004ac6",
+                        "surface-container-high": "#dce9ff",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#cbdbf5",
+                        "on-surface": "#0b1c30",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-background": "#0b1c30",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "surface-container-highest": "#d3e4fe",
+                        "surface-container": "#e5eeff",
+                        "inverse-surface": "#213145",
+                        "secondary": "#565e74",
+                        "surface-container-low": "#eff4ff",
+                        "primary-container": "#2563eb",
+                        "outline-variant": "#c3c6d7",
+                        "tertiary-container": "#007e37",
+                        "tertiary": "#006229",
+                        "secondary-fixed": "#dae2fd",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-surface-variant": "#434655",
+                        "on-error": "#ffffff",
+                        "primary-fixed": "#dbe1ff",
+                        "on-primary-fixed": "#00174b",
+                        "tertiary-fixed": "#6bff8f",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#b4c5ff",
+                        "on-secondary-container": "#5c647a",
+                        "secondary-fixed-dim": "#bec6e0",
+                        "secondary-container": "#dae2fd",
+                        "on-secondary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed": "#131b2e",
+                        "on-primary": "#ffffff",
+                        "surface-bright": "#f8f9ff",
+                        "on-tertiary-container": "#c1ffc5",
+                        "surface": "#f8f9ff",
+                        "on-tertiary-fixed-variant": "#005321",
+                        "on-tertiary-fixed": "#002109",
+                        "tertiary-fixed-dim": "#4ae176",
+                        "surface-variant": "#d3e4fe",
+                        "outline": "#737686",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-secondary-fixed-variant": "#3f465c",
+                        "background": "#f8f9ff",
+                        "on-primary-container": "#eeefff",
+                        "surface-tint": "#0053db"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "margin-tablet": "24px",
+                        "gutter": "16px",
+                        "xs": "4px",
+                        "xl": "32px",
+                        "lg": "24px",
+                        "md": "16px",
+                        "base": "4px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "title-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "title-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "title-lg": ["22px", { "lineHeight": "28px", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-sm": ["11px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "display-lg": ["57px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-surface dark:bg-[#0f172a] text-on-surface dark:text-gray-100 min-h-screen flex flex-col font-body-md overflow-hidden antialiased">
+<!-- Top App Bar (Hidden on this transactional screen as per guidelines, replaced with a subtle close/back action) -->
+<header class="w-full flex justify-between items-center px-margin-mobile py-4 z-10 sticky top-0 bg-transparent">
+<button class="p-2 rounded-full hover:bg-surface-variant/20 transition-colors flex items-center justify-center text-on-surface dark:text-gray-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">close</span>
+</button>
+<div class="font-title-md text-title-md text-on-surface dark:text-gray-200">Scan Complete</div>
+<button class="p-2 rounded-full hover:bg-surface-variant/20 transition-colors flex items-center justify-center text-primary dark:text-primary-fixed-dim">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">more_vert</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col relative px-margin-mobile pb-[140px]">
+<!-- Large Preview Area -->
+<div class="flex-1 w-full flex items-center justify-center relative mb-lg">
+<div class="w-full max-w-sm aspect-[3/4] rounded-xl overflow-hidden shadow-[0_12px_24px_rgba(0,0,0,0.2)] bg-surface-container-lowest dark:bg-gray-800 relative group transition-transform duration-300">
+<img class="w-full h-full object-cover" data-alt="A high-resolution, slightly angled close-up photo of a clean, modern business document or lead capture form resting on a dark slate surface. The document is crisp and white with sharp typography, illuminated by soft, cool studio lighting that highlights its edges against the dark background. The scene exudes professionalism and precision in a modern enterprise context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxunoYoJF9t6NoQg6wSaKOwjH9SNKd3Ob1xmhaTRfDQsQOquboEBCyoBocHbbTXWgSTkwzRGSV2XWecC-OsdDdlFF9b5ulyobMnNrCLaXiYbFkpJ6DCtlUnxgdh47lI0a47dMUUw8_Ig_TmkVXCEm0DL0Y-pG1lhtdD6queMHRrTYTBHjty_V6Bd_dssmovhiFmAQ5OEdarYPFV5a7wjRSKsigghRtb_rj3_3HEBLxvC-tUTc23U8fHA"/>
+<!-- Crop/Edit Overlay -->
+<div class="absolute inset-0 border-2 border-primary/50 m-4 rounded-lg pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<div class="absolute top-0 left-0 w-4 h-4 border-t-4 border-l-4 border-primary-container -mt-1 -ml-1"></div>
+<div class="absolute top-0 right-0 w-4 h-4 border-t-4 border-r-4 border-primary-container -mt-1 -mr-1"></div>
+<div class="absolute bottom-0 left-0 w-4 h-4 border-b-4 border-l-4 border-primary-container -mb-1 -ml-1"></div>
+<div class="absolute bottom-0 right-0 w-4 h-4 border-b-4 border-r-4 border-primary-container -mb-1 -mr-1"></div>
+</div>
+</div>
+</div>
+<!-- Success Message -->
+<div class="text-center mb-lg">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface dark:text-white mb-xs">3 Pages Captured</h2>
+<p class="font-body-md text-body-md text-on-surface-variant dark:text-gray-400">Quality looks good. Ready to extract data.</p>
+</div>
+<!-- Horizontal Scrollable Strip for Thumbnails -->
+<div class="w-full mb-6">
+<div class="flex space-x-gutter overflow-x-auto hide-scrollbar snap-x snap-mandatory px-2 py-2">
+<!-- Thumbnail 1 (Active) -->
+<div class="flex-none snap-start relative">
+<div class="w-20 h-28 rounded-lg overflow-hidden border-2 border-primary bg-surface-container-low dark:bg-gray-800 shadow-sm relative">
+<img class="w-full h-full object-cover" data-alt="A small thumbnail image showing a slightly blurred, top-down view of a modern business card or contact form on a dark background, dimly lit with a blueish tint." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwzA0hGLRpMP8RrqVAAZEeyQsIAcknEchIRmBfvdu1pCF-RExatQ_NQ1KBr9yZ9uzymx4GF6owgkDMcd7PUIYvnLUh9QcOUPQqvECFtTNe9qonyv54XEGs-Bf7dre3Z1U7z-fmFw-hoRHq-ktj7qP1hYbCQMp1v18ofNHSJ_qEUkAHnn1CcA_zaoDqJ-CTh9nBb4mGYY2p5cvLhCyD7lPVfEtr9pL8sqPiLmrdR4EQMiCd6VA7HniqSA"/>
+<div class="absolute top-1 right-1 bg-primary text-on-primary rounded-full w-5 h-5 flex items-center justify-center text-[10px] font-bold">1</div>
+</div>
+</div>
+<!-- Thumbnail 2 -->
+<div class="flex-none snap-start relative opacity-70 hover:opacity-100 transition-opacity">
+<div class="w-20 h-28 rounded-lg overflow-hidden border-2 border-transparent bg-surface-container-low dark:bg-gray-800 shadow-sm relative">
+<img class="w-full h-full object-cover" data-alt="A small thumbnail image showing a slightly blurred, top-down view of a second page of a corporate document on a dark background, dimly lit." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBotjhAXl78oc3a4kdkihJvEaGpScLgkT-xJiErCVVvLPUSV8Fo-Psdg8mtoA9hK_eajbKFYYp7S7KjswKVLl2ZyXXWuLFfJdd-Zw3G66ayq47Y9T0Me7oevsbO5xEzwqE9WM2eNRw-wiusp2iC5DVXGa4UUdaElgrAHeAFAbK43HrR8s4zyTN6PioYvqLovqwYX5wm0rVphxHMVeT-NELvEUvtEF9jtWu-iK3pxjASE2aeBK8UE321mQ"/>
+<div class="absolute top-1 right-1 bg-surface/80 dark:bg-gray-700/80 text-on-surface dark:text-gray-300 rounded-full w-5 h-5 flex items-center justify-center text-[10px] font-bold">2</div>
+</div>
+</div>
+<!-- Thumbnail 3 -->
+<div class="flex-none snap-start relative opacity-70 hover:opacity-100 transition-opacity">
+<div class="w-20 h-28 rounded-lg overflow-hidden border-2 border-transparent bg-surface-container-low dark:bg-gray-800 shadow-sm relative">
+<img class="w-full h-full object-cover" data-alt="A small thumbnail image showing a slightly blurred, top-down view of a third page with handwritten notes on a dark background, dimly lit." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3njPGDXN4d-2AMwgU1fx-A13iRMsXyKZPbetPNveVrtiCErxvz3j4CHUz4TVGZz5JqVdvAiC6vocuvh06oG4FWX3mBAExQYnLLTJHltDoMvUIGY9rw5Ab83QZxzUKjyFzuVjjBnWPQpXkQDIYfpcndPjXcZyKQRM2OrasUx8Qo5Q67zKzhMIpCJsXSMSajz4J7_R2TnIC4N8p1MVQHl4Pi16ThBFbpm4khh8F7hCJ5Dh1BZnk9TKugA"/>
+<div class="absolute top-1 right-1 bg-surface/80 dark:bg-gray-700/80 text-on-surface dark:text-gray-300 rounded-full w-5 h-5 flex items-center justify-center text-[10px] font-bold">3</div>
+</div>
+</div>
+<!-- Add Page Action in Strip -->
+<div class="flex-none snap-start">
+<button class="w-20 h-28 rounded-lg border-2 border-dashed border-outline-variant dark:border-gray-600 bg-surface/50 dark:bg-gray-800/50 flex flex-col items-center justify-center text-on-surface-variant dark:text-gray-400 hover:bg-surface-variant/50 transition-colors">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">add_circle</span>
+<span class="font-label-sm text-label-sm">Add Page</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Fixed Bottom Action Bar -->
+<div class="fixed bottom-0 w-full bg-surface/90 dark:bg-[#0f172a]/95 backdrop-blur-md pb-safe border-t border-outline-variant/20 dark:border-gray-700/50 z-20">
+<div class="px-margin-mobile py-4 flex flex-col space-y-3 max-w-screen-xl mx-auto">
+<button class="w-full bg-primary text-on-primary rounded-lg py-4 flex items-center justify-center font-title-md text-title-md hover:bg-primary-container transition-colors shadow-sm">
+<span>Continue (3)</span>
+<span class="material-symbols-outlined ml-2 text-[20px]" style="font-variation-settings: 'FILL' 0;">arrow_forward</span>
+</button>
+<div class="flex space-x-gutter">
+<button class="flex-1 bg-transparent border border-outline-variant dark:border-gray-600 text-on-surface dark:text-gray-200 rounded-lg py-3 flex items-center justify-center font-label-lg text-label-lg hover:bg-surface-variant/20 transition-colors">
+<span class="material-symbols-outlined mr-2 text-[18px]" style="font-variation-settings: 'FILL' 0;">replay</span>
+                    Retake
+                </button>
+<button class="flex-1 bg-transparent border border-outline-variant dark:border-gray-600 text-on-surface dark:text-gray-200 rounded-lg py-3 flex items-center justify-center font-label-lg text-label-lg hover:bg-surface-variant/20 transition-colors">
+<span class="material-symbols-outlined mr-2 text-[18px]" style="font-variation-settings: 'FILL' 0;">add_a_photo</span>
+                    Add Page
+                </button>
+</div>
+</div>
+</div>
+</body></html>

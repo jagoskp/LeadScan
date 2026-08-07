@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Worksheet Selection - AI Lead Manager</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#2563eb",
+                        "surface-container-high": "#dce9ff",
+                        "on-tertiary-fixed-variant": "#005321",
+                        "on-tertiary-fixed": "#002109",
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "surface-container": "#e5eeff",
+                        "on-background": "#0b1c30",
+                        "on-secondary-container": "#5c647a",
+                        "surface-variant": "#d3e4fe",
+                        "surface-dim": "#cbdbf5",
+                        "surface": "#f8f9ff",
+                        "on-primary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "secondary-fixed-dim": "#bec6e0",
+                        "outline": "#737686",
+                        "secondary-container": "#dae2fd",
+                        "primary-fixed": "#dbe1ff",
+                        "on-secondary-fixed": "#131b2e",
+                        "on-primary-container": "#eeefff",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#00174b",
+                        "on-error-container": "#93000a",
+                        "error-container": "#ffdad6",
+                        "on-surface": "#0b1c30",
+                        "surface-tint": "#0053db",
+                        "secondary": "#565e74",
+                        "on-surface-variant": "#434655",
+                        "surface-container-highest": "#d3e4fe",
+                        "tertiary-fixed": "#6bff8f",
+                        "tertiary-container": "#007e37",
+                        "primary": "#004ac6",
+                        "outline-variant": "#c3c6d7",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "inverse-primary": "#b4c5ff",
+                        "secondary-fixed": "#dae2fd",
+                        "on-secondary-fixed-variant": "#3f465c",
+                        "tertiary-fixed-dim": "#4ae176",
+                        "inverse-surface": "#213145",
+                        "background": "#f8f9ff",
+                        "tertiary": "#006229",
+                        "on-tertiary-container": "#c1ffc5",
+                        "surface-container-low": "#eff4ff",
+                        "surface-bright": "#f8f9ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "xl": "32px",
+                        "md": "16px",
+                        "margin-tablet": "24px",
+                        "margin-mobile": "16px",
+                        "lg": "24px",
+                        "gutter": "16px",
+                        "xs": "4px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "title-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "display-lg": ["57px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "title-lg": ["22px", { "lineHeight": "28px", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-sm": ["11px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-lg min-h-screen pb-[100px]">
+<!-- TopAppBar -->
+<header class="bg-background text-primary font-title-lg text-title-lg font-bold docked full-width top-0 bg-surface-container-low flat no shadows transition-colors duration-200 flex justify-between items-center px-margin-mobile w-full h-16 sticky z-40">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:bg-surface-variant/50 rounded-full p-2 transition-colors">arrow_back</span>
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">table_chart</span>
+<span class="truncate max-w-[200px]">Master_Lead_List_2024.xlsx</span>
+</div>
+</div>
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:bg-surface-variant/50 rounded-full p-2 transition-colors">settings</span>
+</div>
+</header>
+<main class="px-margin-mobile md:px-margin-tablet py-md md:py-lg max-w-5xl mx-auto flex flex-col gap-lg">
+<!-- Header Section -->
+<div>
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-background mb-xs">Select Worksheet</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Choose the specific tab from your spreadsheet to import leads from.</p>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Left Column: Worksheet Selection (7 cols on md) -->
+<div class="md:col-span-5 flex flex-col gap-md">
+<div class="bg-surface-container-lowest rounded-xl p-md border border-surface-container-high shadow-[0_4px_12px_rgba(0,0,0,0.02)]">
+<h2 class="font-title-md text-title-md text-on-background mb-md flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">format_list_bulleted</span>
+                        Available Sheets
+                    </h2>
+<div class="flex flex-col gap-xs">
+<!-- Active Sheet Option -->
+<div class="flex items-center justify-between p-md rounded-lg border-2 border-primary bg-surface-container-low cursor-pointer transition-all">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">radio_button_checked</span>
+<div>
+<p class="font-title-md text-title-md text-on-background">Leads_2024</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-[2px]">Last updated: Today, 09:41 AM</p>
+</div>
+</div>
+<div class="bg-primary-container text-on-primary-container px-2 py-1 rounded-full font-label-sm text-label-sm">
+                                1,245 rows
+                            </div>
+</div>
+<!-- Inactive Sheet Option -->
+<div class="flex items-center justify-between p-md rounded-lg border border-outline-variant bg-surface hover:bg-surface-container-low cursor-pointer transition-all">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-outline">radio_button_unchecked</span>
+<div>
+<p class="font-title-md text-title-md text-on-surface">Q1_Prospects</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-[2px]">Last updated: Oct 12, 2023</p>
+</div>
+</div>
+<div class="bg-surface-container text-on-surface-variant px-2 py-1 rounded-full font-label-sm text-label-sm">
+                                432 rows
+                            </div>
+</div>
+<!-- Inactive Sheet Option -->
+<div class="flex items-center justify-between p-md rounded-lg border border-outline-variant bg-surface hover:bg-surface-container-low cursor-pointer transition-all opacity-75">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-outline">radio_button_unchecked</span>
+<div>
+<p class="font-title-md text-title-md text-on-surface">Archived_2022</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-[2px]">Last updated: Dec 31, 2022</p>
+</div>
+</div>
+<div class="bg-surface-container text-on-surface-variant px-2 py-1 rounded-full font-label-sm text-label-sm">
+                                8,901 rows
+                            </div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Data Preview (5 cols on md) -->
+<div class="md:col-span-7 flex flex-col">
+<div class="bg-surface-container-lowest rounded-xl border border-surface-container-high shadow-[0_4px_12px_rgba(0,0,0,0.02)] h-full flex flex-col overflow-hidden">
+<div class="p-md border-b border-surface-container flex justify-between items-center bg-surface-bright">
+<h2 class="font-title-md text-title-md text-on-background flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">visibility</span>
+                            Data Preview: Leads_2024
+                        </h2>
+<span class="bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm px-2 py-1 rounded-md">First 5 rows</span>
+</div>
+<div class="p-4 bg-surface-container-lowest overflow-x-auto hide-scrollbar flex-1 relative">
+<!-- Fade effect for horizontal scroll hint -->
+<div class="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-surface-container-lowest to-transparent pointer-events-none"></div>
+<table class="w-full text-left border-collapse min-w-[500px]">
+<thead>
+<tr>
+<th class="font-label-sm text-label-sm text-on-surface-variant font-medium py-2 px-3 border-b border-surface-container bg-surface-bright sticky top-0 uppercase tracking-wider">Company Name</th>
+<th class="font-label-sm text-label-sm text-on-surface-variant font-medium py-2 px-3 border-b border-surface-container bg-surface-bright sticky top-0 uppercase tracking-wider">Contact Person</th>
+<th class="font-label-sm text-label-sm text-on-surface-variant font-medium py-2 px-3 border-b border-surface-container bg-surface-bright sticky top-0 uppercase tracking-wider">Email Address</th>
+<th class="font-label-sm text-label-sm text-on-surface-variant font-medium py-2 px-3 border-b border-surface-container bg-surface-bright sticky top-0 uppercase tracking-wider">Status</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md text-on-surface">
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-3 px-3 border-b border-surface-container-low whitespace-nowrap">Acme Corp</td>
+<td class="py-3 px-3 border-b border-surface-container-low whitespace-nowrap">John Doe</td>
+<td class="py-3 px-3 border-b border-surface-container-low whitespace-nowrap text-primary">john@acmecorp.com</td>
+<td class="py-3 px-3 border-b border-surface-container-low whitespace-nowrap">
+<span class="bg-tertiary-container/10 text-tertiary-container px-2 py-1 rounded-md text-xs font-medium">New</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-3 px-3 border-b border-surface-container-low whitespace-nowrap">Globex Inc</td>
+<td class="py-3 px-3 border-b border-surface-container-low whitespace-nowrap">Jane Smith</td>
+<td class="py-3 px-3 border-b border-surface-container-low whitespace-nowrap text-primary">jsmith@globex.net</td>
+<td class="py-3 px-3 border-b border-surface-container-low whitespace-nowrap">
+<span class="bg-secondary-container text-on-secondary-container px-2 py-1 rounded-md text-xs font-medium">Contacted</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-3 px-3 border-b border-surface-container-low whitespace-nowrap">Soylent Corp</td>
+<td class="py-3 px-3 border-b border-surface-container-low whitespace-nowrap">Bob Johnson</td>
+<td class="py-3 px-3 border-b border-surface-container-low whitespace-nowrap text-primary">bob@soylent.com</td>
+<td class="py-3 px-3 border-b border-surface-container-low whitespace-nowrap">
+<span class="bg-tertiary-container/10 text-tertiary-container px-2 py-1 rounded-md text-xs font-medium">New</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-3 px-3 border-b border-surface-container-low whitespace-nowrap">Initech</td>
+<td class="py-3 px-3 border-b border-surface-container-low whitespace-nowrap">Peter Gibbons</td>
+<td class="py-3 px-3 border-b border-surface-container-low whitespace-nowrap text-primary">peter.g@initech.co</td>
+<td class="py-3 px-3 border-b border-surface-container-low whitespace-nowrap">
+<span class="bg-error-container text-on-error-container px-2 py-1 rounded-md text-xs font-medium">Unqualified</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-3 px-3 whitespace-nowrap">Umbrella Corp</td>
+<td class="py-3 px-3 whitespace-nowrap">Alice</td>
+<td class="py-3 px-3 whitespace-nowrap text-primary">alice@umbrella.org</td>
+<td class="py-3 px-3 whitespace-nowrap">
+<span class="bg-secondary-container text-on-secondary-container px-2 py-1 rounded-md text-xs font-medium">Contacted</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-3 bg-surface-container-low text-center border-t border-surface-container">
+<p class="font-label-sm text-label-sm text-on-surface-variant flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">info</span>
+                            Data looks correct? Proceed to map these columns.
+                        </p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Action Bar (Contextual for this flow, replacing global nav) -->
+<div class="fixed bottom-0 left-0 w-full bg-surface-container-lowest border-t border-surface-container p-md shadow-[0_-4px_16px_rgba(0,0,0,0.05)] z-50">
+<div class="max-w-5xl mx-auto flex justify-between items-center">
+<button class="px-6 py-2 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface font-title-md text-title-md hover:bg-surface-container-low transition-colors">
+                Cancel
+            </button>
+<button class="px-6 py-2 rounded-lg bg-primary text-on-primary font-title-md text-title-md shadow-sm hover:bg-primary-fixed-variant transition-colors flex items-center gap-xs">
+                Configure Mapping
+                <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</body></html>

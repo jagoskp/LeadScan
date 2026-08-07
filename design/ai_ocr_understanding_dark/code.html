@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI OCR &amp; Understanding - LeadScan AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-tint": "#0053db",
+                    "primary-container": "#2563eb",
+                    "on-surface": "#0b1c30",
+                    "surface-container": "#e5eeff",
+                    "inverse-surface": "#213145",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed-variant": "#3f465c",
+                    "tertiary-fixed-dim": "#4ae176",
+                    "surface-dim": "#cbdbf5",
+                    "surface-container-high": "#dce9ff",
+                    "tertiary": "#006229",
+                    "secondary": "#565e74",
+                    "on-error": "#ffffff",
+                    "on-surface-variant": "#434655",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "surface": "#f8f9ff",
+                    "surface-bright": "#f8f9ff",
+                    "background": "#f8f9ff",
+                    "on-tertiary-fixed-variant": "#005321",
+                    "on-secondary-container": "#5c647a",
+                    "primary-fixed": "#dbe1ff",
+                    "on-background": "#0b1c30",
+                    "outline-variant": "#c3c6d7",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-on-surface": "#eaf1ff",
+                    "surface-container-low": "#eff4ff",
+                    "on-primary-fixed": "#00174b",
+                    "secondary-container": "#dae2fd",
+                    "outline": "#737686",
+                    "secondary-fixed": "#dae2fd",
+                    "tertiary-container": "#007e37",
+                    "on-tertiary-fixed": "#002109",
+                    "error": "#ba1a1a",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "surface-variant": "#d3e4fe",
+                    "on-primary-container": "#eeefff",
+                    "tertiary-fixed": "#6bff8f",
+                    "on-secondary-fixed": "#131b2e",
+                    "secondary-fixed-dim": "#bec6e0",
+                    "primary": "#004ac6",
+                    "inverse-primary": "#b4c5ff",
+                    "on-tertiary-container": "#c1ffc5",
+                    "on-tertiary": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "on-error-container": "#93000a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "gutter": "16px",
+                    "base": "4px",
+                    "xl": "32px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "xs": "4px",
+                    "sm": "8px",
+                    "margin-tablet": "24px"
+            },
+            "fontFamily": {
+                    "title-lg": ["Inter"],
+                    "title-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "500"}],
+                    "title-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "display-lg": ["57px", {"lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0b1c30; /* Manual dark mode override since JS toggles it later */
+            color: #ffffff;
+        }
+        @keyframes scan {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+        .scan-line {
+            animation: scan 2s linear infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(37, 99, 235, 0); }
+            100% { transform: scale(0.8); box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+        }
+        .pulse-effect {
+            animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+    </style>
+</head>
+<body class="bg-on-background min-h-screen flex flex-col font-sans text-on-surface antialiased overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex items-center px-md h-16 bg-surface dark:bg-surface-dim flat no shadows justify-between">
+<button aria-label="Back" class="w-12 h-12 flex items-center justify-center rounded-full hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors active:scale-95 duration-100 text-on-surface-variant dark:text-outline">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="font-title-lg text-title-lg font-bold text-on-surface dark:text-on-surface-variant flex-1 text-center">Smart Extraction</h1>
+<button aria-label="More options" class="w-12 h-12 flex items-center justify-center rounded-full hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors active:scale-95 duration-100 text-on-surface-variant dark:text-outline">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col pt-16 pb-24">
+<!-- 3D Visualization Header (Top 40%) -->
+<section class="relative w-full h-[40vh] bg-inverse-surface overflow-hidden shrink-0">
+<!-- STITCH_THREEJS_START:ANIMATION_26 class="absolute inset-0 w-full h-full" -->
+<div class="absolute inset-0 w-full h-full" style="display:block;">
+<script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
+<div id="threejs-container-ANIMATION_26" style="width:100%;height:100%"></div>
+<script>
+(function() {
+  const container = document.getElementById('threejs-container-ANIMATION_26');
+  const devicePixelRatio = window.devicePixelRatio || 1;
+  const container = document.getElementById('threejs-container');
+const width = container.clientWidth || window.innerWidth;
+const height = container.clientHeight || window.innerHeight;
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+renderer.setSize(width, height);
+renderer.setPixelRatio(window.devicePixelRatio);
+container.appendChild(renderer.domElement);
+
+// LeadScan AI Primary Blue: #2563EB
+const primaryColor = new THREE.Color(0x2563eb);
+const accentColor = new THREE.Color(0x22c55e);
+
+// Create a series of floating "data nodes" or particles
+const particlesCount = 200;
+const positions = new Float32Array(particlesCount * 3);
+const colors = new Float32Array(particlesCount * 3);
+
+for (let i = 0; i < particlesCount; i++) {
+    positions[i * 3] = (Math.random() - 0.5) * 10;
+    positions[i * 3 + 1] = (Math.random() - 0.5) * 10;
+    positions[i * 3 + 2] = (Math.random() - 0.5) * 10;
+
+    const mixedColor = Math.random() > 0.8 ? accentColor : primaryColor;
+    colors[i * 3] = mixedColor.r;
+    colors[i * 3 + 1] = mixedColor.g;
+    colors[i * 3 + 2] = mixedColor.b;
+}
+
+const geometry = new THREE.BufferGeometry();
+geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+const material = new THREE.PointsMaterial({
+    size: 0.15,
+    vertexColors: true,
+    transparent: true,
+    opacity: 0.8,
+    blending: THREE.AdditiveBlending
+});
+
+const points = new THREE.Points(geometry, material);
+scene.add(points);
+
+// Add a central "Core" sphere representing the AI
+const coreGeo = new THREE.SphereGeometry(1, 32, 32);
+const coreMat = new THREE.MeshPhongMaterial({
+    color: primaryColor,
+    emissive: primaryColor,
+    emissiveIntensity: 0.5,
+    transparent: true,
+    opacity: 0.2,
+    wireframe: true
+});
+const core = new THREE.Mesh(coreGeo, coreMat);
+scene.add(core);
+
+const light = new THREE.PointLight(0xffffff, 1, 100);
+light.position.set(5, 5, 5);
+scene.add(light);
+scene.add(new THREE.AmbientLight(0x404040));
+
+camera.position.z = 5;
+
+function animate() {
+    requestAnimationFrame(animate);
+    points.rotation.y += 0.002;
+    points.rotation.x += 0.001;
+    core.rotation.y -= 0.005;
+    
+    // Pulse the core
+    const scale = 1 + Math.sin(Date.now() * 0.002) * 0.05;
+    core.scale.set(scale, scale, scale);
+    
+    renderer.render(scene, camera);
+}
+
+window.addEventListener('resize', () => {
+    const w = container.clientWidth || window.innerWidth;
+    const h = container.clientHeight || window.innerHeight;
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+    renderer.setSize(w, h);
+});
+
+animate();
+})();
+</script>
+</div>
+<!-- STITCH_THREEJS_END:ANIMATION_26 -->
+<!-- Overlay UI for 3D area -->
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface via-transparent to-transparent z-10 flex flex-col justify-end p-margin-mobile">
+<div class="flex items-center space-x-3 mb-2">
+<div class="w-3 h-3 rounded-full bg-primary-container pulse-effect"></div>
+<span class="font-label-lg text-label-lg text-primary-fixed-dim uppercase tracking-wider">Processing Input</span>
+</div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-primary">AI Intelligence</h2>
+<p class="font-body-md text-body-md text-outline-variant mt-1">Multi-modal deep learning network active.</p>
+</div>
+<!-- Simulated Scanning Line Overlay -->
+<div class="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-20">
+<div class="w-full h-1 bg-primary-container scan-line shadow-[0_0_8px_rgba(37,99,235,1)]"></div>
+</div>
+</section>
+<!-- Real-time Analysis Section -->
+<section class="flex-1 px-margin-mobile pt-lg pb-xl flex flex-col bg-inverse-surface z-20">
+<div class="flex items-center justify-between mb-lg">
+<h3 class="font-title-md text-title-md text-on-secondary">Real-time Analysis</h3>
+<span class="font-label-sm text-label-sm text-primary-fixed-dim bg-primary/20 px-2 py-1 rounded-full flex items-center">
+<span class="material-symbols-outlined text-[14px] mr-1">bolt</span> 65ms avg
+                </span>
+</div>
+<!-- Extraction Fields (Bento/Glassmorphism style) -->
+<div class="grid grid-cols-1 gap-gutter flex-1">
+<!-- Field 1: Name (Extracting...) -->
+<div class="bg-secondary-fixed/5 border border-outline/20 rounded-xl p-md flex items-center relative overflow-hidden group">
+<div class="w-10 h-10 rounded-lg bg-surface-variant/10 flex items-center justify-center text-outline mr-md shrink-0">
+<span class="material-symbols-outlined">person</span>
+</div>
+<div class="flex-1">
+<div class="font-label-sm text-label-sm text-outline-variant mb-1 uppercase tracking-wide">Name</div>
+<div class="flex items-center space-x-2">
+<div class="h-5 w-32 bg-surface-variant/20 rounded animate-pulse"></div>
+<span class="font-body-md text-body-md text-primary-fixed-dim animate-pulse">Extracting...</span>
+</div>
+</div>
+<!-- Decorative abstract shape behind -->
+<div class="absolute -right-4 -bottom-4 w-16 h-16 bg-primary-container/5 rounded-full blur-xl group-hover:bg-primary-container/10 transition-colors"></div>
+</div>
+<!-- Field 2: Company (Detected) -->
+<div class="bg-secondary-fixed/5 border border-tertiary-fixed-dim/30 rounded-xl p-md flex items-center relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-r from-tertiary-container/10 to-transparent opacity-50"></div>
+<div class="w-10 h-10 rounded-lg bg-tertiary-container/20 flex items-center justify-center text-tertiary-fixed-dim mr-md shrink-0 relative z-10">
+<span class="material-symbols-outlined">apartment</span>
+</div>
+<div class="flex-1 relative z-10">
+<div class="font-label-sm text-label-sm text-outline-variant mb-1 uppercase tracking-wide">Company</div>
+<div class="flex items-center justify-between">
+<span class="font-title-md text-title-md text-on-secondary">Acme Corp</span>
+<span class="font-label-sm text-label-sm text-tertiary-fixed-dim flex items-center">
+<span class="material-symbols-outlined text-[14px] mr-1">check_circle</span> 98%
+                            </span>
+</div>
+</div>
+<!-- Decorative abstract shape behind -->
+<div class="absolute -right-4 -top-4 w-16 h-16 bg-tertiary-fixed-dim/10 rounded-full blur-xl"></div>
+</div>
+<!-- Field 3: Email (Analyzing...) -->
+<div class="bg-secondary-fixed/5 border border-outline/20 rounded-xl p-md flex items-center relative overflow-hidden group">
+<div class="w-10 h-10 rounded-lg bg-surface-variant/10 flex items-center justify-center text-outline mr-md shrink-0">
+<span class="material-symbols-outlined">mail</span>
+</div>
+<div class="flex-1">
+<div class="font-label-sm text-label-sm text-outline-variant mb-1 uppercase tracking-wide">Email</div>
+<div class="flex items-center space-x-2">
+<div class="h-5 w-48 bg-surface-variant/20 rounded animate-pulse"></div>
+<span class="font-body-md text-body-md text-primary-fixed-dim animate-pulse">Analyzing...</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Global Progress Bar -->
+<div class="mt-xl">
+<div class="flex justify-between items-center mb-2">
+<span class="font-label-sm text-label-sm text-outline-variant uppercase">Overall Progress</span>
+<span class="font-label-sm text-label-sm text-primary-fixed-dim">68%</span>
+</div>
+<div class="w-full h-2 bg-surface-variant/20 rounded-full overflow-hidden">
+<div class="h-full bg-primary-container rounded-full w-[68%] transition-all duration-500 relative">
+<div class="absolute inset-0 bg-white/20 w-full animate-[scan_1s_ease-in-out_infinite]"></div>
+</div>
+</div>
+</div>
+</section>
+</main>
+</body></html>

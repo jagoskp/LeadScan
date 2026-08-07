@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LeadScan AI - Universal Search</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-container": "#eeefff",
+                        "on-tertiary-fixed-variant": "#005321",
+                        "on-secondary-container": "#5c647a",
+                        "tertiary-container": "#007e37",
+                        "on-background": "#0b1c30",
+                        "primary-fixed": "#dbe1ff",
+                        "on-tertiary-container": "#c1ffc5",
+                        "tertiary": "#006229",
+                        "background": "#f8f9ff",
+                        "on-secondary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "surface-bright": "#f8f9ff",
+                        "on-error": "#ffffff",
+                        "surface": "#f8f9ff",
+                        "secondary-fixed-dim": "#bec6e0",
+                        "tertiary-fixed-dim": "#4ae176",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-surface": "#0b1c30",
+                        "surface-container": "#e5eeff",
+                        "on-primary-fixed": "#00174b",
+                        "on-tertiary-fixed": "#002109",
+                        "surface-tint": "#0053db",
+                        "outline-variant": "#c3c6d7",
+                        "inverse-primary": "#b4c5ff",
+                        "on-tertiary": "#ffffff",
+                        "on-surface-variant": "#434655",
+                        "on-secondary-fixed-variant": "#3f465c",
+                        "surface-container-low": "#eff4ff",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#dce9ff",
+                        "primary-container": "#2563eb",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "surface-variant": "#d3e4fe",
+                        "surface-container-highest": "#d3e4fe",
+                        "outline": "#737686",
+                        "secondary": "#565e74",
+                        "tertiary-fixed": "#6bff8f",
+                        "secondary-fixed": "#dae2fd",
+                        "surface-dim": "#cbdbf5",
+                        "on-secondary-fixed": "#131b2e",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "error": "#ba1a1a",
+                        "inverse-surface": "#213145",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#dae2fd",
+                        "primary": "#004ac6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-tablet": "24px",
+                        "margin-mobile": "16px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "xl": "32px",
+                        "md": "16px",
+                        "gutter": "16px",
+                        "xs": "4px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "title-md": ["Inter"],
+                        "title-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-sm": ["11px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "display-lg": ["57px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "title-lg": ["22px", { "lineHeight": "28px", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col font-body-lg">
+<!-- TopAppBar -->
+<header class="w-full sticky top-0 z-50 bg-surface dark:bg-inverse-surface shadow-sm bg-surface-container-low dark:bg-surface-container-high hidden md:block">
+<div class="flex items-center justify-between px-margin-mobile py-sm">
+<div class="flex items-center gap-4">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="A professional headshot of a corporate user, smiling subtly, wearing a dark blazer over a light shirt. The background is a bright, modern office with soft daylight filtering through. High-key lighting, crisp focus, modern enterprise SaaS aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdbChtx5JUr9g6arEo_2_ukvt3IGL3aZhQ08LDE8DJVJTPqsRB3ZlgoJ2wj5dg_PM7d0LfAESXQKorrh5xTjrmeYBURAsHnq78Gd_6k9-4Co6BMmEUQJMkfcCqlPSxEJ9bbgMwqt8yikxH1yer7oBNgwHYhNA-4BPupZwSqwAxs_mM35k1JTTQcChd27MmTogZJChDKYX3WIczveINHJ1Jk3PbbJGZElQGFf9BDXnihDqmRj10IGTcEQ"/>
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary dark:text-primary-fixed-dim">LeadScan AI</span>
+</div>
+<div class="hidden md:flex items-center gap-6">
+<!-- Desktop Nav Navigation (Derived from BottomNavBar labels) -->
+<a class="text-on-surface-variant hover:bg-surface-variant/50 transition-colors px-3 py-2 rounded-lg font-title-md text-title-md" href="#">Dashboard</a>
+<a class="text-on-surface-variant hover:bg-surface-variant/50 transition-colors px-3 py-2 rounded-lg font-title-md text-title-md" href="#">Scanner</a>
+<a class="text-primary font-bold px-3 py-2 rounded-lg font-title-md text-title-md" href="#">Leads</a>
+<a class="text-on-surface-variant hover:bg-surface-variant/50 transition-colors px-3 py-2 rounded-lg font-title-md text-title-md" href="#">Workflow</a>
+<a class="text-on-surface-variant hover:bg-surface-variant/50 transition-colors px-3 py-2 rounded-lg font-title-md text-title-md" href="#">Profile</a>
+</div>
+<button class="text-primary dark:text-primary-fixed-dim hover:bg-surface-variant/50 transition-colors p-2 rounded-full active:scale-95 duration-150">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</div>
+</header>
+<!-- Mobile Header -->
+<header class="w-full sticky top-0 z-50 bg-surface md:hidden pt-4 pb-2 px-margin-mobile">
+<div class="flex items-center justify-between mb-4">
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">LeadScan AI</span>
+<img class="w-10 h-10 rounded-full object-cover" data-alt="A professional headshot of a corporate user, smiling subtly, wearing a dark blazer over a light shirt. The background is a bright, modern office with soft daylight filtering through. High-key lighting, crisp focus, modern enterprise SaaS aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-XHYuZLEHxdFS1-wSOHSf4oVIz74KQtn3yBosFqVSFxSrP38fXSwd2sy_Z1EZB2KrmRbWWOc0Io2ofIY8OuILSn5eRtHepBijH1lJtYUv2nf4eftdUk3hJsTKaG6qsAU6KcZ0fo8BhGq1zBr9GzqVX4GCIl-_x6I258WvOToWmD2cB-RhCDnJ5wGDgNagYbxCUcVaIRJXOQlm51ejg9osrwk6MUYit4l9ndLjXVavU8rtYUZKVMPa8Q"/>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow px-margin-mobile md:px-margin-tablet pb-24 max-w-5xl mx-auto w-full pt-4 md:pt-8">
+<!-- Search Bar Hero -->
+<div class="relative w-full mb-lg">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline" data-icon="search">search</span>
+</div>
+<input class="w-full bg-surface-container-lowest border border-outline-variant text-on-surface font-body-lg text-body-lg rounded-full py-4 pl-12 pr-12 focus:ring-2 focus:ring-primary focus:border-primary shadow-sm transition-all outline-none" placeholder="Search leads, tasks, or companies..." type="text"/>
+<div class="absolute inset-y-0 right-0 pr-2 flex items-center">
+<button class="p-2 text-primary hover:bg-surface-variant/50 rounded-full transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="mic" data-weight="fill" style="font-variation-settings: 'FILL' 1;">mic</span>
+</button>
+</div>
+</div>
+<!-- Bento Grid Layout for Content -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Left Column: Quick Access -->
+<div class="md:col-span-1 space-y-lg">
+<!-- Recent Searches -->
+<section>
+<h2 class="font-title-md text-title-md text-on-surface mb-sm">Recent Searches</h2>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1.5 bg-surface-container border border-outline-variant rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-variant cursor-pointer transition-colors">Acme Corp</span>
+<span class="px-3 py-1.5 bg-surface-container border border-outline-variant rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-variant cursor-pointer transition-colors">Q3 Renewals</span>
+<span class="px-3 py-1.5 bg-surface-container border border-outline-variant rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-variant cursor-pointer transition-colors">Sarah Connor</span>
+<span class="px-3 py-1.5 bg-surface-container border border-outline-variant rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-variant cursor-pointer transition-colors">Tech Leads</span>
+</div>
+</section>
+<!-- Favorites -->
+<section>
+<h2 class="font-title-md text-title-md text-on-surface mb-sm flex justify-between items-center">
+                        Favorites
+                        <button class="text-primary font-label-lg text-label-lg">View All</button>
+</h2>
+<div class="flex gap-4 overflow-x-auto hide-scrollbar pb-2">
+<div class="flex flex-col items-center gap-1 min-w-[64px] cursor-pointer group">
+<div class="w-14 h-14 rounded-full border-2 border-surface-container-low group-hover:border-primary transition-colors p-0.5">
+<img class="w-full h-full rounded-full object-cover" data-alt="A bright, colorful company logo for 'Acme Corp' on a white background. Modern, corporate branding style. High quality, sharp." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7Zwm0grYZ4NkZGh-RMuPAf9B7Kmcgajyh-ziTMHr2x9alnsKHwORUZJe8wGqQ9h78Pp8CAFNYvgIuALU2f2GwFUkvInCLpzAug5gOtzaTxYlT6ulSzj41Y35qYsSzcb3T_L3p1z7GIRkItBwGHyMgFiXaiE_199-ijzJBOI6QKazP7NcA9r7-5wD8RB7XWX92pcMZWu1dvofw59J_IHNJYDHAE8N9cDEjb8Uj6YJPB366G5qAEiCIGQ"/>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate w-full text-center">Acme</span>
+</div>
+<div class="flex flex-col items-center gap-1 min-w-[64px] cursor-pointer group">
+<div class="w-14 h-14 rounded-full border-2 border-surface-container-low group-hover:border-primary transition-colors p-0.5 relative">
+<img class="w-full h-full rounded-full object-cover" data-alt="A professional headshot of a female executive. She has short dark hair and glasses, wearing a sharp navy suit. High-key bright lighting, modern corporate office background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAy-lAf1oSC9mBYfp09p2fkq6NiA3GwDc4t7NTEOWjTzUPGXa6BMQ5fWNy7ji5SLUfv6mWjiVTGzVqqahCxCF_DWcTkNtA_Avf2r4xNIzipz8vYDVfZxL4tne1yFedDVxOS6MqrgTXbNtcwjPns29IefTeUu0qYMXG8B3IvRtQfYiR_44YU8ThGGgnXYkd8-DVZo_fxfCK4zeTJCTqBwCCnHwofpMi0myrRImX9Tch5kGuAVJLL07Kw2A"/>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-tertiary-fixed-dim rounded-full border border-surface"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate w-full text-center">S. Connor</span>
+</div>
+<div class="flex flex-col items-center gap-1 min-w-[64px] cursor-pointer group">
+<div class="w-14 h-14 rounded-full border-2 border-surface-container-low group-hover:border-primary transition-colors p-0.5">
+<img class="w-full h-full rounded-full object-cover" data-alt="A minimalist logo for a tech startup, 'Globex'. Geometric shapes, clean lines, white background. Modern enterprise style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-WB7_End03f8MtGHHWw_1aF22rY_jAfN001H8OD3xchaiHTCiszGzRQS5QkJy329t20vAZTswALWPe8VFkIH0EBRxobKJARpF6PBA-33EJWun4NGweh0mXrngjV7GZbCIs2PAo9sjdYekEuTY_1rD5pcvi1RDrcYICV6xmcIeIia5ifEvZ3vsiUMqjM4ceNgmZi_j8jgT3Wx-YTWPrHcLXRmhcWBfzocKk_T_DtYcHtpmi0GUau2wIg"/>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate w-full text-center">Globex</span>
+</div>
+<div class="flex flex-col items-center gap-1 min-w-[64px] cursor-pointer group">
+<div class="w-14 h-14 rounded-full border border-dashed border-outline-variant flex items-center justify-center bg-surface-container-low group-hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-outline" data-icon="add">add</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Add</span>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Suggestions & Results -->
+<div class="md:col-span-2 space-y-lg">
+<!-- Suggested for You (AI Logic) -->
+<section class="bg-surface-container-lowest rounded-xl border border-surface-variant shadow-[0_4px_12px_rgba(0,0,0,0.05)] overflow-hidden">
+<div class="p-4 border-b border-surface-container-low bg-gradient-to-r from-surface-container-lowest to-surface-container-low flex justify-between items-center">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<h2 class="font-title-md text-title-md">Suggested for You</h2>
+</div>
+</div>
+<div class="divide-y divide-surface-container">
+<!-- AI Suggestion Item -->
+<div class="p-4 hover:bg-surface-container-low transition-colors cursor-pointer flex gap-4 items-start">
+<div class="w-10 h-10 rounded-lg bg-secondary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-secondary-container" data-icon="domain">domain</span>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<h3 class="font-title-md text-title-md text-on-surface">Wayne Enterprises</h3>
+<span class="font-label-sm text-label-sm text-primary bg-primary-fixed px-2 py-0.5 rounded-full">High Intent</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Recently viewed pricing page 3 times. Active renewal upcoming.</p>
+</div>
+</div>
+<!-- AI Suggestion Item -->
+<div class="p-4 hover:bg-surface-container-low transition-colors cursor-pointer flex gap-4 items-start">
+<div class="w-10 h-10 rounded-full overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="A friendly male sales professional headshot, mid-30s, casual button-down shirt. Clean, bright corporate background. High quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjwTMKwSkbP9R-42WaJYtQrKmgrbLnKSdkChp2eAPcC41n4xWek9-zXR4Lqj6c5TozcYJGRU6ChIu7EixNVkItlYBm6rai4Q0ecGe9bK3BQs66h9GQlB05ZCeqocCntjIXXLf-69tas5IVYY0MK_Cv4gyJSIuLhBBw3Mm2CYsa323SXUdlr75-IT7FinLCwpHXIvuTzTC5BfrGq9UFpwbLeUXVgy5FFQ0rqna-SiU5XSwghew9CymPLA"/>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<h3 class="font-title-md text-title-md text-on-surface">Bruce Wayne</h3>
+<span class="font-label-sm text-label-sm text-tertiary-fixed-dim bg-tertiary px-2 py-0.5 rounded-full text-on-tertiary">Meeting Today</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">VP of Purchasing. Review Q3 proposals.</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface dark:bg-inverse-surface shadow-lg bg-surface-container dark:bg-surface-container-highest md:hidden">
+<div class="flex justify-around items-center h-16 px-xs">
+<a class="flex flex-col items-center justify-center text-on-secondary-container hover:bg-secondary-container/30 active:scale-90 transition-transform w-full h-full" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="dashboard">dashboard</span>
+<span class="font-label-sm text-label-sm text-center">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-container hover:bg-secondary-container/30 active:scale-90 transition-transform w-full h-full" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="qr_code_scanner">qr_code_scanner</span>
+<span class="font-label-sm text-label-sm text-center">Scanner</span>
+</a>
+<!-- Active State -->
+<a class="flex flex-col items-center justify-center active:scale-90 transition-transform w-full h-full relative" href="#">
+<div class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-4 py-1">
+<span class="material-symbols-outlined mb-0.5" data-icon="group" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="font-label-sm text-label-sm text-center">Leads</span>
+</div>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-container hover:bg-secondary-container/30 active:scale-90 transition-transform w-full h-full" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="account_tree">account_tree</span>
+<span class="font-label-sm text-label-sm text-center">Workflow</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-container hover:bg-secondary-container/30 active:scale-90 transition-transform w-full h-full" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm text-center">Profile</span>
+</a>
+</div>
+</nav>
+</body></html>

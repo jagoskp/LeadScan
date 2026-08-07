@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LeadScan AI - Help &amp; About</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#0053db",
+                        "on-background": "#0b1c30",
+                        "secondary": "#565e74",
+                        "on-surface": "#0b1c30",
+                        "on-primary": "#ffffff",
+                        "tertiary": "#006229",
+                        "surface-container-high": "#dce9ff",
+                        "on-tertiary-fixed": "#002109",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-tertiary-fixed-variant": "#005321",
+                        "on-secondary-container": "#5c647a",
+                        "surface-bright": "#f8f9ff",
+                        "secondary-fixed": "#dae2fd",
+                        "tertiary-fixed": "#6bff8f",
+                        "surface-variant": "#d3e4fe",
+                        "on-secondary": "#ffffff",
+                        "primary": "#004ac6",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#2563eb",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-secondary-fixed-variant": "#3f465c",
+                        "on-error-container": "#93000a",
+                        "inverse-surface": "#213145",
+                        "on-surface-variant": "#434655",
+                        "primary-fixed": "#dbe1ff",
+                        "on-secondary-fixed": "#131b2e",
+                        "on-primary-container": "#eeefff",
+                        "background": "#f8f9ff",
+                        "on-primary-fixed": "#00174b",
+                        "on-tertiary": "#ffffff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface-container": "#e5eeff",
+                        "inverse-primary": "#b4c5ff",
+                        "error": "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "outline": "#737686",
+                        "surface-container-low": "#eff4ff",
+                        "surface": "#f8f9ff",
+                        "surface-dim": "#cbdbf5",
+                        "secondary-container": "#dae2fd",
+                        "on-tertiary-container": "#c1ffc5",
+                        "tertiary-fixed-dim": "#4ae176",
+                        "outline-variant": "#c3c6d7",
+                        "tertiary-container": "#007e37",
+                        "secondary-fixed-dim": "#bec6e0",
+                        "primary-fixed-dim": "#b4c5ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "xl": "32px",
+                        "margin-tablet": "24px",
+                        "xs": "4px",
+                        "gutter": "16px",
+                        "lg": "24px",
+                        "margin-mobile": "16px",
+                        "md": "16px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "title-md": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "title-lg": ["22px", { "lineHeight": "28px", "fontWeight": "500" }],
+                        "label-sm": ["11px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "display-lg": ["57px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #121212; /* Fallback dark bg */
+        }
+        .dark body {
+            background-color: #121212; /* Explicit dark bg as per generic dark mode, using custom config colors where possible */
+            color: #e2e8f0;
+        }
+        .dark .bg-surface {
+            background-color: #1e1e1e; /* Dark mode surface */
+        }
+        .dark .text-primary {
+            color: #b4c5ff; /* inverse-primary for dark mode */
+        }
+        .dark .bg-surface-container {
+            background-color: #2a2a2a;
+        }
+        .dark .border-outline-variant {
+            border-color: #434655;
+        }
+        .dark .text-on-surface-variant {
+            color: #c3c6d7;
+        }
+        .dark .bg-primary-container {
+            background-color: #004ac6;
+        }
+        .dark .text-on-primary-container {
+            color: #dce9ff;
+        }
+    </style>
+</head>
+<body class="bg-[#121212] min-h-screen text-[#e2e8f0] font-body-md antialiased pb-safe">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#1e1e1e] border-b border-[#2a2a2a] shadow-sm flex justify-between items-center px-margin-mobile h-16 w-full">
+<button class="flex items-center justify-center p-2 rounded-full hover:bg-surface-variant/20 transition-colors active:opacity-80">
+<span class="material-symbols-outlined text-[#e2e8f0]" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-title-lg text-title-lg font-bold text-[#e2e8f0]">Help &amp; About</h1>
+<div class="w-10"></div> <!-- Placeholder for balance -->
+</header>
+<main class="pt-24 px-margin-mobile md:px-margin-tablet max-w-3xl mx-auto flex flex-col gap-lg pb-xl">
+<!-- Search FAQ -->
+<section>
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="search">search</span>
+<input class="w-full h-14 pl-12 pr-4 rounded-lg bg-[#2a2a2a] border border-[#434655] text-[#e2e8f0] focus:border-primary-fixed focus:ring-1 focus:ring-primary-fixed transition-all font-body-lg placeholder-on-surface-variant" placeholder="Search FAQs..." type="text"/>
+</div>
+</section>
+<!-- Support Actions -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<button class="flex items-center justify-center gap-sm bg-primary-container text-on-primary-container py-3 px-4 rounded-lg font-title-md hover:bg-primary transition-colors active:scale-95 shadow-sm">
+<span class="material-symbols-outlined" data-icon="chat_bubble" data-weight="fill" style="font-variation-settings: 'FILL' 1;">chat_bubble</span>
+                Contact Support
+            </button>
+<button class="flex items-center justify-center gap-sm bg-[#2a2a2a] border border-[#434655] text-[#e2e8f0] py-3 px-4 rounded-lg font-title-md hover:bg-[#333] transition-colors active:scale-95">
+<span class="material-symbols-outlined" data-icon="bug_report">bug_report</span>
+                Report a Bug
+            </button>
+</section>
+<!-- Information List -->
+<section class="bg-[#1e1e1e] rounded-xl border border-[#2a2a2a] overflow-hidden shadow-sm">
+<h2 class="font-title-md text-title-md text-primary-fixed-dim px-md py-sm bg-[#2a2a2a]/50 border-b border-[#2a2a2a]">Legal &amp; Info</h2>
+<ul class="flex flex-col">
+<li class="border-b border-[#2a2a2a] last:border-0">
+<button class="w-full flex items-center justify-between px-md py-4 hover:bg-[#2a2a2a]/30 transition-colors group">
+<span class="font-body-lg text-[#e2e8f0]">Privacy Policy</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary-fixed transition-colors" data-icon="chevron_right">chevron_right</span>
+</button>
+</li>
+<li class="border-b border-[#2a2a2a] last:border-0">
+<button class="w-full flex items-center justify-between px-md py-4 hover:bg-[#2a2a2a]/30 transition-colors group">
+<span class="font-body-lg text-[#e2e8f0]">Terms of Service</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary-fixed transition-colors" data-icon="chevron_right">chevron_right</span>
+</button>
+</li>
+<li class="border-b border-[#2a2a2a] last:border-0">
+<button class="w-full flex items-center justify-between px-md py-4 hover:bg-[#2a2a2a]/30 transition-colors group">
+<span class="font-body-lg text-[#e2e8f0]">Open Source Licenses</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary-fixed transition-colors" data-icon="chevron_right">chevron_right</span>
+</button>
+</li>
+</ul>
+</section>
+<!-- About Footer -->
+<footer class="mt-xl flex flex-col items-center justify-center text-center opacity-80">
+<div class="w-16 h-16 bg-primary-container rounded-xl flex items-center justify-center mb-md shadow-md">
+<span class="material-symbols-outlined text-[32px] text-on-primary-container" data-icon="qr_code_scanner" data-weight="fill" style="font-variation-settings: 'FILL' 1;">qr_code_scanner</span>
+</div>
+<h3 class="font-title-lg text-title-lg font-bold text-[#e2e8f0] mb-xs">LeadScan AI</h3>
+<p class="font-body-md text-on-surface-variant">Version 1.2.4 (Build 492)</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-sm">© 2024 LeadScan AI</p>
+</footer>
+</main>
+</body></html>

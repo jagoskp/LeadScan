@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+    }
+  </style>
+</head>
+<body>
+<!-- STITCH_THREEJS_START:ANIMATION_26 class="fixed inset-0 w-full h-full bg-transparent" -->
+<div class="fixed inset-0 w-full h-full bg-transparent" style="display:block;">
+<script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
+<div id="threejs-container-ANIMATION_26" style="width:100%;height:100%"></div>
+<script>
+(function() {
+  const container = document.getElementById('threejs-container-ANIMATION_26');
+  const devicePixelRatio = window.devicePixelRatio || 1;
+  const container = document.getElementById('threejs-container');
+const width = container.clientWidth || window.innerWidth;
+const height = container.clientHeight || window.innerHeight;
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+renderer.setSize(width, height);
+renderer.setPixelRatio(window.devicePixelRatio);
+container.appendChild(renderer.domElement);
+
+// LeadScan AI Primary Blue: #2563EB
+const primaryColor = new THREE.Color(0x2563eb);
+const accentColor = new THREE.Color(0x22c55e);
+
+// Create a series of floating "data nodes" or particles
+const particlesCount = 200;
+const positions = new Float32Array(particlesCount * 3);
+const colors = new Float32Array(particlesCount * 3);
+
+for (let i = 0; i < particlesCount; i++) {
+    positions[i * 3] = (Math.random() - 0.5) * 10;
+    positions[i * 3 + 1] = (Math.random() - 0.5) * 10;
+    positions[i * 3 + 2] = (Math.random() - 0.5) * 10;
+
+    const mixedColor = Math.random() > 0.8 ? accentColor : primaryColor;
+    colors[i * 3] = mixedColor.r;
+    colors[i * 3 + 1] = mixedColor.g;
+    colors[i * 3 + 2] = mixedColor.b;
+}
+
+const geometry = new THREE.BufferGeometry();
+geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+const material = new THREE.PointsMaterial({
+    size: 0.15,
+    vertexColors: true,
+    transparent: true,
+    opacity: 0.8,
+    blending: THREE.AdditiveBlending
+});
+
+const points = new THREE.Points(geometry, material);
+scene.add(points);
+
+// Add a central "Core" sphere representing the AI
+const coreGeo = new THREE.SphereGeometry(1, 32, 32);
+const coreMat = new THREE.MeshPhongMaterial({
+    color: primaryColor,
+    emissive: primaryColor,
+    emissiveIntensity: 0.5,
+    transparent: true,
+    opacity: 0.2,
+    wireframe: true
+});
+const core = new THREE.Mesh(coreGeo, coreMat);
+scene.add(core);
+
+const light = new THREE.PointLight(0xffffff, 1, 100);
+light.position.set(5, 5, 5);
+scene.add(light);
+scene.add(new THREE.AmbientLight(0x404040));
+
+camera.position.z = 5;
+
+function animate() {
+    requestAnimationFrame(animate);
+    points.rotation.y += 0.002;
+    points.rotation.x += 0.001;
+    core.rotation.y -= 0.005;
+    
+    // Pulse the core
+    const scale = 1 + Math.sin(Date.now() * 0.002) * 0.05;
+    core.scale.set(scale, scale, scale);
+    
+    renderer.render(scene, camera);
+}
+
+window.addEventListener('resize', () => {
+    const w = container.clientWidth || window.innerWidth;
+    const h = container.clientHeight || window.innerHeight;
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+    renderer.setSize(w, h);
+});
+
+animate();
+})();
+</script>
+</div>
+<!-- STITCH_THREEJS_END:ANIMATION_26 -->
+</body>
+</html>

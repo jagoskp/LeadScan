@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>LeadScan AI - Camera</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#004ac6",
+                        "surface-container-high": "#dce9ff",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#cbdbf5",
+                        "on-surface": "#0b1c30",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-background": "#0b1c30",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "surface-container-highest": "#d3e4fe",
+                        "surface-container": "#e5eeff",
+                        "inverse-surface": "#213145",
+                        "secondary": "#565e74",
+                        "surface-container-low": "#eff4ff",
+                        "primary-container": "#2563eb",
+                        "outline-variant": "#c3c6d7",
+                        "tertiary-container": "#007e37",
+                        "tertiary": "#006229",
+                        "secondary-fixed": "#dae2fd",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-surface-variant": "#434655",
+                        "on-error": "#ffffff",
+                        "primary-fixed": "#dbe1ff",
+                        "on-primary-fixed": "#00174b",
+                        "tertiary-fixed": "#6bff8f",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#b4c5ff",
+                        "on-secondary-container": "#5c647a",
+                        "secondary-fixed-dim": "#bec6e0",
+                        "secondary-container": "#dae2fd",
+                        "on-secondary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed": "#131b2e",
+                        "on-primary": "#ffffff",
+                        "surface-bright": "#f8f9ff",
+                        "on-tertiary-container": "#c1ffc5",
+                        "surface": "#f8f9ff",
+                        "on-tertiary-fixed-variant": "#005321",
+                        "on-tertiary-fixed": "#002109",
+                        "tertiary-fixed-dim": "#4ae176",
+                        "surface-variant": "#d3e4fe",
+                        "outline": "#737686",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-secondary-fixed-variant": "#3f465c",
+                        "background": "#f8f9ff",
+                        "on-primary-container": "#eeefff",
+                        "surface-tint": "#0053db",
+                        
+                        // Overriding dark mode specific colors for the camera UI 
+                        // The prompt requested a Dark Camera UI despite the global "Light Mode" directive.
+                        // I'm using black/dark grays specifically for the camera canvas area.
+                        "camera-bg": "#000000",
+                        "camera-overlay": "rgba(0, 0, 0, 0.4)",
+                        "camera-controls": "rgba(0, 0, 0, 0.6)",
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "margin-tablet": "24px",
+                        "gutter": "16px",
+                        "xs": "4px",
+                        "xl": "32px",
+                        "lg": "24px",
+                        "md": "16px",
+                        "base": "4px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "title-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "title-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "display-lg": ["57px", {"lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "title-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        /* Hide scrollbar for a clean app feel */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        body {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+            overscroll-behavior-y: none;
+        }
+        
+        /* Scanning Animation */
+        @keyframes scan {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+        .scan-line {
+            animation: scan 2s linear infinite;
+        }
+        
+        /* Focus Reticle Breathing */
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.05); opacity: 1; }
+        }
+        .focus-reticle {
+            animation: breathe 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-camera-bg h-screen w-screen overflow-hidden font-sans text-white relative flex flex-col antialiased">
+<!-- Camera Viewport Canvas -->
+<!-- We use a placeholder image to simulate the live camera feed -->
+<div class="absolute inset-0 z-0 bg-camera-bg">
+<img alt="Camera Preview" class="w-full h-full object-cover" data-alt="A slightly blurred, first-person perspective shot looking down at a wooden desk. On the desk rests a clean, modern, white business card with elegant minimalist typography. The lighting is bright and professional, typical of a modern corporate office, suggesting a live camera preview on a mobile device. The colors are rich and true to life." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5fV1WpMcSSnXbxPAH9lpIkwDOSZwpQ-Nnl0B8YFW-Y1UGnNzTRJA8Takqaw6bIVL0LVt_GtrpP2On4lKDoXa2BW0o1QCLiATB2kwCBtVqv3ub9UYoGMBHKw3vtPhyIYze6_Gs3Xfz6kzMGIZFGsJpa48-jVKzULwElwoHqxe4wIf-BxcVBH23GVwG09pyzD-93InPCSEg3zpcX5v0FwEU9h2PsHDmkp-CchL0pQibU2Y3i7nnQnBpAA"/>
+</div>
+<!-- AI Scan Guide Overlay & Reticle -->
+<div class="absolute inset-0 z-10 flex flex-col items-center justify-center pointer-events-none">
+<!-- Overlay Darkening outside the focus area -->
+<div class="absolute inset-0 bg-camera-overlay backdrop-blur-[2px]"></div>
+<!-- Focus Area Cutout (Visual Hack using borders) -->
+<div class="relative w-[85%] max-w-sm aspect-[1.586/1] border-2 border-white/30 rounded-xl overflow-hidden focus-reticle shadow-[0_0_0_9999px_rgba(0,0,0,0.5)]">
+<!-- Corner Brackets -->
+<div class="absolute top-0 left-0 w-8 h-8 border-t-4 border-l-4 border-primary rounded-tl-xl"></div>
+<div class="absolute top-0 right-0 w-8 h-8 border-t-4 border-r-4 border-primary rounded-tr-xl"></div>
+<div class="absolute bottom-0 left-0 w-8 h-8 border-b-4 border-l-4 border-primary rounded-bl-xl"></div>
+<div class="absolute bottom-0 right-0 w-8 h-8 border-b-4 border-r-4 border-primary rounded-br-xl"></div>
+<!-- Scanning Line -->
+<div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-70 scan-line shadow-[0_0_8px_rgba(37,99,235,0.8)]"></div>
+<!-- Clear view inside -->
+<div class="absolute inset-0 border-[0px] shadow-[inset_0_0_20px_rgba(0,0,0,0.2)] mix-blend-destination"></div>
+</div>
+<!-- Status Text -->
+<div class="mt-8 bg-black/60 backdrop-blur-md px-6 py-2.5 rounded-full flex items-center gap-2 border border-white/10 shadow-lg">
+<span class="material-symbols-outlined text-primary text-xl animate-pulse" style="font-variation-settings: 'FILL' 1;">document_scanner</span>
+<span class="font-label-lg text-label-lg tracking-wide text-white font-medium">Detecting Business Card...</span>
+</div>
+</div>
+<!-- Top Controls Area -->
+<div class="relative z-20 w-full pt-safe-top">
+<div class="flex justify-between items-center px-margin-mobile py-4 w-full max-w-screen-xl mx-auto bg-gradient-to-b from-black/80 to-transparent">
+<!-- Top Controls (Flash, Grid, Settings) -->
+<button class="w-12 h-12 rounded-full flex items-center justify-center bg-white/10 backdrop-blur-md hover:bg-white/20 active:scale-95 transition-all text-white border border-white/10">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">flash_off</span>
+</button>
+<button class="w-12 h-12 rounded-full flex items-center justify-center bg-white/10 backdrop-blur-md hover:bg-white/20 active:scale-95 transition-all text-white border border-white/10">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">grid_on</span>
+</button>
+<button class="w-12 h-12 rounded-full flex items-center justify-center bg-white/10 backdrop-blur-md hover:bg-white/20 active:scale-95 transition-all text-white border border-white/10">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings</span>
+</button>
+</div>
+</div>
+<!-- Flexible Spacer -->
+<div class="flex-grow z-10"></div>
+<!-- Bottom Controls Area -->
+<div class="relative z-20 w-full pb-safe-bottom bg-gradient-to-t from-black via-black/80 to-transparent">
+<div class="flex justify-around items-center h-32 px-margin-mobile w-full max-w-screen-xl mx-auto">
+<!-- Gallery Preview -->
+<button class="w-14 h-14 rounded-xl overflow-hidden border-2 border-white/20 active:scale-95 transition-transform hover:border-white/50 relative shadow-lg">
+<img alt="Recent scans" class="w-full h-full object-cover" data-alt="A close up thumbnail view of a previously scanned business card. The card features a modern logo and text on a dark gray background. The image is small and tightly cropped." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4sBiD_ZfxxwYXwdqy5lbJ3GNuvRaFYlUPCVzSQuDpAX4q3qaxE7MKCA1Ca11ntCSKa9FTjW5azVVMrz3Jbxc8qJY_aSsQK89D5tbSNCW--OBsqeCqQqncp3cCsdjViNFL8c-dPJHTvIsywAnXrRbkcF2wlPlHUqk45t_thShucpmQCA7D2Hjyumuk24RoYHZoTGsmo3jzmjaIWN0a-gCG_7u_T6MjzNWPC0R3k7QmPpp4BFfeMy_KIQ"/>
+<div class="absolute inset-0 bg-black/10 hover:bg-transparent transition-colors"></div>
+</button>
+<!-- Large Central Capture Button -->
+<div class="relative w-20 h-20 flex items-center justify-center">
+<!-- Outer Ring -->
+<div class="absolute inset-0 rounded-full border-4 border-white/30"></div>
+<!-- Inner Button -->
+<button class="w-16 h-16 bg-white rounded-full active:scale-90 active:bg-gray-200 transition-all duration-150 shadow-lg flex items-center justify-center group">
+<!-- Optional inner icon for clarity, usually blank for native feel, but adding for enterprise AI feel -->
+<span class="material-symbols-outlined text-black/20 text-2xl group-active:text-primary transition-colors">center_focus_strong</span>
+</button>
+</div>
+<!-- Camera Switch -->
+<button class="w-14 h-14 rounded-full flex items-center justify-center bg-white/10 backdrop-blur-md hover:bg-white/20 active:scale-95 transition-all text-white border border-white/10 shadow-lg">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">flip_camera_android</span>
+</button>
+</div>
+<!-- Bottom Nav Bar (From Shared Components JSON) - Suppressed per rule: 
+             "Automatic Suppression: You MUST exclude the navigation shell if the page intent is: ... Task-Focused" 
+             A camera view is a highly focused task interface. -->
+</div>
+</body></html>

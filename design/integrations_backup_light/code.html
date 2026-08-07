@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Integrations &amp; Backup - LeadScan AI</title>
+<!-- Fonts & Icons -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-tint": "#0053db",
+                      "on-background": "#0b1c30",
+                      "secondary": "#565e74",
+                      "on-surface": "#0b1c30",
+                      "on-primary": "#ffffff",
+                      "tertiary": "#006229",
+                      "surface-container-high": "#dce9ff",
+                      "on-tertiary-fixed": "#002109",
+                      "surface-container-lowest": "#ffffff",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "on-tertiary-fixed-variant": "#005321",
+                      "on-secondary-container": "#5c647a",
+                      "surface-bright": "#f8f9ff",
+                      "secondary-fixed": "#dae2fd",
+                      "tertiary-fixed": "#6bff8f",
+                      "surface-variant": "#d3e4fe",
+                      "on-secondary": "#ffffff",
+                      "primary": "#004ac6",
+                      "error-container": "#ffdad6",
+                      "primary-container": "#2563eb",
+                      "surface-container-highest": "#d3e4fe",
+                      "on-secondary-fixed-variant": "#3f465c",
+                      "on-error-container": "#93000a",
+                      "inverse-surface": "#213145",
+                      "on-surface-variant": "#434655",
+                      "primary-fixed": "#dbe1ff",
+                      "on-secondary-fixed": "#131b2e",
+                      "on-primary-container": "#eeefff",
+                      "background": "#f8f9ff",
+                      "on-primary-fixed": "#00174b",
+                      "on-tertiary": "#ffffff",
+                      "inverse-on-surface": "#eaf1ff",
+                      "surface-container": "#e5eeff",
+                      "inverse-primary": "#b4c5ff",
+                      "error": "#ba1a1a",
+                      "on-error": "#ffffff",
+                      "outline": "#737686",
+                      "surface-container-low": "#eff4ff",
+                      "surface": "#f8f9ff",
+                      "surface-dim": "#cbdbf5",
+                      "secondary-container": "#dae2fd",
+                      "on-tertiary-container": "#c1ffc5",
+                      "tertiary-fixed-dim": "#4ae176",
+                      "outline-variant": "#c3c6d7",
+                      "tertiary-container": "#007e37",
+                      "secondary-fixed-dim": "#bec6e0",
+                      "primary-fixed-dim": "#b4c5ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "sm": "8px",
+                      "xl": "32px",
+                      "margin-tablet": "24px",
+                      "xs": "4px",
+                      "gutter": "16px",
+                      "lg": "24px",
+                      "margin-mobile": "16px",
+                      "md": "16px",
+                      "base": "4px"
+              },
+              "fontFamily": {
+                      "title-md": ["Inter"],
+                      "title-lg": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "label-lg": ["Inter"],
+                      "body-md": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "body-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "title-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                      "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "500"}],
+                      "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "display-lg": ["57px", {"lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Toggle Switch Custom Styling */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #004ac6; /* primary */
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #004ac6; /* primary */
+        }
+        .toggle-checkbox:checked + .toggle-label:after {
+            transform: translateX(100%);
+            border-color: white;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased min-h-screen pb-safe pb-24 md:pb-0">
+<!-- TopAppBar (Based on JSON, intent is Task-Focused/Settings sub-page, Navigation shell suppressed on intent, but instructions require TopAppBar with specific headline) -->
+<header class="fixed top-0 w-full z-50 bg-surface dark:bg-surface shadow-sm">
+<div class="flex justify-between items-center px-margin-mobile h-16 w-full">
+<div class="flex items-center gap-4">
+<button aria-label="Go back" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-variant/50 transition-colors active:opacity-80 text-on-surface-variant">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="font-title-lg text-title-lg text-primary dark:text-primary-fixed">Integrations &amp; Backup</h1>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-[88px] px-margin-mobile md:px-margin-tablet max-w-3xl mx-auto flex flex-col gap-lg">
+<!-- Google Account Section -->
+<section class="bg-surface-container-lowest rounded-xl shadow-sm border border-surface-container-low overflow-hidden">
+<div class="p-4 border-b border-surface-container-low bg-surface-container/30">
+<h2 class="font-title-md text-title-md text-on-background flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">account_circle</span>
+                    Google Account
+                </h2>
+</div>
+<div class="p-md flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-variant flex-shrink-0 border border-outline-variant/30 relative">
+<img class="w-full h-full object-cover" data-alt="A highly detailed close up professional corporate headshot of a business person on a clean neutral background. Soft lighting, modern enterprise aesthetic. Bright, light mode compliant." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiNqrvOpHH8N9l1XB_DCnqRNvMo2kEh8UGJSkjzAI_79laNItm4Rxe2qp8-k9j4ooBycq8XPhIhycA4TtthMpUgsFcgXz_UkYJILWLUOZb-1kz-ajmrqOKkTBPZ7G0Zd7HfCV5n0IcurFbdRwkkU7b3cgRu0N35uApsOUBMLyYuytpx4sk0jkvOPv9DatKxfrfTt7_gw_0-hA5_IQ1CvQhI2tRcRu91bJC6VDTh5uceASZFbwwPWuY6g"/>
+<!-- Tiny Google badge overlay would go here ideally -->
+<div class="absolute bottom-0 right-0 w-4 h-4 bg-white rounded-full flex items-center justify-center shadow-sm">
+<img alt="Google G" class="w-3 h-3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnDbzyCK31hS9-AA3ydIB6d056ZhMaERIkbGLLh8QsjNIRBQitTlKkhcZ3T0qhb3_4IDm6_E-HspkhB5DNtlwQWyXmB7SdgeS_SA5h05QgVGLVbgbWvuHfHd2w1Lc7gZFqKjNt0pnxfC6ph4Q--UHPW6JTEt8oiOLeYF_-v7GqOqVU6GdW60f79IJaa2I8H4vRmqCYx5tmVSkaLqxNBoayVtKu-_-5whZBdzS-f8WWfERwtodsgTXK1w"/>
+</div>
+</div>
+<div>
+<div class="font-title-md text-title-md text-on-background">alex.s@leadscan.ai</div>
+<div class="flex items-center gap-1 mt-1">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="font-label-sm text-label-sm text-tertiary uppercase tracking-wider">Connected</span>
+</div>
+</div>
+</div>
+<button class="px-4 py-2 rounded-lg border border-outline-variant text-on-surface font-label-lg text-label-lg hover:bg-surface-variant/30 transition-colors">
+                    Disconnect
+                </button>
+</div>
+</section>
+<!-- Integration Toggles -->
+<section class="bg-surface-container-lowest rounded-xl shadow-sm border border-surface-container-low overflow-hidden">
+<div class="p-4 border-b border-surface-container-low bg-surface-container/30">
+<h2 class="font-title-md text-title-md text-on-background flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">sync</span>
+                    Services
+                </h2>
+</div>
+<div class="divide-y divide-surface-container-low">
+<!-- Sheets Sync -->
+<div class="p-md flex justify-between items-center hover:bg-surface-bright/50 transition-colors">
+<div class="flex gap-4 items-center">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">table_view</span>
+</div>
+<div>
+<div class="font-title-md text-title-md text-on-background">Google Sheets Sync</div>
+<div class="font-body-md text-body-md text-secondary mt-0.5">Automatically sync new scanned leads</div>
+</div>
+</div>
+<div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 top-0 left-0 transition-transform duration-200 ease-in-out" id="toggle1" name="toggle" style="transform: translateX(100%); border-color: #004ac6;" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-primary cursor-pointer transition-colors duration-200 ease-in-out" for="toggle1"></label>
+</div>
+</div>
+<!-- Drive Beta -->
+<div class="p-md flex justify-between items-center opacity-60">
+<div class="flex gap-4 items-center">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">add_to_drive</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-title-md text-title-md text-on-background">Google Drive</span>
+<span class="px-2 py-0.5 bg-secondary-container text-on-secondary-container font-label-sm text-label-sm rounded-full">Beta</span>
+</div>
+<div class="font-body-md text-body-md text-secondary mt-0.5">Upload business card images directly</div>
+</div>
+</div>
+<div class="relative inline-block w-12 mr-2 align-middle select-none">
+<input class="absolute block w-6 h-6 rounded-full bg-surface-variant border-4 appearance-none z-10 top-0 left-0 border-outline-variant" disabled="" id="toggle2" name="toggle2" type="checkbox"/>
+<label class="block overflow-hidden h-6 rounded-full bg-surface-container-highest cursor-not-allowed" for="toggle2"></label>
+</div>
+</div>
+</div>
+</section>
+<!-- Backup & Sync Section -->
+<section class="bg-surface-container-lowest rounded-xl shadow-sm border border-surface-container-low overflow-hidden">
+<div class="p-4 border-b border-surface-container-low bg-surface-container/30">
+<h2 class="font-title-md text-title-md text-on-background flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">cloud_upload</span>
+                    Backup &amp; Sync
+                </h2>
+</div>
+<div class="p-md space-y-lg">
+<!-- Auto Backup Toggle -->
+<div class="flex justify-between items-center">
+<div>
+<div class="font-title-md text-title-md text-on-background">Auto Backup</div>
+<div class="font-body-md text-body-md text-secondary mt-0.5">Daily backup to connected Google Drive</div>
+</div>
+<div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 top-0 left-0 transition-transform duration-200 ease-in-out" id="toggle3" name="toggle3" style="transform: translateX(100%); border-color: #004ac6;" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-primary cursor-pointer transition-colors duration-200 ease-in-out" for="toggle3"></label>
+</div>
+</div>
+<!-- Manual Backup & Status -->
+<div class="bg-surface-bright rounded-lg p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border border-surface-container">
+<div>
+<div class="font-title-md text-title-md text-on-background">Manual Backup</div>
+<div class="flex items-center gap-1 mt-1 text-secondary">
+<span class="material-symbols-outlined text-[16px]">history</span>
+<span class="font-body-md text-body-md">Last backup: Oct 24, 2023 at 08:30 AM</span>
+</div>
+</div>
+<button class="bg-primary text-on-primary font-title-md text-title-md px-6 py-2 rounded-lg hover:bg-primary/90 transition-colors shadow-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">backup</span>
+                        Backup Now
+                    </button>
+</div>
+</div>
+</section>
+<!-- Export Data -->
+<section class="pt-4 pb-8">
+<button class="w-full bg-surface-container-lowest border border-outline-variant text-on-background font-title-md text-title-md px-4 py-3 rounded-lg hover:bg-surface-variant/30 transition-colors shadow-sm flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">download</span>
+                Export All Data (CSV/JSON)
+            </button>
+<p class="text-center font-body-md text-body-md text-secondary mt-3">
+                Download a local copy of all your scanned leads and metadata.
+            </p>
+</section>
+</main>
+<!-- BottomNavBar (Suppressed due to sub-page/settings intent based on logic rules, keeping focused on content) -->
+</body></html>

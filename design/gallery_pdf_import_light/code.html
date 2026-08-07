@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Gallery &amp; Import - LeadScan AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary": "#004ac6",
+                      "surface-container-high": "#dce9ff",
+                      "on-tertiary": "#ffffff",
+                      "surface-dim": "#cbdbf5",
+                      "on-surface": "#0b1c30",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "on-background": "#0b1c30",
+                      "primary-fixed-dim": "#b4c5ff",
+                      "surface-container-highest": "#d3e4fe",
+                      "surface-container": "#e5eeff",
+                      "inverse-surface": "#213145",
+                      "secondary": "#565e74",
+                      "surface-container-low": "#eff4ff",
+                      "primary-container": "#2563eb",
+                      "outline-variant": "#c3c6d7",
+                      "tertiary-container": "#007e37",
+                      "tertiary": "#006229",
+                      "secondary-fixed": "#dae2fd",
+                      "surface-container-lowest": "#ffffff",
+                      "error": "#ba1a1a",
+                      "on-surface-variant": "#434655",
+                      "on-error": "#ffffff",
+                      "primary-fixed": "#dbe1ff",
+                      "on-primary-fixed": "#00174b",
+                      "tertiary-fixed": "#6bff8f",
+                      "on-error-container": "#93000a",
+                      "inverse-primary": "#b4c5ff",
+                      "on-secondary-container": "#5c647a",
+                      "secondary-fixed-dim": "#bec6e0",
+                      "secondary-container": "#dae2fd",
+                      "on-secondary": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "on-secondary-fixed": "#131b2e",
+                      "on-primary": "#ffffff",
+                      "surface-bright": "#f8f9ff",
+                      "on-tertiary-container": "#c1ffc5",
+                      "surface": "#f8f9ff",
+                      "on-tertiary-fixed-variant": "#005321",
+                      "on-tertiary-fixed": "#002109",
+                      "tertiary-fixed-dim": "#4ae176",
+                      "surface-variant": "#d3e4fe",
+                      "outline": "#737686",
+                      "inverse-on-surface": "#eaf1ff",
+                      "on-secondary-fixed-variant": "#3f465c",
+                      "background": "#f8f9ff",
+                      "on-primary-container": "#eeefff",
+                      "surface-tint": "#0053db"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "sm": "8px",
+                      "margin-tablet": "24px",
+                      "gutter": "16px",
+                      "xs": "4px",
+                      "xl": "32px",
+                      "lg": "24px",
+                      "md": "16px",
+                      "base": "4px",
+                      "margin-mobile": "16px"
+              },
+              "fontFamily": {
+                      "title-lg": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "label-lg": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Inter"
+                      ],
+                      "title-md": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "title-lg": [
+                              "22px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-sm": [
+                              "11px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-lg": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "28px",
+                              {
+                                      "lineHeight": "36px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "57px",
+                              {
+                                      "lineHeight": "64px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "title-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        body {
+            -webkit-tap-highlight-color: transparent;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background h-full flex flex-col font-body-md overflow-hidden">
+<!-- TopAppBar (Transactional - Hidden for subpage flow with Back, but request asks for Gallery screen in main flow... Wait, is it a destination? The prompt doesn't specify it's a subpage. I will render a custom header with back button as it feels like a picker flow) -->
+<header class="bg-surface w-full top-0 sticky bg-surface-container flat no shadows flex justify-between items-center px-margin-mobile py-2 w-full max-w-screen-xl mx-auto z-40">
+<div class="flex items-center gap-4 w-full">
+<button class="p-2 rounded-full hover:bg-surface-variant/50 transition-colors active:scale-95 text-on-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="font-title-lg text-title-lg text-on-surface flex-1">Import Files</h1>
+<button class="p-2 rounded-full hover:bg-surface-variant/50 transition-colors active:scale-95 text-on-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</header>
+<!-- Search Bar -->
+<div class="px-margin-mobile pt-md pb-sm bg-surface z-30">
+<div class="relative flex items-center w-full">
+<div class="absolute left-3 flex items-center pointer-events-none text-on-surface-variant">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="w-full pl-10 pr-4 py-3 bg-[#F8FAFC] border border-outline-variant rounded-lg text-body-md text-on-surface placeholder-on-surface-variant focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all" placeholder="Search filenames..." type="text"/>
+</div>
+</div>
+<!-- Tabs -->
+<div class="px-margin-mobile border-b border-surface-container bg-surface z-30 flex gap-6 overflow-x-auto hide-scrollbar">
+<button class="pb-3 border-b-2 border-primary text-primary font-title-md text-title-md whitespace-nowrap px-1">All Photos</button>
+<button class="pb-3 border-b-2 border-transparent text-on-surface-variant font-title-md text-title-md whitespace-nowrap px-1 hover:text-on-surface transition-colors">Recent</button>
+<button class="pb-3 border-b-2 border-transparent text-on-surface-variant font-title-md text-title-md whitespace-nowrap px-1 hover:text-on-surface transition-colors">PDF Documents</button>
+</div>
+<!-- Main Gallery Canvas -->
+<main class="flex-1 overflow-y-auto px-margin-mobile py-md relative pb-24">
+<!-- Bento Grid for Gallery -->
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-xs md:gap-sm">
+<!-- Item 1 (Selected) -->
+<div class="relative aspect-square rounded-lg overflow-hidden group cursor-pointer border-2 border-primary">
+<img class="w-full h-full object-cover" data-alt="A close-up shot of a highly detailed, professional business card resting on a clean, modern desk surface. The card has a minimalist design with crisp typography. Soft, natural light from a nearby window creates a bright, light-mode aesthetic, casting subtle shadows that highlight the card's premium paper texture. Corporate and modern vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJwqJhGAjI0cXXla-GKRZhIZeKND7wchu1TJVBOaJfSAZOAu7Z4AAq9w7SWSiW0_rZ9AyB0yVnIGk1a0xNCs9Jms2naCowtEsK6Sxh4Inh3UVptnsw9DxQ3ByugpTjNG_Q2Oy4gc32oiP0pDubpjyF-SYlZ9CZc180l0zAXXwW1syrZin8fBCfPYHQuL0QQThFwHHL796FOpQ7hArCA19GNQtheP0GOs4soOAQTOHqCx-8U5xXjl6rMQ"/>
+<div class="absolute inset-0 bg-primary/20 transition-opacity"></div>
+<div class="absolute top-2 left-2 w-6 h-6 rounded-full bg-primary flex items-center justify-center text-on-primary shadow-sm">
+<span class="material-symbols-outlined" style="font-size: 16px; font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<div class="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/60 to-transparent">
+<p class="text-white text-[10px] font-medium truncate">business_card_01.jpg</p>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="relative aspect-square rounded-lg overflow-hidden group cursor-pointer border-2 border-transparent hover:border-outline-variant transition-colors bg-surface-container-lowest shadow-[0_1px_4px_0_rgba(0,0,0,0.05)]">
+<img class="w-full h-full object-cover" data-alt="A photograph of a tradeshow badge lanyard placed on a sleek white table. The badge contains a QR code and bold corporate branding. The lighting is studio-quality, bright and clean, emphasizing a modern enterprise aesthetic. The background is slightly blurred to keep focus on the badge details." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5eqcJZia6oJlfkpYOuLAri2A77uEmo_db9e6HwcnvLR9xjRIU0WG9y7o7jqiLpbTwClj1MImnGntPvuofaJAxirjQ0vf6iNZqOwGwK8sfvEIOMdAHUwUDIY_jTuirXV7A9MUc3ZS_dYssD5WYDviFRHwU8ib7PsIMQM86CuUK4UKZZGOwt6wgLIj5p3KDdIU1rN3JYFdkES1uqonTSRd9seuemAYBtq2QApg4NefbtAhFdzLgrpo1cw"/>
+<div class="absolute top-2 left-2 w-6 h-6 rounded-full border-2 border-white/80 bg-black/20 flex items-center justify-center transition-colors group-hover:border-white"></div>
+<div class="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/60 to-transparent">
+<p class="text-white text-[10px] font-medium truncate">expo_badge_smith.png</p>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="relative aspect-square rounded-lg overflow-hidden group cursor-pointer border-2 border-transparent hover:border-outline-variant transition-colors bg-surface-container-lowest shadow-[0_1px_4px_0_rgba(0,0,0,0.05)]">
+<img class="w-full h-full object-cover" data-alt="A neatly handwritten sign-in sheet on a clipboard, sitting on a polished concrete counter. The lighting is bright and airy, suggesting a modern corporate reception area. The focus is sharp on the top few rows of the sheet. Light mode, professional, high contrast." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRkSstTG-yMDsHaXPdYrilHsfty0YmFF_yOa1DREXUyAnsMF1SipopiSFT9hfAaXGGBuaOX4u4hNpneAypekkuuBvnc272SUf4TyJ4y_JoRuJAqEJLbNhvtKv0Pg2Pu792OsbsWOHMrSeArIEQe3FQ_pxP_3y71gOfsSbuv0lPF1wrqnIvLFMfrWH4HFz5YUWoNdyWy2vSLdEzApF-79zWQvxakvkNZZNpAfml9kPujRLb-J73swR11w"/>
+<div class="absolute top-2 left-2 w-6 h-6 rounded-full border-2 border-white/80 bg-black/20 flex items-center justify-center transition-colors group-hover:border-white"></div>
+<div class="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/60 to-transparent">
+<p class="text-white text-[10px] font-medium truncate">signin_sheet_tuesday.jpg</p>
+</div>
+</div>
+<!-- Item 4 (PDF Representation) -->
+<div class="relative aspect-square rounded-lg overflow-hidden group cursor-pointer border-2 border-transparent hover:border-outline-variant transition-colors bg-surface-container flex flex-col items-center justify-center">
+<span class="material-symbols-outlined text-4xl text-primary mb-2">picture_as_pdf</span>
+<p class="text-on-surface font-label-sm text-label-sm truncate w-full px-4 text-center">Q3_Lead_Report_Final.pdf</p>
+<div class="absolute top-2 left-2 w-6 h-6 rounded-full border-2 border-outline-variant bg-surface/50 flex items-center justify-center transition-colors group-hover:border-outline"></div>
+</div>
+<!-- Item 5 -->
+<div class="relative aspect-square rounded-lg overflow-hidden group cursor-pointer border-2 border-transparent hover:border-outline-variant transition-colors bg-surface-container-lowest shadow-[0_1px_4px_0_rgba(0,0,0,0.05)]">
+<img class="w-full h-full object-cover" data-alt="A stack of colorful, modern business cards fanned out on a light wood desk. The top card features a geometric logo. The scene is brightly lit with a clean, optimistic enterprise vibe. High-resolution photography focusing on paper textures and sharp edges." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGSTxNhfcc5RCKEoHUVWsNzqGTCeSVHoxZydJZj878hbxNdeUeVXwOPrp0J-9iDWWKj6FwM8hOQw8Ddi7fqNfs7nDbRxcWndLd_0L-fHC016LI2pKG5Qb2farQ3Tyg4peiRMwSQb6TvNVOFPf_JlQEvE93ssZFLUdDos7sZSQLDGGg-Bl2Q1Px0OzRnQtgby2iCIwvNxDHkZj7UlRPRHOBacatF1-M-f_8RYJ7DQjx5yNXGCeNtjMVSg"/>
+<div class="absolute top-2 left-2 w-6 h-6 rounded-full border-2 border-white/80 bg-black/20 flex items-center justify-center transition-colors group-hover:border-white"></div>
+<div class="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/60 to-transparent">
+<p class="text-white text-[10px] font-medium truncate">batch_scan_042.jpg</p>
+</div>
+</div>
+<!-- Item 6 (Selected) -->
+<div class="relative aspect-square rounded-lg overflow-hidden group cursor-pointer border-2 border-primary">
+<div class="absolute inset-0 flex flex-col items-center justify-center bg-surface-variant">
+<span class="material-symbols-outlined text-4xl text-primary mb-2">picture_as_pdf</span>
+<p class="text-on-surface font-label-sm text-label-sm truncate w-full px-4 text-center">Conference_Contacts.pdf</p>
+</div>
+<div class="absolute inset-0 bg-primary/10 transition-opacity"></div>
+<div class="absolute top-2 left-2 w-6 h-6 rounded-full bg-primary flex items-center justify-center text-on-primary shadow-sm">
+<span class="material-symbols-outlined" style="font-size: 16px; font-variation-settings: 'FILL' 1;">check</span>
+</div>
+</div>
+<!-- Item 7 -->
+<div class="relative aspect-square rounded-lg overflow-hidden group cursor-pointer border-2 border-transparent hover:border-outline-variant transition-colors bg-surface-container-lowest shadow-[0_1px_4px_0_rgba(0,0,0,0.05)]">
+<img class="w-full h-full object-cover" data-alt="A modern iPad displaying a digital business card, resting on a clean white desk next to a stylus. The screen is bright, showing a sleek UI. The overall lighting is soft and even, creating a minimalist, professional technology setting. Light mode aesthetics." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBB7RVczRP0LBeCY4CSC7vDYGZwHkkPfdbHW78UcASXNFGZDqP_e8N5268hPPlaiKDUKtE4ADE2eDxWMTIcuvQuqLx7h4m5sI5iQpw4wnPmW7mMrbE-RI6ILm2RcW06LlQOPK0GTjZbvT_5OWV9egROCzA0W-rVWPHQgWCPsQ6ilercQEnc6_YHIM6gOEA08AwVBzKJfGtV_wqFeVDCCPVFpDeQjrNUjquQEZNRGRQwqdWOaiObC1fqMA"/>
+<div class="absolute top-2 left-2 w-6 h-6 rounded-full border-2 border-white/80 bg-black/20 flex items-center justify-center transition-colors group-hover:border-white"></div>
+<div class="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/60 to-transparent">
+<p class="text-white text-[10px] font-medium truncate">digital_card_scan.png</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Action Bar (Contextual to the flow, not the global nav) -->
+<div class="fixed bottom-0 w-full bg-surface/90 backdrop-blur-md border-t border-surface-container px-margin-mobile py-4 z-50 shadow-[0_-4px_12px_rgba(0,0,0,0.05)] flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-on-surface font-title-md text-title-md">2 items selected</span>
+<span class="text-on-surface-variant font-body-md text-body-md text-sm">Ready to scan and extract</span>
+</div>
+<button class="bg-primary text-on-primary font-title-md text-title-md px-6 py-3 rounded-lg shadow-sm hover:bg-on-primary-fixed-variant transition-colors flex items-center gap-2 active:scale-95">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">document_scanner</span>
+            Import (2)
+        </button>
+</div>
+</body></html>

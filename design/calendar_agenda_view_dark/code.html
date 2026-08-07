@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LeadScan AI - Schedule</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-high": "#dce9ff",
+                      "on-error": "#ffffff",
+                      "secondary": "#565e74",
+                      "outline-variant": "#c3c6d7",
+                      "primary": "#004ac6",
+                      "tertiary-container": "#007e37",
+                      "tertiary-fixed-dim": "#4ae176",
+                      "on-secondary": "#ffffff",
+                      "on-tertiary-fixed-variant": "#005321",
+                      "on-secondary-fixed": "#131b2e",
+                      "secondary-fixed-dim": "#bec6e0",
+                      "on-surface-variant": "#434655",
+                      "on-primary-container": "#eeefff",
+                      "inverse-primary": "#b4c5ff",
+                      "secondary-container": "#dae2fd",
+                      "on-tertiary-container": "#c1ffc5",
+                      "on-error-container": "#93000a",
+                      "surface-tint": "#0053db",
+                      "on-tertiary-fixed": "#002109",
+                      "on-secondary-container": "#5c647a",
+                      "surface-container-low": "#eff4ff",
+                      "inverse-on-surface": "#eaf1ff",
+                      "background": "#f8f9ff",
+                      "on-background": "#0b1c30",
+                      "error-container": "#ffdad6",
+                      "inverse-surface": "#213145",
+                      "tertiary-fixed": "#6bff8f",
+                      "on-secondary-fixed-variant": "#3f465c",
+                      "surface-dim": "#cbdbf5",
+                      "surface-container-highest": "#d3e4fe",
+                      "secondary-fixed": "#dae2fd",
+                      "primary-fixed-dim": "#b4c5ff",
+                      "surface-variant": "#d3e4fe",
+                      "surface-bright": "#f8f9ff",
+                      "surface": "#f8f9ff",
+                      "outline": "#737686",
+                      "on-primary": "#ffffff",
+                      "on-surface": "#0b1c30",
+                      "error": "#ba1a1a",
+                      "on-primary-fixed": "#00174b",
+                      "surface-container": "#e5eeff",
+                      "on-tertiary": "#ffffff",
+                      "primary-fixed": "#dbe1ff",
+                      "primary-container": "#2563eb",
+                      "surface-container-lowest": "#ffffff",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "tertiary": "#006229"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xl": "32px",
+                      "sm": "8px",
+                      "margin-tablet": "24px",
+                      "gutter": "16px",
+                      "md": "16px",
+                      "base": "4px",
+                      "xs": "4px",
+                      "lg": "24px",
+                      "margin-mobile": "16px"
+              },
+              "fontFamily": {
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "title-md": [
+                              "Inter"
+                      ],
+                      "title-lg": [
+                              "Inter"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "label-lg": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "28px",
+                              {
+                                      "lineHeight": "36px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "57px",
+                              {
+                                      "lineHeight": "64px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "title-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "title-lg": [
+                              "22px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "label-sm": [
+                              "11px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "label-lg": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "500"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #121212; /* Fallback dark mode bg */
+        }
+        
+        /* Dark mode overrides since Tailwind config provided is mostly light mode colors */
+        .dark .bg-surface-dim { background-color: #1E1E1E; }
+        .dark .bg-background { background-color: #121212; }
+        .dark .text-on-surface { color: #E3E3E3; }
+        .dark .text-on-surface-variant { color: #C4C7C5; }
+        .dark .border-outline-variant { border-color: #444746; }
+        .dark .bg-surface-container-high { background-color: #2B2B2B; }
+        .dark .text-primary-fixed-dim { color: #A8C7FA; }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col pb-24 dark">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-40 bg-surface-dim border-b border-outline-variant/20 shadow-sm transition-colors duration-200">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-tablet py-sm w-full h-16">
+<div class="flex items-center gap-3">
+<button class="w-8 h-8 rounded-full overflow-hidden flex-shrink-0 border border-outline-variant/30 active:scale-95 transition-transform">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A small, circular avatar portrait of a professional individual looking confident. The lighting is soft and corporate, matching a high-end enterprise SaaS dashboard aesthetic. Deep blacks and vibrant blue accents subtly present in the background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmeMfEBZ5aOPYW0-BjCurhTufgB2kJf2NLraLMJyl6GUKoh1J0YPZhjjqGJIWL10RGdC4VN2bmsucrdFSsOAQk7NgCJSH70gQDsiUheXllHEtDPyL4NQhLU_2n1pvlKAu_e_cJVrqK-1F9yfpb8oHvts2sHoB-wcruOHHHZCCvgvBcjumUkxuyJcLIZy1gCk61W4ZtDy2hmpJTm-NQvl53gzqetcvxJG0x37vCe_h_W_pRaRf5VLBI0g"/>
+</button>
+<h1 class="font-title-lg text-title-lg text-primary-fixed-dim font-bold tracking-tight">Schedule</h1>
+</div>
+<button aria-label="Notifications" class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors active:scale-95">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</div>
+</header>
+<main class="flex-1 w-full max-w-3xl mx-auto px-margin-mobile md:px-margin-tablet py-md flex flex-col gap-lg">
+<!-- Calendar Horizontal Picker -->
+<section class="flex flex-col gap-sm">
+<div class="flex justify-between items-center">
+<h2 class="font-title-md text-title-md text-on-surface">November 2023</h2>
+<div class="flex gap-2">
+<button class="p-1 text-on-surface-variant hover:text-on-surface rounded-full"><span class="material-symbols-outlined">chevron_left</span></button>
+<button class="p-1 text-on-surface-variant hover:text-on-surface rounded-full"><span class="material-symbols-outlined">chevron_right</span></button>
+</div>
+</div>
+<div class="flex justify-between items-center bg-surface-dim p-sm rounded-xl border border-outline-variant/10">
+<!-- Days of week -->
+<div class="flex flex-col items-center justify-center p-2 rounded-lg text-on-surface-variant w-12 h-16">
+<span class="font-label-sm text-label-sm opacity-70 mb-1">SUN</span>
+<span class="font-title-md text-title-md">10</span>
+</div>
+<div class="flex flex-col items-center justify-center p-2 rounded-lg bg-primary text-on-primary w-12 h-16 shadow-[0_4px_12px_rgba(0,74,198,0.3)] border border-primary-fixed-dim/30 relative">
+<span class="font-label-sm text-label-sm opacity-90 mb-1">MON</span>
+<span class="font-title-md text-title-md font-bold">11</span>
+<div class="absolute -bottom-1 w-1 h-1 rounded-full bg-white"></div>
+</div>
+<div class="flex flex-col items-center justify-center p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors w-12 h-16">
+<span class="font-label-sm text-label-sm opacity-70 mb-1">TUE</span>
+<span class="font-title-md text-title-md">12</span>
+</div>
+<div class="flex flex-col items-center justify-center p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors w-12 h-16">
+<span class="font-label-sm text-label-sm opacity-70 mb-1">WED</span>
+<span class="font-title-md text-title-md">13</span>
+</div>
+<div class="flex flex-col items-center justify-center p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors w-12 h-16">
+<span class="font-label-sm text-label-sm opacity-70 mb-1">THU</span>
+<span class="font-title-md text-title-md">14</span>
+</div>
+<div class="flex flex-col items-center justify-center p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors w-12 h-16">
+<span class="font-label-sm text-label-sm opacity-70 mb-1">FRI</span>
+<span class="font-title-md text-title-md">15</span>
+</div>
+<div class="flex flex-col items-center justify-center p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors w-12 h-16">
+<span class="font-label-sm text-label-sm opacity-70 mb-1">SAT</span>
+<span class="font-title-md text-title-md">16</span>
+</div>
+</div>
+</section>
+<!-- Agenda View -->
+<section class="flex flex-col gap-md">
+<h3 class="font-title-md text-title-md text-primary-fixed-dim border-b border-outline-variant/20 pb-2">Monday, Nov 11</h3>
+<div class="flex flex-col gap-4 relative before:absolute before:left-[45px] before:top-4 before:bottom-4 before:w-px before:bg-outline-variant/20">
+<!-- Event 1: High Priority -->
+<div class="flex gap-4 group">
+<div class="w-20 flex-shrink-0 flex flex-col items-end pt-1">
+<span class="font-label-sm text-label-sm text-on-surface">10:00 AM</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant opacity-60">11:00 AM</span>
+</div>
+<div class="relative w-full">
+<div class="absolute -left-[22px] top-[6px] w-3 h-3 rounded-full bg-error border-2 border-background z-10 shadow-[0_0_8px_rgba(186,26,26,0.5)]"></div>
+<div class="bg-surface-container-high rounded-xl p-4 border border-outline-variant/10 shadow-sm hover:border-error/30 transition-colors w-full">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-title-md text-title-md text-on-surface font-semibold">Discovery Call</h4>
+<span class="bg-error/10 text-error px-2 py-0.5 rounded-full font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">priority_high</span> High
+                                </span>
+</div>
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">person</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Sarah Connor (Tech Innovations)</span>
+</div>
+<div class="flex gap-2 mt-2">
+<button class="flex-1 bg-surface-dim border border-outline-variant/30 text-on-surface rounded-lg py-1.5 font-label-lg text-label-lg hover:bg-surface-variant transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[16px]">videocam</span> Join
+                                </button>
+<button class="w-10 h-8 flex items-center justify-center bg-surface-dim border border-outline-variant/30 text-on-surface rounded-lg hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[16px]">more_horiz</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Event 2 -->
+<div class="flex gap-4 group mt-2">
+<div class="w-20 flex-shrink-0 flex flex-col items-end pt-1">
+<span class="font-label-sm text-label-sm text-on-surface">01:30 PM</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant opacity-60">02:00 PM</span>
+</div>
+<div class="relative w-full">
+<div class="absolute -left-[22px] top-[6px] w-3 h-3 rounded-full bg-tertiary-fixed-dim border-2 border-background z-10"></div>
+<div class="bg-surface-container-high rounded-xl p-4 border border-outline-variant/10 shadow-sm hover:border-tertiary-fixed-dim/30 transition-colors w-full">
+<h4 class="font-title-md text-title-md text-on-surface font-semibold mb-2">WhatsApp Sync</h4>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">group</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Acme Corp Team</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Event 3 -->
+<div class="flex gap-4 group mt-2">
+<div class="w-20 flex-shrink-0 flex flex-col items-end pt-1">
+<span class="font-label-sm text-label-sm text-on-surface">04:00 PM</span>
+</div>
+<div class="relative w-full">
+<div class="absolute -left-[22px] top-[6px] w-3 h-3 rounded-full bg-outline-variant border-2 border-background z-10"></div>
+<div class="bg-surface-dim rounded-xl p-3 border border-outline-variant/10 flex items-center justify-between w-full opacity-80 hover:opacity-100 transition-opacity">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">notifications_active</span>
+<div>
+<h4 class="font-body-md text-body-md text-on-surface font-medium">Follow-up Reminder</h4>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Michael Rodriguez</span>
+</div>
+</div>
+<button class="text-primary-fixed-dim font-label-lg text-label-lg px-3 py-1 hover:bg-primary/10 rounded-lg transition-colors">Done</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- FAB -->
+<button class="fixed right-6 bottom-24 w-14 h-14 rounded-2xl bg-primary text-on-primary flex items-center justify-center shadow-[0_4px_16px_rgba(0,74,198,0.4)] hover:shadow-[0_6px_20px_rgba(0,74,198,0.5)] active:scale-95 transition-all duration-200 z-50">
+<span class="material-symbols-outlined text-2xl" data-icon="add" style="font-variation-settings: 'FILL' 1;">add</span>
+</button>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-xs py-sm bg-surface-dim border-t border-outline-variant/20 shadow-sm md:hidden">
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest rounded-xl p-2 transition-all duration-200 w-16">
+<span class="material-symbols-outlined mb-1" data-icon="dashboard">dashboard</span>
+<span class="font-label-sm text-label-sm">Dashboard</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest rounded-xl p-2 transition-all duration-200 w-16">
+<span class="material-symbols-outlined mb-1" data-icon="qr_code_scanner">qr_code_scanner</span>
+<span class="font-label-sm text-label-sm">Scanner</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest rounded-xl p-2 transition-all duration-200 w-16">
+<span class="material-symbols-outlined mb-1" data-icon="group">group</span>
+<span class="font-label-sm text-label-sm">Leads</span>
+</button>
+<!-- Active Tab -->
+<button class="flex flex-col items-center justify-center bg-primary/20 text-primary-fixed-dim rounded-xl px-md py-xs transition-all duration-200 w-20 shadow-[inset_0_1px_4px_rgba(0,0,0,0.2)]">
+<span class="material-symbols-outlined mb-1" data-icon="account_tree" style="font-variation-settings: 'FILL' 1;">account_tree</span>
+<span class="font-label-sm text-label-sm font-semibold">Workflow</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest rounded-xl p-2 transition-all duration-200 w-16">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</button>
+</nav>
+</body></html>

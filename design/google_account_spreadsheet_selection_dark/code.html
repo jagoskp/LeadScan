@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Google Sheets Sync - LeadScan AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary-container": "#2563eb",
+                      "surface-container-high": "#dce9ff",
+                      "on-tertiary-fixed-variant": "#005321",
+                      "on-tertiary-fixed": "#002109",
+                      "inverse-on-surface": "#eaf1ff",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "surface-container": "#e5eeff",
+                      "on-background": "#0b1c30",
+                      "on-secondary-container": "#5c647a",
+                      "surface-variant": "#d3e4fe",
+                      "surface-dim": "#cbdbf5",
+                      "surface": "#f8f9ff",
+                      "on-primary": "#ffffff",
+                      "error": "#ba1a1a",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "secondary-fixed-dim": "#bec6e0",
+                      "outline": "#737686",
+                      "secondary-container": "#dae2fd",
+                      "primary-fixed": "#dbe1ff",
+                      "on-secondary-fixed": "#131b2e",
+                      "on-primary-container": "#eeefff",
+                      "on-secondary": "#ffffff",
+                      "on-primary-fixed": "#00174b",
+                      "on-error-container": "#93000a",
+                      "error-container": "#ffdad6",
+                      "on-surface": "#0b1c30",
+                      "surface-tint": "#0053db",
+                      "secondary": "#565e74",
+                      "on-surface-variant": "#434655",
+                      "surface-container-highest": "#d3e4fe",
+                      "tertiary-fixed": "#6bff8f",
+                      "tertiary-container": "#007e37",
+                      "primary": "#004ac6",
+                      "outline-variant": "#c3c6d7",
+                      "primary-fixed-dim": "#b4c5ff",
+                      "inverse-primary": "#b4c5ff",
+                      "secondary-fixed": "#dae2fd",
+                      "on-secondary-fixed-variant": "#3f465c",
+                      "tertiary-fixed-dim": "#4ae176",
+                      "inverse-surface": "#213145",
+                      "background": "#f8f9ff",
+                      "tertiary": "#006229",
+                      "on-tertiary-container": "#c1ffc5",
+                      "surface-container-low": "#eff4ff",
+                      "surface-bright": "#f8f9ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "base": "4px",
+                      "xl": "32px",
+                      "md": "16px",
+                      "margin-tablet": "24px",
+                      "margin-mobile": "16px",
+                      "lg": "24px",
+                      "gutter": "16px",
+                      "xs": "4px",
+                      "sm": "8px"
+              },
+              "fontFamily": {
+                      "title-md": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "label-lg": ["Inter"],
+                      "title-lg": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "body-md": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "body-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "title-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                      "display-lg": ["57px", {"lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                      "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "500"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+          font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col antialiased">
+<!-- TopAppBar -->
+<header class="docked full-width top-0 bg-background dark:bg-background bg-surface-container-low dark:bg-surface-container-low flex justify-between items-center px-margin-mobile w-full h-16 shadow-sm sticky z-50">
+<button aria-label="Go back" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-variant/50 transition-colors text-primary dark:text-inverse-primary">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="font-title-lg text-title-lg font-bold text-primary dark:text-inverse-primary">Google Sheets Sync</h1>
+<div class="w-10 h-10"></div> <!-- Placeholder for balance -->
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow px-margin-mobile py-lg pb-24 max-w-2xl mx-auto w-full space-y-xl">
+<!-- Google Account Section -->
+<section class="space-y-md">
+<h2 class="font-title-md text-title-md text-on-surface">Google Account</h2>
+<div class="space-y-sm">
+<!-- Connected Account (Active) -->
+<div class="flex items-center justify-between p-md bg-surface-container rounded-xl border border-primary/20 shadow-[0_4px_12px_rgba(37,99,235,0.05)] cursor-pointer hover:bg-surface-container-high transition-colors">
+<div class="flex items-center space-x-md">
+<img alt="Sarah Connor" class="w-12 h-12 rounded-full object-cover border-2 border-primary-container" data-alt="A highly detailed close-up portrait of a professional business person serving as a modern, clean avatar for an enterprise SaaS platform. Soft, flattering studio lighting with a neutral gray background. The aesthetic is corporate, polished, and contemporary, suitable for a dark mode user interface context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCy9VqXKYHdWuBek-7Im9J8Swda0qQ3kdHXrQY4t13oocTDJCTQU8YSq8LLNVQPzEZ-gBdYhm22eanBFbGbKSD7cg732I3RAEv9I0JIidO0CkJhBzhNXDK3lvXuaFXVsvszhu_UBJ9J1_IKqT6zzjDFXNrSYWxWf8TIIbkVCIpYMzPjnclGah4nbdwNLI1y-iYn0UdrYhkxAOm4EWOZIBBnEfxMbS0PMJaUpBtzaQ_B6_gBhSUk4xwUhg"/>
+<div>
+<p class="font-title-md text-title-md text-on-surface">Sarah Connor</p>
+<p class="font-body-md text-body-md text-on-surface-variant">sarah.c@leadscan.ai</p>
+</div>
+</div>
+<div class="flex items-center space-x-2">
+<span class="inline-flex items-center px-2 py-1 rounded-full bg-tertiary-container text-on-tertiary-container font-label-sm text-label-sm">
+                            Active
+                        </span>
+<span class="material-symbols-outlined text-primary-container filled">check_circle</span>
+</div>
+</div>
+<!-- Add Account Button -->
+<button class="w-full flex items-center justify-center py-3 px-md border-2 border-dashed border-outline-variant rounded-xl text-primary hover:bg-surface-variant/50 transition-colors font-label-lg text-label-lg">
+<span class="material-symbols-outlined mr-2">add</span>
+                    Add Google Account
+                </button>
+</div>
+</section>
+<!-- Spreadsheet Selection Section -->
+<section class="space-y-md">
+<h2 class="font-title-md text-title-md text-on-surface">Spreadsheet Selection</h2>
+<!-- Search Bar -->
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-on-surface-variant">search</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-3 border border-outline rounded-xl bg-surface-container-lowest text-on-surface placeholder-on-surface-variant focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent font-body-md text-body-md shadow-sm transition-all" placeholder="Search spreadsheets..." type="text"/>
+</div>
+<!-- Recent Spreadsheets List -->
+<div class="bg-surface-container-lowest rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.03)] border border-surface-container overflow-hidden">
+<div class="px-md py-sm bg-surface-container-low border-b border-surface-container">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Recent Spreadsheets</p>
+</div>
+<ul class="divide-y divide-surface-container">
+<!-- Sheet Item 1 -->
+<li class="p-md flex items-center justify-between hover:bg-surface-container-low transition-colors cursor-pointer group">
+<div class="flex items-center space-x-md">
+<div class="w-10 h-10 rounded-lg bg-surface-variant flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined filled">table</span>
+</div>
+<div>
+<p class="font-title-md text-title-md text-on-surface group-hover:text-primary transition-colors">Q3 Enterprise Leads</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Last synced: Today, 10:42 AM</p>
+</div>
+</div>
+<button aria-label="Favorite" class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined filled text-yellow-400">star</span>
+</button>
+</li>
+<!-- Sheet Item 2 -->
+<li class="p-md flex items-center justify-between hover:bg-surface-container-low transition-colors cursor-pointer group">
+<div class="flex items-center space-x-md">
+<div class="w-10 h-10 rounded-lg bg-surface-variant flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined filled">table</span>
+</div>
+<div>
+<p class="font-title-md text-title-md text-on-surface group-hover:text-primary transition-colors">APAC Region Prospects 2024</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Last synced: Yesterday, 4:15 PM</p>
+</div>
+</div>
+<button aria-label="Favorite" class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">star</span>
+</button>
+</li>
+<!-- Sheet Item 3 -->
+<li class="p-md flex items-center justify-between hover:bg-surface-container-low transition-colors cursor-pointer group">
+<div class="flex items-center space-x-md">
+<div class="w-10 h-10 rounded-lg bg-surface-variant flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined filled">table</span>
+</div>
+<div>
+<p class="font-title-md text-title-md text-on-surface group-hover:text-primary transition-colors">Cold Outreach Master List</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Last synced: Oct 12, 2023</p>
+</div>
+</div>
+<button aria-label="Favorite" class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">star</span>
+</button>
+</li>
+</ul>
+</div>
+</section>
+</main>
+<!-- Bottom Action Bar (Contextual override from JSON to match user request) -->
+<div class="fixed bottom-0 w-full z-50 bg-surface dark:bg-surface border-t border-surface-container p-md flex justify-between items-center shadow-[0_-4px_16px_rgba(0,0,0,0.05)] pb-safe">
+<button class="px-6 py-2.5 rounded-lg border border-outline text-on-surface font-title-md text-title-md hover:bg-surface-variant/50 transition-colors">
+            Back
+        </button>
+<button class="px-6 py-2.5 rounded-lg bg-primary-container text-on-primary-container font-title-md text-title-md hover:opacity-90 transition-opacity shadow-sm flex items-center">
+            Next
+            <span class="material-symbols-outlined ml-2 text-[20px]">arrow_forward</span>
+</button>
+</div>
+</body></html>

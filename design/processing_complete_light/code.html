@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Processing Complete - LeadScan AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                            "surface-tint": "#0053db",
+                            "primary-container": "#2563eb",
+                            "on-surface": "#0b1c30",
+                            "surface-container": "#e5eeff",
+                            "inverse-surface": "#213145",
+                            "error-container": "#ffdad6",
+                            "on-secondary-fixed-variant": "#3f465c",
+                            "tertiary-fixed-dim": "#4ae176",
+                            "surface-dim": "#cbdbf5",
+                            "surface-container-high": "#dce9ff",
+                            "tertiary": "#006229",
+                            "secondary": "#565e74",
+                            "on-error": "#ffffff",
+                            "on-surface-variant": "#434655",
+                            "primary-fixed-dim": "#b4c5ff",
+                            "surface": "#f8f9ff",
+                            "surface-bright": "#f8f9ff",
+                            "background": "#f8f9ff",
+                            "on-tertiary-fixed-variant": "#005321",
+                            "on-secondary-container": "#5c647a",
+                            "primary-fixed": "#dbe1ff",
+                            "on-background": "#0b1c30",
+                            "outline-variant": "#c3c6d7",
+                            "surface-container-lowest": "#ffffff",
+                            "inverse-on-surface": "#eaf1ff",
+                            "surface-container-low": "#eff4ff",
+                            "on-primary-fixed": "#00174b",
+                            "secondary-container": "#dae2fd",
+                            "outline": "#737686",
+                            "secondary-fixed": "#dae2fd",
+                            "tertiary-container": "#007e37",
+                            "on-tertiary-fixed": "#002109",
+                            "error": "#ba1a1a",
+                            "surface-container-highest": "#d3e4fe",
+                            "on-secondary": "#ffffff",
+                            "on-primary-fixed-variant": "#003ea8",
+                            "surface-variant": "#d3e4fe",
+                            "on-primary-container": "#eeefff",
+                            "tertiary-fixed": "#6bff8f",
+                            "on-secondary-fixed": "#131b2e",
+                            "secondary-fixed-dim": "#bec6e0",
+                            "primary": "#004ac6",
+                            "inverse-primary": "#b4c5ff",
+                            "on-tertiary-container": "#c1ffc5",
+                            "on-tertiary": "#ffffff",
+                            "on-primary": "#ffffff",
+                            "on-error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                            "DEFAULT": "0.25rem",
+                            "lg": "0.5rem",
+                            "xl": "0.75rem",
+                            "full": "9999px"
+                    },
+                    "spacing": {
+                            "margin-mobile": "16px",
+                            "gutter": "16px",
+                            "base": "4px",
+                            "xl": "32px",
+                            "md": "16px",
+                            "lg": "24px",
+                            "xs": "4px",
+                            "sm": "8px",
+                            "margin-tablet": "24px"
+                    },
+                    "fontFamily": {
+                            "title-lg": ["Inter"],
+                            "title-md": ["Inter"],
+                            "body-lg": ["Inter"],
+                            "label-lg": ["Inter"],
+                            "display-lg": ["Inter"],
+                            "headline-lg-mobile": ["Inter"],
+                            "body-md": ["Inter"],
+                            "label-sm": ["Inter"],
+                            "headline-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                            "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "500"}],
+                            "title-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                            "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                            "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                            "display-lg": ["57px", {"lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                            "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                            "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                            "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                            "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .animate-dash {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: dash 1.5s ease-in-out forwards;
+        }
+        @keyframes dash {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+        .animate-scale-in {
+            animation: scaleIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+        @keyframes scaleIn {
+            0% { transform: scale(0); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased min-h-screen flex flex-col pt-16 pb-24 md:pb-0">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex items-center px-md h-16 bg-surface dark:bg-surface-dim flat no shadows">
+<button class="p-2 -ml-2 rounded-full hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors active:scale-95 duration-100 text-on-surface-variant dark:text-outline">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</button>
+<div class="flex-1 ml-2">
+<h1 class="font-title-lg text-title-lg font-bold text-on-surface dark:text-on-surface-variant">Scan Results</h1>
+</div>
+<button class="p-2 -mr-2 rounded-full hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors active:scale-95 duration-100 text-on-surface-variant dark:text-outline">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">more_vert</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-margin-mobile md:px-margin-tablet py-lg max-w-3xl mx-auto w-full flex flex-col gap-lg">
+<!-- Success Animation Hero -->
+<div class="flex flex-col items-center justify-center py-xl">
+<div class="relative w-24 h-24 mb-6">
+<!-- SVG Checkmark Animation -->
+<svg class="w-full h-full text-tertiary-container animate-scale-in" fill="none" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<circle class="animate-dash" cx="50" cy="50" r="48" stroke="currentColor" stroke-linecap="round" stroke-width="4" style="animation-delay: 0.1s;"></circle>
+<path class="animate-dash" d="M28 52L43 67L72 38" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6" style="animation-delay: 0.4s;"></path>
+</svg>
+</div>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-2 text-center">Processing Complete</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant text-center max-w-sm">LeadScan AI has successfully extracted the data from your scan.</p>
+</div>
+<!-- Extraction Summary Card -->
+<div class="bg-surface-container-lowest rounded-xl p-md shadow-sm border border-outline-variant/30 flex flex-col gap-md">
+<h3 class="font-title-md text-title-md text-on-surface">Extraction Summary</h3>
+<div class="grid grid-cols-2 gap-md">
+<div class="bg-surface-container-low rounded-lg p-md flex flex-col items-center justify-center text-center">
+<span class="font-display-lg text-display-lg text-primary">8</span>
+<span class="font-label-lg text-label-lg text-on-surface-variant mt-1">Fields Extracted</span>
+</div>
+<div class="bg-surface-container-low rounded-lg p-md flex flex-col items-center justify-center text-center">
+<span class="font-display-lg text-display-lg text-tertiary-container">98%</span>
+<span class="font-label-lg text-label-lg text-on-surface-variant mt-1">Avg Confidence</span>
+</div>
+</div>
+<!-- Confidence Breakdown Chart -->
+<div class="mt-sm">
+<h4 class="font-label-lg text-label-lg text-on-surface-variant mb-4 uppercase tracking-wider text-xs">Confidence Breakdown</h4>
+<div class="flex flex-col gap-4">
+<!-- Name Row -->
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-sm">person</span>
+<div class="w-16 font-body-md text-body-md text-on-surface">Name</div>
+<div class="flex-1 h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-container rounded-full" style="width: 99%;"></div>
+</div>
+<div class="w-10 text-right font-label-lg text-label-lg text-tertiary-container">99%</div>
+</div>
+<!-- Email Row -->
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-sm">mail</span>
+<div class="w-16 font-body-md text-body-md text-on-surface">Email</div>
+<div class="flex-1 h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-container rounded-full" style="width: 98%;"></div>
+</div>
+<div class="w-10 text-right font-label-lg text-label-lg text-tertiary-container">98%</div>
+</div>
+<!-- Phone Row -->
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-sm">call</span>
+<div class="w-16 font-body-md text-body-md text-on-surface">Phone</div>
+<div class="flex-1 h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 90%;"></div>
+</div>
+<div class="w-10 text-right font-label-lg text-label-lg text-primary">90%</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Primary Action -->
+<div class="mt-auto pt-lg pb-md">
+<button class="w-full bg-primary hover:bg-primary/90 text-on-primary font-title-md text-title-md py-4 px-6 rounded-lg shadow-sm transition-transform active:scale-[0.98] flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">edit_document</span>
+                Ready for Review
+            </button>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe bg-surface-container dark:bg-inverse-surface rounded-t-xl shadow-sm">
+<button class="flex flex-col items-center justify-center text-on-secondary-container dark:text-on-secondary-fixed-variant px-4 py-1 hover:bg-surface-container-highest dark:hover:bg-surface-variant active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">filter_list</span>
+<span class="font-label-sm text-label-sm">Leads</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-xl px-4 py-1 hover:bg-surface-container-highest dark:hover:bg-surface-variant active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">center_focus_strong</span>
+<span class="font-label-sm text-label-sm">Scan</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-secondary-container dark:text-on-secondary-fixed-variant px-4 py-1 hover:bg-surface-container-highest dark:hover:bg-surface-variant active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">analytics</span>
+<span class="font-label-sm text-label-sm">Insights</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-secondary-container dark:text-on-secondary-fixed-variant px-4 py-1 hover:bg-surface-container-highest dark:hover:bg-surface-variant active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">settings</span>
+<span class="font-label-sm text-label-sm">Settings</span>
+</button>
+</nav>
+</body></html>

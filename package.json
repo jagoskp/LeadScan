@@ -1,0 +1,20 @@
+{
+  "name": "leadscan-ai-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "LeadScan AI Monorepo Foundation",
+  "scripts": {
+    "dev": "pnpm --filter \"./apps/**\" dev",
+    "build": "pnpm -r build",
+    "lint": "eslint . --max-warnings 0",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,json,md}\"",
+    "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,css,json,md}\"",
+    "type-check": "pnpm -r type-check"
+  },
+  "devDependencies": {
+    "eslint": "^9.0.0",
+    "prettier": "^3.0.0",
+    "typescript": "^5.0.0"
+  },
+  "packageManager": "pnpm@9.0.0"
+}

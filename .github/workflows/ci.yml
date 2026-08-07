@@ -1,0 +1,20 @@
+name: CI Master Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  lint:
+    uses: ./.github/workflows/lint.yml
+  test:
+    needs: lint
+    uses: ./.github/workflows/tests.yml
+  security:
+    needs: lint
+    uses: ./.github/workflows/security.yml
+  docker-build:
+    needs: [test, security]
+    uses: ./.github/workflows/docker.yml

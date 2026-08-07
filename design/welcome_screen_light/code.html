@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LeadScan AI - Welcome</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary": "#ffffff",
+                        "surface-variant": "#d3e4fe",
+                        "on-secondary-fixed-variant": "#3f465c",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "tertiary-fixed-dim": "#4ae176",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-container": "#2563eb",
+                        "secondary-fixed-dim": "#bec6e0",
+                        "outline-variant": "#c3c6d7",
+                        "surface-dim": "#cbdbf5",
+                        "primary": "#004ac6",
+                        "surface": "#f8f9ff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "tertiary": "#006229",
+                        "tertiary-fixed": "#6bff8f",
+                        "error": "#ba1a1a",
+                        "surface-tint": "#0053db",
+                        "on-surface": "#0b1c30",
+                        "background": "#f8f9ff",
+                        "surface-container-high": "#dce9ff",
+                        "on-secondary-fixed": "#131b2e",
+                        "on-tertiary-container": "#c1ffc5",
+                        "on-error": "#ffffff",
+                        "primary-fixed": "#dbe1ff",
+                        "on-secondary-container": "#5c647a",
+                        "surface-container-highest": "#d3e4fe",
+                        "inverse-surface": "#213145",
+                        "on-error-container": "#93000a",
+                        "error-container": "#ffdad6",
+                        "on-background": "#0b1c30",
+                        "secondary": "#565e74",
+                        "on-tertiary-fixed": "#002109",
+                        "inverse-primary": "#b4c5ff",
+                        "on-primary": "#ffffff",
+                        "on-primary-container": "#eeefff",
+                        "tertiary-container": "#007e37",
+                        "surface-container": "#e5eeff",
+                        "on-tertiary-fixed-variant": "#005321",
+                        "surface-bright": "#f8f9ff",
+                        "on-surface-variant": "#434655",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#dae2fd",
+                        "surface-container-low": "#eff4ff",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "secondary-container": "#dae2fd",
+                        "on-primary-fixed": "#00174b",
+                        "outline": "#737686"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "lg": "24px",
+                        "margin-tablet": "24px",
+                        "xs": "4px",
+                        "xl": "32px",
+                        "sm": "8px",
+                        "gutter": "16px",
+                        "base": "4px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "title-md": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "title-lg": ["22px", { "lineHeight": "28px", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["11px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "display-lg": ["57px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined[data-weight="fill"] {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col items-center justify-center font-body-md antialiased md:bg-surface-container-low">
+<main class="w-full max-w-md mx-auto h-screen flex flex-col justify-between px-margin-mobile py-lg md:h-auto md:min-h-[800px] md:bg-background md:shadow-sm md:rounded-[24px] md:my-xl md:px-margin-tablet md:py-xl">
+<!-- Header / Logo Area -->
+<header class="flex items-center justify-center pt-md pb-lg">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary text-3xl" data-weight="fill">document_scanner</span>
+<span class="font-headline-lg-mobile text-headline-lg-mobile text-primary tracking-tight">LeadScan AI</span>
+</div>
+</header>
+<!-- Hero Image Container -->
+<section class="flex-grow flex flex-col items-center justify-center mb-xl relative">
+<!-- Decorative background blur -->
+<div class="absolute inset-0 bg-primary/5 rounded-[32px] blur-3xl transform scale-110 -z-10"></div>
+<div class="w-full max-w-[280px] aspect-square rounded-[32px] overflow-hidden bg-surface shadow-sm border border-outline-variant/30 flex items-center justify-center relative group">
+<img alt="Modern premium enterprise 3D illustration for a lead management app." class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEfUe9PsamjhHWaCgsQgcj6KpDIahOluRGnnVlezH_meUjE8H8uex00O6LwrNEzO3Yy0DfQmQjpEBEUupTxTRj1mCiBu1lBxKEMXw5isp2NLXsj6WhdedlPWIwiNQ4tBHOZuof8kj0XJpOw6LJGURs7skWUr0QL7TUXBD9c2v-zWqVlWeoqokFcWdwfAvoniCYYNV4MZ1EIi9JLYmioFYPeCZlGkY-f8D3uQtc_5f7jzxXQyF8zGmrkQ"/>
+<!-- Subtle UI Overlay Elements to enhance the "App" feel -->
+<div class="absolute top-4 right-4 bg-surface-container-lowest/90 backdrop-blur-md px-3 py-1.5 rounded-full shadow-sm flex items-center gap-1.5 border border-outline-variant/20">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="font-label-sm text-label-sm text-on-surface">System Online</span>
+</div>
+</div>
+</section>
+<!-- Content & Actions Area -->
+<section class="flex flex-col gap-lg w-full">
+<div class="text-center flex flex-col gap-sm">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-background md:font-headline-lg md:text-headline-lg">Supercharge your<br/>Lead Extraction</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-[320px] mx-auto md:max-w-sm">The enterprise-grade AI scanner for business cards, documents, and digital leads.</p>
+</div>
+<div class="flex flex-col gap-md mt-sm w-full">
+<button class="w-full bg-primary text-on-primary font-title-md text-title-md py-4 rounded-lg flex items-center justify-center gap-2 shadow-sm transition-all duration-200 hover:bg-surface-tint hover:shadow-md active:scale-[0.98]">
+<span>Get Started</span>
+<span class="material-symbols-outlined text-xl">arrow_forward</span>
+</button>
+<button class="w-full bg-surface-container-lowest text-primary font-title-md text-title-md py-4 rounded-lg border border-outline-variant flex items-center justify-center gap-2 transition-all duration-200 hover:bg-surface-container-low hover:border-primary/50 active:scale-[0.98]">
+                    Log In
+                </button>
+</div>
+<div class="text-center mt-sm pb-md">
+<p class="font-body-md text-body-md text-on-surface-variant">
+                    New here? <a class="font-label-lg text-label-lg text-primary hover:underline underline-offset-4 decoration-primary/50 transition-colors" href="#">Create an account</a>
+</p>
+</div>
+</section>
+</main>
+</body></html>

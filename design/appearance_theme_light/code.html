@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LeadScan AI - Appearance &amp; Personalization</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-tint": "#0053db",
+                      "on-background": "#0b1c30",
+                      "secondary": "#565e74",
+                      "on-surface": "#0b1c30",
+                      "on-primary": "#ffffff",
+                      "tertiary": "#006229",
+                      "surface-container-high": "#dce9ff",
+                      "on-tertiary-fixed": "#002109",
+                      "surface-container-lowest": "#ffffff",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "on-tertiary-fixed-variant": "#005321",
+                      "on-secondary-container": "#5c647a",
+                      "surface-bright": "#f8f9ff",
+                      "secondary-fixed": "#dae2fd",
+                      "tertiary-fixed": "#6bff8f",
+                      "surface-variant": "#d3e4fe",
+                      "on-secondary": "#ffffff",
+                      "primary": "#004ac6",
+                      "error-container": "#ffdad6",
+                      "primary-container": "#2563eb",
+                      "surface-container-highest": "#d3e4fe",
+                      "on-secondary-fixed-variant": "#3f465c",
+                      "on-error-container": "#93000a",
+                      "inverse-surface": "#213145",
+                      "on-surface-variant": "#434655",
+                      "primary-fixed": "#dbe1ff",
+                      "on-secondary-fixed": "#131b2e",
+                      "on-primary-container": "#eeefff",
+                      "background": "#f8f9ff",
+                      "on-primary-fixed": "#00174b",
+                      "on-tertiary": "#ffffff",
+                      "inverse-on-surface": "#eaf1ff",
+                      "surface-container": "#e5eeff",
+                      "inverse-primary": "#b4c5ff",
+                      "error": "#ba1a1a",
+                      "on-error": "#ffffff",
+                      "outline": "#737686",
+                      "surface-container-low": "#eff4ff",
+                      "surface": "#f8f9ff",
+                      "surface-dim": "#cbdbf5",
+                      "secondary-container": "#dae2fd",
+                      "on-tertiary-container": "#c1ffc5",
+                      "tertiary-fixed-dim": "#4ae176",
+                      "outline-variant": "#c3c6d7",
+                      "tertiary-container": "#007e37",
+                      "secondary-fixed-dim": "#bec6e0",
+                      "primary-fixed-dim": "#b4c5ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "sm": "8px",
+                      "xl": "32px",
+                      "margin-tablet": "24px",
+                      "xs": "4px",
+                      "gutter": "16px",
+                      "lg": "24px",
+                      "margin-mobile": "16px",
+                      "md": "16px",
+                      "base": "4px"
+              },
+              "fontFamily": {
+                      "title-md": [
+                              "Inter"
+                      ],
+                      "title-lg": [
+                              "Inter"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "label-lg": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "title-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "title-lg": [
+                              "22px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "label-sm": [
+                              "11px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "label-lg": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "57px",
+                              {
+                                      "lineHeight": "64px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "28px",
+                              {
+                                      "lineHeight": "36px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        body {
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        /* Range slider styling */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: #004ac6; /* primary */
+            cursor: pointer;
+            margin-top: -8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+        
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: #d3e4fe; /* surface-variant */
+            border-radius: 2px;
+        }
+        
+        input[type=range]:focus {
+            outline: none;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen pb-safe">
+<!-- TopAppBar (Transactional - Nav hidden) -->
+<header class="fixed top-0 w-full z-50 bg-surface text-primary font-title-lg shadow-sm">
+<div class="flex items-center px-margin-mobile h-16 w-full">
+<button aria-label="Go back" class="mr-4 p-2 -ml-2 rounded-full hover:bg-surface-variant/50 transition-colors active:opacity-80">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-title-lg text-title-lg font-bold text-on-surface flex-grow">Appearance</h1>
+</div>
+</header>
+<main class="pt-20 px-margin-mobile max-w-3xl mx-auto space-y-lg md:px-margin-tablet pb-lg">
+<!-- Theme Selection -->
+<section class="space-y-md">
+<h2 class="font-title-md text-title-md text-on-surface-variant">Theme</h2>
+<div class="grid grid-cols-3 gap-sm">
+<!-- Light Theme Option -->
+<button class="flex flex-col items-center justify-center p-md bg-surface-container-high rounded-xl border-2 border-primary transition-all relative overflow-hidden group">
+<div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<span class="material-symbols-outlined text-primary mb-2" data-icon="light_mode">light_mode</span>
+<span class="font-label-lg text-label-lg text-primary">Light</span>
+<div class="absolute top-2 right-2 w-4 h-4 rounded-full bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[10px] text-on-primary" data-icon="check">check</span>
+</div>
+</button>
+<!-- Dark Theme Option -->
+<button class="flex flex-col items-center justify-center p-md bg-surface-container rounded-xl border border-outline-variant hover:bg-surface-variant/50 transition-all group relative overflow-hidden">
+<span class="material-symbols-outlined text-on-surface-variant mb-2 group-hover:text-on-surface transition-colors" data-icon="dark_mode">dark_mode</span>
+<span class="font-label-lg text-label-lg text-on-surface-variant group-hover:text-on-surface transition-colors">Dark</span>
+</button>
+<!-- System Theme Option -->
+<button class="flex flex-col items-center justify-center p-md bg-surface-container rounded-xl border border-outline-variant hover:bg-surface-variant/50 transition-all group relative overflow-hidden">
+<span class="material-symbols-outlined text-on-surface-variant mb-2 group-hover:text-on-surface transition-colors" data-icon="settings_brightness">settings_brightness</span>
+<span class="font-label-lg text-label-lg text-on-surface-variant group-hover:text-on-surface transition-colors">System</span>
+</button>
+</div>
+</section>
+<!-- Visual Preview -->
+<section class="space-y-sm">
+<h2 class="font-title-md text-title-md text-on-surface-variant sr-only">Preview</h2>
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-md shadow-sm">
+<div class="flex items-center justify-between mb-md">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="person">person</span>
+</div>
+<div>
+<p class="font-title-md text-title-md text-on-surface">Acme Corp</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Qualified Lead</p>
+</div>
+</div>
+<span class="bg-tertiary-container text-on-tertiary-container px-2 py-1 rounded-full font-label-sm text-label-sm">New</span>
+</div>
+<div class="bg-surface-container p-sm rounded-lg mb-4">
+<p class="font-body-md text-body-md text-on-surface" id="preview-text">The quick brown fox jumps over the lazy dog. LeadScan AI optimizes your workflow.</p>
+</div>
+<button class="w-full bg-primary text-on-primary font-title-md text-title-md py-2 rounded-lg hover:bg-primary/90 transition-colors">
+                    Action Example
+                </button>
+</div>
+</section>
+<!-- Text Scaling -->
+<section class="space-y-md pt-md border-t border-outline-variant">
+<h2 class="font-title-md text-title-md text-on-surface-variant">Font Size</h2>
+<div class="flex items-center gap-4 bg-surface-container p-md rounded-xl">
+<span class="font-body-md text-body-md text-on-surface-variant select-none">A</span>
+<input aria-label="Adjust font size" class="flex-grow" id="font-size-slider" max="130" min="80" type="range" value="100"/>
+<span class="font-title-lg text-title-lg text-on-surface-variant select-none">A</span>
+</div>
+</section>
+<!-- Language Selector -->
+<section class="space-y-md pt-md border-t border-outline-variant">
+<h2 class="font-title-md text-title-md text-on-surface-variant">Language</h2>
+<button class="w-full flex items-center justify-between bg-surface-container p-md rounded-xl hover:bg-surface-variant/50 transition-colors active:scale-[0.99]">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="language">language</span>
+<span class="font-body-lg text-body-lg text-on-surface">English (US)</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="chevron_right">chevron_right</span>
+</button>
+</section>
+</main>
+<script>
+        // Simple interactions for demonstration
+        document.addEventListener('DOMContentLoaded', () => {
+            const slider = document.getElementById('font-size-slider');
+            const previewText = document.getElementById('preview-text');
+
+            if (slider && previewText) {
+                slider.addEventListener('input', (e) => {
+                    const val = e.target.value;
+                    previewText.style.fontSize = `${val}%`;
+                });
+            }
+            
+            // Note: Bottom Nav is suppressed as per instructions for task-focused/transactional screens with back actions.
+        });
+    </script>
+</body></html>

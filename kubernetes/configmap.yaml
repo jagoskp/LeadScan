@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: leadscan-config
+  namespace: leadscan
+data:
+  APP_ENV: "production"
+  LOG_LEVEL: "WARNING"
+  DB_POOL_SIZE: "50"
+  DB_MAX_OVERFLOW: "20"

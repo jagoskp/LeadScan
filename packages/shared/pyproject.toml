@@ -1,0 +1,15 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "leadscan-shared"
+version = "0.1.0"
+description = "LeadScan AI Shared Library (Python)"
+authors = ["LeadScan AI Core Team <core-team@leadscan.ai>"]
+readme = "README.md"
+packages = [{ include = "leadscan_shared" }]
+
+[tool.poetry.dependencies]
+python = "^3.14"
+pydantic = "^2.0"

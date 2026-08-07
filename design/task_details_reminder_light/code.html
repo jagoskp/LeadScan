@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LeadScan AI - Task Details</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-high": "#dce9ff",
+                        "on-error": "#ffffff",
+                        "secondary": "#565e74",
+                        "outline-variant": "#c3c6d7",
+                        "primary": "#004ac6",
+                        "tertiary-container": "#007e37",
+                        "tertiary-fixed-dim": "#4ae176",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#005321",
+                        "on-secondary-fixed": "#131b2e",
+                        "secondary-fixed-dim": "#bec6e0",
+                        "on-surface-variant": "#434655",
+                        "on-primary-container": "#eeefff",
+                        "inverse-primary": "#b4c5ff",
+                        "secondary-container": "#dae2fd",
+                        "on-tertiary-container": "#c1ffc5",
+                        "on-error-container": "#93000a",
+                        "surface-tint": "#0053db",
+                        "on-tertiary-fixed": "#002109",
+                        "on-secondary-container": "#5c647a",
+                        "surface-container-low": "#eff4ff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "background": "#f8f9ff",
+                        "on-background": "#0b1c30",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#213145",
+                        "tertiary-fixed": "#6bff8f",
+                        "on-secondary-fixed-variant": "#3f465c",
+                        "surface-dim": "#cbdbf5",
+                        "surface-container-highest": "#d3e4fe",
+                        "secondary-fixed": "#dae2fd",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "surface-variant": "#d3e4fe",
+                        "surface-bright": "#f8f9ff",
+                        "surface": "#f8f9ff",
+                        "outline": "#737686",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#0b1c30",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed": "#00174b",
+                        "surface-container": "#e5eeff",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#dbe1ff",
+                        "primary-container": "#2563eb",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "tertiary": "#006229"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "sm": "8px",
+                        "margin-tablet": "24px",
+                        "gutter": "16px",
+                        "md": "16px",
+                        "base": "4px",
+                        "xs": "4px",
+                        "lg": "24px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "title-md": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "label-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "display-lg": ["57px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "title-lg": ["22px", { "lineHeight": "28px", "fontWeight": "500" }],
+                        "label-sm": ["11px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md font-sans antialiased min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="bg-surface sticky top-0 z-40 w-full flex justify-between items-center px-margin-mobile py-sm">
+<button class="w-12 h-12 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-colors active:scale-95 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="arrow_back" data-weight="regular">arrow_back</span>
+</button>
+<h1 class="font-title-lg text-title-lg text-primary font-bold">Task Details</h1>
+<button class="w-12 h-12 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-colors active:scale-95 text-primary">
+<span class="material-symbols-outlined" data-icon="edit" data-weight="regular">edit</span>
+</button>
+</header>
+<main class="px-margin-mobile md:px-margin-tablet py-md max-w-4xl mx-auto space-y-lg">
+<!-- Hero Section -->
+<section class="space-y-sm pt-4">
+<div class="flex items-center gap-2">
+<span class="bg-error-container text-on-error-container px-2 py-1 rounded-full font-label-sm text-label-sm uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="priority_high">priority_high</span> HIGH Priority
+                </span>
+</div>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">Demo - Enterprise Tier AI Integration</h2>
+</section>
+<!-- Details Card -->
+<div class="bg-surface-container-lowest rounded-xl p-md border border-outline-variant/20 shadow-sm relative overflow-hidden group hover:shadow-md transition-shadow">
+<div class="absolute top-0 right-0 p-4 opacity-5 pointer-events-none group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-[120px]" data-icon="handshake" data-weight="fill">handshake</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter relative z-10">
+<!-- Lead Info -->
+<div class="flex items-start gap-4 p-4 rounded-lg bg-surface-container-low">
+<div class="w-12 h-12 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-title-lg text-title-lg flex-shrink-0">
+                        SJ
+                    </div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-1">LEAD</p>
+<h3 class="font-title-md text-title-md text-on-surface">Sarah Jenkins</h3>
+<p class="font-body-md text-body-md text-on-surface-variant flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="domain">domain</span> TechCorp
+                        </p>
+</div>
+</div>
+<!-- Schedule Info -->
+<div class="flex flex-col gap-4 p-4 rounded-lg bg-surface-container-low">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="event">event</span> DUE DATE
+                        </p>
+<p class="font-title-md text-title-md text-on-surface">Nov 12, 2:00 PM</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="notifications_active">notifications_active</span> REMINDER
+                        </p>
+<button class="font-title-md text-title-md text-primary flex items-center gap-2 hover:underline focus:outline-none" onclick="document.getElementById('reminder-sheet').classList.remove('translate-y-full')">
+                            15 mins before <span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+</div>
+</div>
+</div>
+<div class="mt-gutter p-4 rounded-lg bg-surface-container-low">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-2">DESCRIPTION</p>
+<p class="font-body-lg text-body-lg text-on-surface">
+                    "Present the custom AI workflow integration for logistics optimization. Focus on the Google Sheets sync capabilities."
+                </p>
+</div>
+</div>
+<!-- Action Buttons Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md pt-lg">
+<button class="bg-primary text-on-primary rounded-lg py-3 px-6 font-title-md text-title-md flex items-center justify-center gap-2 hover:bg-primary-container hover:text-on-primary-container transition-colors shadow-sm active:scale-95 col-span-1 md:col-span-2">
+<span class="material-symbols-outlined" data-icon="video_camera_front" data-weight="fill">video_camera_front</span>
+                Start Meeting
+            </button>
+<button class="bg-surface-container-highest text-on-surface rounded-lg py-3 px-6 font-title-md text-title-md flex items-center justify-center gap-2 hover:bg-outline-variant/30 transition-colors shadow-sm active:scale-95 border border-outline-variant/30">
+<span class="material-symbols-outlined" data-icon="event_repeat" data-weight="regular">event_repeat</span>
+                Reschedule
+            </button>
+</div>
+<div class="flex justify-center mt-4">
+<button class="text-tertiary-container hover:text-tertiary font-label-lg text-label-lg flex items-center gap-2 px-4 py-2 rounded-full hover:bg-surface-container-low transition-colors active:scale-95">
+<span class="material-symbols-outlined" data-icon="check_circle" data-weight="regular">check_circle</span>
+                Mark Complete
+            </button>
+</div>
+</main>
+<!-- Reminder Bottom Sheet (Hidden by default) -->
+<div class="fixed inset-0 z-50 flex items-end justify-center pointer-events-none translate-y-full transition-transform duration-300 ease-out" id="reminder-sheet">
+<!-- Backdrop -->
+<div class="absolute inset-0 bg-on-background/20 pointer-events-auto backdrop-blur-sm" onclick="document.getElementById('reminder-sheet').classList.add('translate-y-full')"></div>
+<!-- Sheet Content -->
+<div class="bg-surface w-full max-w-md rounded-t-[24px] pointer-events-auto shadow-lg relative z-10 flex flex-col max-h-[80vh]">
+<!-- Handle -->
+<div class="w-full flex justify-center pt-4 pb-2">
+<div class="w-8 h-1 bg-outline-variant/50 rounded-full"></div>
+</div>
+<div class="px-margin-mobile pb-xl overflow-y-auto">
+<div class="flex justify-between items-center mb-6">
+<h2 class="font-title-lg text-title-lg text-on-surface">Set Reminder</h2>
+<button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-surface-container-low text-on-surface-variant" onclick="document.getElementById('reminder-sheet').classList.add('translate-y-full')">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+</div>
+<div class="space-y-6">
+<!-- Frequency -->
+<div>
+<label class="font-label-sm text-label-sm text-on-surface-variant block mb-3 uppercase tracking-wider">Frequency</label>
+<div class="flex gap-2 p-1 bg-surface-container-low rounded-lg">
+<button class="flex-1 py-2 px-4 rounded-md font-title-md text-title-md bg-primary-container text-on-primary-container shadow-sm transition-colors">Once</button>
+<button class="flex-1 py-2 px-4 rounded-md font-title-md text-title-md text-on-surface-variant hover:bg-surface-container-high transition-colors">Daily</button>
+<button class="flex-1 py-2 px-4 rounded-md font-title-md text-title-md text-on-surface-variant hover:bg-surface-container-high transition-colors">Weekly</button>
+</div>
+</div>
+<!-- Custom Time -->
+<div>
+<label class="font-label-sm text-label-sm text-on-surface-variant block mb-3 uppercase tracking-wider">Time Before</label>
+<div class="grid grid-cols-2 gap-3">
+<button class="py-3 px-4 rounded-lg border border-primary bg-primary/5 text-primary font-body-lg text-body-lg flex justify-between items-center">
+                                15 minutes
+                                <span class="material-symbols-outlined text-[20px]" data-icon="check" data-weight="bold">check</span>
+</button>
+<button class="py-3 px-4 rounded-lg border border-outline-variant/50 hover:bg-surface-container-low text-on-surface font-body-lg text-body-lg flex justify-between items-center">
+                                30 minutes
+                            </button>
+<button class="py-3 px-4 rounded-lg border border-outline-variant/50 hover:bg-surface-container-low text-on-surface font-body-lg text-body-lg flex justify-between items-center">
+                                1 hour
+                            </button>
+<button class="py-3 px-4 rounded-lg border border-outline-variant/50 hover:bg-surface-container-low text-on-surface font-body-lg text-body-lg flex justify-between items-center">
+                                Custom...
+                            </button>
+</div>
+</div>
+</div>
+<button class="w-full mt-8 bg-primary text-on-primary rounded-lg py-3 px-6 font-title-md text-title-md shadow-sm active:scale-95 transition-transform" onclick="document.getElementById('reminder-sheet').classList.add('translate-y-full')">
+                    Save Reminder
+                </button>
+</div>
+</div>
+</div>
+</body></html>

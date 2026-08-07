@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lead Repository - LeadScan AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-primary-container": "#eeefff",
+                        "tertiary-fixed-dim": "#4ae176",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#dae2fd",
+                        "inverse-primary": "#b4c5ff",
+                        "inverse-surface": "#213145",
+                        "error": "#ba1a1a",
+                        "primary": "#004ac6",
+                        "tertiary-fixed": "#6bff8f",
+                        "surface-container": "#e5eeff",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed": "#00174b",
+                        "primary-fixed": "#dbe1ff",
+                        "surface-container-high": "#dce9ff",
+                        "on-secondary-fixed": "#131b2e",
+                        "surface-dim": "#cbdbf5",
+                        "secondary": "#565e74",
+                        "surface-tint": "#0053db",
+                        "on-tertiary-container": "#c1ffc5",
+                        "on-surface-variant": "#434655",
+                        "on-secondary": "#ffffff",
+                        "primary-container": "#2563eb",
+                        "surface-bright": "#f8f9ff",
+                        "secondary-container": "#dae2fd",
+                        "surface-container-highest": "#d3e4fe",
+                        "inverse-on-surface": "#eaf1ff",
+                        "tertiary": "#006229",
+                        "on-secondary-fixed-variant": "#3f465c",
+                        "secondary-fixed-dim": "#bec6e0",
+                        "on-tertiary-fixed-variant": "#005321",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "background": "#f8f9ff",
+                        "on-tertiary-fixed": "#002109",
+                        "tertiary-container": "#007e37",
+                        "error-container": "#ffdad6",
+                        "surface-variant": "#d3e4fe",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-secondary-container": "#5c647a",
+                        "surface": "#f8f9ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-background": "#0b1c30",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#0b1c30",
+                        "surface-container-low": "#eff4ff",
+                        "outline-variant": "#c3c6d7",
+                        "outline": "#737686"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "base": "4px",
+                        "lg": "24px",
+                        "xs": "4px",
+                        "gutter": "16px",
+                        "margin-tablet": "24px",
+                        "sm": "8px",
+                        "margin-mobile": "16px",
+                        "xl": "32px",
+                        "md": "16px"
+                    },
+                    fontFamily: {
+                        "display-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "title-md": ["Inter"],
+                        "label-lg": ["Inter"]
+                    },
+                    fontSize: {
+                        "display-lg": ["57px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["11px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "title-lg": ["22px", { "lineHeight": "28px", "fontWeight": "500" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }]
+                    }
+                }
+            }
+        };
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .pb-safe { padding-bottom: env(safe-area-inset-bottom, 20px); }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen pb-24 md:pb-0">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface w-full top-0 sticky z-40 bg-surface-container dark:bg-surface-container-high flat no shadows hover:bg-surface-variant/50 dark:hover:bg-surface-variant/20 transition-colors active:scale-95 transition-transform duration-200 flex justify-between items-center px-margin-mobile py-2 max-w-screen-xl mx-auto">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a corporate user, modern minimalist style, bright lighting, high quality portrait suitable for an enterprise SaaS application profile avatar." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDZ-tPJYbO3WFWJqvxb7LmxsKpbdYpxwHn38pMS8dwTF6gDCv5mGa4ILokt-Ah-bY0xUDeYLnyjEVgsfaeKxOL6rJonfIzFw3thWhobu-gO3Hr7oQ5vlYuSeTrqURZDaaW16zqNL0Hxt4GSiMcDO_KXxdpaH8u9EZaLAUhFeQO4YeOOD-6BCuzaKJ_9sk0bt-jMTZAbblgPaEyE_FAKfHU4RnHFzYHOrfXHJpeanbMFOVRwIhDHsN7YA"/>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg font-bold text-primary dark:text-primary-fixed-dim">LeadScan AI</h1>
+</div>
+<!-- Desktop Nav -->
+<nav class="hidden md:flex gap-6 items-center">
+<a class="text-on-surface-variant dark:text-on-surface-variant font-title-md text-title-md hover:text-primary transition-colors flex items-center gap-2" href="#">
+<span class="material-symbols-outlined">document_scanner</span> Scanner
+             </a>
+<a class="text-primary dark:text-primary-fixed-dim font-title-md text-title-md flex items-center gap-2 bg-primary-container text-on-primary-container px-4 py-2 rounded-full" href="#">
+<span class="material-symbols-outlined">person_search</span> Leads
+             </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-title-md text-title-md hover:text-primary transition-colors flex items-center gap-2" href="#">
+<span class="material-symbols-outlined">settings</span> Settings
+             </a>
+</nav>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-variant transition-colors text-primary dark:text-primary-fixed-dim">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</header>
+<main class="max-w-screen-xl mx-auto px-margin-mobile md:px-margin-tablet py-lg">
+<!-- Summary Stats Bento Grid -->
+<section class="grid grid-cols-2 md:grid-cols-4 gap-gutter mb-xl">
+<div class="glass-card rounded-xl p-md flex flex-col justify-between shadow-[0_4px_12px_0_rgba(0,0,0,0.05)]">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-secondary">group</span>
+<span class="text-tertiary-container font-label-lg text-label-lg bg-on-tertiary-container px-2 py-1 rounded-full">+12%</span>
+</div>
+<div class="mt-4">
+<p class="font-body-md text-body-md text-secondary">Total Leads</p>
+<p class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">1,248</p>
+</div>
+</div>
+<div class="glass-card rounded-xl p-md flex flex-col justify-between shadow-[0_4px_12px_0_rgba(0,0,0,0.05)]">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-secondary">today</span>
+<span class="text-primary font-label-lg text-label-lg bg-primary-fixed px-2 py-1 rounded-full">Active</span>
+</div>
+<div class="mt-4">
+<p class="font-body-md text-body-md text-secondary">Scanned Today</p>
+<p class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">42</p>
+</div>
+</div>
+<div class="glass-card rounded-xl p-md flex flex-col justify-between shadow-[0_4px_12px_0_rgba(0,0,0,0.05)] col-span-2 md:col-span-2 bg-gradient-to-br from-primary-container/20 to-surface">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-primary">sync</span>
+<span class="text-on-surface-variant font-label-lg text-label-lg bg-surface-variant px-2 py-1 rounded-full">CRM Status</span>
+</div>
+<div class="mt-4 flex items-end justify-between">
+<div>
+<p class="font-body-md text-body-md text-secondary">Successfully Synced</p>
+<p class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">1,180 <span class="font-body-md text-body-md text-secondary">/ 1248</span></p>
+</div>
+<div class="w-24 h-2 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-primary w-11/12 rounded-full"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Search and Filters -->
+<section class="mb-lg flex flex-col md:flex-row gap-4 items-center">
+<div class="relative w-full md:w-96">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full bg-[#F8FAFC] border border-outline-variant rounded-lg pl-10 pr-4 py-3 font-body-lg text-body-lg text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" placeholder="Search leads by name, company..." type="text"/>
+</div>
+<div class="flex gap-2 overflow-x-auto pb-2 md:pb-0 w-full no-scrollbar">
+<button class="whitespace-nowrap px-4 py-2 rounded-full border border-outline-variant bg-surface text-on-surface-variant font-label-lg text-label-lg hover:bg-surface-variant transition-colors flex items-center gap-2">
+                    Last 7 Days
+                </button>
+<button class="whitespace-nowrap px-4 py-2 rounded-full border border-outline-variant bg-surface text-on-surface-variant font-label-lg text-label-lg hover:bg-surface-variant transition-colors flex items-center gap-2">
+                    By Source <span class="material-symbols-outlined text-[18px]">arrow_drop_down</span>
+</button>
+<button class="whitespace-nowrap px-4 py-2 rounded-full border-primary bg-primary-fixed text-primary font-label-lg text-label-lg hover:bg-primary-container hover:text-on-primary-container transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">star</span> Starred
+                </button>
+</div>
+</section>
+<!-- Lead List -->
+<section class="flex flex-col gap-sm">
+<!-- Lead Card 1 -->
+<div class="bg-surface rounded-xl p-md border border-outline-variant/30 flex items-center justify-between hover:shadow-[0_4px_12px_0_rgba(0,0,0,0.05)] transition-shadow group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-title-lg text-title-lg">
+                        EJ
+                    </div>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface">Eleanor James</h3>
+<p class="font-body-md text-body-md text-secondary">VP of Sales, TechFlow Inc.</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="hidden md:inline-flex px-2 py-1 rounded-lg bg-tertiary-container/10 text-tertiary-container font-label-sm text-label-sm items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Synced
+                    </span>
+<button class="text-outline hover:text-primary transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Lead Card 2 -->
+<div class="bg-surface rounded-xl p-md border border-outline-variant/30 flex items-center justify-between hover:shadow-[0_4px_12px_0_rgba(0,0,0,0.05)] transition-shadow group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary-container/20 flex items-center justify-center text-primary font-title-lg text-title-lg">
+                        MR
+                    </div>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface">Marcus Reyes</h3>
+<p class="font-body-md text-body-md text-secondary">Director of Marketing, CloudSync</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="hidden md:inline-flex px-2 py-1 rounded-lg bg-surface-variant text-on-surface-variant font-label-sm text-label-sm items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">pending</span> Pending
+                    </span>
+<button class="text-outline hover:text-primary transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Lead Card 3 -->
+<div class="bg-surface rounded-xl p-md border border-outline-variant/30 flex items-center justify-between hover:shadow-[0_4px_12px_0_rgba(0,0,0,0.05)] transition-shadow group">
+<div class="flex items-center gap-4">
+<img alt="Sarah Chen" class="w-12 h-12 rounded-full object-cover" data-alt="A small circular profile picture of a professional woman in a business suit, smiling lightly, clean corporate background, bright even lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAq3kIH4KwvkG93TwfZGJb96J4YWkpE-d-PRncHxxODE_0LoKfCPFa7oI_xFRQ4t9qpWSX5cVXxy-_9peoIjq_CF84BX7EfqIBpewO1Gq8n5wCTsv2PomQ75jHHbn3WtXSYvJWWAT5NxY36B2nbyUAlhauNMoFFbceG62xQS3mpOiPK_kroMRNJyernA1vgHBmkSUrwHhWSN31CCjOOnRgG6ZUQNnvJexTGTo4L3OhNRthRYzzPktUMPg"/>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface">Sarah Chen</h3>
+<p class="font-body-md text-body-md text-secondary">Founder, Nexus Dynamics</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="hidden md:inline-flex px-2 py-1 rounded-lg bg-tertiary-container/10 text-tertiary-container font-label-sm text-label-sm items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Synced
+                    </span>
+<button class="text-outline hover:text-primary transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Floating Action Button -->
+<button class="fixed bottom-24 right-4 md:bottom-8 md:right-8 w-14 h-14 bg-primary text-on-primary rounded-2xl shadow-lg flex items-center justify-center hover:bg-primary-container hover:scale-105 active:scale-95 transition-all z-40">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add</span>
+</button>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden bg-surface dark:bg-surface text-primary dark:text-primary-fixed-dim font-label-sm text-label-sm font-title-md text-title-md text-primary fixed bottom-0 w-full z-50 rounded-t-xl bg-surface dark:bg-surface shadow-sm shadow-[0_-1px_4px_0_rgba(0,0,0,0.05)] hover:bg-surface-container-highest dark:hover:bg-surface-variant transition-colors active:scale-90 transition-all duration-150 fixed bottom-0 left-0 w-full flex justify-around items-center h-20 px-2 pb-safe bg-surface dark:bg-surface">
+<a class="flex flex-col items-center justify-center text-on-secondary-container dark:text-secondary-fixed-dim px-5 py-1 w-full h-full" href="#">
+<span class="material-symbols-outlined mb-1">document_scanner</span>
+<span>Scanner</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-2xl px-5 py-1 w-full h-full" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">person_search</span>
+<span>Leads</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-container dark:text-secondary-fixed-dim px-5 py-1 w-full h-full" href="#">
+<span class="material-symbols-outlined mb-1">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+</body></html>

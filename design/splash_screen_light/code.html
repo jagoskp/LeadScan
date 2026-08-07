@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LeadScan AI - Splash Screen</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary": "#ffffff",
+                        "surface-variant": "#d3e4fe",
+                        "on-secondary-fixed-variant": "#3f465c",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "tertiary-fixed-dim": "#4ae176",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-container": "#2563eb",
+                        "secondary-fixed-dim": "#bec6e0",
+                        "outline-variant": "#c3c6d7",
+                        "surface-dim": "#cbdbf5",
+                        "primary": "#004ac6",
+                        "surface": "#f8f9ff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "tertiary": "#006229",
+                        "tertiary-fixed": "#6bff8f",
+                        "error": "#ba1a1a",
+                        "surface-tint": "#0053db",
+                        "on-surface": "#0b1c30",
+                        "background": "#f8f9ff",
+                        "surface-container-high": "#dce9ff",
+                        "on-secondary-fixed": "#131b2e",
+                        "on-tertiary-container": "#c1ffc5",
+                        "on-error": "#ffffff",
+                        "primary-fixed": "#dbe1ff",
+                        "on-secondary-container": "#5c647a",
+                        "surface-container-highest": "#d3e4fe",
+                        "inverse-surface": "#213145",
+                        "on-error-container": "#93000a",
+                        "error-container": "#ffdad6",
+                        "on-background": "#0b1c30",
+                        "secondary": "#565e74",
+                        "on-tertiary-fixed": "#002109",
+                        "inverse-primary": "#b4c5ff",
+                        "on-primary": "#ffffff",
+                        "on-primary-container": "#eeefff",
+                        "tertiary-container": "#007e37",
+                        "surface-container": "#e5eeff",
+                        "on-tertiary-fixed-variant": "#005321",
+                        "surface-bright": "#f8f9ff",
+                        "on-surface-variant": "#434655",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#dae2fd",
+                        "surface-container-low": "#eff4ff",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "secondary-container": "#dae2fd",
+                        "on-primary-fixed": "#00174b",
+                        "outline": "#737686"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "lg": "24px",
+                        "margin-tablet": "24px",
+                        "xs": "4px",
+                        "xl": "32px",
+                        "sm": "8px",
+                        "gutter": "16px",
+                        "base": "4px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "title-md": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "title-lg": ["22px", { "lineHeight": "28px", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["11px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "display-lg": ["57px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .circular-progress {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: inline-block;
+            border-top: 4px solid #004ac6;
+            border-right: 4px solid transparent;
+            box-sizing: border-box;
+            animation: rotation 1s linear infinite;
+        }
+
+        .circular-progress::after {
+            content: '';  
+            box-sizing: border-box;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border-bottom: 4px solid #004ac6;
+            border-left: 4px solid transparent;
+        }
+        
+        @keyframes rotation {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body class="h-full bg-background overflow-hidden relative font-body-md text-on-background">
+<!-- WebGL Shader Background -->
+<!-- STITCH_SHADER_START:ANIMATION_7 class="absolute inset-0 w-full h-full z-0 opacity-40" -->
+<div class="absolute inset-0 w-full h-full z-0 opacity-40" style="display:block;">
+<canvas id="shader-canvas-ANIMATION_7" style="display:block;width:100%;height:100%"></canvas>
+<script>
+(function() {
+  const canvas = document.getElementById('shader-canvas-ANIMATION_7');
+
+  // Sync the WebGL drawing-buffer size with the CSS-driven layout size.
+  // This fires on initial layout and whenever the element is resized.
+  function syncSize() {
+    const w = canvas.clientWidth  || 1280;
+    const h = canvas.clientHeight || 720;
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width  = w;
+      canvas.height = h;
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(syncSize).observe(canvas);
+  }
+  syncSize();
+
+  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if (!gl) return;
+  const vs = `attribute vec2 a_position;
+varying vec2 v_texCoord;
+void main() {
+  v_texCoord = a_position * 0.5 + 0.5;
+  gl_Position = vec4(a_position, 0.0, 1.0);
+}`;
+  const fs = `precision highp float;
+
+uniform float u_time;
+uniform vec2 u_resolution;
+uniform vec2 u_mouse;
+
+varying vec2 v_texCoord;
+
+void main() {
+    vec2 uv = v_texCoord;
+    
+    // Create a flowing, elegant gradient background using LeadScan AI colors
+    // Primary: #2563EB (0.145, 0.388, 0.922)
+    // Background: Clean white/light blue stops
+    
+    vec3 color1 = vec3(0.145, 0.388, 0.922); // Primary Blue
+    vec3 color2 = vec3(0.973, 0.976, 1.0);   // Surface Light
+    vec3 color3 = vec3(0.133, 0.773, 0.369); // Accent Green (subtle hints)
+    
+    float t = u_time * 0.3;
+    
+    // Wave patterns
+    float w1 = sin(uv.x * 3.0 + t) * 0.5 + 0.5;
+    float w2 = sin(uv.y * 2.0 - t * 1.2) * 0.5 + 0.5;
+    float w3 = sin((uv.x + uv.y) * 4.0 + t * 0.5) * 0.5 + 0.5;
+    
+    float mask = mix(w1, w2, 0.5);
+    mask = mix(mask, w3, 0.3);
+    
+    vec3 finalColor = mix(color2, color1, mask * 0.4);
+    finalColor = mix(finalColor, color3, pow(w3, 10.0) * 0.05); // Very subtle accent hint
+    
+    gl_FragColor = vec4(finalColor, 1.0);
+}`;
+  function cs(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    return s;
+  }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+  gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(prog);
+  gl.useProgram(prog);
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const pos = gl.getAttribLocation(prog, 'a_position');
+  gl.enableVertexAttribArray(pos);
+  gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+  const uTime = gl.getUniformLocation(prog, 'u_time');
+  const uRes = gl.getUniformLocation(prog, 'u_resolution');
+  const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+
+  // u_mouse is in pixel coordinates matching u_resolution (ShaderToy convention).
+  // Shaders that need normalized coords should use: u_mouse / u_resolution.
+  let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+  window.addEventListener('mousemove', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width && rect.height) {
+      const nx = (event.clientX - rect.left) / rect.width;
+      const ny = 1.0 - (event.clientY - rect.top) / rect.height;
+      mouse.x = nx * canvas.width;
+      mouse.y = ny * canvas.height;
+    }
+  });
+
+  function render(t) {
+    if (typeof ResizeObserver === 'undefined') syncSize();
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    if (uTime) gl.uniform1f(uTime, t * 0.001);
+    if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+    if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    requestAnimationFrame(render);
+  }
+  render(0);
+})();
+</script>
+</div>
+<!-- STITCH_SHADER_END:ANIMATION_7 -->
+<!-- Main Content Container -->
+<div class="relative z-10 flex flex-col items-center justify-between h-full w-full px-margin-mobile py-xl md:px-margin-tablet">
+<!-- Top Spacer for Balance -->
+<div class="flex-1"></div>
+<!-- Center Brand Logo -->
+<div class="flex flex-col items-center justify-center flex-none">
+<div class="w-48 h-48 md:w-64 md:h-64 rounded-xl overflow-hidden shadow-sm bg-surface-container-lowest flex items-center justify-center p-sm mb-lg border border-surface-variant">
+<img alt="LeadScan AI Brand Logo" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDISLHpF7Zadiqtp9rtgg3OrL23IblV66o09ygBnbi_xrEoIfZJRyuG7vZo1g2xcBzSLg0wQeGS6_J9IgZrQav4UycbwbET8dTcGTuSP601Yv6Gmim3bCGYaaNe4no9_zNv_r5rY4iOd3Ou_uUlfxFCOXNJiVCdlPgQcE4rSCu0p3DBVtZAp-eOO46VKSvzS1D3guap-cZNuIT3hDxfB-WPnH7ByExcroNpwWkftpuo6yX_-zPZq_AF_w"/>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-primary text-center">LeadScan AI</h1>
+<p class="font-title-lg text-title-lg text-on-surface-variant text-center mt-xs">Intelligent Prospecting</p>
+</div>
+<!-- Bottom Loading & Version -->
+<div class="flex-1 flex flex-col justify-end items-center pb-lg w-full">
+<div class="circular-progress mb-md"></div>
+<p class="font-label-sm text-label-sm text-outline tracking-wider uppercase">v2.0 Enterprise</p>
+</div>
+</div>
+</body></html>

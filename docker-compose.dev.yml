@@ -1,0 +1,58 @@
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: leadscan-dev-db
+    environment:
+      POSTGRES_DB: leadscan_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_dev_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    container_name: leadscan-dev-redis
+    ports:
+      - "6379:6379"
+
+  api:
+    build:
+      context: .
+      file: docker/api.Dockerfile
+    container_name: leadscan-dev-api
+    environment:
+      - APP_ENV=development
+      - DATABASE_URL=postgresql+asyncpg://postgres:postgres@postgres:5432/leadscan_db
+      - REDIS_URL=redis://redis:6379/0
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+      - redis
+
+  worker:
+    build:
+      context: .
+      file: docker/worker.Dockerfile
+    container_name: leadscan-dev-worker
+    environment:
+      - APP_ENV=development
+      - REDIS_URL=redis://redis:6379/0
+    depends_on:
+      - redis
+
+  ocr:
+    build:
+      context: .
+      file: docker/ocr.Dockerfile
+    container_name: leadscan-dev-ocr
+    environment:
+      - APP_ENV=development
+      - REDIS_URL=redis://redis:6379/0
+    depends_on:
+      - redis
+
+volumes:
+  postgres_dev_data:

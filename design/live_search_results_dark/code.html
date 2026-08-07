@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LeadScan AI - Live Search</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-container": "#eeefff",
+                        "on-tertiary-fixed-variant": "#005321",
+                        "on-secondary-container": "#5c647a",
+                        "tertiary-container": "#007e37",
+                        "on-background": "#0b1c30",
+                        "primary-fixed": "#dbe1ff",
+                        "on-tertiary-container": "#c1ffc5",
+                        "tertiary": "#006229",
+                        "background": "#f8f9ff",
+                        "on-secondary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "surface-bright": "#f8f9ff",
+                        "on-error": "#ffffff",
+                        "surface": "#f8f9ff",
+                        "secondary-fixed-dim": "#bec6e0",
+                        "tertiary-fixed-dim": "#4ae176",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-surface": "#0b1c30",
+                        "surface-container": "#e5eeff",
+                        "on-primary-fixed": "#00174b",
+                        "on-tertiary-fixed": "#002109",
+                        "surface-tint": "#0053db",
+                        "outline-variant": "#c3c6d7",
+                        "inverse-primary": "#b4c5ff",
+                        "on-tertiary": "#ffffff",
+                        "on-surface-variant": "#434655",
+                        "on-secondary-fixed-variant": "#3f465c",
+                        "surface-container-low": "#eff4ff",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#dce9ff",
+                        "primary-container": "#2563eb",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "surface-variant": "#d3e4fe",
+                        "surface-container-highest": "#d3e4fe",
+                        "outline": "#737686",
+                        "secondary": "#565e74",
+                        "tertiary-fixed": "#6bff8f",
+                        "secondary-fixed": "#dae2fd",
+                        "surface-dim": "#cbdbf5",
+                        "on-secondary-fixed": "#131b2e",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "error": "#ba1a1a",
+                        "inverse-surface": "#213145",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#dae2fd",
+                        "primary": "#004ac6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-tablet": "24px",
+                        "margin-mobile": "16px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "xl": "32px",
+                        "md": "16px",
+                        "gutter": "16px",
+                        "xs": "4px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "title-md": ["Inter"],
+                        "title-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-sm": ["11px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "display-lg": ["57px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "title-lg": ["22px", { "lineHeight": "28px", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Hide scrollbar for horizontal scroll areas but keep functionality */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-lg min-h-screen flex flex-col antialiased">
+<!-- Search Header (Task-Focused Overlay, replaces TopAppBar) -->
+<header class="sticky top-0 z-50 bg-surface pt-4 pb-2 px-margin-mobile flex items-center gap-sm">
+<button aria-label="Go back" class="p-2 -ml-2 text-on-surface-variant hover:bg-surface-variant rounded-full transition-colors flex-shrink-0">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="flex-1 flex items-center bg-surface-container-lowest rounded-full px-4 py-2 border border-outline-variant focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all shadow-sm">
+<span class="material-symbols-outlined text-on-surface-variant mr-2">search</span>
+<input aria-label="Search query" autofocus="" class="flex-1 bg-transparent border-none outline-none font-body-lg text-body-lg text-on-surface placeholder-on-surface-variant" type="text" value="Tech"/>
+<button aria-label="Clear search" class="p-1 -mr-1 text-on-surface-variant hover:text-on-surface rounded-full transition-colors flex items-center justify-center bg-surface-container hover:bg-surface-variant">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+</header>
+<!-- Smart Filters -->
+<div class="bg-surface pt-2 pb-sm px-margin-mobile overflow-x-auto no-scrollbar border-b border-surface-container">
+<div class="flex gap-sm pb-2 w-max">
+<button class="px-4 py-1.5 rounded-full font-label-lg text-label-lg bg-primary text-on-primary transition-colors shadow-sm">All Results</button>
+<button class="px-4 py-1.5 rounded-full font-label-lg text-label-lg bg-surface-container-lowest text-on-surface-variant border border-outline-variant hover:bg-surface-variant transition-colors shadow-sm">Leads</button>
+<button class="px-4 py-1.5 rounded-full font-label-lg text-label-lg bg-surface-container-lowest text-on-surface-variant border border-outline-variant hover:bg-surface-variant transition-colors shadow-sm">Companies</button>
+<button class="px-4 py-1.5 rounded-full font-label-lg text-label-lg bg-surface-container-lowest text-on-surface-variant border border-outline-variant hover:bg-surface-variant transition-colors shadow-sm">Tasks</button>
+<button class="px-4 py-1.5 rounded-full font-label-lg text-label-lg bg-surface-container-lowest text-on-surface-variant border border-outline-variant hover:bg-surface-variant transition-colors shadow-sm">Tags</button>
+<button class="px-4 py-1.5 rounded-full font-label-lg text-label-lg bg-surface-container-lowest text-primary border border-primary-fixed-dim hover:bg-primary-container/20 transition-colors shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">auto_awesome</span> AI Confidence
+            </button>
+</div>
+</div>
+<!-- Main Content Area: Live Results -->
+<main class="flex-1 overflow-y-auto p-margin-mobile flex flex-col gap-lg">
+<!-- Live Status Indicator -->
+<div class="flex items-center gap-2 text-on-surface-variant font-label-lg text-label-lg">
+<span class="relative flex h-2.5 w-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-tertiary"></span>
+</span>
+            Live Results for "Tech"
+        </div>
+<!-- Section: Leads -->
+<section class="flex flex-col gap-sm">
+<h2 class="font-title-md text-title-md text-on-surface flex items-center justify-between">
+<span>Leads</span>
+<button class="font-label-lg text-label-lg text-primary hover:underline">See all (12)</button>
+</h2>
+<!-- Lead Card: Marcus Chen -->
+<div class="bg-surface-container-lowest rounded-xl p-md border border-outline-variant shadow-sm flex flex-col gap-md transition-shadow hover:shadow-md">
+<div class="flex items-start gap-md">
+<img alt="Marcus Chen" class="w-12 h-12 rounded-full object-cover border border-surface-container-high" data-alt="A professional headshot of an Asian male executive in his 30s, wearing a tailored navy suit against a clean, bright minimalist studio background with soft studio lighting. High-end corporate style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCT4zHbtCJ76_Cl9Xuas9Psw7GeICQCcaYMhmL765m1Abla2kyZSzQ7DwAW75bU18hjOPCWTG7v0bqEXtn82yPq1cVosMNjolx8XTa-b8HTbbYoY0cUet-1inWCMavjz7LwyWujpuZCp_oDZf7HKhXg-OBBxKDnMQRBsq0v0OJNnwWv5Y4KHkyJscB62ePmCtz_Y_0YZ50GonEH4-DOqQVzVc2Yv5AZ6MC-QoObnaNPCqr4sNf9QT8n2g"/>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<h3 class="font-title-md text-title-md text-on-surface truncate">Marcus Chen</h3>
+<span class="bg-tertiary-container text-on-tertiary-container font-label-sm text-label-sm px-2 py-0.5 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">bolt</span> 95% Match
+                            </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant truncate">VP of Engineering at <span class="text-on-surface font-medium">TechCorp</span></p>
+<div class="flex gap-2 mt-2">
+<span class="bg-surface-container px-2 py-0.5 rounded text-on-surface-variant font-label-sm text-label-sm">B2B SaaS</span>
+<span class="bg-surface-container px-2 py-0.5 rounded text-on-surface-variant font-label-sm text-label-sm">Enterprise</span>
+</div>
+</div>
+</div>
+<!-- Quick Actions -->
+<div class="flex items-center gap-sm pt-2 border-t border-surface-container">
+<button class="flex-1 flex items-center justify-center gap-2 py-2 rounded-lg bg-surface-container-low text-primary hover:bg-primary-container hover:text-on-primary-container transition-colors font-label-lg text-label-lg">
+<span class="material-symbols-outlined text-[20px]">call</span> Call
+                    </button>
+<button class="flex-1 flex items-center justify-center gap-2 py-2 rounded-lg bg-surface-container-low text-primary hover:bg-primary-container hover:text-on-primary-container transition-colors font-label-lg text-label-lg">
+<span class="material-symbols-outlined text-[20px]">forum</span> WhatsApp
+                    </button>
+<button aria-label="Sync to CRM" class="w-10 h-10 flex items-center justify-center rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-variant transition-colors flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]">sync</span>
+</button>
+</div>
+</div>
+<!-- Lead Card: Secondary (Compact) -->
+<div class="bg-surface-container-lowest rounded-xl p-md border border-outline-variant shadow-sm flex items-center gap-md transition-shadow hover:shadow-md">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-title-md text-title-md">EL</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-label-lg text-label-lg text-on-surface truncate">Elena Rodriguez</h3>
+<p class="font-body-md text-body-md text-on-surface-variant truncate">CTO @ FinTech Solutions</p>
+</div>
+<button class="p-2 text-on-surface-variant hover:text-primary rounded-full hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">person_add</span>
+</button>
+</div>
+</section>
+<!-- Section: Companies -->
+<section class="flex flex-col gap-sm">
+<h2 class="font-title-md text-title-md text-on-surface">Companies</h2>
+<!-- Company Card: TechCorp -->
+<div class="bg-surface-container-lowest rounded-xl p-md border border-outline-variant shadow-sm flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high border border-outline-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[28px]" style="font-variation-settings: 'FILL' 1;">domain</span>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-title-md text-title-md text-on-surface truncate">TechCorp Global</h3>
+<p class="font-body-md text-body-md text-on-surface-variant truncate">San Francisco, CA • 1,000-5,000 employees</p>
+</div>
+<button class="p-2 text-on-surface-variant hover:bg-surface-variant rounded-full transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</section>
+<!-- Section: Workflow Tasks -->
+<section class="flex flex-col gap-sm">
+<h2 class="font-title-md text-title-md text-on-surface">Workflow Tasks</h2>
+<!-- Task Card -->
+<div class="bg-surface-container-lowest rounded-xl p-md border border-outline-variant shadow-sm flex items-start gap-md">
+<button class="mt-0.5 text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined">radio_button_unchecked</span>
+</button>
+<div class="flex-1 min-w-0">
+<h3 class="font-label-lg text-label-lg text-on-surface">Follow-up with Sarah regarding Tech proposal</h3>
+<div class="flex items-center gap-2 mt-1">
+<span class="flex items-center gap-1 font-label-sm text-label-sm text-error">
+<span class="material-symbols-outlined text-[14px]">event</span> Today, 2:00 PM
+                        </span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">TechCorp Deal</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Bottom Spacer for scrolling past absolute elements if any -->
+<div class="h-8"></div>
+</main>
+</body></html>

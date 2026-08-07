@@ -1,0 +1,17 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "leadscan-worker"
+version = "0.1.0"
+description = "LeadScan Temporal Worker Service"
+authors = ["LeadScan AI Core Team <core-team@leadscan.ai>"]
+readme = "README.md"
+packages = []
+
+[tool.poetry.dependencies]
+python = "^3.14"
+temporalio = "^1.6"
+leadscan-shared = { path = "../../packages/shared", develop = true }
+leadscan-config = { path = "../../packages/config", develop = true }

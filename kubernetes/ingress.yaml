@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: leadscan-ingress
+  namespace: leadscan
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: api.leadscan.ai
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: leadscan-api-service
+                port:
+                  number: 80
+  tls:
+    - hosts:
+        - api.leadscan.ai
+      secretName: leadscan-tls-cert

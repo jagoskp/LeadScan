@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LeadScan AI - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary-fixed-dim": "#b4c5ff",
+                      "surface-container": "#e5eeff",
+                      "secondary-fixed-dim": "#bec6e0",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "surface-variant": "#d3e4fe",
+                      "surface": "#f8f9ff",
+                      "secondary-container": "#dae2fd",
+                      "outline": "#737686",
+                      "surface-container-high": "#dce9ff",
+                      "on-primary-fixed": "#00174b",
+                      "tertiary": "#006229",
+                      "tertiary-container": "#007e37",
+                      "surface-container-low": "#eff4ff",
+                      "on-tertiary-fixed-variant": "#005321",
+                      "on-surface-variant": "#434655",
+                      "on-surface": "#0b1c30",
+                      "error-container": "#ffdad6",
+                      "surface-container-lowest": "#ffffff",
+                      "primary-container": "#2563eb",
+                      "inverse-primary": "#b4c5ff",
+                      "error": "#ba1a1a",
+                      "on-tertiary": "#ffffff",
+                      "surface-dim": "#cbdbf5",
+                      "on-error": "#ffffff",
+                      "primary-fixed": "#dbe1ff",
+                      "on-error-container": "#93000a",
+                      "surface-container-highest": "#d3e4fe",
+                      "on-secondary-container": "#5c647a",
+                      "secondary-fixed": "#dae2fd",
+                      "background": "#f8f9ff",
+                      "outline-variant": "#c3c6d7",
+                      "on-secondary": "#ffffff",
+                      "on-tertiary-container": "#c1ffc5",
+                      "on-secondary-fixed": "#131b2e",
+                      "tertiary-fixed-dim": "#4ae176",
+                      "tertiary-fixed": "#6bff8f",
+                      "inverse-surface": "#213145",
+                      "inverse-on-surface": "#eaf1ff",
+                      "secondary": "#565e74",
+                      "surface-tint": "#0053db",
+                      "primary": "#004ac6",
+                      "on-tertiary-fixed": "#002109",
+                      "on-primary": "#ffffff",
+                      "on-secondary-fixed-variant": "#3f465c",
+                      "on-background": "#0b1c30",
+                      "surface-bright": "#f8f9ff",
+                      "on-primary-container": "#eeefff",
+                      // Adding dark mode specific overrides to simulate dark theme variables
+                      "dark-bg": "#0f172a",
+                      "dark-surface": "#1e293b",
+                      "dark-surface-variant": "#334155"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-tablet": "24px",
+                      "base": "4px",
+                      "sm": "8px",
+                      "xs": "4px",
+                      "xl": "32px",
+                      "lg": "24px",
+                      "md": "16px",
+                      "gutter": "16px",
+                      "margin-mobile": "16px",
+                      "safe": "env(safe-area-inset-bottom)"
+              },
+              "fontFamily": {
+                      "title-md": ["Inter"],
+                      "label-lg": ["Inter"],
+                      "body-md": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "title-lg": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "body-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "title-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "display-lg": ["57px", {"lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "500"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: #f8fafc; }
+        .glass-card { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.05); }
+        .glowing-border { position: relative; }
+        .glowing-border::before {
+            content: ''; position: absolute; top: -1px; left: -1px; right: -1px; bottom: -1px;
+            background: linear-gradient(45deg, rgba(37, 99, 235, 0.3), rgba(0,0,0,0));
+            z-index: -1; border-radius: inherit;
+        }
+        .chart-bg { background: repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 40px); }
+    </style>
+</head>
+<body class="bg-dark-bg min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-40 glass-card bg-surface dark:bg-surface flex justify-between items-center px-margin-mobile py-2 max-w-screen-xl mx-auto shadow-sm">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover border border-outline/20" data-alt="A professional headshot avatar of a young male executive with dark hair, wearing a dark suit against a dark modern studio background with cool blue lighting accents. The style is sharp, clean, and corporate, fitting a high-end enterprise SaaS dashboard interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDduoKnhsq0Sabh1Z7WjnBhZq5igWcXnc53m_dpuZQfXd6RJv-_22r_9iPltJqZuGZYUO2ALxW4Xu0Drkif5tEDqPLgfr_YJD9Cs4oxRQ6O28WVVzIoML_fca0wpTqpAhObCaH0morfDhiekGpe6cPhoRRphhV4sAga50uG8epYGc_NkoHdu0wFgVKozEPn19mbA6XxQ4IHi8_Keewn4SjINDqe2WOpuXFL52gy4e6pUCkPuEtIzdFqjg"/>
+<div>
+<p class="font-body-md text-body-md text-on-surface-variant/80">Good morning, Alex</p>
+<h1 class="font-title-md text-title-md text-white font-semibold">Veridian Analytics</h1>
+</div>
+</div>
+<button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-surface-variant/20 transition-colors relative">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-primary-fixed-dim rounded-full"></span>
+</button>
+</header>
+<main class="max-w-screen-xl mx-auto px-margin-mobile pt-lg flex flex-col gap-lg">
+<!-- Search -->
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-[#1e293b] border-none rounded-xl py-3 pl-12 pr-4 text-white placeholder-on-surface-variant focus:ring-2 focus:ring-primary-fixed-dim transition-all shadow-sm" placeholder="Search leads, scans..." type="text"/>
+</div>
+<!-- Quick Actions Grid -->
+<section class="grid grid-cols-2 gap-gutter">
+<button class="glass-card rounded-xl p-md flex flex-col items-start gap-sm active:scale-95 transition-transform duration-200">
+<div class="w-10 h-10 rounded-lg bg-primary-container/20 flex items-center justify-center text-primary-fixed-dim mb-1">
+<span class="material-symbols-outlined">document_scanner</span>
+</div>
+<span class="font-title-md text-title-md text-white">New Scan</span>
+<span class="font-body-md text-body-md text-on-surface-variant/80 text-left">Scan business cards</span>
+</button>
+<button class="glass-card rounded-xl p-md flex flex-col items-start gap-sm active:scale-95 transition-transform duration-200">
+<div class="w-10 h-10 rounded-lg bg-tertiary-container/20 flex items-center justify-center text-tertiary-fixed-dim mb-1">
+<span class="material-symbols-outlined">person_add</span>
+</div>
+<span class="font-title-md text-title-md text-white">Add Lead</span>
+<span class="font-body-md text-body-md text-on-surface-variant/80 text-left">Manual entry</span>
+</button>
+</section>
+<!-- Overview -->
+<section>
+<h2 class="font-title-lg text-title-lg text-white mb-md font-semibold">Today's Overview</h2>
+<div class="flex gap-4 overflow-x-auto pb-4 snap-x hide-scrollbar">
+<div class="glass-card glowing-border rounded-xl p-md min-w-[140px] snap-center flex-shrink-0 flex flex-col gap-2 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-16 h-16 bg-primary-fixed-dim/10 rounded-bl-full blur-xl"></div>
+<span class="material-symbols-outlined text-primary-fixed-dim text-opacity-80">qr_code_scanner</span>
+<span class="font-display-lg text-display-lg text-white font-bold leading-none mt-2">42</span>
+<span class="font-body-md text-body-md text-on-surface-variant/80">Today's Scans</span>
+</div>
+<div class="glass-card rounded-xl p-md min-w-[140px] snap-center flex-shrink-0 flex flex-col gap-2 relative overflow-hidden border border-[#334155]">
+<div class="absolute top-0 right-0 w-16 h-16 bg-tertiary-fixed-dim/10 rounded-bl-full blur-xl"></div>
+<span class="material-symbols-outlined text-tertiary-fixed-dim text-opacity-80">groups</span>
+<span class="font-display-lg text-display-lg text-white font-bold leading-none mt-2">12</span>
+<span class="font-body-md text-body-md text-on-surface-variant/80">New Leads</span>
+</div>
+<div class="glass-card rounded-xl p-md min-w-[140px] snap-center flex-shrink-0 flex flex-col gap-2 relative overflow-hidden border border-[#334155]">
+<span class="material-symbols-outlined text-error-container text-opacity-80">pending_actions</span>
+<span class="font-display-lg text-display-lg text-white font-bold leading-none mt-2">5</span>
+<span class="font-body-md text-body-md text-on-surface-variant/80">Pending Review</span>
+</div>
+</div>
+</section>
+<!-- Analytics Placeholder -->
+<section class="glass-card rounded-xl p-md flex flex-col gap-4">
+<div class="flex justify-between items-center w-full">
+<h2 class="font-title-md text-title-md text-white font-semibold">Conversion Rate</h2>
+<span class="font-label-sm text-label-sm bg-[#334155] px-2 py-1 rounded text-primary-fixed-dim flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> +4.2%
+                </span>
+</div>
+<div class="h-32 w-full chart-bg relative rounded-lg overflow-hidden flex items-end pt-4">
+<!-- Decorative Chart Lines (CSS Only representation) -->
+<div class="absolute bottom-0 left-0 w-full h-full opacity-30" style="background: linear-gradient(0deg, rgba(37,99,235,0.2) 0%, transparent 100%);"></div>
+<svg class="w-full h-full absolute bottom-0" preserveaspectratio="none" viewbox="0 0 100 100">
+<path d="M0,100 L0,70 Q20,80 40,50 T80,30 L100,20 L100,100 Z" fill="rgba(37,99,235,0.1)"></path>
+<path d="M0,70 Q20,80 40,50 T80,30 L100,20" fill="none" stroke="#b4c5ff" stroke-linecap="round" stroke-width="2"></path>
+</svg>
+</div>
+</section>
+</main>
+<!-- Floating Action Button -->
+<button class="fixed bottom-28 right-margin-mobile w-14 h-14 bg-primary-fixed-dim text-[#00174b] rounded-2xl shadow-lg flex items-center justify-center z-40 active:scale-95 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add</span>
+</button>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center h-20 px-2 pb-safe bg-[#0f172a] shadow-[0_-1px_4px_0_rgba(0,0,0,0.5)] z-50 rounded-t-xl border-t border-[#1e293b]">
+<!-- Scanner (Active) - Mapped to Home/Dashboard intent based on prompt "Home Dashboard" but JSON forces specific labels -->
+<!-- Since it's a dashboard, "Scanner" might be the primary tool, or we just highlight Scanner as it's the first -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-2xl px-5 py-1 transition-all duration-150 active:scale-90" href="#">
+<span class="material-symbols-outlined mb-1">document_scanner</span>
+<span class="font-label-sm text-label-sm">Scanner</span>
+</a>
+<!-- Leads (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-5 py-1 hover:bg-surface-variant/20 rounded-xl transition-all duration-150 active:scale-90" href="#">
+<span class="material-symbols-outlined mb-1">person_search</span>
+<span class="font-label-sm text-label-sm">Leads</span>
+</a>
+<!-- Settings (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-5 py-1 hover:bg-surface-variant/20 rounded-xl transition-all duration-150 active:scale-90" href="#">
+<span class="material-symbols-outlined mb-1">settings</span>
+<span class="font-label-sm text-label-sm">Settings</span>
+</a>
+</nav>
+<style>
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</body></html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LeadScan AI - Smart Search</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#dae2fd",
+                        "on-tertiary-fixed": "#002109",
+                        "inverse-surface": "#213145",
+                        "surface-dim": "#cbdbf5",
+                        "outline": "#737686",
+                        "outline-variant": "#c3c6d7",
+                        "on-tertiary-container": "#c1ffc5",
+                        "tertiary-fixed-dim": "#4ae176",
+                        "surface-container": "#e5eeff",
+                        "tertiary": "#006229",
+                        "secondary-fixed-dim": "#bec6e0",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-tertiary-fixed-variant": "#005321",
+                        "on-surface-variant": "#434655",
+                        "primary-fixed": "#dbe1ff",
+                        "surface-variant": "#d3e4fe",
+                        "on-secondary-fixed": "#131b2e",
+                        "secondary-fixed": "#dae2fd",
+                        "surface": "#f8f9ff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "error-container": "#ffdad6",
+                        "on-secondary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "background": "#f8f9ff",
+                        "primary-container": "#2563eb",
+                        "on-primary": "#ffffff",
+                        "tertiary-container": "#007e37",
+                        "surface-container-low": "#eff4ff",
+                        "on-secondary-container": "#5c647a",
+                        "on-secondary-fixed-variant": "#3f465c",
+                        "primary": "#004ac6",
+                        "on-surface": "#0b1c30",
+                        "surface-container-high": "#dce9ff",
+                        "inverse-primary": "#b4c5ff",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "surface-tint": "#0053db",
+                        "on-background": "#0b1c30",
+                        "on-primary-container": "#eeefff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface-bright": "#f8f9ff",
+                        "on-primary-fixed": "#00174b",
+                        "secondary": "#565e74",
+                        "tertiary-fixed": "#6bff8f",
+                        "surface-container-highest": "#d3e4fe",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "xl": "32px",
+                        "sm": "8px",
+                        "margin-mobile": "16px",
+                        "gutter": "16px",
+                        "margin-tablet": "24px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "title-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "label-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "title-lg": ["22px", { "lineHeight": "28px", "fontWeight": "500" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display-lg": ["57px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "label-sm": ["11px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        /* Force dark mode background */
+        body.dark {
+            background-color: #0b1c30; /* on-surface for background in dark mode context */
+            color: #f8f9ff;
+        }
+        
+        .glass-card {
+            background: rgba(33, 49, 69, 0.6); /* inverse-surface base */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(195, 198, 215, 0.1); /* outline-variant */
+        }
+        
+        .search-input-active {
+            border-color: #b4c5ff; /* primary-fixed-dim */
+            box-shadow: 0 0 0 1px #b4c5ff;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen pb-24 dark">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface-dim fixed top-0 w-full z-50 shadow-sm flex justify-between items-center px-margin-mobile h-16 w-full">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container-high dark:bg-inverse-surface overflow-hidden">
+<img alt="user profile picture" class="w-full h-full object-cover" data-alt="A professional headshot of a young male executive with short dark hair, wearing a modern dark blue blazer over a clean white t-shirt. He has a subtle, confident smile and is photographed against a neutral dark gray background with soft, flattering studio lighting. The image style is clean, corporate, and modern, suitable for a high-end enterprise software profile picture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCt5Z2NzhKZhOGDQuOnhIlJGKeNKaaERfmAR6gBo6nb8Fp1M6iAYQTwz2jL6eBXCNw42cXa5wi-403Xaih03mahSx4-stZAUJN6BNpoENlFzxqL1jY5B0UlAXBj-0_hnBw4pzUuqCPIXNlmrv3C56hOCdpwb3RIEKN_3y-Op9O05wXeHQ3Lv3L_GqNCQTHyMNW3j7vRJX_l1mXCdqv30xfFCOKHhJOvby1GZoiomhnHT1gt2b4XpRdHog"/>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary dark:text-primary-fixed">LeadScan AI</h1>
+</div>
+<button class="text-primary dark:text-primary-fixed hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors active:scale-95 duration-150 p-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-24 px-margin-mobile max-w-3xl mx-auto space-y-lg">
+<!-- Search Section -->
+<section class="space-y-md">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline-variant">search</span>
+<input autofocus="" class="w-full h-14 pl-12 pr-12 rounded-xl bg-inverse-surface text-on-secondary font-body-lg placeholder:text-outline-variant border border-outline-variant/30 focus:border-primary-fixed-dim focus:ring-1 focus:ring-primary-fixed-dim transition-all search-input-active" placeholder="Search name, company, email..." type="text" value="Tech Innovations Inc"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-outline-variant hover:text-on-secondary transition-colors">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Pending Sync Indicator -->
+<div class="flex items-center gap-2 text-tertiary-fixed-dim font-label-lg px-2">
+<span class="material-symbols-outlined text-[16px]">cloud_sync</span>
+<span>2 items pending offline sync</span>
+</div>
+</section>
+<!-- Search Results (Bento/Glassmorphism hybrid) -->
+<section class="space-y-sm">
+<h2 class="font-title-md text-title-md text-secondary-fixed-dim px-2">Results for "Tech Innovations"</h2>
+<div class="grid grid-cols-1 gap-sm">
+<!-- Result Card 1 -->
+<div class="glass-card rounded-xl p-md flex items-start gap-md cursor-pointer hover:bg-inverse-surface/80 transition-colors">
+<div class="w-12 h-12 rounded-full bg-surface-container-high/20 flex items-center justify-center text-primary-fixed-dim shrink-0">
+<span class="material-symbols-outlined">domain</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-title-md text-title-md text-on-secondary truncate">Tech Innovations Inc.</h3>
+<span class="px-2 py-0.5 rounded-full bg-tertiary-container/30 text-tertiary-fixed font-label-sm border border-tertiary-container">Client</span>
+</div>
+<p class="font-body-md text-body-md text-outline-variant mb-2">San Francisco, CA • Enterprise Software</p>
+<div class="flex gap-2">
+<span class="inline-flex items-center gap-1 font-label-sm text-outline-variant bg-surface-container-high/10 px-2 py-1 rounded">
+<span class="material-symbols-outlined text-[14px]">group</span> 14 Contacts
+                            </span>
+</div>
+</div>
+</div>
+<!-- Result Card 2 -->
+<div class="glass-card rounded-xl p-md flex items-start gap-md cursor-pointer hover:bg-inverse-surface/80 transition-colors">
+<div class="w-12 h-12 rounded-full bg-surface-container-high/20 flex items-center justify-center text-primary-fixed-dim shrink-0 overflow-hidden">
+<img alt="Sarah Connor" class="w-full h-full object-cover" data-alt="A professional headshot of a confident mid-30s woman with shoulder-length wavy brown hair, wearing a tailored charcoal grey blazer. She is smiling subtly against a dark, moody studio background with dramatic rim lighting that highlights her silhouette. The image feels premium, corporate, and highly polished, suitable for a senior executive profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXmNQ5ftbNTXI4XkP5XwpnRg7nWqXjoxgTAiUA8pk6PaZYX0AexpPtKY47JRhfCtsbpRLHW38wikwRpU0RwEj-ZwYVsHhz5cKVcsHlD2G2YhkISY20cg88YM904FRHRgJXGSsgVXHdw7obyUI1UDH2HQOWVn9szEnOecXjngonZslT4XNaFVCbNDoHaJ4J-WqSz4TSnFuTcpIpTsPsuvdTrlp_3TDaHbZ0_9snb7pYn3KhZf0oAe24_Q"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-title-md text-title-md text-on-secondary truncate">Sarah Connor</h3>
+<span class="px-2 py-0.5 rounded-full bg-primary-container/30 text-primary-fixed font-label-sm border border-primary-container">Warm Lead</span>
+</div>
+<p class="font-body-md text-body-md text-outline-variant mb-1">VP of Sales @ Tech Innovations Inc.</p>
+<p class="font-body-md text-body-md text-outline-variant truncate">sarah.c@techinnovations.io</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent Searches -->
+<section class="space-y-sm pt-md border-t border-outline-variant/20">
+<h2 class="font-title-md text-title-md text-secondary-fixed-dim px-2">Recent Searches</h2>
+<div class="flex flex-wrap gap-2">
+<button class="flex items-center gap-2 px-3 py-1.5 rounded-full border border-outline-variant/30 text-outline-variant hover:text-on-secondary hover:border-outline-variant transition-colors font-body-md">
+<span class="material-symbols-outlined text-[16px]">history</span>
+                    Acme Corp
+                </button>
+<button class="flex items-center gap-2 px-3 py-1.5 rounded-full border border-outline-variant/30 text-outline-variant hover:text-on-secondary hover:border-outline-variant transition-colors font-body-md">
+<span class="material-symbols-outlined text-[16px]">history</span>
+                    john.doe@example.com
+                </button>
+<button class="flex items-center gap-2 px-3 py-1.5 rounded-full border border-outline-variant/30 text-outline-variant hover:text-on-secondary hover:border-outline-variant transition-colors font-body-md">
+<span class="material-symbols-outlined text-[16px]">history</span>
+                    Marketing Directors NY
+                </button>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="bg-surface-container-lowest dark:bg-inverse-surface fixed bottom-0 w-full z-50 rounded-t-xl shadow-lg fixed bottom-0 left-0 w-full h-20 flex justify-around items-center px-2 pb-safe md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant py-1 hover:bg-surface-container-high dark:hover:bg-surface-variant active:scale-90 transition-transform duration-200 w-16 rounded-lg" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="dashboard">dashboard</span>
+<span class="font-label-sm text-label-sm">Dashboard</span>
+</a>
+<!-- Active Tab: Explore/Search conceptual match -->
+<a class="flex flex-col items-center justify-center bg-secondary-container dark:bg-on-secondary-fixed-variant text-on-secondary-container dark:text-secondary-fixed rounded-full px-4 py-1 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="document_scanner" style="font-variation-settings: 'FILL' 1;">document_scanner</span>
+<span class="font-label-sm text-label-sm">Scanner</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant py-1 hover:bg-surface-container-high dark:hover:bg-surface-variant active:scale-90 transition-transform duration-200 w-16 rounded-lg" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="view_list">view_list</span>
+<span class="font-label-sm text-label-sm">Leads</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant py-1 hover:bg-surface-container-high dark:hover:bg-surface-variant active:scale-90 transition-transform duration-200 w-16 rounded-lg" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="account_tree">account_tree</span>
+<span class="font-label-sm text-label-sm">Workflow</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant py-1 hover:bg-surface-container-high dark:hover:bg-surface-variant active:scale-90 transition-transform duration-200 w-16 rounded-lg" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</nav>
+</body></html>

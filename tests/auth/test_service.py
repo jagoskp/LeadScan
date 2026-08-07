@@ -1,0 +1,64 @@
+# Unit test cases for authentication service
+import pytest
+
+
+def test_password_hashing_placeholder() -> None:
+    """Structure placeholder verifying password hashing and verify check matches."""
+    # To be implemented using Argon2 hashing validation in Phase 3
+    pass
+
+
+def test_jwt_generation_placeholder() -> None:
+    """Structure placeholder verifying JWT signature encoding and decoding."""
+    pass
+
+
+@pytest.mark.asyncio
+async def test_google_authenticate_user_creation_and_restoration() -> None:
+    """Verify Google authentication creates new user on first login and restores existing user on subsequent logins."""
+    from unittest.mock import AsyncMock, MagicMock
+    import services.api.src.users.models  # noqa: F401
+    import services.api.src.organization.models  # noqa: F401
+    from services.api.src.auth.service import AuthService
+    from services.api.src.auth.schemas import GoogleLoginRequest
+    from services.api.src.auth.models import User
+
+    user_repo = MagicMock()
+    token_repo = MagicMock()
+
+    # First login simulation: User does not exist
+    user_repo.get_by_email = AsyncMock(return_value=None)
+    user_repo.get_by_username = AsyncMock(return_value=None)
+
+    created_user = User(
+        id=MagicMock(),
+        email="realgoogleuser@example.com",
+        username="realgoogleuser",
+        hashed_password="mock_hash",
+        is_active=True,
+    )
+    user_repo.create = AsyncMock(return_value=created_user)
+    token_repo.create = AsyncMock()
+
+    service = AuthService(user_repo=user_repo, token_repo=token_repo)
+
+    request = GoogleLoginRequest(
+        id_token="test_google_id_token",
+        email="realgoogleuser@example.com",
+        name="Real Google User",
+    )
+
+    tokens = await service.google_authenticate(request)
+
+    assert "access_token" in tokens
+    assert "refresh_token" in tokens
+    user_repo.create.assert_called_once()
+
+    # Second login simulation: User already exists
+    user_repo.get_by_email = AsyncMock(return_value=created_user)
+    user_repo.create.reset_mock()
+
+    tokens_existing = await service.google_authenticate(request)
+    assert "access_token" in tokens_existing
+    user_repo.create.assert_not_called()
+

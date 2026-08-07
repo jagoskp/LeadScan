@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>AI Verification &amp; Review - LeadScan AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-container": "#eeefff",
+                      "tertiary-fixed-dim": "#4ae176",
+                      "on-error": "#ffffff",
+                      "secondary-fixed": "#dae2fd",
+                      "inverse-primary": "#b4c5ff",
+                      "inverse-surface": "#213145",
+                      "error": "#ba1a1a",
+                      "primary": "#004ac6",
+                      "tertiary-fixed": "#6bff8f",
+                      "surface-container": "#e5eeff",
+                      "on-error-container": "#93000a",
+                      "on-primary-fixed": "#00174b",
+                      "primary-fixed": "#dbe1ff",
+                      "surface-container-high": "#dce9ff",
+                      "on-secondary-fixed": "#131b2e",
+                      "surface-dim": "#cbdbf5",
+                      "secondary": "#565e74",
+                      "surface-tint": "#0053db",
+                      "on-tertiary-container": "#c1ffc5",
+                      "on-surface-variant": "#434655",
+                      "on-secondary": "#ffffff",
+                      "primary-container": "#2563eb",
+                      "surface-bright": "#f8f9ff",
+                      "secondary-container": "#dae2fd",
+                      "surface-container-highest": "#d3e4fe",
+                      "inverse-on-surface": "#eaf1ff",
+                      "tertiary": "#006229",
+                      "on-secondary-fixed-variant": "#3f465c",
+                      "secondary-fixed-dim": "#bec6e0",
+                      "on-tertiary-fixed-variant": "#005321",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "background": "#f8f9ff",
+                      "on-tertiary-fixed": "#002109",
+                      "tertiary-container": "#007e37",
+                      "error-container": "#ffdad6",
+                      "surface-variant": "#d3e4fe",
+                      "on-tertiary": "#ffffff",
+                      "primary-fixed-dim": "#b4c5ff",
+                      "on-secondary-container": "#5c647a",
+                      "surface": "#f8f9ff",
+                      "surface-container-lowest": "#ffffff",
+                      "on-background": "#0b1c30",
+                      "on-primary": "#ffffff",
+                      "on-surface": "#0b1c30",
+                      "surface-container-low": "#eff4ff",
+                      "outline-variant": "#c3c6d7",
+                      "outline": "#737686"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "base": "4px",
+                      "lg": "24px",
+                      "xs": "4px",
+                      "gutter": "16px",
+                      "margin-tablet": "24px",
+                      "sm": "8px",
+                      "margin-mobile": "16px",
+                      "xl": "32px",
+                      "md": "16px"
+              },
+              "fontFamily": {
+                      "display-lg": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "title-lg": ["Inter"],
+                      "body-md": ["Inter"],
+                      "title-md": ["Inter"],
+                      "label-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "display-lg": ["57px", {"lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                      "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "500"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "title-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        /* Hide scrollbar for cleaner UI but keep functionality */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        /* Custom toggle switch styling to match M3 */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #004ac6; /* primary */
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #004ac6; /* primary */
+        }
+        .toggle-checkbox:checked + .toggle-label:after {
+            transform: translateX(100%);
+            border-color: white;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen font-body-md antialiased pb-24 md:pb-8 flex flex-col">
+<!-- TopAppBar (From JSON) -->
+<header class="bg-surface w-full top-0 sticky z-40 bg-surface-container flat no shadows">
+<div class="flex justify-between items-center px-margin-mobile py-2 w-full max-w-screen-xl mx-auto">
+<div class="flex items-center gap-sm">
+<!-- Back action since this is a sub-page/transactional screen -->
+<button class="p-2 rounded-full hover:bg-surface-variant/50 text-on-surface-variant active:scale-95 transition-transform duration-200 md:hidden flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-primary-container overflow-hidden flex-shrink-0 hidden md:block">
+<img alt="User profile avatar" class="w-full h-full object-cover" data-alt="A clean, modern corporate headshot avatar of a professional in a light studio setting, soft lighting, modern minimalist UI context" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9eHsINJ4bn_qOq9s09dK6kC-YI0vk69p3ewz6e3FDI4_e5WL3l-80hpM5Fm3WgLeD6s1uvTkyVEb2xC0_gxP-cV0B1k7ytmUZdJsqMIk_hv72vOXDahWok_PpeaggSERzdtqleeA6KfUtfwBQqxUft09RbB-mcg3xGkS9bXtMHs5a20GNc-xAaocLEqo6qisfxsPLo2fuSV3cbRHCLEzGX9ICa3tGjvY-IDXBedSagWQofyd_chUVIQ"/>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary dark:text-primary-fixed-dim hidden md:block">LeadScan AI</h1>
+<h1 class="font-title-lg text-title-lg text-on-surface md:hidden font-semibold">Review Scan</h1>
+</div>
+<button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-surface-variant/50 text-on-surface-variant active:scale-95 transition-transform duration-200 relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full max-w-screen-md mx-auto px-margin-mobile md:px-margin-tablet py-md flex flex-col gap-lg">
+<!-- Scanned Image Preview -->
+<section class="w-full bg-surface-container-low rounded-xl overflow-hidden shadow-[0_1px_4px_0_rgba(0,0,0,0.05)] border border-surface-container">
+<div class="relative w-full h-48 md:h-64 bg-surface-variant">
+<img alt="Scanned business card" class="w-full h-full object-cover" data-alt="A crisp, high-resolution close-up macro photograph of a modern, minimal corporate business card resting on a clean white desk surface. Soft diffused natural light highlights the text. Modern UI scanning context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbdjv4uj-KeI_3La0Kg5BZZavmuu3i3tXkVGHYW6m-N8pj2OqLEyIPgJXz6jBbly25tkdtTptGchuTYZJS7sakM8M1PtVOP3qIPkQQK6io9qFHjCHurRNNn_VbVGNL887srPWlxsLJo1CakJwjNXtuDc7PRPYGacnvp3kUcLgEfroJH5Ci7yWfHygalP8COO4cTHWegP_NLjbhZPBRkJohE91-nITD-tUFhO7aRD9v-pp8kQPd9StUMQ"/>
+<!-- Floating Re-scan button -->
+<button class="absolute bottom-4 right-4 bg-surface/90 backdrop-blur-sm px-4 py-2 rounded-full flex items-center gap-2 shadow-sm border border-surface-container-high hover:bg-surface transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="crop" style="font-variation-settings: 'FILL' 0;">crop</span>
+<span class="font-label-lg text-label-lg text-on-surface">Adjust Crop</span>
+</button>
+</div>
+<div class="p-4 bg-primary-container/10 flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-0.5" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<div>
+<h2 class="font-title-md text-title-md text-primary-fixed-variant">AI Extraction Complete</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Review the extracted fields below. Fields with high confidence are marked green.</p>
+</div>
+</div>
+</section>
+<!-- Form Fields -->
+<section class="flex flex-col gap-4">
+<!-- Name Field (High Confidence) -->
+<div class="flex flex-col gap-1 relative">
+<label class="font-label-lg text-label-lg text-on-surface flex justify-between" for="field-name">
+                    Name
+                    <span class="flex items-center gap-1 text-tertiary text-xs font-medium">
+<span class="material-symbols-outlined text-[14px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                        98% match
+                    </span>
+</label>
+<div class="relative">
+<input class="w-full bg-[#F8FAFC] border border-outline-variant rounded-lg px-4 py-3 font-body-lg text-body-lg text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" id="field-name" type="text" value="Sarah Jenkins"/>
+</div>
+</div>
+<!-- Title Field (High Confidence) -->
+<div class="flex flex-col gap-1 relative">
+<label class="font-label-lg text-label-lg text-on-surface flex justify-between" for="field-title">
+                    Job Title
+                    <span class="flex items-center gap-1 text-tertiary text-xs font-medium">
+<span class="material-symbols-outlined text-[14px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                        95% match
+                    </span>
+</label>
+<div class="relative">
+<input class="w-full bg-[#F8FAFC] border border-outline-variant rounded-lg px-4 py-3 font-body-lg text-body-lg text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" id="field-title" type="text" value="VP of Enterprise Sales"/>
+</div>
+</div>
+<!-- Company Field (Medium Confidence - Needs Review) -->
+<div class="flex flex-col gap-1 relative">
+<label class="font-label-lg text-label-lg text-on-surface flex justify-between" for="field-company">
+                    Company
+                    <span class="flex items-center gap-1 text-[#b58000] text-xs font-medium">
+<span class="material-symbols-outlined text-[14px]" data-icon="error" style="font-variation-settings: 'FILL' 1;">error</span>
+                        72% match - Review
+                    </span>
+</label>
+<div class="relative">
+<input class="w-full bg-[#F8FAFC] border-2 border-[#b58000]/50 rounded-lg px-4 py-3 font-body-lg text-body-lg text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors pr-10" id="field-company" type="text" value="Novex Tech Inc"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="edit">edit</span>
+</button>
+</div>
+</div>
+<div class="h-[1px] w-full bg-surface-container-high my-2"></div>
+<!-- Email Field -->
+<div class="flex flex-col gap-1 relative">
+<label class="font-label-lg text-label-lg text-on-surface flex justify-between" for="field-email">
+                    Email
+                    <span class="flex items-center gap-1 text-tertiary text-xs font-medium">
+<span class="material-symbols-outlined text-[14px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                        99% match
+                    </span>
+</label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant material-symbols-outlined" data-icon="mail">mail</span>
+<input class="w-full bg-[#F8FAFC] border border-outline-variant rounded-lg pl-10 pr-4 py-3 font-body-lg text-body-lg text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" id="field-email" type="email" value="s.jenkins@novex.com"/>
+</div>
+</div>
+<!-- Phone Field -->
+<div class="flex flex-col gap-1 relative">
+<label class="font-label-lg text-label-lg text-on-surface flex justify-between" for="field-phone">
+                    Phone
+                    <span class="flex items-center gap-1 text-tertiary text-xs font-medium">
+<span class="material-symbols-outlined text-[14px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                        90% match
+                    </span>
+</label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant material-symbols-outlined" data-icon="phone">phone</span>
+<input class="w-full bg-[#F8FAFC] border border-outline-variant rounded-lg pl-10 pr-4 py-3 font-body-lg text-body-lg text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" id="field-phone" type="tel" value="+1 (555) 019-2834"/>
+</div>
+</div>
+</section>
+<!-- Sync Integrations Block -->
+<section class="mt-4 bg-surface-container-low rounded-xl p-4 shadow-[0_1px_4px_0_rgba(0,0,0,0.05)] border border-surface-container flex flex-col gap-4">
+<h3 class="font-title-md text-title-md text-on-surface">Integrations</h3>
+<!-- Toggle Google Sheets -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-[#e8f0fe] flex items-center justify-center text-[#1a73e8]">
+<span class="material-symbols-outlined" data-icon="table_chart">table_chart</span>
+</div>
+<div>
+<p class="font-title-md text-title-md text-on-surface leading-tight">Sync to Google Sheets</p>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">Event Leads 2024</p>
+</div>
+</div>
+<div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 transition-transform duration-200 ease-in-out border-outline-variant" id="toggle-sheets" name="toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-surface-variant cursor-pointer border border-outline-variant/30" for="toggle-sheets"></label>
+</div>
+</div>
+<!-- Toggle CRM -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-[#ffebd6] flex items-center justify-center text-[#f26522]">
+<span class="material-symbols-outlined" data-icon="hub">hub</span>
+</div>
+<div>
+<p class="font-title-md text-title-md text-on-surface leading-tight">Add to Salesforce CRM</p>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">Assign to My Pipeline</p>
+</div>
+</div>
+<div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+<input class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 transition-transform duration-200 ease-in-out border-outline-variant" id="toggle-crm" name="toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-surface-variant cursor-pointer border border-outline-variant/30" for="toggle-crm"></label>
+</div>
+</div>
+</section>
+<!-- Bottom padding for fixed action area -->
+<div class="h-20"></div>
+</main>
+<!-- Fixed Action Bottom Bar -->
+<div class="fixed bottom-0 left-0 w-full bg-surface/90 backdrop-blur-md border-t border-surface-container px-margin-mobile py-4 z-50 shadow-[0_-4px_16px_rgba(0,0,0,0.05)] md:px-margin-tablet">
+<div class="max-w-screen-md mx-auto flex gap-3">
+<button class="flex-1 bg-white border border-[#E2E8F0] text-on-surface font-title-md text-title-md py-3 rounded-lg hover:bg-surface-container-low transition-colors active:scale-[0.98]">
+                Discard
+            </button>
+<button class="flex-[2] bg-primary text-on-primary font-title-md text-title-md py-3 rounded-lg hover:bg-primary-fixed-variant transition-colors shadow-sm active:scale-[0.98] flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" data-icon="check" style="font-variation-settings: 'FILL' 1;">check</span>
+                Approve &amp; Save
+            </button>
+</div>
+</div>
+<!-- Navigation Shell SUPPRESSED based on semantic logic (Transactional/Task-focused screen) -->
+<script>
+        // Simple logic for custom toggles to handle state visually
+        document.querySelectorAll('.toggle-checkbox').forEach(toggle => {
+            toggle.addEventListener('change', function() {
+                if(this.checked) {
+                    this.style.transform = 'translateX(100%)';
+                    this.style.borderColor = '#004ac6'; // primary
+                    this.nextElementSibling.style.backgroundColor = '#004ac6';
+                } else {
+                    this.style.transform = 'translateX(0)';
+                    this.style.borderColor = '#737686'; // outline
+                    this.nextElementSibling.style.backgroundColor = '#d3e4fe'; // surface-variant
+                }
+            });
+            
+            // Init state
+            if(toggle.checked) {
+                 toggle.style.transform = 'translateX(100%)';
+                 toggle.style.borderColor = '#004ac6';
+                 toggle.nextElementSibling.style.backgroundColor = '#004ac6';
+            }
+        });
+    </script>
+</body></html>

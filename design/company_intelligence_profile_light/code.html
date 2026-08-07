@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Company Profile - TechCorp Inc.</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-on-surface": "#eaf1ff",
+                      "outline-variant": "#c3c6d7",
+                      "inverse-primary": "#b4c5ff",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "inverse-surface": "#213145",
+                      "surface-container": "#e5eeff",
+                      "outline": "#737686",
+                      "surface-dim": "#cbdbf5",
+                      "secondary-container": "#dae2fd",
+                      "on-background": "#0b1c30",
+                      "surface-tint": "#0053db",
+                      "on-secondary-container": "#5c647a",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary-fixed": "#131b2e",
+                      "on-secondary-fixed-variant": "#3f465c",
+                      "on-error-container": "#93000a",
+                      "tertiary": "#006229",
+                      "surface-container-lowest": "#ffffff",
+                      "primary-fixed-dim": "#b4c5ff",
+                      "error": "#ba1a1a",
+                      "on-primary": "#ffffff",
+                      "surface-variant": "#d3e4fe",
+                      "surface-bright": "#f8f9ff",
+                      "on-surface": "#0b1c30",
+                      "background": "#f8f9ff",
+                      "tertiary-fixed": "#6bff8f",
+                      "on-tertiary-fixed": "#002109",
+                      "tertiary-fixed-dim": "#4ae176",
+                      "on-primary-container": "#eeefff",
+                      "on-tertiary-fixed-variant": "#005321",
+                      "on-error": "#ffffff",
+                      "primary-fixed": "#dbe1ff",
+                      "on-secondary": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "surface-container-highest": "#d3e4fe",
+                      "secondary-fixed": "#dae2fd",
+                      "surface-container-low": "#eff4ff",
+                      "on-tertiary-container": "#c1ffc5",
+                      "on-primary-fixed": "#00174b",
+                      "surface-container-high": "#dce9ff",
+                      "primary": "#004ac6",
+                      "secondary-fixed-dim": "#bec6e0",
+                      "on-surface-variant": "#434655",
+                      "tertiary-container": "#007e37",
+                      "surface": "#f8f9ff",
+                      "primary-container": "#2563eb",
+                      "secondary": "#565e74"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "gutter": "16px",
+                      "xs": "4px",
+                      "lg": "24px",
+                      "xl": "32px",
+                      "md": "16px",
+                      "base": "4px",
+                      "sm": "8px",
+                      "margin-tablet": "24px"
+              },
+              "fontFamily": {
+                      "title-lg": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "label-lg": [
+                              "Inter"
+                      ],
+                      "title-md": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "title-lg": [
+                              "22px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "28px",
+                              {
+                                      "lineHeight": "36px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "57px",
+                              {
+                                      "lineHeight": "64px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-sm": [
+                              "11px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-lg": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "title-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .elevation-1 { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03); }
+        .elevation-2 { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04); }
+      </style>
+</head>
+<body class="bg-background text-on-background font-body-lg antialiased">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface dark:bg-on-background flat no shadows">
+<div class="flex items-center justify-between px-margin-mobile w-full h-16">
+<button class="text-on-surface-variant dark:text-outline-variant hover:bg-surface-container dark:hover:bg-surface-variant transition-colors duration-200 active:opacity-70 p-2 rounded-full">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</button>
+<h1 class="font-title-lg text-title-lg font-bold text-primary dark:text-primary-fixed-dim">Lead Management AI</h1>
+<button class="text-on-surface-variant dark:text-outline-variant hover:bg-surface-container dark:hover:bg-surface-variant transition-colors duration-200 active:opacity-70 p-2 rounded-full">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">more_vert</span>
+</button>
+</div>
+</header>
+<!-- Main Navigation Layout -->
+<div class="flex h-screen pt-16">
+<!-- NavigationDrawer (Desktop) -->
+<aside class="hidden md:flex h-full w-80 rounded-r-xl bg-surface dark:bg-on-background shadow-md flex-col py-lg flex-shrink-0 z-40">
+<!-- Profile Header -->
+<div class="px-lg pb-6 mb-4 border-b border-surface-variant">
+<div class="flex items-center gap-4">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="A professional headshot of a corporate executive in a well-lit modern office environment. High quality, clear, light mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuonJx0uifpG9bb-vgVPwegA9v07z0TuQVxvXU1LLhxsirDz7bykZI-Bcw-_m2Rac20Ek5WmaWKg0rSCJ1e788ztkFIcw9aixn5rvKYORzOZCnPQPExqqxBT6O_qJoq1h3q0V5hnF-dHtc_0ZVTpaRxFJwQ0w4cOtnISxjLPnCUOznBYnGO-wI1tsT9kyEKvW5AbA_kBCeEX0vCtthnZ9vvWgQ09O0rGCExSHoYldcDmhGIYGhqTxU_A"/>
+<div>
+<h2 class="font-title-lg text-title-lg font-bold text-primary">Alex Sterling</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Senior Sales Executive</p>
+<p class="font-label-sm text-label-sm text-outline">Enterprise AI Division</p>
+</div>
+</div>
+</div>
+<!-- Nav Items -->
+<nav class="flex-1 flex flex-col gap-sm">
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-outline-variant px-4 py-3 hover:bg-surface-container-high dark:hover:bg-surface-variant transition-all duration-200 mx-2 rounded-full" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-outline-variant px-4 py-3 hover:bg-surface-container-high dark:hover:bg-surface-variant transition-all duration-200 mx-2 rounded-full" href="#">
+<span class="material-symbols-outlined">filter_list</span>
+<span class="font-body-md text-body-md">Lead Pipeline</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-outline-variant px-4 py-3 hover:bg-surface-container-high dark:hover:bg-surface-variant transition-all duration-200 mx-2 rounded-full" href="#">
+<span class="material-symbols-outlined">check_circle</span>
+<span class="font-body-md text-body-md">Task Manager</span>
+</a>
+<a class="flex items-center gap-3 bg-primary-container text-on-primary-container font-title-md rounded-full mx-2 px-4 py-3 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">business</span>
+<span>Company</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-outline-variant px-4 py-3 hover:bg-surface-container-high dark:hover:bg-surface-variant transition-all duration-200 mx-2 rounded-full mt-auto mb-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 overflow-y-auto pb-32 md:pb-lg px-margin-mobile md:px-margin-tablet py-lg w-full max-w-7xl mx-auto">
+<!-- Hero / Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-lg">
+<div class="flex items-center gap-6">
+<div class="w-20 h-20 md:w-24 md:h-24 rounded-xl bg-surface-container-lowest elevation-2 flex items-center justify-center p-2 border border-surface-variant">
+<img class="w-full h-full object-contain" data-alt="A sleek, modern corporate logo for 'TechCorp Inc.' featuring abstract geometric shapes in deep blue and silver, set against a pristine white background. High resolution, minimalist enterprise design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3fLkVTQBBZFlpIqIyuQvYpUpiefIdkZoLH7EOC8_IQ3-Wxmni7T4774HGi6lh5WogQ-RDQMRUQDn6bqrVQQEduFg-tl9cNvYg29iWwJaJewChCI04tD4EAfgZWTCk-0-54ykp-b4eS5Tek50G_8vX2xphN6uYEE_eUG6Zb4KK1a6oiURNypYQfQFJ3gByjRqDPimFoeTAOR4MEj-AVHOy-5fqhK5Onr7AwWBcr6VQVoluGJLb2keHfg"/>
+</div>
+<div>
+<h1 class="font-display-lg text-display-lg text-on-surface">TechCorp Inc.</h1>
+<div class="flex items-center gap-2 mt-2">
+<span class="px-2 py-1 bg-tertiary-container text-on-tertiary-container rounded-sm font-label-sm text-label-sm uppercase tracking-wider">Priority Target</span>
+<span class="flex items-center gap-1 text-on-surface-variant font-body-md text-body-md">
+<span class="material-symbols-outlined text-sm">link</span> techcorp.inc
+                            </span>
+</div>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="px-6 py-2 rounded-lg border border-outline-variant bg-surface-container-lowest font-title-md text-title-md text-on-surface hover:bg-surface-container transition-colors">
+                        Edit
+                    </button>
+<button class="px-6 py-2 rounded-lg bg-primary font-title-md text-title-md text-on-primary hover:bg-on-primary-fixed-variant transition-colors shadow-sm">
+                        Log Activity
+                    </button>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Business Summary -->
+<div class="md:col-span-8 bg-surface-container-lowest rounded-xl p-lg elevation-1 border border-surface-variant flex flex-col justify-between">
+<div>
+<h3 class="font-title-lg text-title-lg text-on-surface mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">lightbulb</span>
+                            Business Summary
+                        </h3>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                            Enterprise software solutions provider specializing in AI logistics. TechCorp Inc. leverages advanced machine learning models to optimize global supply chains, reducing overhead costs by up to 30% for Tier-1 manufacturing clients. Their proprietary platform integrates seamlessly with major ERP systems, offering real-time predictive analytics and autonomous routing adjustments.
+                        </p>
+</div>
+<div class="mt-6 p-4 bg-surface-container-low rounded-lg border-l-4 border-primary">
+<p class="font-body-md text-body-md text-on-surface flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-sm mt-0.5">info</span>
+<strong>Company Notes:</strong> Priority enterprise target for Q4. Engage C-suite regarding recent supply chain disruptions in the APAC region.
+                        </p>
+</div>
+</div>
+<!-- Technical Details & Status -->
+<div class="md:col-span-4 flex flex-col gap-gutter">
+<!-- Status Card -->
+<div class="bg-surface-container-lowest rounded-xl p-6 elevation-1 border border-surface-variant">
+<h3 class="font-title-md text-title-md text-on-surface mb-4">CRM Integration</h3>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">cloud_sync</span>
+</div>
+<div>
+<p class="font-title-md text-title-md text-on-surface">Salesforce</p>
+<p class="font-body-md text-body-md text-secondary">Primary Account</p>
+</div>
+<span class="material-symbols-outlined text-tertiary ml-auto">check_circle</span>
+</div>
+</div>
+<!-- Details Card -->
+<div class="bg-surface-container-lowest rounded-xl p-6 elevation-1 border border-surface-variant flex-1">
+<h3 class="font-title-md text-title-md text-on-surface mb-4">Firmographics</h3>
+<ul class="space-y-4">
+<li class="flex justify-between items-center border-b border-surface-variant pb-2">
+<span class="font-body-md text-body-md text-on-surface-variant">Industry</span>
+<span class="font-title-md text-title-md text-on-surface">IT &amp; Services</span>
+</li>
+<li class="flex justify-between items-center border-b border-surface-variant pb-2">
+<span class="font-body-md text-body-md text-on-surface-variant">Employee Range</span>
+<span class="font-title-md text-title-md text-on-surface">500-1000</span>
+</li>
+<li class="flex justify-between items-center border-b border-surface-variant pb-2">
+<span class="font-body-md text-body-md text-on-surface-variant">HQ Location</span>
+<span class="font-title-md text-title-md text-on-surface">San Francisco, CA</span>
+</li>
+<li class="flex justify-between items-center pb-2">
+<span class="font-body-md text-body-md text-on-surface-variant">Annual Rev.</span>
+<span class="font-title-md text-title-md text-on-surface">$50M - $100M</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Related Contacts -->
+<div class="md:col-span-12 bg-surface-container-lowest rounded-xl p-lg elevation-1 border border-surface-variant mt-4">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-title-lg text-title-lg text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">group</span>
+                            Related Contacts
+                        </h3>
+<button class="text-primary font-title-md text-title-md hover:underline">View All</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Contact 1 -->
+<div class="flex items-center gap-4 p-4 rounded-lg bg-surface-container-low hover:bg-surface-container transition-colors cursor-pointer group">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="Professional headshot of a middle-aged male executive in a sharp navy suit, smiling slightly. Bright, modern office background. Light mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1FrQV6oyJYDiQ6XXQlVf11iX56eTPPN-ANugsxmLKAaYB24VyCDq_bxBeXfNUeBpU-K_JkC9YIo8DnOTv3snmolPf4F1Xk78A1xb6VGbNfTJbTmNMWJTmSlxezf54HBAeL0eA5r_nG7NwtA6UfhAv6nbtjYtmp7wx8UVZRuaKaHmO3tUzBeZU4XogMcJf36YIshtn09V8-pSEc-4O_t_dQYF7ew91fNnqy85UCCPydrvBmX35EhA1vg"/>
+<div class="flex-1">
+<h4 class="font-title-md text-title-md text-on-surface group-hover:text-primary transition-colors">Sarah Jenkins</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Chief Technology Officer</p>
+</div>
+<button class="w-8 h-8 rounded-full flex items-center justify-center text-outline hover:bg-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">mail</span>
+</button>
+</div>
+<!-- Contact 2 -->
+<div class="flex items-center gap-4 p-4 rounded-lg bg-surface-container-low hover:bg-surface-container transition-colors cursor-pointer group">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="Professional headshot of a young female operations manager wearing a smart blazer. Neutral, bright background. Light mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlBt3KTW7YgAZvSdKg46pa63YC9eiBJeeJJz2j27-V_kuI5P_6XH8kRkRUvx6kLPG2j1WE_EhHcJNTV6NvBvMMcj811Yw3y_48N387kyb_vF4GvAWgkHmaZSb7PzKQM06Hvj1j58A4eW3apW1CUMP8VQIPo58fQQMdNLwX9oQSdILTXuZ3pIVtXJ9tSTn-oyA6mvteYIaDOtpcWyTR7EzhCSc2AEI-PDtxc1YKCZmAk4CYd4JIeCpCxw"/>
+<div class="flex-1">
+<h4 class="font-title-md text-title-md text-on-surface group-hover:text-primary transition-colors">Michael Chang</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">VP of Operations</p>
+</div>
+<button class="w-8 h-8 rounded-full flex items-center justify-center text-outline hover:bg-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">mail</span>
+</button>
+</div>
+<!-- Contact 3 -->
+<div class="flex items-center gap-4 p-4 rounded-lg bg-surface-container-low hover:bg-surface-container transition-colors cursor-pointer group">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="Professional headshot of a male director of procurement in business casual attire. Crisp, well-lit corporate setting. Light mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2rVIzE43hSXN8S4kHPScBA0A-qdvKW9IhFM0sXd8Yc29Xle2qnDNUhSxd8GvXFSjuZxWBkmXKoZKKOKqKYlZ4ZZa8qGPuYb7e2zv4xLfpgq4_qYRdhVPYrFejL36bxmIPWbxo8przC376sNRrPFfPVCgbu_VJJcoWETaaiUEq1N9J1XANSiMqnDLd6MmaVV442TgfMymj1ySsHg4t-_2ZoiS-lvYBT9lcwuvmJ-y59ljGt5fEwSEZ9g"/>
+<div class="flex-1">
+<h4 class="font-title-md text-title-md text-on-surface group-hover:text-primary transition-colors">Elena Rodriguez</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Director of Procurement</p>
+</div>
+<button class="w-8 h-8 rounded-full flex items-center justify-center text-outline hover:bg-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">mail</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 bg-surface-container dark:bg-inverse-surface shadow-sm flex justify-around items-center h-20 pb-safe px-2 rounded-t-none">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:bg-surface-variant dark:hover:bg-on-secondary-fixed-variant scale-95 active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm mt-1">Leads</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:bg-surface-variant dark:hover:bg-on-secondary-fixed-variant scale-95 active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">event_note</span>
+<span class="font-label-sm text-label-sm mt-1">Timeline</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-xl px-4 py-1 scale-95 active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">business</span>
+<span class="font-label-sm text-label-sm mt-1">Company</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:bg-surface-variant dark:hover:bg-on-secondary-fixed-variant scale-95 active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-sm text-label-sm mt-1">Insights</span>
+</a>
+</nav>
+<!-- Contextual FAB (Mobile) -->
+<button class="md:hidden fixed bottom-24 right-4 w-14 h-14 bg-primary text-on-primary rounded-[16px] shadow-lg flex items-center justify-center z-50 hover:bg-on-primary-fixed-variant transition-colors">
+<span class="material-symbols-outlined">add</span>
+</button>
+</body></html>

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Column Mapping Studio - LeadScan AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary-container": "#2563eb",
+                      "surface-container-high": "#dce9ff",
+                      "on-tertiary-fixed-variant": "#005321",
+                      "on-tertiary-fixed": "#002109",
+                      "inverse-on-surface": "#eaf1ff",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "surface-container": "#e5eeff",
+                      "on-background": "#0b1c30",
+                      "on-secondary-container": "#5c647a",
+                      "surface-variant": "#d3e4fe",
+                      "surface-dim": "#cbdbf5",
+                      "surface": "#f8f9ff",
+                      "on-primary": "#ffffff",
+                      "error": "#ba1a1a",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "secondary-fixed-dim": "#bec6e0",
+                      "outline": "#737686",
+                      "secondary-container": "#dae2fd",
+                      "primary-fixed": "#dbe1ff",
+                      "on-secondary-fixed": "#131b2e",
+                      "on-primary-container": "#eeefff",
+                      "on-secondary": "#ffffff",
+                      "on-primary-fixed": "#00174b",
+                      "on-error-container": "#93000a",
+                      "error-container": "#ffdad6",
+                      "on-surface": "#0b1c30",
+                      "surface-tint": "#0053db",
+                      "secondary": "#565e74",
+                      "on-surface-variant": "#434655",
+                      "surface-container-highest": "#d3e4fe",
+                      "tertiary-fixed": "#6bff8f",
+                      "tertiary-container": "#007e37",
+                      "primary": "#004ac6",
+                      "outline-variant": "#c3c6d7",
+                      "primary-fixed-dim": "#b4c5ff",
+                      "inverse-primary": "#b4c5ff",
+                      "secondary-fixed": "#dae2fd",
+                      "on-secondary-fixed-variant": "#3f465c",
+                      "tertiary-fixed-dim": "#4ae176",
+                      "inverse-surface": "#213145",
+                      "background": "#f8f9ff",
+                      "tertiary": "#006229",
+                      "on-tertiary-container": "#c1ffc5",
+                      "surface-container-low": "#eff4ff",
+                      "surface-bright": "#f8f9ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "base": "4px",
+                      "xl": "32px",
+                      "md": "16px",
+                      "margin-tablet": "24px",
+                      "margin-mobile": "16px",
+                      "lg": "24px",
+                      "gutter": "16px",
+                      "xs": "4px",
+                      "sm": "8px"
+              },
+              "fontFamily": {
+                      "title-md": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Inter"
+                      ],
+                      "label-lg": [
+                              "Inter"
+                      ],
+                      "title-lg": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "title-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "57px",
+                              {
+                                      "lineHeight": "64px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-lg": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "title-lg": [
+                              "22px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "28px",
+                              {
+                                      "lineHeight": "36px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-sm": [
+                              "11px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1;
+        }
+        /* Custom styles for select to match M3 */
+        select.m3-select {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%22%20fill%3D%22none%22%20stroke%3D%22%23b4c5ff%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px top 50%;
+            background-size: 16px auto;
+        }
+      </style>
+</head>
+<body class="bg-surface-inverse dark:bg-surface-inverse text-on-surface dark:text-inverse-on-surface min-h-screen flex flex-col font-body-md">
+<!-- TopAppBar -->
+<header class="bg-background dark:bg-background docked full-width top-0 bg-surface-container-low dark:bg-surface-container-low flat no shadows transition-colors duration-200 flex justify-between items-center px-margin-mobile w-full h-16 sticky z-10 border-b border-outline-variant/20">
+<div class="flex items-center gap-4">
+<button class="w-12 h-12 flex items-center justify-center rounded-full hover:bg-surface-variant/20 text-on-surface dark:text-inverse-on-surface transition-colors">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-title-lg text-title-lg font-bold text-primary dark:text-inverse-primary">Column Mapping</h1>
+</div>
+<div class="flex items-center">
+<button class="w-12 h-12 flex items-center justify-center rounded-full hover:bg-surface-variant/20 text-on-surface dark:text-inverse-on-surface transition-colors">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow p-margin-mobile md:p-margin-tablet pb-32 max-w-4xl mx-auto w-full flex flex-col gap-lg">
+<!-- Header Section with Smart Auto-Map -->
+<section class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-surface dark:bg-[#1a2332] p-md rounded-xl shadow-sm border border-outline-variant/10">
+<div>
+<h2 class="font-title-md text-title-md text-on-surface dark:text-inverse-on-surface mb-1">Map Extracted Data</h2>
+<p class="font-body-md text-body-md text-on-surface-variant dark:text-secondary-fixed-dim">Align AI-detected fields with your Google Sheet columns.</p>
+</div>
+<button class="flex items-center gap-2 bg-primary-container text-on-primary-container px-4 py-3 rounded-full hover:opacity-90 transition-opacity whitespace-nowrap shadow-sm">
+<span class="material-symbols-outlined fill" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-label-lg text-label-lg">Smart Auto-Map</span>
+</button>
+</section>
+<!-- Mapping List -->
+<section class="flex flex-col gap-4">
+<!-- Row 1: Required -->
+<div class="flex flex-col md:flex-row items-start md:items-center gap-4 bg-surface dark:bg-[#1a2332] p-md rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.05)] dark:shadow-[0_4px_12px_rgba(0,0,0,0.2)] border border-outline-variant/10">
+<!-- Source Field (AI) -->
+<div class="flex-1 w-full">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary dark:text-inverse-primary text-[18px]" data-icon="person">person</span>
+<span class="font-title-md text-title-md text-on-surface dark:text-inverse-on-surface">Full Name</span>
+<span class="bg-error-container text-on-error-container px-2 py-0.5 rounded-full font-label-sm text-[10px] uppercase tracking-wider ml-auto md:ml-0">Required</span>
+</div>
+<div class="font-body-md text-body-md text-on-surface-variant dark:text-secondary-fixed-dim bg-surface-container-low dark:bg-[#111827] px-3 py-2 rounded-lg border border-outline-variant/20 truncate">
+                        e.g., "Jane Doe"
+                    </div>
+</div>
+<!-- Arrow -->
+<div class="hidden md:flex items-center justify-center w-12 h-12">
+<span class="material-symbols-outlined text-outline dark:text-secondary-fixed-dim" data-icon="arrow_forward">arrow_forward</span>
+</div>
+<div class="md:hidden flex items-center justify-center w-full py-1">
+<span class="material-symbols-outlined text-outline dark:text-secondary-fixed-dim transform rotate-90" data-icon="arrow_forward">arrow_forward</span>
+</div>
+<!-- Destination Field (Sheet) -->
+<div class="flex-1 w-full relative">
+<label class="block font-label-sm text-label-sm text-on-surface-variant dark:text-secondary-fixed-dim mb-1">Google Sheet Column</label>
+<select class="m3-select w-full bg-surface-container-low dark:bg-[#111827] border-2 border-primary/20 dark:border-inverse-primary/30 text-on-surface dark:text-inverse-on-surface rounded-lg px-4 py-3 font-body-lg focus:outline-none focus:border-primary dark:focus:border-inverse-primary transition-colors appearance-none pr-10">
+<option value="">Select Column...</option>
+<option selected="" value="A">Column A: Name</option>
+<option value="B">Column B: Email</option>
+<option value="C">Column C: Company</option>
+</select>
+</div>
+</div>
+<!-- Row 2: Required -->
+<div class="flex flex-col md:flex-row items-start md:items-center gap-4 bg-surface dark:bg-[#1a2332] p-md rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.05)] dark:shadow-[0_4px_12px_rgba(0,0,0,0.2)] border border-outline-variant/10">
+<!-- Source Field (AI) -->
+<div class="flex-1 w-full">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary dark:text-inverse-primary text-[18px]" data-icon="mail">mail</span>
+<span class="font-title-md text-title-md text-on-surface dark:text-inverse-on-surface">Email Address</span>
+<span class="bg-error-container text-on-error-container px-2 py-0.5 rounded-full font-label-sm text-[10px] uppercase tracking-wider ml-auto md:ml-0">Required</span>
+</div>
+<div class="font-body-md text-body-md text-on-surface-variant dark:text-secondary-fixed-dim bg-surface-container-low dark:bg-[#111827] px-3 py-2 rounded-lg border border-outline-variant/20 truncate">
+                        e.g., "jane@example.com"
+                    </div>
+</div>
+<!-- Arrow -->
+<div class="hidden md:flex items-center justify-center w-12 h-12">
+<span class="material-symbols-outlined text-outline dark:text-secondary-fixed-dim" data-icon="arrow_forward">arrow_forward</span>
+</div>
+<div class="md:hidden flex items-center justify-center w-full py-1">
+<span class="material-symbols-outlined text-outline dark:text-secondary-fixed-dim transform rotate-90" data-icon="arrow_forward">arrow_forward</span>
+</div>
+<!-- Destination Field (Sheet) -->
+<div class="flex-1 w-full relative">
+<label class="block font-label-sm text-label-sm text-on-surface-variant dark:text-secondary-fixed-dim mb-1">Google Sheet Column</label>
+<select class="m3-select w-full bg-surface-container-low dark:bg-[#111827] border-2 border-primary/20 dark:border-inverse-primary/30 text-on-surface dark:text-inverse-on-surface rounded-lg px-4 py-3 font-body-lg focus:outline-none focus:border-primary dark:focus:border-inverse-primary transition-colors appearance-none pr-10">
+<option value="">Select Column...</option>
+<option value="A">Column A: Name</option>
+<option selected="" value="B">Column B: Email</option>
+<option value="C">Column C: Company</option>
+</select>
+</div>
+</div>
+<!-- Row 3: Optional (Unmapped) -->
+<div class="flex flex-col md:flex-row items-start md:items-center gap-4 bg-surface dark:bg-[#1a2332] p-md rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.05)] dark:shadow-[0_4px_12px_rgba(0,0,0,0.2)] border border-outline-variant/10">
+<!-- Source Field (AI) -->
+<div class="flex-1 w-full">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-secondary dark:text-secondary-fixed-dim text-[18px]" data-icon="business">business</span>
+<span class="font-title-md text-title-md text-on-surface dark:text-inverse-on-surface">Company Name</span>
+<span class="bg-surface-container-highest text-on-surface-variant dark:bg-surface-variant/20 dark:text-secondary-fixed-dim px-2 py-0.5 rounded-full font-label-sm text-[10px] uppercase tracking-wider ml-auto md:ml-0">Optional</span>
+</div>
+<div class="font-body-md text-body-md text-on-surface-variant dark:text-secondary-fixed-dim bg-surface-container-low dark:bg-[#111827] px-3 py-2 rounded-lg border border-outline-variant/20 truncate">
+                        e.g., "Tech Corp"
+                    </div>
+</div>
+<!-- Arrow -->
+<div class="hidden md:flex items-center justify-center w-12 h-12">
+<span class="material-symbols-outlined text-outline dark:text-secondary-fixed-dim" data-icon="arrow_forward">arrow_forward</span>
+</div>
+<div class="md:hidden flex items-center justify-center w-full py-1">
+<span class="material-symbols-outlined text-outline dark:text-secondary-fixed-dim transform rotate-90" data-icon="arrow_forward">arrow_forward</span>
+</div>
+<!-- Destination Field (Sheet) -->
+<div class="flex-1 w-full relative">
+<label class="block font-label-sm text-label-sm text-on-surface-variant dark:text-secondary-fixed-dim mb-1">Google Sheet Column</label>
+<select class="m3-select w-full bg-surface-container-low dark:bg-[#111827] border border-outline-variant/30 text-on-surface dark:text-inverse-on-surface rounded-lg px-4 py-3 font-body-lg focus:outline-none focus:border-primary dark:focus:border-inverse-primary transition-colors appearance-none pr-10">
+<option selected="" value="">Select Column...</option>
+<option value="A">Column A: Name</option>
+<option value="B">Column B: Email</option>
+<option value="C">Column C: Company</option>
+<option value="D">Column D: Notes</option>
+</select>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Action Bar (Transactional contextual navigation) -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface dark:bg-surface border-t border-outline-variant/10 shadow-[0_-4px_16px_rgba(0,0,0,0.1)] dark:shadow-[0_-4px_16px_rgba(0,0,0,0.3)] pb-safe">
+<div class="max-w-4xl mx-auto w-full px-margin-mobile py-4 flex justify-between items-center h-20">
+<button class="px-6 py-2.5 rounded-full border border-outline-variant/50 text-on-surface dark:text-inverse-on-surface font-title-md text-title-md hover:bg-surface-variant/10 transition-colors">
+                Cancel
+            </button>
+<button class="px-6 py-2.5 rounded-full bg-primary text-on-primary dark:bg-inverse-primary dark:text-on-primary-fixed font-title-md text-title-md hover:opacity-90 transition-opacity shadow-sm flex items-center gap-2">
+<span>Preview Sync</span>
+<span class="material-symbols-outlined" data-icon="sync">sync</span>
+</button>
+</div>
+</nav>
+</body></html>

@@ -1,0 +1,1 @@
+# LeadScan API Authentication Module

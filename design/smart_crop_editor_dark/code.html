@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Smart Crop Editor - LeadScan AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#004ac6",
+                        "surface-container-high": "#dce9ff",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#cbdbf5",
+                        "on-surface": "#0b1c30",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-background": "#0b1c30",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "surface-container-highest": "#d3e4fe",
+                        "surface-container": "#e5eeff",
+                        "inverse-surface": "#213145",
+                        "secondary": "#565e74",
+                        "surface-container-low": "#eff4ff",
+                        "primary-container": "#2563eb",
+                        "outline-variant": "#c3c6d7",
+                        "tertiary-container": "#007e37",
+                        "tertiary": "#006229",
+                        "secondary-fixed": "#dae2fd",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-surface-variant": "#434655",
+                        "on-error": "#ffffff",
+                        "primary-fixed": "#dbe1ff",
+                        "on-primary-fixed": "#00174b",
+                        "tertiary-fixed": "#6bff8f",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#b4c5ff",
+                        "on-secondary-container": "#5c647a",
+                        "secondary-fixed-dim": "#bec6e0",
+                        "secondary-container": "#dae2fd",
+                        "on-secondary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed": "#131b2e",
+                        "on-primary": "#ffffff",
+                        "surface-bright": "#f8f9ff",
+                        "on-tertiary-container": "#c1ffc5",
+                        "surface": "#f8f9ff",
+                        "on-tertiary-fixed-variant": "#005321",
+                        "on-tertiary-fixed": "#002109",
+                        "tertiary-fixed-dim": "#4ae176",
+                        "surface-variant": "#d3e4fe",
+                        "outline": "#737686",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-secondary-fixed-variant": "#3f465c",
+                        "background": "#f8f9ff",
+                        "on-primary-container": "#eeefff",
+                        "surface-tint": "#0053db"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "margin-tablet": "24px",
+                        "gutter": "16px",
+                        "xs": "4px",
+                        "xl": "32px",
+                        "lg": "24px",
+                        "md": "16px",
+                        "base": "4px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "title-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "title-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "title-lg": ["22px", { "lineHeight": "28px", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-sm": ["11px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "display-lg": ["57px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #0b1c30; /* Forcing dark background for the editor */
+            color: #ffffff;
+        }
+        /* Custom slider styles for the editor */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: #b4c5ff; /* primary-fixed-dim */
+            cursor: pointer;
+            margin-top: -8px;
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: #434655; /* on-surface-variant */
+            border-radius: 2px;
+        }
+        
+        .crop-handle {
+            width: 24px;
+            height: 24px;
+            background-color: transparent;
+            border: 3px solid #b4c5ff;
+            border-radius: 50%;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            z-index: 10;
+        }
+        
+        .crop-line {
+            position: absolute;
+            background-color: rgba(180, 197, 255, 0.5);
+            z-index: 9;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-body-md text-body-md">
+<!-- Top App Bar -->
+<header class="flex justify-between items-center px-margin-mobile py-4 w-full max-w-screen-xl mx-auto sticky top-0 z-50 bg-[#0b1c30]">
+<button class="text-primary-fixed-dim hover:bg-surface-variant/20 transition-colors px-4 py-2 rounded-lg font-title-md text-title-md active:scale-95 duration-200">
+            Cancel
+        </button>
+<h1 class="font-title-lg text-title-lg font-semibold text-primary-fixed-dim">Crop &amp; Edit</h1>
+<button class="bg-primary-container text-on-primary-container hover:bg-surface-variant/20 transition-colors px-4 py-2 rounded-lg font-title-md text-title-md active:scale-95 duration-200">
+            Done
+        </button>
+</header>
+<!-- Main Canvas Area -->
+<main class="flex-grow relative flex items-center justify-center p-margin-mobile overflow-hidden">
+<div class="relative w-full max-w-md aspect-[3/4] bg-surface-variant rounded-xl overflow-hidden shadow-[0_12px_24px_rgba(0,0,0,0.3)]">
+<!-- Simulated Camera Feed / Captured Image -->
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="A close-up, high-quality photograph of a modern, sleek business card lying on a dark wooden desk. The lighting is dramatic but clear, highlighting the text on the card. The surrounding area is slightly out of focus, emphasizing the card. The overall mood is professional and premium, fitting an enterprise software context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXtm829XepER22POssXjjnyqxQ6owElJNZUAhd8Ht3LJLkfeSzx8NwYsOW_vyikRansP6YHRGHcOtyCUHRSm2GRuHw3XnUawjwpX3hvYyoM75g8_t2y0qSkZ9DI2koa7PUZoYpPhc7u7Y8w-F-A4UsJab6Kq43-8eTwA0P5tvxhKKJGOnluBR9vTxDReVKzDoXhgkb848moy0aybloZ932_8v1f3mI4T0PJ7Apr-e4BifUC_OvBHkX3Q"/>
+<!-- Dark Overlay outside crop area -->
+<div class="absolute inset-0 bg-black/50 pointer-events-none"></div>
+<!-- Smart Crop Interactive Area -->
+<div class="absolute inset-8 pointer-events-auto">
+<!-- Crop area cutout (simulated with a pseudo-element or inner div in a real app, here just a bright border) -->
+<div class="absolute inset-0 border-2 border-primary-fixed-dim bg-transparent z-0 shadow-[0_0_0_9999px_rgba(0,0,0,0.6)]"></div>
+<!-- Grid Lines -->
+<div class="absolute inset-0 flex flex-col justify-evenly pointer-events-none z-10">
+<div class="w-full h-[1px] bg-primary-fixed-dim/30"></div>
+<div class="w-full h-[1px] bg-primary-fixed-dim/30"></div>
+</div>
+<div class="absolute inset-0 flex flex-row justify-evenly pointer-events-none z-10">
+<div class="h-full w-[1px] bg-primary-fixed-dim/30"></div>
+<div class="h-full w-[1px] bg-primary-fixed-dim/30"></div>
+</div>
+<!-- Handles -->
+<div class="crop-handle top-0 left-0"></div>
+<div class="crop-handle top-0 left-full"></div>
+<div class="crop-handle top-full left-0"></div>
+<div class="crop-handle top-full left-full"></div>
+</div>
+<!-- Auto-detect indicator -->
+<div class="absolute top-4 left-1/2 -translate-x-1/2 bg-surface-container-high/80 backdrop-blur-sm px-3 py-1.5 rounded-full flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">document_scanner</span>
+<span class="font-label-sm text-label-sm text-on-surface">Auto-detected</span>
+</div>
+</div>
+</main>
+<!-- Bottom Toolbar / Controls -->
+<section class="bg-[#131b2e] rounded-t-3xl shadow-[0_-4px_24px_rgba(0,0,0,0.2)] pb-safe relative z-40">
+<!-- Adjustment Sliders -->
+<div class="px-margin-mobile py-6 flex flex-col gap-6">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-outline">light_mode</span>
+<input class="flex-grow" max="100" min="0" type="range" value="50"/>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-outline">contrast</span>
+<input class="flex-grow" max="100" min="0" type="range" value="65"/>
+</div>
+</div>
+<!-- Tool Icons -->
+<div class="flex justify-around items-center px-4 py-4 border-t border-outline-variant/20">
+<button class="flex flex-col items-center gap-1 p-2 rounded-lg hover:bg-surface-variant/20 text-on-surface-variant">
+<span class="material-symbols-outlined text-[24px]">rotate_right</span>
+<span class="font-label-sm text-label-sm">Rotate</span>
+</button>
+<button class="flex flex-col items-center gap-1 p-2 rounded-lg hover:bg-surface-variant/20 text-primary-fixed-dim bg-surface-variant/10">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">transform</span>
+<span class="font-label-sm text-label-sm">Perspective</span>
+</button>
+<button class="flex flex-col items-center gap-1 p-2 rounded-lg hover:bg-surface-variant/20 text-on-surface-variant">
+<span class="material-symbols-outlined text-[24px]">auto_awesome</span>
+<span class="font-label-sm text-label-sm">Enhance</span>
+</button>
+<button class="flex flex-col items-center gap-1 p-2 rounded-lg hover:bg-surface-variant/20 text-on-surface-variant">
+<span class="material-symbols-outlined text-[24px]">filter_b_and_w</span>
+<span class="font-label-sm text-label-sm">B&amp;W</span>
+</button>
+</div>
+</section>
+</body></html>

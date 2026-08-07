@@ -1,0 +1,29 @@
+# LeadScan AI Monorepo Codeowners
+# Each line defines a pattern and the GitHub users or teams that own matching files.
+
+# Global owners (fallback)
+* @leadscan-ai/platform-leads
+
+# Frontend Applications
+/apps/web/ @leadscan-ai/frontend-team
+/apps/admin/ @leadscan-ai/frontend-team
+/apps/mobile/ @leadscan-ai/mobile-team
+
+# Backend Services
+/services/api/ @leadscan-ai/backend-team
+/services/ai-engine/ @leadscan-ai/ai-team
+/services/ocr-engine/ @leadscan-ai/ocr-team
+/services/worker/ @leadscan-ai/backend-team
+
+# Shared Packages
+/packages/shared/ @leadscan-ai/platform-leads
+/packages/sdk/ @leadscan-ai/platform-leads @leadscan-ai/frontend-team
+/packages/config/ @leadscan-ai/platform-leads
+/packages/ui/ @leadscan-ai/frontend-team
+
+# Infrastructure
+/infrastructure/ @leadscan-ai/devops-team
+
+# Documentation
+/docs/ @leadscan-ai/platform-leads
+README.md @leadscan-ai/platform-leads

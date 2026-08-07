@@ -1,0 +1,13 @@
+{
+  "app_title": "LeadScan AI",
+  "welcome_title": "LeadScan AI Enterprise",
+  "welcome_subtitle": "Intelligent Business Card Scanning & Lead Management",
+  "common": {
+    "ok": "OK",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "error": "An unexpected error occurred",
+    "retry": "Retry"
+  }
+}

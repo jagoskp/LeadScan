@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: leadscan-ocr
+  namespace: leadscan
+  labels:
+    app: leadscan-ocr
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: leadscan-ocr
+  template:
+    metadata:
+      labels:
+        app: leadscan-ocr
+    spec:
+      containers:
+        - name: ocr
+          image: leadscan-ocr:latest
+          imagePullPolicy: IfNotPresent
+          resources:
+            requests:
+              cpu: "500m"
+              memory: "1024Mi"
+            limits:
+              cpu: "2000m"
+              memory: "2048Mi"
+          envFrom:
+            - configMapRef:
+                name: leadscan-config
+            - secretRef:
+                name: leadscan-secrets
