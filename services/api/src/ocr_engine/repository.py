@@ -7,7 +7,7 @@ from sqlalchemy.orm import selectinload
 
 from services.api.src.ocr_engine.models import (
     OCRBlock,
-    OCRJob,
+    OCREngineJob,
     OCRLine,
     OCRMetadata,
     OCRPage,
@@ -16,24 +16,24 @@ from services.api.src.ocr_engine.models import (
 
 
 class OCRJobRepository:
-    """Repository handling persistence operations for OCRJobs and metadata."""
+    """Repository handling persistence operations for OCREngineJobs and metadata."""
 
     def __init__(self, session: AsyncSession) -> None:
         self.session = session
 
-    async def create(self, job: OCRJob) -> OCRJob:
-        """Persist a new OCRJob."""
+    async def create(self, job: OCREngineJob) -> OCREngineJob:
+        """Persist a new OCREngineJob."""
         self.session.add(job)
         await self.session.flush()
         return job
 
-    async def get_by_id(self, job_id: uuid.UUID) -> OCRJob | None:
-        """Retrieve a specific OCRJob preloading page extraction hierarchies."""
+    async def get_by_id(self, job_id: uuid.UUID) -> OCREngineJob | None:
+        """Retrieve a specific OCREngineJob preloading page extraction hierarchies."""
         stmt = (
-            select(OCRJob)
-            .where(OCRJob.id == job_id)
+            select(OCREngineJob)
+            .where(OCREngineJob.id == job_id)
             .options(
-                selectinload(OCRJob.pages).selectinload(OCRPage.blocks),
+                selectinload(OCREngineJob.pages).selectinload(OCRPage.blocks),
             )
         )
         result = await self.session.execute(stmt)
@@ -43,35 +43,35 @@ class OCRJobRepository:
         self,
         user_id: uuid.UUID | None = None,
         organization_id: uuid.UUID | None = None,
-    ) -> Sequence[OCRJob]:
+    ) -> Sequence[OCREngineJob]:
         """List OCR requests matching the user/organization scope."""
-        stmt = select(OCRJob).options(
-            selectinload(OCRJob.pages),
+        stmt = select(OCREngineJob).options(
+            selectinload(OCREngineJob.pages),
         )
         filters = []
         if user_id:
-            filters.append(OCRJob.user_id == user_id)
+            filters.append(OCREngineJob.user_id == user_id)
         if organization_id:
-            filters.append(OCRJob.organization_id == organization_id)
+            filters.append(OCREngineJob.organization_id == organization_id)
         if filters:
             stmt = stmt.where(and_(*filters))
 
         result = await self.session.execute(stmt)
         return result.scalars().all()
 
-    async def update_status(self, job_id: uuid.UUID, status: str) -> OCRJob | None:
+    async def update_status(self, job_id: uuid.UUID, status: str) -> OCREngineJob | None:
         """Update job lifecycle status."""
         stmt = (
-            update(OCRJob)
-            .where(OCRJob.id == job_id)
+            update(OCREngineJob)
+            .where(OCREngineJob.id == job_id)
             .values(status=status)
         )
         await self.session.execute(stmt)
         return await self.get_by_id(job_id)
 
     async def delete(self, job_id: uuid.UUID) -> bool:
-        """Delete an OCRJob by ID."""
-        stmt = delete(OCRJob).where(OCRJob.id == job_id)
+        """Delete an OCREngineJob by ID."""
+        stmt = delete(OCREngineJob).where(OCREngineJob.id == job_id)
         result = await self.session.execute(stmt)
         return bool(getattr(result, "rowcount", 0))
 

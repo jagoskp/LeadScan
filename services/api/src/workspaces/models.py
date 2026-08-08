@@ -288,8 +288,8 @@ class Session(Base):
     )
 
 
-class AuditLog(Base):
-    """AuditLog model logging security, permission, and workspace governance events."""
+class TenantAuditLog(Base):
+    """TenantAuditLog model logging security, permission, and workspace governance events."""
 
     __tablename__ = "tenant_audit_logs"
 
@@ -319,3 +319,5 @@ class AuditLog(Base):
         default=lambda: datetime.now(UTC),
         nullable=False,
     )
+# Backward-compatible Python alias (not used for SQLAlchemy relationships)
+AuditLog = TenantAuditLog

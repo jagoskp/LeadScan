@@ -12,7 +12,7 @@ if TYPE_CHECKING:
     from services.api.src.organization.models import Organization
 
 
-class OCRJob(Base):
+class OCREngineJob(Base):
     """Database model for tracking raw text extraction requests."""
 
     __tablename__ = "ocr_engine_jobs"
@@ -75,11 +75,11 @@ class OCRJob(Base):
     # Core relationship bindings
     user: Mapped["User | None"] = relationship(
         "User",
-        primaryjoin="OCRJob.user_id == User.id",
+        primaryjoin="OCREngineJob.user_id == User.id",
     )
     organization: Mapped["Organization | None"] = relationship(
         "Organization",
-        primaryjoin="OCRJob.organization_id == Organization.id",
+        primaryjoin="OCREngineJob.organization_id == Organization.id",
     )
 
 
@@ -128,8 +128,8 @@ class OCRPage(Base):
     )
 
     # Relationships
-    job: Mapped["OCRJob"] = relationship(
-        "OCRJob",
+    job: Mapped["OCREngineJob"] = relationship(
+        "OCREngineJob",
         back_populates="pages",
     )
     blocks: Mapped[list["OCRBlock"]] = relationship(
@@ -313,7 +313,9 @@ class OCRMetadata(Base):
     )
 
     # Relationship bindings
-    job: Mapped["OCRJob"] = relationship(
-        "OCRJob",
-        primaryjoin="OCRMetadata.job_id == OCRJob.id",
+    job: Mapped["OCREngineJob"] = relationship(
+        "OCREngineJob",
+        primaryjoin="OCRMetadata.job_id == OCREngineJob.id",
     )
+# Backward-compatible Python alias (not used for SQLAlchemy relationships)
+OCRJob = OCREngineJob

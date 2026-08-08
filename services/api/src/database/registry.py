@@ -12,6 +12,7 @@ def import_models() -> None:
     # Core foundation modules
     import services.api.src.notifications.models  # noqa: F401
     import services.api.src.ocr.models  # noqa: F401
+    import services.api.src.ocr_engine.models  # noqa: F401
 
     # Organization management
     import services.api.src.organization.models  # noqa: F401
@@ -23,3 +24,4 @@ def import_models() -> None:
     import services.api.src.users.models  # noqa: F401
     # Workspace management
     import services.api.src.workspaces.models  # noqa: F401
+    import services.api.src.workflow.models  # noqa: F401

@@ -16,7 +16,7 @@ from services.api.src.ocr_engine.interfaces import (
 )
 from services.api.src.ocr_engine.models import (
     OCRBlock,
-    OCRJob,
+    OCREngineJob,
     OCRLine,
     OCRMetadata,
     OCRPage,
@@ -46,9 +46,9 @@ class OCREngineService(
     # Job CRUD Operations
     # ----------------------------------------------------
 
-    async def create_job(self, user_id: uuid.UUID, data: OCRJobCreate) -> OCRJob:
+    async def create_job(self, user_id: uuid.UUID, data: OCRJobCreate) -> OCREngineJob:
         """Register a new OCR execution request in the database."""
-        job = OCRJob(
+        job = OCREngineJob(
             user_id=user_id,
             organization_id=data.organization_id,
             input_type=data.input_type.value,
@@ -59,8 +59,8 @@ class OCREngineService(
         )
         return await self.job_repo.create(job)
 
-    async def get_job(self, job_id: uuid.UUID) -> OCRJob:
-        """Retrieve a specific OCRJob, raising 404 if missing."""
+    async def get_job(self, job_id: uuid.UUID) -> OCREngineJob:
+        """Retrieve a specific OCREngineJob, raising 404 if missing."""
         job = await self.job_repo.get_by_id(job_id)
         if not job:
             raise OCRJobNotFoundException()
@@ -70,7 +70,7 @@ class OCREngineService(
         self,
         user_id: uuid.UUID | None = None,
         organization_id: uuid.UUID | None = None,
-    ) -> Sequence[OCRJob]:
+    ) -> Sequence[OCREngineJob]:
         """List OCR requests matching the user/organization scope."""
         return await self.job_repo.list_jobs(
             user_id=user_id, organization_id=organization_id
@@ -86,7 +86,7 @@ class OCREngineService(
     # IOCRPipeline Implementation
     # ----------------------------------------------------
 
-    async def execute_ocr(self, job_id: uuid.UUID) -> OCRJob:
+    async def execute_ocr(self, job_id: uuid.UUID) -> OCREngineJob:
         """Orchestrate the end-to-end OCR processing flow."""
         job = await self.get_job(job_id)
         start_time = datetime.now(UTC)
