@@ -22,12 +22,17 @@ async def ping_database(session: AsyncSession) -> float:
 
 async def ping_redis() -> float:
     """Measure ping latency to the Redis connection broker in milliseconds."""
+    from leadscan_config import AppSettings
+
+    settings = AppSettings()
+    if not settings.REDIS_URL:
+        AppMetrics.update_redis_latency(-1.0)
+        return -1.0
+
     start = time.perf_counter()
     try:
         import redis
-        from leadscan_config import AppSettings
 
-        settings = AppSettings()
         client = redis.from_url(settings.REDIS_URL)
         client.ping()
         latency = (time.perf_counter() - start) * 1000.0

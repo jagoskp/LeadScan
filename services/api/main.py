@@ -69,6 +69,9 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
     # Initial tables setup for development (Alembic will manage production migrations)
     if async_engine is not None:
         try:
+            from services.api.src.database.registry import import_models
+
+            import_models()
             async with async_engine.begin() as conn:
                 await conn.run_sync(Base.metadata.create_all)
         except Exception as exc:

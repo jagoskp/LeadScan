@@ -7,6 +7,8 @@ class AppSettings(BaseSettings):
     APP_ENV: str = "development"
     DEBUG: bool = False
     DATABASE_URL: str = "postgresql+asyncpg://postgres:postgres@localhost:5432/leadscan_db"
+    REDIS_URL: str | None = None
+
 
     # JWT Authentication settings
     JWT_SECRET_KEY: str = "change_me_in_production_secret_key"

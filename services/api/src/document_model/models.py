@@ -12,7 +12,7 @@ if TYPE_CHECKING:
     from services.api.src.organization.models import Organization
 
 
-class Document(Base):
+class DOMDocument(Base):
     """Database model representing the DOM Document root node."""
 
     __tablename__ = "dom_documents"
@@ -77,11 +77,11 @@ class Document(Base):
     # Core bindings
     user: Mapped["User | None"] = relationship(
         "User",
-        primaryjoin="Document.user_id == User.id",
+        primaryjoin="DOMDocument.user_id == User.id",
     )
     organization: Mapped["Organization | None"] = relationship(
         "Organization",
-        primaryjoin="Document.organization_id == Organization.id",
+        primaryjoin="DOMDocument.organization_id == Organization.id",
     )
 
 
@@ -114,8 +114,8 @@ class DocumentSection(Base):
     )
 
     # Relationships
-    document: Mapped["Document"] = relationship(
-        "Document",
+    document: Mapped["DOMDocument"] = relationship(
+        "DOMDocument",
         back_populates="sections",
     )
     entities: Mapped[list["Entity"]] = relationship(
@@ -154,8 +154,8 @@ class EntityGroup(Base):
     )
 
     # Relationships
-    document: Mapped["Document"] = relationship(
-        "Document",
+    document: Mapped["DOMDocument"] = relationship(
+        "DOMDocument",
         back_populates="entity_groups",
     )
     entities: Mapped[list["Entity"]] = relationship(
@@ -366,8 +366,8 @@ class ExtraInformation(Base):
     )
 
     # Relationships
-    document: Mapped["Document"] = relationship(
-        "Document",
+    document: Mapped["DOMDocument"] = relationship(
+        "DOMDocument",
         back_populates="extra_informations",
     )
 
@@ -400,8 +400,8 @@ class UnknownEntity(Base):
     )
 
     # Relationships
-    document: Mapped["Document"] = relationship(
-        "Document",
+    document: Mapped["DOMDocument"] = relationship(
+        "DOMDocument",
         back_populates="unknown_entities",
     )
 
@@ -434,7 +434,11 @@ class DocumentMetadata(Base):
     )
 
     # Core relationship bindings
-    document: Mapped["Document"] = relationship(
-        "Document",
-        primaryjoin="DocumentMetadata.document_id == Document.id",
+    document: Mapped["DOMDocument"] = relationship(
+        "DOMDocument",
+        primaryjoin="DocumentMetadata.document_id == DOMDocument.id",
     )
+
+
+# Alias for backward compatibility
+Document = DOMDocument

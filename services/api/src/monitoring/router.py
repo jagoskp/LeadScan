@@ -40,11 +40,11 @@ async def readiness_probe(
 ) -> dict[str, str]:
     """Readiness probe checking if the API gateway is ready to serve requests."""
     db_lat = await ping_database(db_session)
-    redis_lat = await ping_redis()
+    _ = await ping_redis()
 
-    if db_lat < 0 or redis_lat < 0:
+    if db_lat < 0:
         raise DependencyUnavailableException(
-            "Ready check failed: database or Redis connection unavailable."
+            "Ready check failed: database connection unavailable."
         )
 
     return {"status": "READY"}
