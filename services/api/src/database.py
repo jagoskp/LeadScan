@@ -5,10 +5,16 @@ from leadscan_config import AppSettings
 
 settings = AppSettings()
 
+db_url = settings.DATABASE_URL
+if db_url.startswith("postgres://"):
+    db_url = db_url.replace("postgres://", "postgresql+asyncpg://", 1)
+elif db_url.startswith("postgresql://") and not db_url.startswith("postgresql+asyncpg://"):
+    db_url = db_url.replace("postgresql://", "postgresql+asyncpg://", 1)
+
 try:
     # Create asynchronous engine for PostgreSQL 18
     async_engine = create_async_engine(
-        settings.DATABASE_URL,
+        db_url,
         echo=settings.DEBUG,
         future=True,
         pool_size=20,

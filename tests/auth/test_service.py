@@ -62,3 +62,36 @@ async def test_google_authenticate_user_creation_and_restoration() -> None:
     assert "access_token" in tokens_existing
     user_repo.create.assert_not_called()
 
+
+@pytest.mark.asyncio
+async def test_google_authenticate_audience_mismatch() -> None:
+    """Verify Google authentication raises InvalidCredentialsException when token audience does not match configured client id."""
+    from unittest.mock import AsyncMock, MagicMock
+    import jwt
+    from services.api.src.auth.service import AuthService
+    from services.api.src.auth.schemas import GoogleLoginRequest
+    from services.api.src.auth.exceptions import InvalidCredentialsException
+    from services.api.src.auth.service import settings
+
+    user_repo = MagicMock()
+    token_repo = MagicMock()
+    service = AuthService(user_repo=user_repo, token_repo=token_repo)
+
+    # Encode a dummy token with mismatched audience
+    fake_token = jwt.encode(
+        {"iss": "accounts.google.com", "aud": "mismatched_client_id.apps.googleusercontent.com", "email": "user@example.com"},
+        "secret",
+        algorithm="HS256",
+    )
+
+    original_client_id = settings.GOOGLE_CLIENT_ID
+    try:
+        settings.GOOGLE_CLIENT_ID = "673923021753-pkjkh3po4mrp7l6fbe0bhcjn4837s3eu.apps.googleusercontent.com"
+        request = GoogleLoginRequest(id_token=fake_token, email="user@example.com")
+        with pytest.raises(InvalidCredentialsException) as exc_info:
+            await service.google_authenticate(request)
+        assert "audience mismatch" in str(exc_info.value.detail).lower()
+    finally:
+        settings.GOOGLE_CLIENT_ID = original_client_id
+
+

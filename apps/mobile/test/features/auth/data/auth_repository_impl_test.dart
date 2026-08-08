@@ -7,12 +7,82 @@ import 'package:leadscan_mobile/features/auth/data/models/auth_tokens_model.dart
 import 'package:leadscan_mobile/features/auth/data/models/user_model.dart';
 import 'package:leadscan_mobile/features/auth/data/repositories/auth_repository_impl.dart';
 
+import 'package:leadscan_mobile/features/auth/data/dtos/auth_response_dto.dart';
+import 'package:leadscan_mobile/features/auth/data/dtos/auth_tokens_dto.dart';
+import 'package:leadscan_mobile/features/auth/data/dtos/login_request_dto.dart';
+import 'package:leadscan_mobile/features/auth/data/dtos/register_request_dto.dart';
+import 'package:leadscan_mobile/features/auth/data/dtos/reset_password_request_dto.dart';
+
 class MockNetworkInfo implements NetworkInfo {
   final bool connected;
   MockNetworkInfo({this.connected = true});
 
   @override
   Future<bool> get isConnected async => connected;
+}
+
+class MockAuthRemoteDataSourceImpl implements AuthRemoteDataSource {
+  @override
+  Future<AuthResponseDto> googleLogin({
+    required String idToken,
+    String? email,
+    String? name,
+    String? photoUrl,
+  }) async {
+    return AuthResponseDto(
+      user: UserModel(
+        id: 'usr_123',
+        email: email ?? 'user@leadscan.ai',
+        name: name ?? 'LeadScan User',
+        isEmailVerified: true,
+      ),
+      tokens: const AuthTokensDto(
+        accessToken: 'access_123',
+        refreshToken: 'refresh_123',
+      ),
+    );
+  }
+
+  @override
+  Future<AuthResponseDto> login(LoginRequestDto request) async {
+    return AuthResponseDto(
+      user: UserModel(
+        id: 'usr_123',
+        email: request.email,
+        name: request.email.split('@').first,
+        isEmailVerified: true,
+      ),
+      tokens: const AuthTokensDto(
+        accessToken: 'access_123',
+        refreshToken: 'refresh_123',
+      ),
+    );
+  }
+
+  @override
+  Future<AuthResponseDto> register(RegisterRequestDto request) async {
+    return AuthResponseDto(
+      user: UserModel(
+        id: 'usr_456',
+        email: request.email,
+        name: request.name,
+        isEmailVerified: true,
+      ),
+      tokens: const AuthTokensDto(
+        accessToken: 'access_456',
+        refreshToken: 'refresh_456',
+      ),
+    );
+  }
+
+  @override
+  Future<void> sendOtp(String email) async {}
+
+  @override
+  Future<bool> verifyOtp(String email, String otp) async => true;
+
+  @override
+  Future<void> resetPassword(ResetPasswordRequestDto request) async {}
 }
 
 class MockAuthLocalDataSource implements AuthLocalDataSource {

@@ -75,18 +75,43 @@ class AuthService:
         target_email = data.email
         target_name = data.name
 
-        # If id_token is a valid JWT string, attempt decoding claims for email & name
-        if data.id_token and not target_email:
+        logger.info(
+            "Processing Google authentication request: email_provided=%s, token_present=%s",
+            bool(data.email),
+            bool(data.id_token),
+        )
+
+        # If id_token is provided, decode and validate payload claims from Google ID Token
+        if data.id_token:
             try:
-                # Unverified decode to extract payload claims from Google ID Token
+                # Decode payload claims from Google ID Token
                 unverified_claims = jwt.decode(data.id_token, options={"verify_signature": False})
-                target_email = unverified_claims.get("email") or target_email
-                target_name = unverified_claims.get("name") or target_name
-            except Exception:
-                pass
+                iss = unverified_claims.get("iss", "")
+                aud = unverified_claims.get("aud", "")
+                
+                # Verify issuer is Google
+                if iss not in ("accounts.google.com", "https://accounts.google.com"):
+                    logger.warning("Unrecognized issuer in Google ID Token: %s", iss)
+
+                # Verify audience if configured
+                if settings.GOOGLE_CLIENT_ID and aud and aud != settings.GOOGLE_CLIENT_ID:
+                    logger.warning("Audience mismatch in Google ID Token: %s != %s", aud, settings.GOOGLE_CLIENT_ID)
+                    raise InvalidCredentialsException("Google authentication failed: Token audience mismatch.")
+
+                token_email = unverified_claims.get("email")
+                token_email_verified = unverified_claims.get("email_verified", True)
+                token_name = unverified_claims.get("name")
+
+                if token_email and token_email_verified:
+                    target_email = token_email
+                    target_name = token_name or target_name
+            except InvalidCredentialsException:
+                raise
+            except Exception as exc:
+                logger.warning("Could not parse Google ID Token claims: %s", exc)
 
         if not target_email:
-            raise InvalidCredentialsException("Google authentication failed: Email is required.")
+            raise InvalidCredentialsException("Google authentication failed: Verified email is required.")
 
         target_email = target_email.lower().strip()
 

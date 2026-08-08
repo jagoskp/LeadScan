@@ -79,7 +79,7 @@ class RefreshToken(Base):
         default=uuid.uuid4,
     )
     token: Mapped[str] = mapped_column(
-        String(255),
+        String(512),
         unique=True,
         nullable=False,
         index=True,
