@@ -90,9 +90,21 @@ app = FastAPI(
     description="Core backend API gateway service for LeadScan AI platform.",
     version="0.1.0",
     lifespan=lifespan,
-    docs_url="/docs" if settings.DEBUG else None,
-    redoc_url="/redoc" if settings.DEBUG else None,
+    docs_url="/docs",
+    redoc_url="/redoc",
+    openapi_url="/openapi.json",
 )
+
+
+@app.get("/")
+async def root() -> dict[str, str]:
+    return {
+        "name": "LeadScan AI API Gateway",
+        "status": "online",
+        "docs": "/docs",
+        "health": "/health/live",
+    }
+
 
 # Apply CORS middleware
 app.add_middleware(
