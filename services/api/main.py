@@ -69,11 +69,14 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
     # Initial tables setup for development (Alembic will manage production migrations)
     if async_engine is not None:
         try:
-            from services.api.src.database.registry import import_models
-
+            from sqlalchemy import text
             import_models()
             async with async_engine.begin() as conn:
                 await conn.run_sync(Base.metadata.create_all)
+                try:
+                    await conn.execute(text("ALTER TABLE refresh_tokens ALTER COLUMN token TYPE VARCHAR(512);"))
+                except Exception as alter_exc:
+                    logger.debug("Column alter check notice: %s", alter_exc)
         except Exception as exc:
             logger.warning(f"Database connection skipped or failed: {exc}")
     from services.api.src.integration.service import register_mock_defaults
