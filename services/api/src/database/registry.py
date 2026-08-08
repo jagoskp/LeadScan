@@ -25,3 +25,10 @@ def import_models() -> None:
     # Workspace management
     import services.api.src.workspaces.models  # noqa: F401
     import services.api.src.workflow.models  # noqa: F401
+
+    # Processing & Sync Subsystems
+    import services.api.src.document_model.models  # noqa: F401
+    import services.api.src.ai_understanding.models  # noqa: F401
+    import services.api.src.connectors.models  # noqa: F401
+    import services.api.src.sync_engine.models  # noqa: F401
+    import services.api.src.scanner.models  # noqa: F401

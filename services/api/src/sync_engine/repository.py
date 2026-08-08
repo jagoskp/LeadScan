@@ -7,8 +7,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload
 
 from services.api.src.sync_engine.models import (
-    Connector,
     ConnectorProfile,
+    SyncConnector,
     SyncHistory,
     SyncJob,
     SyncResult,
@@ -21,27 +21,31 @@ class ConnectorRepository:
     def __init__(self, session: AsyncSession) -> None:
         self.session = session
 
-    async def create_connector(self, connector: Connector) -> Connector:
-        """Persist a new Connector definition."""
+    async def create_connector(self, connector: SyncConnector) -> SyncConnector:
+        """Persist a new SyncConnector definition."""
         self.session.add(connector)
         await self.session.flush()
         return connector
 
     async def get_connector_by_id(
         self, connector_id: uuid.UUID
-    ) -> Connector | None:
-        """Retrieve a specific Connector preloading profiles."""
+    ) -> SyncConnector | None:
+        """Retrieve a specific SyncConnector by ID."""
         stmt = (
-            select(Connector)
-            .where(Connector.id == connector_id)
-            .options(selectinload(Connector.profiles))
+            select(SyncConnector)
+            .where(SyncConnector.id == connector_id)
+            .options(selectinload(SyncConnector.profiles))
         )
         result = await self.session.execute(stmt)
         return result.scalar_one_or_none()
 
-    async def list_connectors(self) -> Sequence[Connector]:
-        """List Connectors."""
-        stmt = select(Connector)
+    async def list_connectors(self) -> Sequence[SyncConnector]:
+        """Fetch all active target SyncConnectors."""
+        stmt = (
+            select(SyncConnector)
+            .where(SyncConnector.is_active.is_(True))
+            .options(selectinload(SyncConnector.profiles))
+        )
         result = await self.session.execute(stmt)
         return result.scalars().all()
 

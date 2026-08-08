@@ -20,6 +20,8 @@ from services.api.src.document_model.interfaces import (
     IDOMValidator,
 )
 from services.api.src.document_model.models import (
+    DOMExtraInformation,
+    DOMUnknownEntity,
     Document,
     DocumentMetadata,
     DocumentSection,
@@ -27,8 +29,6 @@ from services.api.src.document_model.models import (
     EntityAttribute,
     EntityGroup,
     EntityRelationship,
-    ExtraInformation,
-    UnknownEntity,
 )
 from services.api.src.document_model.repository import (
     DocumentRepository,
@@ -249,7 +249,7 @@ class DOMEngineService(IDOMBuilder, IDOMNormalizer, IDOMValidator):
         await self.entity_repo.create_relationship(rel)
 
         # 7. Save Extra Information (Preserve unmapped text)
-        extra = ExtraInformation(
+        extra = DOMExtraInformation(
             document_id=doc.id,
             raw_text="VAT Registered",
             bounding_box={"x": 0.5, "y": 0.9, "width": 0.1, "height": 0.02},
@@ -258,7 +258,7 @@ class DOMEngineService(IDOMBuilder, IDOMNormalizer, IDOMValidator):
         await self.entity_repo.create_extra_info(extra)
 
         # 8. Save Unknown Entities
-        unk = UnknownEntity(
+        unk = DOMUnknownEntity(
             document_id=doc.id,
             raw_text="Corp.",
             reason="Abbreviation suffix skipped",

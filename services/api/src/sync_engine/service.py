@@ -17,7 +17,9 @@ from services.api.src.sync_engine.interfaces import (
     ISyncEngine,
 )
 from services.api.src.sync_engine.models import (
-    Connector,
+    ConnectorProfile,
+    SyncConnector,
+    SyncConnectorCredential,
     SyncHistory,
     SyncJob,
     SyncResult,

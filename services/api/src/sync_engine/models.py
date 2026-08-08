@@ -12,7 +12,7 @@ if TYPE_CHECKING:
     from services.api.src.organization.models import Organization
 
 
-class Connector(Base):
+class SyncConnector(Base):
     """Database model representing registered connectors (e.g. Google Sheets)."""
 
     __tablename__ = "connectors"
@@ -87,12 +87,12 @@ class ConnectorProfile(Base):
     )
 
     # Relationships
-    connector: Mapped["Connector"] = relationship(
-        "Connector",
+    connector: Mapped["SyncConnector"] = relationship(
+        "SyncConnector",
         back_populates="profiles",
     )
-    credentials: Mapped[list["ConnectorCredential"]] = relationship(
-        "ConnectorCredential",
+    credentials: Mapped[list["SyncConnectorCredential"]] = relationship(
+        "SyncConnectorCredential",
         back_populates="profile",
         cascade="all, delete-orphan",
     )
@@ -113,7 +113,7 @@ class ConnectorProfile(Base):
     )
 
 
-class ConnectorCredential(Base):
+class SyncConnectorCredential(Base):
     """Database model capturing encrypted authentication tokens."""
 
     __tablename__ = "connector_credentials"

@@ -18,12 +18,12 @@ from services.api.src.ai_understanding.interfaces import (
     IRelationshipDetector,
 )
 from services.api.src.ai_understanding.models import (
+    AIUnknownEntity,
     DetectedEntity,
     EntityRelation,
     Keyword,
     UnderstandingJob,
     UnderstandingMetadata,
-    UnknownEntity,
 )
 from services.api.src.ai_understanding.repository import (
     DetectedEntityRepository,
@@ -156,7 +156,7 @@ class AIUnderstandingService(
 
         # Save Unknown Entities (Preserve everything)
         for unk_data in analysis_data["unknown_entities"]:
-            unknown = UnknownEntity(
+            unknown = AIUnknownEntity(
                 job_id=job.id,
                 raw_text=unk_data["raw_text"],
                 reason=unk_data["reason"],

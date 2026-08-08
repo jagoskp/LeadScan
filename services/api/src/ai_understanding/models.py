@@ -80,8 +80,8 @@ class UnderstandingJob(Base):
         back_populates="job",
         cascade="all, delete-orphan",
     )
-    unknown_entities: Mapped[list["UnknownEntity"]] = relationship(
-        "UnknownEntity",
+    unknown_entities: Mapped[list["AIUnknownEntity"]] = relationship(
+        "AIUnknownEntity",
         back_populates="job",
         cascade="all, delete-orphan",
     )
@@ -230,7 +230,7 @@ class Keyword(Base):
     )
 
 
-class UnknownEntity(Base):
+class AIUnknownEntity(Base):
     """Database model preserving unclassified raw tokens to prevent data loss."""
 
     __tablename__ = "unknown_entities"
@@ -262,6 +262,11 @@ class UnknownEntity(Base):
         "UnderstandingJob",
         back_populates="unknown_entities",
     )
+
+
+# Backward-compatible Python alias (not used for SQLAlchemy relationships)
+UnknownEntity = AIUnknownEntity
+
 
 
 class UnderstandingMetadata(Base):

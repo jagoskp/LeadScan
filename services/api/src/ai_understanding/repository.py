@@ -7,12 +7,12 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload
 
 from services.api.src.ai_understanding.models import (
+    AIUnknownEntity,
     DetectedEntity,
     EntityRelation,
     Keyword,
     UnderstandingJob,
     UnderstandingMetadata,
-    UnknownEntity,
 )
 
 
@@ -119,8 +119,8 @@ class DetectedEntityRepository:
         await self.session.flush()
         return keyword
 
-    async def create_unknown_entity(self, unknown: UnknownEntity) -> UnknownEntity:
-        """Persist an UnknownEntity record to preserve unmapped text."""
+    async def create_unknown_entity(self, unknown: AIUnknownEntity) -> AIUnknownEntity:
+        """Persist an AIUnknownEntity record to preserve unmapped text."""
         self.session.add(unknown)
         await self.session.flush()
         return unknown

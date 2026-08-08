@@ -63,13 +63,13 @@ class DOMDocument(Base):
         back_populates="document",
         cascade="all, delete-orphan",
     )
-    extra_informations: Mapped[list["ExtraInformation"]] = relationship(
-        "ExtraInformation",
+    extra_informations: Mapped[list["DOMExtraInformation"]] = relationship(
+        "DOMExtraInformation",
         back_populates="document",
         cascade="all, delete-orphan",
     )
-    unknown_entities: Mapped[list["UnknownEntity"]] = relationship(
-        "UnknownEntity",
+    unknown_entities: Mapped[list["DOMUnknownEntity"]] = relationship(
+        "DOMUnknownEntity",
         back_populates="document",
         cascade="all, delete-orphan",
     )
@@ -334,7 +334,7 @@ class EntityRelationship(Base):
     )
 
 
-class ExtraInformation(Base):
+class DOMExtraInformation(Base):
     """Database model preserving unmapped raw text chunks with coordinates."""
 
     __tablename__ = "dom_extra_informations"
@@ -372,7 +372,7 @@ class ExtraInformation(Base):
     )
 
 
-class UnknownEntity(Base):
+class DOMUnknownEntity(Base):
     """Database model preserving unclassified entities."""
 
     __tablename__ = "dom_unknown_entities"
@@ -433,11 +433,16 @@ class DocumentMetadata(Base):
         nullable=False,
     )
 
-    # Core relationship bindings
+    # Relationships
     document: Mapped["DOMDocument"] = relationship(
         "DOMDocument",
         primaryjoin="DocumentMetadata.document_id == DOMDocument.id",
     )
+
+
+# Backward-compatible Python aliases (not used for SQLAlchemy relationships)
+ExtraInformation = DOMExtraInformation
+UnknownEntity = DOMUnknownEntity
 
 
 # Alias for backward compatibility

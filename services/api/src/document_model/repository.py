@@ -7,6 +7,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload
 
 from services.api.src.document_model.models import (
+    DOMExtraInformation,
+    DOMUnknownEntity,
     Document,
     DocumentMetadata,
     DocumentSection,
@@ -14,8 +16,6 @@ from services.api.src.document_model.models import (
     EntityAttribute,
     EntityGroup,
     EntityRelationship,
-    ExtraInformation,
-    UnknownEntity,
 )
 
 
@@ -156,14 +156,14 @@ class EntityRepository:
         await self.session.flush()
         return relation
 
-    async def create_extra_info(self, info: ExtraInformation) -> ExtraInformation:
-        """Persist an ExtraInformation unmapped text log."""
+    async def create_extra_info(self, info: DOMExtraInformation) -> DOMExtraInformation:
+        """Persist a DOMExtraInformation unmapped text log."""
         self.session.add(info)
         await self.session.flush()
         return info
 
-    async def create_unknown(self, unknown: UnknownEntity) -> UnknownEntity:
-        """Persist an UnknownEntity record."""
+    async def create_unknown(self, unknown: DOMUnknownEntity) -> DOMUnknownEntity:
+        """Persist a DOMUnknownEntity record."""
         self.session.add(unknown)
         await self.session.flush()
         return unknown
