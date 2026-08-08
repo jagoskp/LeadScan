@@ -5,19 +5,19 @@ import uuid
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from services.api.src.workspaces.models import Invitation, Organization, Session, Team, Workspace
+from services.api.src.workspaces.models import Invitation, Session, Team, TenantOrganization, Workspace
 
 logger = logging.getLogger(__name__)
 
 
 class WorkspaceRepository:
-    """Repository handling persistence operations for Organization, Workspace, Team, Invitation, and Session."""
+    """Repository handling persistence operations for TenantOrganization, Workspace, Team, Invitation, and Session."""
 
     def __init__(self, db: AsyncSession):
         self.db = db
 
-    async def list_organizations(self) -> Sequence[Organization]:
-        stmt = select(Organization).where(Organization.status != "archived").order_by(Organization.created_at.desc())
+    async def list_organizations(self) -> Sequence[TenantOrganization]:
+        stmt = select(TenantOrganization).where(TenantOrganization.status != "archived").order_by(TenantOrganization.created_at.desc())
         res = await self.db.execute(stmt)
         return res.scalars().all()
 

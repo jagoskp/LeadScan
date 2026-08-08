@@ -21,4 +21,5 @@ def import_models() -> None:
     import services.api.src.search.models  # noqa: F401
     import services.api.src.storage.models  # noqa: F401
     import services.api.src.users.models  # noqa: F401
-    import services.api.src.workflow.models  # noqa: F401
+    # Workspace management
+    import services.api.src.workspaces.models  # noqa: F401

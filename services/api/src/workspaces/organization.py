@@ -4,7 +4,7 @@ import uuid
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from services.api.src.workspaces.models import Organization
+from services.api.src.workspaces.models import TenantOrganization
 from services.api.src.workspaces.schemas import OrganizationCreateSchema
 
 logger = logging.getLogger(__name__)
@@ -16,9 +16,9 @@ class OrganizationManager:
     def __init__(self, db: AsyncSession):
         self.db = db
 
-    async def create_organization(self, req: OrganizationCreateSchema) -> Organization:
+    async def create_organization(self, req: OrganizationCreateSchema) -> TenantOrganization:
         now = datetime.now(UTC)
-        org = Organization(
+        org = TenantOrganization(
             id=uuid.uuid4(),
             name=req.name,
             logo_url=req.logo_url,
@@ -31,8 +31,8 @@ class OrganizationManager:
         await self.db.commit()
         return org
 
-    async def suspend_organization(self, org_id: uuid.UUID) -> Organization:
-        org = await self.db.get(Organization, org_id)
+    async def suspend_organization(self, org_id: uuid.UUID) -> TenantOrganization:
+        org = await self.db.get(TenantOrganization, org_id)
         if not org:
             raise ValueError("Organization not found")
         org.status = "suspended"

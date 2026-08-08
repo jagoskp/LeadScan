@@ -4,7 +4,7 @@ from unittest.mock import AsyncMock, MagicMock
 from datetime import UTC, datetime
 
 from services.api.src.workspaces.invitations import InvitationEngine
-from services.api.src.workspaces.models import Invitation, Organization, Role, Session, Workspace
+from services.api.src.workspaces.models import Invitation, Role, Session, TenantOrganization, Workspace
 from services.api.src.workspaces.organization import OrganizationManager
 from services.api.src.workspaces.permissions import RBACEngine
 from services.api.src.workspaces.schemas import InvitationCreateSchema, OrganizationCreateSchema, WorkspaceCreateSchema
@@ -28,7 +28,7 @@ def mock_db():
     org_id = uuid.uuid4()
     user_id = uuid.uuid4()
 
-    mock_org = Organization(
+    mock_org = TenantOrganization(
         id=org_id,
         name="Acme Enterprise Corp",
         logo_url=None,
@@ -74,7 +74,7 @@ def mock_db():
         return res
 
     async def mock_get(entity_cls, entity_id):
-        if entity_cls == Organization:
+        if entity_cls == TenantOrganization:
             return mock_org
         if entity_cls == Session:
             return mock_session

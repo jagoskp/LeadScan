@@ -8,8 +8,8 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from services.api.src.database import Base
 
 
-class Organization(Base):
-    """Organization model managing multi-tenant organization accounts."""
+class TenantOrganization(Base):
+    """TenantOrganization model managing multi-tenant organization accounts."""
 
     __tablename__ = "tenant_organizations"
 
@@ -82,7 +82,7 @@ class Workspace(Base):
         nullable=False,
     )
 
-    organization: Mapped["Organization"] = relationship("Organization", back_populates="workspaces")
+    organization: Mapped["TenantOrganization"] = relationship("TenantOrganization", back_populates="workspaces")
 
 
 class Department(Base):
