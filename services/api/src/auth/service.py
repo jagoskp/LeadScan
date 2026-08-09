@@ -118,45 +118,59 @@ class AuthService:
 
         target_email = target_email.lower().strip()
 
-        # Check if user account already exists in database
-        user = await self.user_repo.get_by_email(target_email)
+        logger.info("[AUTH] Google token validated. Target email: %s", target_email)
 
-        if not user:
-            # First login: Create new real user record in database
-            base_username = target_email.split("@")[0]
-            clean_username = "".join(c for c in base_username if c.isalnum() or c in "_-")
-            if len(clean_username) < 3:
-                clean_username = f"user_{uuid.uuid4().hex[:6]}"
+        try:
+            logger.info("[AUTH] User lookup started: email=%s", target_email)
+            user = await self.user_repo.get_by_email(target_email)
 
-            # Enforce unique username
-            existing_user_by_uname = await self.user_repo.get_by_username(clean_username)
-            if existing_user_by_uname:
-                clean_username = f"{clean_username}_{uuid.uuid4().hex[:4]}"
+            if not user:
+                logger.info("[AUTH] User not found. User creation started: email=%s", target_email)
+                base_username = target_email.split("@")[0]
+                clean_username = "".join(c for c in base_username if c.isalnum() or c in "_-")
+                if len(clean_username) < 3:
+                    clean_username = f"user_{uuid.uuid4().hex[:6]}"
 
-            random_pwd = hash_password(uuid.uuid4().hex)
-            user = User(
-                email=target_email,
-                username=clean_username,
-                hashed_password=random_pwd,
-                is_active=True,
-            )
-            user = await self.user_repo.create(user)
-            logger.info("Created new Google-authenticated user: %s (id: %s)", target_email, user.id)
-        else:
-            logger.info("Restored existing Google-authenticated user: %s (id: %s)", target_email, user.id)
+                # Enforce unique username
+                existing_user_by_uname = await self.user_repo.get_by_username(clean_username)
+                if existing_user_by_uname:
+                    clean_username = f"{clean_username}_{uuid.uuid4().hex[:4]}"
 
-        if not user.is_active:
-            raise InvalidCredentialsException("Account is inactive.")
+                random_pwd = hash_password(uuid.uuid4().hex)
+                user = User(
+                    email=target_email,
+                    username=clean_username,
+                    hashed_password=random_pwd,
+                    is_active=True,
+                )
+                user = await self.user_repo.create(user)
+                logger.info("[AUTH] User creation flushed: id=%s", user.id)
+            else:
+                logger.info("[AUTH] Existing user found: id=%s", user.id)
 
-        # Create real JWT access and refresh session tokens
-        return await self.create_tokens(user)
+            if not user.is_active:
+                raise InvalidCredentialsException("Account is inactive.")
+
+            logger.info("[AUTH] JWT generation started")
+            tokens = await self.create_tokens(user)
+            logger.info("[AUTH] Database commit completed successfully")
+            return tokens
+        except InvalidCredentialsException:
+            raise
+        except Exception as exc:
+            logger.exception("[AUTH] Database operation failed during google_authenticate: %s", exc)
+            from services.api.src.auth.exceptions import AuthException
+            raise AuthException(
+                status_code=500,
+                detail=f"DB_DIAGNOSTIC: {type(exc).__module__}.{type(exc).__name__}: {str(exc)}"
+            ) from exc
 
 
     async def create_tokens(self, user: User) -> dict[str, str]:
         """Generate Access and Refresh tokens for a session and save the refresh token."""
         user_id_str = str(user.id)
 
-        # Create tokens
+        logger.info("[AUTH] JWT token creation starting for user_id=%s", user.id)
         access_token = create_jwt_token(
             subject=user_id_str,
             expires_delta=timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES),
@@ -167,6 +181,7 @@ class AuthService:
             expires_delta=timedelta(days=settings.REFRESH_TOKEN_EXPIRE_DAYS),
             token_type="refresh",
         )
+        logger.info("[AUTH] JWT token string generated. Length of refresh_token: %d", len(refresh_token_str))
 
         # Save refresh token model tracking
         expires_at = datetime.now(timezone.utc) + timedelta(
@@ -177,7 +192,9 @@ class AuthService:
             user_id=user.id,
             expires_at=expires_at,
         )
+        logger.info("[AUTH] Refresh token persistence started in database")
         await self.token_repo.create(new_token)
+        logger.info("[AUTH] Refresh token persistence flushed successfully")
 
         return {
             "access_token": access_token,
