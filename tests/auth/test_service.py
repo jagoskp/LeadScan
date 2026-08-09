@@ -42,8 +42,14 @@ async def test_google_authenticate_user_creation_and_restoration() -> None:
 
     service = AuthService(user_repo=user_repo, token_repo=token_repo)
 
+    import jwt
+    valid_id_token = jwt.encode(
+        {"iss": "accounts.google.com", "email": "realgoogleuser@example.com", "email_verified": True},
+        "secret",
+        algorithm="HS256",
+    )
     request = GoogleLoginRequest(
-        id_token="test_google_id_token",
+        id_token=valid_id_token,
         email="realgoogleuser@example.com",
         name="Real Google User",
     )
@@ -93,5 +99,24 @@ async def test_google_authenticate_audience_mismatch() -> None:
         assert "audience mismatch" in str(exc_info.value.detail).lower()
     finally:
         settings.GOOGLE_CLIENT_ID = original_client_id
+
+
+@pytest.mark.asyncio
+async def test_google_authenticate_malformed_token() -> None:
+    """Verify Google authentication raises InvalidCredentialsException when token is malformed string."""
+    from unittest.mock import MagicMock
+    from services.api.src.auth.service import AuthService
+    from services.api.src.auth.schemas import GoogleLoginRequest
+    from services.api.src.auth.exceptions import InvalidCredentialsException
+
+    user_repo = MagicMock()
+    token_repo = MagicMock()
+    service = AuthService(user_repo=user_repo, token_repo=token_repo)
+
+    request = GoogleLoginRequest(id_token="malformed_token_string", email="user@example.com")
+    with pytest.raises(InvalidCredentialsException) as exc_info:
+        await service.google_authenticate(request)
+    assert "invalid id token structure" in str(exc_info.value.detail).lower()
+
 
 

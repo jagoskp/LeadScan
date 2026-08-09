@@ -105,10 +105,13 @@ class AuthService:
                 if token_email and token_email_verified:
                     target_email = token_email
                     target_name = token_name or target_name
+                elif not target_email:
+                    raise InvalidCredentialsException("Google authentication failed: Token does not contain a verified email.")
             except InvalidCredentialsException:
                 raise
             except Exception as exc:
                 logger.warning("Could not parse Google ID Token claims: %s", exc)
+                raise InvalidCredentialsException("Google authentication failed: Invalid ID token structure.") from exc
 
         if not target_email:
             raise InvalidCredentialsException("Google authentication failed: Verified email is required.")
