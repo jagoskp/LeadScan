@@ -1,3 +1,4 @@
+import asyncio
 import logging
 import uuid
 from datetime import datetime, timedelta, timezone
@@ -153,6 +154,10 @@ class AuthService:
 
             logger.info("[AUTH] JWT generation started")
             tokens = await self.create_tokens(user)
+            if hasattr(self.user_repo, "session") and hasattr(self.user_repo.session, "commit"):
+                commit_res = self.user_repo.session.commit()
+                if asyncio.iscoroutine(commit_res):
+                    await commit_res
             logger.info("[AUTH] Database commit completed successfully")
             return tokens
         except InvalidCredentialsException:

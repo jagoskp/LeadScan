@@ -45,8 +45,14 @@ async def get_db() -> AsyncGenerator[AsyncSession, None]:
         try:
             yield session
             await session.commit()
-        except Exception:
+        except Exception as exc:
             await session.rollback()
-            raise
+            import logging
+            logging.getLogger("leadscan-database").exception("DATABASE TRANSACTION COMMIT FAILED: %s", exc)
+            from fastapi import HTTPException
+            raise HTTPException(
+                status_code=500,
+                detail=f"DB_COMMIT_DIAGNOSTIC: {type(exc).__module__}.{type(exc).__name__}: {str(exc)}"
+            ) from exc
         finally:
             await session.close()
