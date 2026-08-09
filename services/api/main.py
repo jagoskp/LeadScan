@@ -71,13 +71,14 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
         try:
             from sqlalchemy import text
             import_models()
-            async with async_engine.begin() as conn:
+            autocommit_engine = async_engine.execution_options(isolation_level="AUTOCOMMIT")
+            async with autocommit_engine.connect() as conn:
                 await conn.run_sync(Base.metadata.create_all)
-                logger.info("[DB MIGRATION] Applying column expansion migration for refresh_tokens.token to VARCHAR(512)...")
+                logger.info("[DB MIGRATION] Applying autocommit DDL migration for refresh_tokens.token to VARCHAR(512)...")
                 await conn.execute(text("ALTER TABLE refresh_tokens ALTER COLUMN token TYPE VARCHAR(512);"))
                 logger.info("[DB MIGRATION] Migration applied successfully: refresh_tokens.token -> VARCHAR(512)")
         except Exception as exc:
-            logger.warning(f"Database startup migration notice: {exc}")
+            logger.error(f"[DB MIGRATION ERROR] Startup DDL migration failed: {exc}", exc_info=True)
     from services.api.src.integration.service import register_mock_defaults
     register_mock_defaults()
     yield

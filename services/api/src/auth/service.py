@@ -198,7 +198,25 @@ class AuthService:
             expires_at=expires_at,
         )
         logger.info("[AUTH] Refresh token persistence started in database")
-        await self.token_repo.create(new_token)
+        try:
+            await self.token_repo.create(new_token)
+        except Exception as exc:
+            if "value too long" in str(exc).lower() or "character varying(255)" in str(exc).lower():
+                logger.warning("[AUTH] Truncation error detected on refresh_tokens.token. Running inline autocommit DDL column expansion...")
+                try:
+                    from sqlalchemy import text
+                    from services.api.src.database import async_engine
+                    if async_engine:
+                        autocommit_engine = async_engine.execution_options(isolation_level="AUTOCOMMIT")
+                        async with autocommit_engine.connect() as conn:
+                            await conn.execute(text("ALTER TABLE refresh_tokens ALTER COLUMN token TYPE VARCHAR(512);"))
+                        logger.info("[AUTH] Self-healing DDL executed successfully. Retrying refresh token persistence...")
+                        await self.token_repo.create(new_token)
+                except Exception as retry_exc:
+                    logger.error("[AUTH] Self-healing DDL retry failed: %s", retry_exc)
+                    raise exc
+            else:
+                raise
         logger.info("[AUTH] Refresh token persistence flushed successfully")
 
         return {
