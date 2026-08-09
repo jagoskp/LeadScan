@@ -73,12 +73,11 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
             import_models()
             async with async_engine.begin() as conn:
                 await conn.run_sync(Base.metadata.create_all)
-                try:
-                    await conn.execute(text("ALTER TABLE refresh_tokens ALTER COLUMN token TYPE VARCHAR(512);"))
-                except Exception as alter_exc:
-                    logger.debug("Column alter check notice: %s", alter_exc)
+                logger.info("[DB MIGRATION] Applying column expansion migration for refresh_tokens.token to VARCHAR(512)...")
+                await conn.execute(text("ALTER TABLE refresh_tokens ALTER COLUMN token TYPE VARCHAR(512);"))
+                logger.info("[DB MIGRATION] Migration applied successfully: refresh_tokens.token -> VARCHAR(512)")
         except Exception as exc:
-            logger.warning(f"Database connection skipped or failed: {exc}")
+            logger.warning(f"Database startup migration notice: {exc}")
     from services.api.src.integration.service import register_mock_defaults
     register_mock_defaults()
     yield
