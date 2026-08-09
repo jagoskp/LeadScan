@@ -25,6 +25,14 @@ class UserProfile(Base):
         String(20),
         nullable=True,
     )
+    company: Mapped[str | None] = mapped_column(
+        String(255),
+        nullable=True,
+    )
+    designation: Mapped[str | None] = mapped_column(
+        String(255),
+        nullable=True,
+    )
     avatar_url: Mapped[str | None] = mapped_column(
         String(512),
         nullable=True,

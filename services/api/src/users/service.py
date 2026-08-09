@@ -45,6 +45,8 @@ class UserService:
             user_id=user.id,
             full_name=data.full_name,
             phone=data.phone,
+            company=data.company,
+            designation=data.designation,
             preferences=data.preferences,
         )
         if not updated_profile:

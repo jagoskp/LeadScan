@@ -1,3 +1,4 @@
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:leadscan_mobile/features/profile/data/repositories/profile_repository_impl.dart';
 import 'package:leadscan_mobile/features/profile/domain/usecases/get_analytics_usecase.dart';
@@ -6,6 +7,8 @@ import 'package:leadscan_mobile/features/profile/domain/usecases/get_security_in
 import 'package:leadscan_mobile/features/profile/domain/usecases/get_settings_usecase.dart';
 
 void main() {
+  TestWidgetsFlutterBinding.ensureInitialized();
+
   late ProfileRepositoryImpl repository;
   late GetProfileUseCase getProfileUseCase;
   late GetAnalyticsUseCase getAnalyticsUseCase;
@@ -13,6 +16,7 @@ void main() {
   late GetSecurityInfoUseCase getSecurityInfoUseCase;
 
   setUp(() {
+    FlutterSecureStorage.setMockInitialValues({'auth_user_name': 'Test User', 'auth_user_email': 'test@leadscan.ai'});
     repository = ProfileRepositoryImpl();
     getProfileUseCase = GetProfileUseCase(repository);
     getAnalyticsUseCase = GetAnalyticsUseCase(repository);

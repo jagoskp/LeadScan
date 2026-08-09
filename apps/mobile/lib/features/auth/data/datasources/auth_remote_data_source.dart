@@ -19,6 +19,7 @@ abstract class AuthRemoteDataSource {
   Future<void> sendOtp(String email);
   Future<bool> verifyOtp(String email, String otp);
   Future<void> resetPassword(ResetPasswordRequestDto request);
+  Future<void> logout();
 }
 
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
@@ -157,6 +158,15 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   @override
   Future<void> resetPassword(ResetPasswordRequestDto request) async {
     // Dispatch password reset via API client
+  }
+
+  @override
+  Future<void> logout() async {
+    try {
+      await _apiClient.post('/auth/logout');
+    } catch (_) {
+      // Gracefully handle remote logout network failures so local logout can proceed
+    }
   }
 }
 

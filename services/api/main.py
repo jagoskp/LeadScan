@@ -76,11 +76,20 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
             logger.warning(f"[DB INIT] Table creation notice: {exc}")
 
         try:
+            from services.api.src.database.migration import upgrade_database
+            upgrade_database()
+            logger.info("[DB MIGRATION] Alembic database upgrade completed successfully.")
+        except Exception as alembic_exc:
+            logger.warning(f"[DB MIGRATION NOTICE] Alembic upgrade notice: {alembic_exc}")
+
+        try:
             from sqlalchemy import text
             async with async_engine.begin() as conn:
                 logger.info("[DB MIGRATION] Executing DDL: ALTER TABLE refresh_tokens ALTER COLUMN token TYPE VARCHAR(512);")
                 await conn.execute(text("ALTER TABLE refresh_tokens ALTER COLUMN token TYPE VARCHAR(512);"))
-                logger.info("[DB MIGRATION] Migration successfully executed: refresh_tokens.token -> VARCHAR(512)")
+                await conn.execute(text("ALTER TABLE user_profiles ADD COLUMN IF NOT EXISTS company VARCHAR(255);"))
+                await conn.execute(text("ALTER TABLE user_profiles ADD COLUMN IF NOT EXISTS designation VARCHAR(255);"))
+                logger.info("[DB MIGRATION] Migration successfully executed: company, designation added to user_profiles")
         except Exception as alter_exc:
             logger.error(f"[DB MIGRATION ERROR] DDL execution failed: {alter_exc}", exc_info=True)
     from services.api.src.integration.service import register_mock_defaults

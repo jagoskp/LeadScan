@@ -83,6 +83,9 @@ class MockAuthRemoteDataSourceImpl implements AuthRemoteDataSource {
 
   @override
   Future<void> resetPassword(ResetPasswordRequestDto request) async {}
+
+  @override
+  Future<void> logout() async {}
 }
 
 class MockAuthLocalDataSource implements AuthLocalDataSource {
@@ -200,6 +203,32 @@ void main() {
       expect(result.isRight(), isTrue);
       final user = await localDataSource.getUser();
       expect(user?.name, 'New Enterprise User');
+    });
+
+    test('logout clears local tokens and user session', () async {
+      await localDataSource.saveUser(const UserModel(id: 'usr_1', email: 'accountA@gmail.com', name: 'User A'));
+      await localDataSource.saveTokens(const AuthTokensModel(accessToken: 'tokenA', refreshToken: 'refA'));
+
+      final logoutResult = await repository.logout();
+      expect(logoutResult.isRight(), isTrue);
+
+      final user = await localDataSource.getUser();
+      final tokens = await localDataSource.getTokens();
+      expect(user, isNull);
+      expect(tokens, isNull);
+    });
+
+    test('Google login Account A followed by logout and Google login Account B succeeds', () async {
+      final loginA = await repository.loginWithGoogle(idToken: 'tokenA', email: 'accountA@gmail.com', name: 'Account A');
+      expect(loginA.isRight(), isTrue);
+      loginA.fold((l) => fail('A failed'), (userA) => expect(userA.email, 'accountA@gmail.com'));
+
+      final logoutResult = await repository.logout();
+      expect(logoutResult.isRight(), isTrue);
+
+      final loginB = await repository.loginWithGoogle(idToken: 'tokenB', email: 'accountB@gmail.com', name: 'Account B');
+      expect(loginB.isRight(), isTrue);
+      loginB.fold((l) => fail('B failed'), (userB) => expect(userB.email, 'accountB@gmail.com'));
     });
   });
 }

@@ -1,14 +1,18 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:leadscan_mobile/features/profile/data/repositories/profile_repository_impl.dart';
 import 'package:leadscan_mobile/features/profile/presentation/controllers/profile_controller.dart';
 import 'package:leadscan_mobile/features/profile/presentation/providers/profile_providers.dart';
 
 void main() {
+  TestWidgetsFlutterBinding.ensureInitialized();
+
   late ProviderContainer container;
   late ProfileController controller;
 
   setUp(() {
+    FlutterSecureStorage.setMockInitialValues({'auth_user_name': 'Test User', 'auth_user_email': 'test@leadscan.ai'});
     final repository = ProfileRepositoryImpl();
     container = ProviderContainer(
       overrides: [

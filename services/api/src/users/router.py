@@ -21,6 +21,8 @@ def build_profile_response(user: User, profile: Any) -> UserProfileResponse:
         username=user.username,
         full_name=profile.full_name,
         phone=profile.phone,
+        company=getattr(profile, "company", None),
+        designation=getattr(profile, "designation", None),
         avatar_url=profile.avatar_url,
         preferences=profile.preferences,
         account_status=profile.account_status,

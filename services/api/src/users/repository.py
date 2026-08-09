@@ -29,6 +29,8 @@ class UserProfileRepository:
         user_id: uuid.UUID,
         full_name: str | None = None,
         phone: str | None = None,
+        company: str | None = None,
+        designation: str | None = None,
         preferences: dict | None = None,
     ) -> UserProfile | None:
         """Update profile fields on an existing record."""
@@ -37,6 +39,10 @@ class UserProfileRepository:
             update_data["full_name"] = full_name
         if phone is not None:
             update_data["phone"] = phone
+        if company is not None:
+            update_data["company"] = company
+        if designation is not None:
+            update_data["designation"] = designation
         if preferences is not None:
             update_data["preferences"] = preferences
 

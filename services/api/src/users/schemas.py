@@ -12,6 +12,8 @@ class UserProfileResponse(BaseModel):
     username: str
     full_name: str | None = None
     phone: str | None = None
+    company: str | None = None
+    designation: str | None = None
     avatar_url: str | None = None
     preferences: dict[str, Any] = Field(default_factory=dict)
     account_status: str
@@ -24,8 +26,10 @@ class UserProfileResponse(BaseModel):
 
 class UserProfileUpdate(BaseModel):
     """User profile patch/update request schema."""
-    full_name: str | None = Field(None, min_length=1, max_length=255)
-    phone: str | None = Field(None, description="Phone number (E.164 format)")
+    full_name: str | None = Field(None, max_length=255)
+    phone: str | None = Field(None, description="Phone number (E.164 or 10-digit format)")
+    company: str | None = Field(None, max_length=255)
+    designation: str | None = Field(None, max_length=255)
     preferences: dict[str, Any] | None = Field(
         None,
         description="User configuration settings (e.g. notifications, language)",
@@ -34,12 +38,13 @@ class UserProfileUpdate(BaseModel):
     @field_validator("phone")
     @classmethod
     def validate_phone_number(cls, v: str | None) -> str | None:
-        """Enforce standard E.164 phone formats if provided."""
-        if v is None:
+        """Enforce standard E.164 or 10-digit Indian phone formats if provided."""
+        if v is None or not v.strip():
             return v
-        if not re.match(r"^\+?[1-9]\d{1,14}$", v):
-            raise ValueError("Phone number must match international E.164 format")
-        return v
+        cleaned = v.strip()
+        if not (re.match(r"^[6-9]\d{9}$", cleaned) or re.match(r"^\+?[1-9]\d{6,14}$", cleaned)):
+            raise ValueError("Phone number must match valid 10-digit or international format")
+        return cleaned
 
 
 class ChangePasswordRequest(BaseModel):
