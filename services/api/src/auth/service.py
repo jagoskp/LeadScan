@@ -1,4 +1,5 @@
 import asyncio
+import hashlib
 import logging
 import uuid
 from datetime import datetime, timedelta, timezone
@@ -10,9 +11,21 @@ from services.api.src.auth.exceptions import (
     TokenExpiredException,
     UserAlreadyExistsException,
 )
-from services.api.src.auth.models import RefreshToken, User
-from services.api.src.auth.repository import RefreshTokenRepository, UserRepository
-from services.api.src.auth.schemas import GoogleLoginRequest, UserLoginRequest, UserRegisterRequest
+from services.api.src.auth.models import PasswordResetToken, RefreshToken, User
+from services.api.src.auth.repository import (
+    PasswordResetTokenRepository,
+    RefreshTokenRepository,
+    UserRepository,
+)
+from services.api.src.users.models import UserProfile
+from services.api.src.users.repository import UserProfileRepository
+from services.api.src.auth.schemas import (
+    ForgotPasswordRequest,
+    GoogleLoginRequest,
+    ResetPasswordRequest,
+    UserLoginRequest,
+    UserRegisterRequest,
+)
 from services.api.src.auth.security import (
     create_jwt_token,
     decode_jwt_token,
@@ -31,28 +44,122 @@ class AuthService:
         self,
         user_repo: UserRepository,
         token_repo: RefreshTokenRepository,
+        reset_token_repo: PasswordResetTokenRepository | None = None,
+        profile_repo: UserProfileRepository | None = None,
     ) -> None:
         self.user_repo = user_repo
         self.token_repo = token_repo
+        self.reset_token_repo = reset_token_repo or (
+            PasswordResetTokenRepository(user_repo.session)
+            if hasattr(user_repo, "session") and user_repo.session is not None
+            else None
+        )
+        self.profile_repo = profile_repo or (
+            UserProfileRepository(user_repo.session)
+            if hasattr(user_repo, "session") and user_repo.session is not None
+            else None
+        )
 
-    async def register(self, data: UserRegisterRequest) -> User:
-        """Register a new user account, validating email/username uniqueness."""
+    async def register(self, data: UserRegisterRequest) -> dict[str, str]:
+        """Register a new user account, creating UserProfile, validating email uniqueness, and returning tokens."""
+        target_email = data.email.lower().strip()
+        target_username = target_email
+
         # Check email uniqueness
-        if await self.user_repo.get_by_email(data.email):
+        if await self.user_repo.get_by_email(target_email):
             raise UserAlreadyExistsException("Email address is already registered")
 
-        # Check username uniqueness
-        if await self.user_repo.get_by_username(data.username):
-            raise UserAlreadyExistsException("Username is already taken")
+        # Check username uniqueness (username = email)
+        if await self.user_repo.get_by_username(target_username):
+            raise UserAlreadyExistsException("Email address is already registered")
 
-        # Hash password and store
+        # Hash password and store with username = normalized email
         hashed = hash_password(data.password)
         new_user = User(
-            email=data.email,
-            username=data.username,
+            email=target_email,
+            username=target_username,
             hashed_password=hashed,
+            is_active=True,
         )
-        return await self.user_repo.create(new_user)
+        new_user = await self.user_repo.create(new_user)
+
+        # Create or populate UserProfile if profile repository available
+        if self.profile_repo:
+            profile = await self.profile_repo.get_by_user_id(new_user.id)
+            if not profile:
+                profile = UserProfile(
+                    user_id=new_user.id,
+                    full_name=data.full_name,
+                    phone=data.phone,
+                )
+                await self.profile_repo.create(profile)
+            else:
+                await self.profile_repo.update_profile(
+                    user_id=new_user.id,
+                    full_name=data.full_name,
+                    phone=data.phone,
+                )
+
+        return await self.create_tokens(new_user)
+
+    async def forgot_password(self, email: str) -> dict[str, str]:
+        """Generate single-use password reset token for requested user email."""
+        target_email = email.lower().strip()
+        user = await self.user_repo.get_by_email(target_email)
+        if not user or not user.is_active:
+            return {"message": "If the email is registered, a password reset link/token has been generated."}
+
+        raw_token = uuid.uuid4().hex + uuid.uuid4().hex
+        token_hash = hashlib.sha256(raw_token.encode("utf-8")).hexdigest()
+        expires_at = datetime.now(timezone.utc) + timedelta(minutes=15)
+
+        if self.reset_token_repo:
+            reset_token = PasswordResetToken(
+                token_hash=token_hash,
+                user_id=user.id,
+                expires_at=expires_at,
+            )
+            await self.reset_token_repo.create(reset_token)
+
+        logger.info("[AUTH] Password reset token generated for user_id=%s.", user.id)
+        return {
+            "message": "Password reset token generated successfully.",
+            "reset_token": raw_token,
+        }
+
+    async def reset_password(self, data: ResetPasswordRequest) -> None:
+        """Validate reset token, update password hash using Argon2id, and revoke old refresh tokens."""
+        token_hash = hashlib.sha256(data.token.encode("utf-8")).hexdigest()
+
+        db_token = None
+        if self.reset_token_repo:
+            db_token = await self.reset_token_repo.get_valid_token(token_hash)
+
+        if not db_token:
+            raise InvalidTokenException("Invalid or expired password reset token.")
+
+        token_exp = db_token.expires_at
+        if token_exp.tzinfo is None:
+            token_exp = token_exp.replace(tzinfo=timezone.utc)
+
+        if token_exp < datetime.now(timezone.utc):
+            raise TokenExpiredException("Password reset token has expired.")
+
+        user = await self.user_repo.get_by_id(db_token.user_id)
+        if not user or not user.is_active:
+            raise InvalidTokenException("User account associated with token is not active.")
+
+        # Update password hash
+        user.hashed_password = hash_password(data.new_password)
+        await self.user_repo.create(user)
+
+        # Mark token as used
+        if self.reset_token_repo:
+            await self.reset_token_repo.mark_used(db_token.id)
+
+        # Revoke all active refresh tokens for user
+        await self.token_repo.revoke_all_for_user(user.id)
+        logger.info("[AUTH] Password reset completed for user_id=%s. Old refresh tokens revoked.", user.id)
 
     async def authenticate(self, data: UserLoginRequest) -> User:
         """Authenticate user credentials using email or username."""
@@ -127,15 +234,7 @@ class AuthService:
 
             if not user:
                 logger.info("[AUTH] User not found. User creation started: email=%s", target_email)
-                base_username = target_email.split("@")[0]
-                clean_username = "".join(c for c in base_username if c.isalnum() or c in "_-")
-                if len(clean_username) < 3:
-                    clean_username = f"user_{uuid.uuid4().hex[:6]}"
-
-                # Enforce unique username
-                existing_user_by_uname = await self.user_repo.get_by_username(clean_username)
-                if existing_user_by_uname:
-                    clean_username = f"{clean_username}_{uuid.uuid4().hex[:4]}"
+                clean_username = target_email
 
                 random_pwd = hash_password(uuid.uuid4().hex)
                 user = User(

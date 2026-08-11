@@ -76,3 +76,45 @@ class RefreshTokenRepository:
             .where(RefreshToken.id == token_id)
             .values(is_revoked=True)
         )
+
+    async def revoke_all_for_user(self, user_id: uuid.UUID) -> None:
+        """Revoke all active refresh tokens for a given user."""
+        await self.session.execute(
+            update(RefreshToken)
+            .where(RefreshToken.user_id == user_id, RefreshToken.is_revoked == False)
+            .values(is_revoked=True)
+        )
+
+
+class PasswordResetTokenRepository:
+    """Repository managing PasswordResetToken database persistence operations."""
+
+    def __init__(self, session: AsyncSession) -> None:
+        self.session = session
+
+    async def create(self, reset_token: Any) -> Any:
+        """Persist a new PasswordResetToken record."""
+        self.session.add(reset_token)
+        await self.session.flush()
+        return reset_token
+
+    async def get_valid_token(self, token_hash: str) -> Any:
+        """Fetch an unused, valid password reset token record by token_hash."""
+        from services.api.src.auth.models import PasswordResetToken
+        result = await self.session.execute(
+            select(PasswordResetToken).where(
+                PasswordResetToken.token_hash == token_hash,
+                PasswordResetToken.is_used == False,
+            )
+        )
+        return result.scalar_one_or_none()
+
+    async def mark_used(self, token_id: uuid.UUID) -> None:
+        """Mark a password reset token as used."""
+        from services.api.src.auth.models import PasswordResetToken
+        await self.session.execute(
+            update(PasswordResetToken)
+            .where(PasswordResetToken.id == token_id)
+            .values(is_used=True)
+        )
+

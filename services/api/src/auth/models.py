@@ -57,6 +57,11 @@ class User(Base):
         back_populates="user",
         cascade="all, delete-orphan",
     )
+    reset_tokens: Mapped[list["PasswordResetToken"]] = relationship(
+        "PasswordResetToken",
+        back_populates="user",
+        cascade="all, delete-orphan",
+    )
     profile: Mapped["UserProfile"] = relationship(
         "UserProfile",
         back_populates="user",
@@ -108,3 +113,44 @@ class RefreshToken(Base):
         "User",
         back_populates="refresh_tokens",
     )
+
+
+class PasswordResetToken(Base):
+    """Password reset tokens tracking table for forgotten password verification."""
+    __tablename__ = "password_reset_tokens"
+
+    id: Mapped[uuid.UUID] = mapped_column(
+        primary_key=True,
+        default=uuid.uuid4,
+    )
+    token_hash: Mapped[str] = mapped_column(
+        String(255),
+        unique=True,
+        nullable=False,
+        index=True,
+    )
+    user_id: Mapped[uuid.UUID] = mapped_column(
+        ForeignKey("users.id", ondelete="CASCADE"),
+        nullable=False,
+    )
+    expires_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True),
+        nullable=False,
+    )
+    is_used: Mapped[bool] = mapped_column(
+        Boolean,
+        default=False,
+        nullable=False,
+    )
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True),
+        default=lambda: datetime.now(timezone.utc),
+        nullable=False,
+    )
+
+    # Relationships
+    user: Mapped["User"] = relationship(
+        "User",
+        back_populates="reset_tokens",
+    )
+

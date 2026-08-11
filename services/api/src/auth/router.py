@@ -5,7 +5,9 @@ from services.api.src.auth.dependencies import get_auth_service, get_current_use
 from services.api.src.auth.exceptions import InvalidTokenException
 from services.api.src.auth.models import User
 from services.api.src.auth.schemas import (
+    ForgotPasswordRequest,
     GoogleLoginRequest,
+    ResetPasswordRequest,
     TokenResponse,
     UserLoginRequest,
     UserRegisterRequest,
@@ -49,15 +51,18 @@ def delete_auth_cookies(response: Response) -> None:
 
 @router.post(
     "/register",
-    response_model=UserResponse,
+    response_model=TokenResponse,
     status_code=status.HTTP_201_CREATED,
 )
 async def register(
     data: UserRegisterRequest,
+    response: Response,
     auth_service: AuthService = Depends(get_auth_service),
 ) -> Any:
     """Register a new user account with validated credentials."""
-    return await auth_service.register(data)
+    tokens = await auth_service.register(data)
+    set_auth_cookies(response, tokens)
+    return tokens
 
 
 @router.post("/login", response_model=TokenResponse)
@@ -85,6 +90,24 @@ async def google_login(
     return tokens
 
 
+@router.post("/forgot-password")
+async def forgot_password(
+    data: ForgotPasswordRequest,
+    auth_service: AuthService = Depends(get_auth_service),
+) -> Any:
+    """Initiate password recovery flow by generating single-use reset token."""
+    return await auth_service.forgot_password(data.email)
+
+
+@router.post("/reset-password", status_code=status.HTTP_200_OK)
+async def reset_password(
+    data: ResetPasswordRequest,
+    auth_service: AuthService = Depends(get_auth_service),
+) -> Any:
+    """Execute password reset using reset token, updating password hash and revoking old sessions."""
+    await auth_service.reset_password(data)
+    return {"message": "Password has been reset successfully. Please log in with your new password."}
+
 
 @router.post("/refresh", response_model=TokenResponse)
 async def refresh(
@@ -92,12 +115,17 @@ async def refresh(
     response: Response,
     auth_service: AuthService = Depends(get_auth_service),
 ) -> Any:
-    """Rotate JWT session tokens using active HTTPOnly refresh token cookie."""
-    # Attempt to read refresh token from cookies
+    """Rotate JWT session tokens using active HTTPOnly refresh token cookie or JSON body."""
     refresh_token = request.cookies.get("refresh_token")
     if not refresh_token:
-        # Fallback to authorization bearer or JSON body would go here if needed,
-        # but for security, HTTPOnly cookie is standard.
+        try:
+            body = await request.json()
+            if isinstance(body, dict):
+                refresh_token = body.get("refresh_token")
+        except Exception:
+            pass
+
+    if not refresh_token:
         raise InvalidTokenException()
 
     tokens = await auth_service.refresh_session(refresh_token)
@@ -113,6 +141,14 @@ async def logout(
 ) -> None:
     """Terminate user session by revoking the refresh token and clearing client cookies."""
     refresh_token = request.cookies.get("refresh_token")
+    if not refresh_token:
+        try:
+            body = await request.json()
+            if isinstance(body, dict):
+                refresh_token = body.get("refresh_token")
+        except Exception:
+            pass
+
     if refresh_token:
         await auth_service.logout(refresh_token)
     delete_auth_cookies(response)
@@ -122,3 +158,4 @@ async def logout(
 async def get_me(current_user: User = Depends(get_current_user)) -> Any:
     """Retrieve profile data for the active logged-in user session."""
     return current_user
+
