@@ -92,6 +92,32 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
                 logger.info("[DB MIGRATION] Migration successfully executed: company, designation added to user_profiles")
         except Exception as alter_exc:
             logger.error(f"[DB MIGRATION ERROR] DDL execution failed: {alter_exc}", exc_info=True)
+
+        try:
+            from sqlalchemy import text
+            async with async_engine.begin() as conn:
+                logger.info("[DB MIGRATION] Ensuring password_reset_tokens table exists.")
+                await conn.execute(text("""
+                    CREATE TABLE IF NOT EXISTS password_reset_tokens (
+                        id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+                        token_hash VARCHAR(255) NOT NULL UNIQUE,
+                        user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+                        expires_at TIMESTAMPTZ NOT NULL,
+                        is_used BOOLEAN NOT NULL DEFAULT FALSE,
+                        created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+                    );
+                """))
+                await conn.execute(text(
+                    "CREATE INDEX IF NOT EXISTS ix_password_reset_tokens_token_hash "
+                    "ON password_reset_tokens (token_hash);"
+                ))
+                # Expand username column to VARCHAR(255) since username = email
+                await conn.execute(text(
+                    "ALTER TABLE users ALTER COLUMN username TYPE VARCHAR(255);"
+                ))
+                logger.info("[DB MIGRATION] password_reset_tokens table ensured and users.username expanded.")
+        except Exception as prt_exc:
+            logger.error(f"[DB MIGRATION ERROR] password_reset_tokens DDL failed: {prt_exc}", exc_info=True)
     from services.api.src.integration.service import register_mock_defaults
     register_mock_defaults()
     yield

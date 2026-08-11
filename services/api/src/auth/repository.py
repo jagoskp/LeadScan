@@ -1,5 +1,5 @@
 import uuid
-from typing import Sequence
+from typing import Any, Sequence
 from sqlalchemy import select, update
 from sqlalchemy.ext.asyncio import AsyncSession
 from services.api.src.auth.models import User, RefreshToken
