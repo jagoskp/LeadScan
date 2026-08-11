@@ -5,9 +5,9 @@ from sqlalchemy import ForeignKey, String, DateTime, Boolean
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from services.api.src.database import Base
 
-if TYPE_CHECKING:
-    from services.api.src.users.models import UserProfile
-    from services.api.src.organization.models import OrganizationMember
+from services.api.src.users.models import UserProfile
+from services.api.src.organization.models import OrganizationMember
+
 
 
 class User(Base):

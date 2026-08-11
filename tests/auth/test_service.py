@@ -341,5 +341,91 @@ async def test_forgot_and_reset_password() -> None:
     token_repo.revoke_all_for_user.assert_called_once_with(test_user.id)
 
 
+@pytest.mark.asyncio
+async def test_forgot_password_unknown_email_behavior() -> None:
+    """Verify unknown email returns generic message without generating token or exposing user absence."""
+    from unittest.mock import AsyncMock, MagicMock
+    from services.api.src.auth.service import AuthService
+
+    user_repo = MagicMock()
+    token_repo = MagicMock()
+    reset_token_repo = MagicMock()
+
+    user_repo.get_by_email = AsyncMock(return_value=None)
+    service = AuthService(user_repo=user_repo, token_repo=token_repo, reset_token_repo=reset_token_repo)
+
+    res = await service.forgot_password("unknown_account_999@example.com")
+    assert "reset_token" not in res
+    assert "registered" in res["message"]
+    reset_token_repo.create.assert_not_called()
+
+
+@pytest.mark.asyncio
+async def test_forgot_password_email_normalization() -> None:
+    """Verify forgot_password normalizes email address with leading/trailing spaces and uppercase characters."""
+    from unittest.mock import AsyncMock, MagicMock
+    from services.api.src.auth.service import AuthService
+    from services.api.src.auth.models import User
+
+    user_repo = MagicMock()
+    token_repo = MagicMock()
+    reset_token_repo = MagicMock()
+
+    test_user = User(
+        id=MagicMock(),
+        email="resetuser@example.com",
+        username="resetuser@example.com",
+        hashed_password="old_hash",
+        is_active=True,
+    )
+    user_repo.get_by_email = AsyncMock(return_value=test_user)
+    reset_token_repo.create = AsyncMock()
+
+    service = AuthService(user_repo=user_repo, token_repo=token_repo, reset_token_repo=reset_token_repo)
+    res = await service.forgot_password("   ResetUser@Example.COM   ")
+
+    user_repo.get_by_email.assert_called_once_with("resetuser@example.com")
+    assert "reset_token" in res
+
+
+@pytest.mark.asyncio
+async def test_organization_member_mapper_initialization() -> None:
+    """Verify User model mappers initialize cleanly with OrganizationMember available at runtime."""
+    import uuid
+    from services.api.src.auth.models import User
+    from services.api.src.organization.models import OrganizationMember
+
+    u = User(
+        id=uuid.uuid4(),
+        email="test_org@example.com",
+        username="test_org@example.com",
+        hashed_password="hash",
+        is_active=True,
+    )
+    assert u.email == "test_org@example.com"
+
+
+@pytest.mark.asyncio
+async def test_dependency_injection_reset_token_repository() -> None:
+    """Verify get_auth_service dependency function correctly injects PasswordResetTokenRepository into AuthService."""
+    from unittest.mock import MagicMock
+    from services.api.src.auth.dependencies import get_auth_service
+
+    user_repo = MagicMock()
+    token_repo = MagicMock()
+    reset_token_repo = MagicMock()
+
+    service = get_auth_service(
+        user_repo=user_repo,
+        token_repo=token_repo,
+        reset_token_repo=reset_token_repo,
+    )
+
+    assert service.user_repo == user_repo
+    assert service.token_repo == token_repo
+    assert service.reset_token_repo == reset_token_repo
+
+
+
 
 

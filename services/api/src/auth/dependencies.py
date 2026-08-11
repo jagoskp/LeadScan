@@ -11,7 +11,11 @@ from services.api.src.auth.exceptions import (
     UserInactiveException,
 )
 from services.api.src.auth.models import User
-from services.api.src.auth.repository import RefreshTokenRepository, UserRepository
+from services.api.src.auth.repository import (
+    PasswordResetTokenRepository,
+    RefreshTokenRepository,
+    UserRepository,
+)
 from services.api.src.auth.security import decode_jwt_token
 from services.api.src.auth.service import AuthService
 
@@ -29,12 +33,19 @@ def get_token_repository(session: AsyncSession = Depends(get_db)) -> RefreshToke
     return RefreshTokenRepository(session)
 
 
+def get_reset_token_repository(session: AsyncSession = Depends(get_db)) -> PasswordResetTokenRepository:
+    """Inject PasswordResetTokenRepository context."""
+    return PasswordResetTokenRepository(session)
+
+
 def get_auth_service(
     user_repo: UserRepository = Depends(get_user_repository),
     token_repo: RefreshTokenRepository = Depends(get_token_repository),
+    reset_token_repo: PasswordResetTokenRepository = Depends(get_reset_token_repository),
 ) -> AuthService:
     """Inject AuthService context."""
-    return AuthService(user_repo, token_repo)
+    return AuthService(user_repo, token_repo, reset_token_repo=reset_token_repo)
+
 
 
 def get_access_token(
